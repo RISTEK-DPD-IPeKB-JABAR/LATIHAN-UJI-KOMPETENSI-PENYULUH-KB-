@@ -81,18 +81,30 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .opt.static{cursor:default}.opt.static:hover{border-color:var(--line);background:#fff;transform:none}
 .opt.correct{border-color:#86efac;background:#f0fdf4}.opt.correct .ltr{background:var(--ok);color:#fff}
 .opt.wrong{border-color:#fecaca;background:#fef2f2}.opt.wrong .ltr{background:var(--bad);color:#fff}
-.palette{display:flex;flex-wrap:wrap;gap:6px}
-.pal{width:30px;height:30px;border-radius:8px;border:1.5px solid var(--line);background:#f8fafc;font-weight:700;font-size:12px;color:#64748b;cursor:pointer;font-family:inherit;transition:.12s}
-.pal:hover{border-color:#c7d2fe;transform:scale(1.08)}
+
+/* =========================================
+   PALETTE SOAL — 5 kotak per baris
+   ========================================= */
+.quiz-layout{display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
+.quiz-nav{position:sticky;top:74px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow);max-height:calc(100vh - 90px);overflow-y:auto}
+.quiz-nav h4{margin:0 0 12px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.palette{display:grid;grid-template-columns:repeat(5, 1fr);gap:8px}
+.pal{aspect-ratio:1;width:100%;border-radius:10px;border:1.5px solid var(--line);background:#f8fafc;font-weight:700;font-size:14px;color:#64748b;cursor:pointer;font-family:inherit;transition:.12s;display:grid;place-items:center;padding:0;line-height:1}
+.pal:hover{border-color:#c7d2fe;transform:scale(1.06);background:#fff}
 .pal.done{background:#dcfce7;border-color:#86efac;color:#166534}
 .pal.doubt{background:#fef3c7;border-color:#fcd34d;color:#92400e}
-.pal.cur{outline:2.5px solid var(--pri);outline-offset:1px}
-.quiz-layout{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:start}
-.quiz-nav{position:sticky;top:74px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:var(--shadow)}
-.quiz-nav h4{margin:0 0 10px;font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.legend{display:flex;flex-direction:column;gap:6px;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:10.5px;color:var(--muted)}
-.legend b{display:inline-flex;align-items:center;gap:5px;font-weight:500}
-.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;border:1px solid}
+.pal.cur{outline:2.5px solid var(--pri);outline-offset:2px;background:#fff;color:var(--pri);font-weight:800}
+.legend{display:flex;flex-direction:column;gap:7px;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:11px;color:var(--muted)}
+.legend b{display:inline-flex;align-items:center;gap:6px;font-weight:500}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block;border:1px solid}
+
+@media(max-width:900px){.quiz-layout{grid-template-columns:220px 1fr}}
+@media(max-width:720px){
+  .quiz-layout{grid-template-columns:1fr}
+  .quiz-nav{position:static;max-height:none}
+  .palette{grid-template-columns:repeat(auto-fill, minmax(40px, 1fr))}
+}
+
 .result-head{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
 .score-ring{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:conic-gradient(var(--pri) calc(var(--p)*1%),#e8ecf5 0)}
 .score-ring>div{width:120px;height:120px;border-radius:50%;background:#fff;display:grid;place-items:center;align-content:center}
@@ -170,7 +182,6 @@ table.tbl tbody tr:hover{background:#fafbff}
 .jenjang-check.all{border-color:#86efac;background:#f0fdf4;font-weight:700;grid-column:1/-1}
 .jenjang-check.all.checked{background:linear-gradient(135deg,#dcfce7,#bbf7d0)}
 .jenjang-tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:10px;font-weight:700;background:#eef2ff;color:#4338ca;margin-right:3px;margin-top:3px}
-@media(max-width:720px){.quiz-layout{grid-template-columns:1fr}.quiz-nav{position:static}}
 @media(max-width:640px){.grid2{grid-template-columns:1fr}.hero-stat{width:100%}.hero-stat>div{flex:1}.login-card{padding:20px}.card{padding:17px;border-radius:15px}.row.between.wrap{gap:10px}.qtext{font-size:15.5px}.score-ring{width:126px;height:126px}.score-ring>div{width:100px;height:100px}.score-ring strong{font-size:28px}.lb-score b{font-size:20px}.jenjang-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -186,10 +197,6 @@ const JENJANG_LIST = ['Penyuluh KB Terampil','Penyuluh KB Mahir','Penyuluh KB Pe
 const JENJANG_NEXT = {'Penyuluh KB Terampil':'Penyuluh KB Mahir','Penyuluh KB Mahir':'Penyuluh KB Penyelia','Penyuluh KB Penyelia':'Penyuluh KB Ahli Pertama','Penyuluh KB Ahli Pertama':'Penyuluh KB Ahli Muda','Penyuluh KB Ahli Muda':'Penyuluh KB Ahli Madya','Penyuluh KB Ahli Madya':'Penyuluh KB Ahli Utama','Penyuluh KB Ahli Utama':null};
 const NILAI_LULUS_NAIK = 70;
 
-/* =========================================================
-   BANK BAWAAN (bootstrap) — dipakai hanya saat admin klik tombol
-   Array berisi 55 soal. Field "j" = tag jenjang (dihitung otomatis).
-   ========================================================= */
 const BOOTSTRAP_RAW = [
 {k:'Teknis',n:1,q:'Dependent Variabel (DV) dari Demografi formal adalah ...',o:['Tingkat Kelahiran dan Komposisi Umur','Migrasi keluar dan Pertumbuhan Ekonomi','Kemiskinan dan Kebutuhan Pangan','Kebutuhan Pangan dan Tingkat Kelahiran','Komposisi Umur dan Pertumbuhan Ekonomi'],a:0},
 {k:'Teknis',n:2,q:'Penduduk Tumbuh Seimbang dapat dicapai apabila ...',o:['TFR 1 dan NRR 2,1','TFR 2,1 dan NRR 2','TFR 2,1 dan NRR 1','CBR 2,1 dan NRR 1'],a:2},
@@ -248,8 +255,6 @@ const BOOTSTRAP_RAW = [
 {k:'Sosiokultural',n:5,q:'Tertib sosial merupakan ...',o:['Upaya mematuhi dan menerapkan nilai-nilai dan norma yang berlaku','Kekacauan akibat pelanggaran norma','Sikap acuh terhadap aturan masyarakat','Keinginan bebas tanpa aturan','Proses perubahan sosial cepat'],a:0}
 ];
 
-/* Helper: assign jenjang tag berdasarkan nomor soal (untuk bootstrap)
-   Soal 1-10 Teknis = semua jenjang; 11-20 = Mahir ke atas; dst. */
 function bootstrapJenjang(kat, nomor){
   if(kat === 'Sosiokultural') return 'Semua';
   if(nomor <= 10) return 'Semua';
@@ -259,9 +264,6 @@ function bootstrapJenjang(kat, nomor){
   return 'Penyuluh KB Ahli Muda, Penyuluh KB Ahli Madya, Penyuluh KB Ahli Utama';
 }
 
-/* =========================================================
-   STORAGE & STATE
-   ========================================================= */
 const KEY = { Q:'pkb_questions_v1', R:'pkb_results_v1', U:'pkb_users_v1', S:'pkb_settings_v1', SES:'pkb_session_v1' };
 const LETTERS = ['A','B','C','D','E'];
 let serverResultsCache = [];
@@ -284,9 +286,6 @@ let adminFilter = { kategori:'Semua', jenjang:'Semua', q:'' };
 let pick = { kategori:'Semua', mode:'semua', selected:[], search:'', acak:false };
 let timerInt = null;
 
-/* =========================================================
-   UTILITAS
-   ========================================================= */
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function jsEsc(s){ return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"'); }
@@ -294,34 +293,24 @@ function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j = Mat
 function fmtDate(iso){ try{ return new Date(iso).toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'}); }catch(e){ return iso; } }
 function fmtDur(s){ const m = Math.floor(s/60), r = s%60; return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0'); }
 
-/* =========================================================
-   JENJANG HELPERS
-   ========================================================= */
-function jenjangMatches(questionJenjang, userJenjang){
-  const q = String(questionJenjang || '').trim();
+function jenjangMatches(qj, uj){
+  const q = String(qj || '').trim();
   if(!q || /^semua$/i.test(q)) return true;
-  const u = String(userJenjang || '').toLowerCase();
+  const u = String(uj || '').toLowerCase();
   if(!u) return true;
   const targets = q.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
   return targets.some(t => u.includes(t) || t.includes(u));
 }
-function shortJenjang(full){
-  return String(full || '').replace(/^Penyuluh KB\s+/i, '');
-}
+function shortJenjang(full){ return String(full || '').replace(/^Penyuluh KB\s+/i, ''); }
 function jenjangBadge(full){
   if(!full) return '<span class="jenjang-badge">-</span>';
   const isHigh = /ahli utama|ahli madya/i.test(full);
   return '<span class="jenjang-badge' + (isHigh?' utama':'') + '">' + esc(shortJenjang(full)) + '</span>';
 }
 
-/* =========================================================
-   KATEGORI DINAMIS
-   ========================================================= */
 const CAT_COLORS = [{bg:'#eef2ff',fg:'#4338ca'},{bg:'#ccfbf1',fg:'#0f766e'},{bg:'#fef3c7',fg:'#92400e'},{bg:'#fce7f3',fg:'#9d174d'},{bg:'#dbeafe',fg:'#1e40af'},{bg:'#dcfce7',fg:'#166534'},{bg:'#ede9fe',fg:'#6d28d9'},{bg:'#fee2e2',fg:'#991b1b'}];
 function getQuestions(){ return store.get(KEY.Q, []); }
-function getQuestionsForJenjang(jenjang){
-  return getQuestions().filter(q => jenjangMatches(q.jenjang, jenjang));
-}
+function getQuestionsForJenjang(jenjang){ return getQuestions().filter(q => jenjangMatches(q.jenjang, jenjang)); }
 function getKategoriList(){
   const set = new Set();
   getQuestions().forEach(q => { if(q.kategori && q.kategori.trim()) set.add(q.kategori.trim()); });
@@ -338,26 +327,15 @@ function filterByKategori(list, kat){ return kat==='Semua' ? list.slice() : list
 function filterByJenjang(list, jenjang){ return jenjang==='Semua' ? list.slice() : list.filter(q => jenjangMatches(q.jenjang, jenjang)); }
 
 function bootstrapQuestions(){
-  return BOOTSTRAP_RAW.map(s => ({
-    id: s.k.toLowerCase().slice(0,3)+'-'+s.n,
-    kategori: s.k, jenjang: bootstrapJenjang(s.k, s.n), nomor: s.n,
-    pertanyaan: s.q, opsi: s.o.concat(['','','','','']).slice(0,5),
-    jawaban: s.a, pembahasan: s.b||''
-  }));
+  return BOOTSTRAP_RAW.map(s => ({ id: s.k.toLowerCase().slice(0,3)+'-'+s.n, kategori: s.k, jenjang: bootstrapJenjang(s.k, s.n), nomor: s.n, pertanyaan: s.q, opsi: s.o.concat(['','','','','']).slice(0,5), jawaban: s.a, pembahasan: s.b||'' }));
 }
 function myResults(){ return store.get(KEY.R, []).filter(r => r.username === session.username); }
-
 function setQuestions(list, opts){
   opts = opts || {};
   store.set(KEY.Q, list);
-  if(!opts.skipSync && session && session.role==='admin' && isSyncReady()){
-    pushSoalKeServer(list);
-  }
+  if(!opts.skipSync && session && session.role==='admin' && isSyncReady()){ pushSoalKeServer(list); }
 }
 
-/* =========================================================
-   GOOGLE SHEETS SYNC
-   ========================================================= */
 function getSyncUrl(){ const st=store.get(KEY.S, {}); return String(st.syncUrl||'').trim(); }
 function isSyncReady(){ return /^https?:\/\/.+\/exec$/.test(getSyncUrl()); }
 function getAutoPoll(){ const st=store.get(KEY.S, {}); return st.autoPoll !== false; }
@@ -487,9 +465,6 @@ async function ambilHasilServer(){
   try{ const j = await jsonpGet(url, {action:'daftar'}); if(Array.isArray(j)) return j; return []; }catch(e){ return null; }
 }
 
-/* =========================================================
-   RENDER UTAMA
-   ========================================================= */
 function render(){
   const app = document.getElementById('app');
   if(!session){ app.innerHTML = viewLogin(); return; }
@@ -510,9 +485,6 @@ function topbar(sub, extra){
     '<div class="row gap">'+(extra||'')+'<button class="btn ghost tiny" onclick="logout()">Keluar</button></div></header>';
 }
 
-/* =========================================================
-   LOGIN
-   ========================================================= */
 function viewLogin(){
   return '<div class="login-wrap"><div class="login-card"><div class="brand"><div class="logo">KB</div><div>' +
     '<h1 style="font-size:19px">Latihan Soal Penyuluh KB</h1>' +
@@ -590,16 +562,13 @@ function logout(){
   render();
 }
 
-/* =========================================================
-   DASHBOARD PESERTA (jenjang-filtered)
-   ========================================================= */
 function viewPeserta(){
   const allForJenjang = getQuestionsForJenjang(session.jenjang);
   if(allForJenjang.length === 0){
     return topbar('Halo, '+session.nama+' · '+shortJenjang(session.jenjang))+'<div class="container"><div class="card empty-state">' +
       '<div class="icon">📭</div>' +
       '<h2>Belum ada soal untuk jenjang '+esc(shortJenjang(session.jenjang))+'</h2>' +
-      '<p>Admin belum menyiapkan soal untuk jenjang ini. Silakan hubungi admin atau muat ulang jika sheet sudah diisi.</p>' +
+      '<p>Admin belum menyiapkan soal untuk jenjang ini.</p>' +
       '<button class="btn primary" onclick="reloadPeserta()">🔄 Muat Ulang dari Server</button>' +
       '</div></div>';
   }
@@ -670,9 +639,6 @@ function riwayatHTML(){
 }
 function lihatHasil(id){ const r = store.get(KEY.R, []).find(x=>x.id===id); if(!r) return; lastResult = Object.assign({}, r, {_fresh:false}); render(); }
 
-/* =========================================================
-   QUIZ
-   ========================================================= */
 function startQuiz(){
   const pool = getQuestionsForJenjang(session.jenjang);
   let items;
@@ -716,7 +682,7 @@ function viewQuiz(){
     (doubtful>0?'<span class="pill warn">❓ '+doubtful+' ragu</span>':'')) +
     '<div class="container"><div class="quiz-layout">' +
     '<aside class="quiz-nav"><h4>Nomor Soal</h4><div class="palette">' +
-      quiz.ids.map((id,i)=>'<button class="'+palClass(id,i)+'" onclick="gotoQ('+i+')">'+(i+1)+'</button>').join('') +
+      quiz.ids.map((id,i)=>'<button class="'+palClass(id,i)+'" onclick="gotoQ('+i+')" title="Soal '+(i+1)+'">'+(i+1)+'</button>').join('') +
     '</div><div class="legend">' +
       '<b><i style="background:#dcfce7;border-color:#86efac"></i> Terjawab</b>' +
       '<b><i style="background:#fef3c7;border-color:#fcd34d"></i> Ragu-ragu</b>' +
@@ -781,9 +747,6 @@ function finishQuiz(){
   });
 }
 
-/* =========================================================
-   HASIL PESERTA
-   ========================================================= */
 function viewHasil(){
   const r = lastResult;
   const grade = r.nilai>=80?'Luar biasa!':r.nilai>=70?'Bagus!':r.nilai>=60?'Cukup, tingkatkan lagi.':'Perlu belajar lebih giat.';
@@ -832,9 +795,6 @@ function downloadJSON(obj, filename){
   setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
 }
 
-/* =========================================================
-   ADMIN
-   ========================================================= */
 function viewAdmin(){
   return topbar('Panel Administrator', '<span class="pill">Admin</span>')+'<div class="container">' +
     '<div class="tabs big">' +
@@ -853,12 +813,9 @@ function setAdminTab(t){
   if(t==='hasil'){ renderHasilList(); }
 }
 
-/* ---------- KELOLA SOAL ---------- */
 function adminSoalHTML(){
   const qs = getQuestions();
-  if(qs.length === 0){
-    return emptyStateHTML();
-  }
+  if(qs.length === 0){ return emptyStateHTML(); }
   const synced = isSyncReady();
   return '<div class="card"><div class="row between wrap">' +
     '<div class="row gap wrap">' +
@@ -898,7 +855,7 @@ function emptyStateHTML(){
     '</div>';
 }
 async function bootstrapSoal(){
-  if(!confirm('Isi bank soal dengan 55 soal bawaan?\n\nSetiap soal sudah diberi tag jenjang:\n• Teknis 1-10 & Sosiokultural → semua jenjang\n• Teknis 11-20 → Mahir ke atas\n• Teknis 21-30 → Penyelia ke atas\n• Teknis 31-40 → Ahli Pertama ke atas\n• Teknis 41-50 → Ahli Muda ke atas\n\nSoal otomatis dikirim ke sheet.')) return;
+  if(!confirm('Isi bank soal dengan 55 soal bawaan?\n\nSoal otomatis dikirim ke sheet.')) return;
   const list = bootstrapQuestions();
   setQuestions(list);
   render();
@@ -1016,7 +973,6 @@ function hapusSoal(id){
   setQuestions(getQuestions().filter(q=>q.id!==id)); render();
 }
 
-/* ---------- IMPORT CSV/JSON ---------- */
 function importSoalFile(input){
   const f = input.files[0]; if(!f) return;
   const name = f.name.toLowerCase();
@@ -1091,7 +1047,6 @@ function downloadSoalTemplate(){
   setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
 }
 
-/* ---------- IMPORT PASTE WORD ---------- */
 function openWordImport(){
   document.getElementById('modal-root').innerHTML =
     '<div class="overlay" onclick="if(event.target===this) closeModal()"><div class="modal">' +
@@ -1101,13 +1056,11 @@ function openWordImport(){
       '<input id="wi-kat" class="input" list="wi-kat-list" value="Teknis">' +
       '<datalist id="wi-kat-list">'+getKategoriList().filter(k=>k!=='Semua').map(k=>'<option value="'+esc(k)+'">').join('')+'</datalist></div>' +
       '<div><label>Upload .docx / .txt</label><label class="btn" style="margin:0;width:100%">Pilih File<input type="file" accept=".docx,.txt,.text" hidden onchange="loadWordFile(this)"></label></div></div>' +
-    '<label>Jenjang default (jika soal tidak punya baris JENJANG:)</label>' +
+    '<label>Jenjang default</label>' +
     '<input id="wi-jenjang" class="input" list="wi-jenjang-list" value="Semua" placeholder="Semua atau nama jenjang">' +
     '<datalist id="wi-jenjang-list"><option value="Semua"><option value="Penyuluh KB Terampil"><option value="Penyuluh KB Mahir"><option value="Penyuluh KB Penyelia"><option value="Penyuluh KB Ahli Pertama"><option value="Penyuluh KB Ahli Muda"><option value="Penyuluh KB Ahli Madya"><option value="Penyuluh KB Ahli Utama"></datalist>' +
     '<label>Tempel soal</label>' +
-    '<textarea id="wi-text" class="input" rows="12" style="font-family:monospace;font-size:12.5px" placeholder="KATEGORI: Teknis&#10;JENJANG: Semua&#10;&#10;1. Pertanyaan?&#10;A. Opsi A&#10;B. Opsi B&#10;C. Opsi C&#10;D. Opsi D&#10;Jawaban: A&#10;Pembahasan: opsional&#10;&#10;KATEGORI: Manajerial&#10;JENJANG: Penyuluh KB Penyelia, Penyuluh KB Ahli Pertama&#10;&#10;1. Fungsi POAC...&#10;A. ...&#10;Jawaban: A"></textarea>' +
-    '<details style="margin-top:10px"><summary style="cursor:pointer;font-size:13px;color:var(--pri);font-weight:600">Format</summary>' +
-      '<pre class="code" style="font-size:11px">KATEGORI: Teknis\nJENJANG: Semua  (atau nama spesifik, atau gabungan dengan koma)\n\n1. Soal?\nA. Opsi A\nB. Opsi B\nC. Opsi C\nD. Opsi D\nJawaban: A\nPembahasan: opsional</pre></details>' +
+    '<textarea id="wi-text" class="input" rows="12" style="font-family:monospace;font-size:12.5px" placeholder="KATEGORI: Teknis&#10;JENJANG: Semua&#10;&#10;1. Pertanyaan?&#10;A. Opsi A&#10;B. Opsi B&#10;C. Opsi C&#10;D. Opsi D&#10;Jawaban: A"></textarea>' +
     '<div id="wi-status" style="margin-top:12px"></div>' +
     '<div id="wi-preview" style="margin-top:12px;max-height:300px;overflow:auto"></div>' +
     '<div class="row gap wrap" style="margin-top:14px">' +
@@ -1226,7 +1179,6 @@ function parseSoalText(text, defaultKat, defaultJenjang){
   return questions.map(q=>({kategori:q.kategori, jenjang:q.jenjang, nomor:1, pertanyaan:q.pertanyaan, opsi:q.opsi.slice(0,5), jawaban:q.jawaban, pembahasan:q.pembahasan}));
 }
 
-/* ---------- HASIL & RANKING ---------- */
 function adminHasilHTML(){
   const ready = isSyncReady();
   return '<div class="card"><div class="row between wrap">' +
@@ -1371,9 +1323,6 @@ function importHasil(input){
   rd.readAsText(f); input.value = '';
 }
 
-/* =========================================================
-   PENGATURAN
-   ========================================================= */
 const APPS_SCRIPT_CODE = `const SHEET='Hasil';
 const SHEET_SOAL='Soal';
 const HEADERS=['id','username','nama','kategori','tanggal','total','benar','salah','kosong','nilai','durasi','detail'];
@@ -1566,9 +1515,6 @@ function resetSoal(){
   setQuestions(bootstrapQuestions()); render(); alert('Soal direset ke bank bawaan.');
 }
 
-/* =========================================================
-   INIT
-   ========================================================= */
 (function init(){
   if(!store.get(KEY.S, null)) store.set(KEY.S, {adminPassword:'admin123', autoPoll: true});
   session = store.get(KEY.SES, null);
