@@ -52,7 +52,6 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .chip:hover{border-color:#c7d2fe}
 .chip.on{background:linear-gradient(135deg,var(--pri),#6366f1);color:#fff;border-color:transparent;box-shadow:0 8px 18px -10px rgba(79,70,229,.9)}
 .badge{display:inline-block;padding:4px 10px;border-radius:8px;font-size:11.5px;font-weight:700;letter-spacing:.2px}
-.b-tek{background:#eef2ff;color:#4338ca}.b-sos{background:#ccfbf1;color:#0f766e}
 .pill{display:inline-block;padding:6px 12px;border-radius:999px;background:#f1f5f9;font-size:12.5px;font-weight:600;color:#475569}
 .pill.ok{background:#ecfdf5;color:#166534}.pill.bad{background:#fef2f2;color:#991b1b}
 .hero{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,#eef2ff 0%,#f0fdfa 100%)}
@@ -127,12 +126,11 @@ table.tbl tbody tr:hover{background:#fafbff}
 <div id="app"></div>
 <div id="modal-root"></div>
 
-<!-- Library mammoth untuk baca file .docx -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 
 <script>
 /* =========================================================
-   BANK SOAL BAWAAN (dipakai saat sheet "Soal" masih kosong)
+   BANK SOAL BAWAAN
    ========================================================= */
 const SEED = [
 {k:'Teknis',n:1,q:'Dependent Variabel (DV) dari Demografi formal adalah ...',o:['Tingkat Kelahiran dan Komposisi Umur','Migrasi keluar dan Pertumbuhan Ekonomi','Kemiskinan dan Kebutuhan Pangan','Kebutuhan Pangan dan Tingkat Kelahiran','Komposisi Umur dan Pertumbuhan Ekonomi'],a:0},
@@ -220,10 +218,40 @@ let timerInt = null;
    ========================================================= */
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function jsEsc(s){ return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"'); }
 function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function fmtDate(iso){ try{ return new Date(iso).toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'}); }catch(e){ return iso; } }
 function fmtDur(s){ const m = Math.floor(s/60), r = s%60; return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0'); }
+
+/* =========================================================
+   KATEGORI DINAMIS
+   ========================================================= */
+const CAT_COLORS = [
+  {bg:'#eef2ff', fg:'#4338ca'},
+  {bg:'#ccfbf1', fg:'#0f766e'},
+  {bg:'#fef3c7', fg:'#92400e'},
+  {bg:'#fce7f3', fg:'#9d174d'},
+  {bg:'#dbeafe', fg:'#1e40af'},
+  {bg:'#dcfce7', fg:'#166534'},
+  {bg:'#ede9fe', fg:'#6d28d9'},
+  {bg:'#fee2e2', fg:'#991b1b'}
+];
 function getQuestions(){ return store.get(KEY.Q, []); }
+function getKategoriList(){
+  const set = new Set();
+  getQuestions().forEach(q => { if(q.kategori && q.kategori.trim()) set.add(q.kategori.trim()); });
+  const arr = Array.from(set).sort();
+  return ['Semua'].concat(arr);
+}
+function catColor(kat){
+  let h = 0;
+  for(let i=0; i<kat.length; i++) h = ((h*31) + kat.charCodeAt(i)) >>> 0;
+  return CAT_COLORS[h % CAT_COLORS.length];
+}
+function katBadge(kat){
+  const c = catColor(kat);
+  return '<span class="badge" style="background:' + c.bg + ';color:' + c.fg + '">' + esc(kat) + '</span>';
+}
 function filterByKategori(list, kat){ return kat === 'Semua' ? list.slice() : list.filter(q => q.kategori === kat); }
 function seedQuestions(){
   return SEED.map(s => ({
@@ -234,8 +262,6 @@ function seedQuestions(){
   }));
 }
 function myResults(){ return store.get(KEY.R, []).filter(r => r.username === session.username); }
-
-/* Set question bank — auto-sync ke server kalau admin & URL sudah diset */
 function setQuestions(list, opts){
   opts = opts || {};
   store.set(KEY.Q, list);
@@ -245,7 +271,7 @@ function setQuestions(list, opts){
 }
 
 /* =========================================================
-   GOOGLE SHEETS SYNC — KONFIGURASI
+   GOOGLE SHEETS SYNC
    ========================================================= */
 function getSyncUrl(){ const st = store.get(KEY.S, {}); return String(st.syncUrl || DEFAULT_SYNC_URL || '').trim(); }
 function isSyncReady(){ return /^https?:\/\/.+\/exec$/.test(getSyncUrl()); }
@@ -266,8 +292,6 @@ function jsonpGet(url, params, timeout){
     document.body.appendChild(script);
   });
 }
-
-/* ---------- SOAL (questions) ---------- */
 async function ambilSoalServer(){
   const url = getSyncUrl(); if(!url) return null;
   try{
@@ -278,7 +302,6 @@ async function ambilSoalServer(){
   catch(e){ console.warn('JSONP soal gagal:', e); }
   return null;
 }
-
 async function pushSoalKeServer(list){
   const url = getSyncUrl(); if(!url) return { ok:false, reason:'no-url' };
   if(soalSyncing) return { ok:false, reason:'busy' };
@@ -298,18 +321,12 @@ async function pushSoalKeServer(list){
     return { ok:false, error:String(e) };
   }
 }
-
 function showSoalSyncStatus(ok, msg){
   const el = document.getElementById('soal-sync-note');
   if(!el) return;
-  if(ok){
-    el.innerHTML = '<span class="pill ok">✓ Soal tersinkron ke Google Sheet (' + getQuestions().length + ' soal)</span>';
-  } else {
-    el.innerHTML = '<span class="pill bad">✗ Gagal sinkron: ' + esc(msg||'?') + ' — soal hanya tersimpan di perangkat ini</span>';
-  }
+  if(ok){ el.innerHTML = '<span class="pill ok">✓ Soal tersinkron ke Google Sheet (' + getQuestions().length + ' soal, ' + (getKategoriList().length-1) + ' kategori)</span>'; }
+  else { el.innerHTML = '<span class="pill bad">✗ Gagal sinkron: ' + esc(msg||'?') + ' — soal hanya tersimpan di perangkat ini</span>'; }
 }
-
-/* ---------- HASIL (results) ---------- */
 async function kirimHasilKeServer(r){
   const url = getSyncUrl(); if(!url) return { ok:false, reason:'no-url' };
   try{
@@ -363,7 +380,7 @@ function topbar(sub, extra){
 function viewLogin(){
   return '<div class="login-wrap"><div class="login-card"><div class="brand"><div class="logo">KB</div><div>' +
     '<h1 style="font-size:19px">Latihan Soal Penyuluh KB</h1>' +
-    '<p style="margin:0;font-size:12.5px">Try Out Persiapan Ujikom - Teknis & Sosiokultural</p></div></div>' +
+    '<p style="margin:0;font-size:12.5px">Try Out Persiapan Ujikom — Multi Kategori</p></div></div>' +
     '<div class="tabs"><button class="tab ' + (loginTab==='peserta'?'active':'') + '" onclick="setLoginTab(\'peserta\')">Peserta</button>' +
     '<button class="tab ' + (loginTab==='admin'?'active':'') + '" onclick="setLoginTab(\'admin\')">Admin</button></div>' +
     (loginTab === 'peserta' ? formPeserta() : formAdmin()) +
@@ -394,10 +411,8 @@ function doLoginPeserta(e){
   session = { role:'peserta', username:user, nama: nama };
   store.set(KEY.SES, session);
   quiz = null; lastResult = null; render();
-  // Ambil soal terbaru dari server
   refreshSoalDariServer('peserta');
 }
-
 function doLoginAdmin(e){
   e.preventDefault();
   const pass = document.getElementById('in-pass').value;
@@ -406,16 +421,13 @@ function doLoginAdmin(e){
   session = { role:'admin', username:'admin', nama:'Administrator' };
   store.set(KEY.SES, session);
   quiz = null; lastResult = null; render();
-  // Pull soal terbaru dari server (kalau ada)
   refreshSoalDariServer('admin');
 }
-
 async function refreshSoalDariServer(who){
   if(!isSyncReady()) return;
   const list = await ambilSoalServer();
   if(!Array.isArray(list)) return;
   if(list.length === 0 && who === 'admin'){
-    // Sheet masih kosong — dorong soal lokal sebagai seed
     const local = getQuestions();
     if(local.length) pushSoalKeServer(local);
     return;
@@ -426,7 +438,6 @@ async function refreshSoalDariServer(who){
     else if(who === 'peserta' && !quiz && !lastResult){ render(); }
   }
 }
-
 function logout(){
   session = null; quiz = null; lastResult = null; adminTab = 'soal';
   localStorage.removeItem(KEY.SES);
@@ -441,18 +452,22 @@ function viewPeserta(){
   const qs = getQuestions();
   const filtered = filterByKategori(qs, pick.kategori);
   const synced = isSyncReady();
+  const katCount = getKategoriList().length - 1;
   return topbar('Halo, ' + session.nama) + '<div class="container">' +
     '<div class="card hero"><div style="flex:1;min-width:230px"><h2>Mulai Latihan Soal</h2>' +
       '<p>Pilih kategori, tentukan mode pengerjaan, lalu mulai. Anda bisa memilih sendiri soal mana yang ingin dikerjakan.</p>' +
       (synced ? '<span class="pill ok">Soal diambil dari server — selalu versi terbaru</span>'
               : '<span class="pill">Mode lokal — hasil tersimpan di perangkat ini</span>') + '</div>' +
       '<div class="hero-stat">' +
-        '<div><strong>' + qs.filter(x=>x.kategori==='Teknis').length + '</strong><span>Soal Teknis</span></div>' +
-        '<div><strong>' + qs.filter(x=>x.kategori==='Sosiokultural').length + '</strong><span>Sosiokultural</span></div>' +
+        '<div><strong>' + qs.length + '</strong><span>Total Soal</span></div>' +
+        '<div><strong>' + katCount + '</strong><span>Kategori</span></div>' +
         '<div><strong>' + myResults().length + '</strong><span>Riwayat</span></div>' +
       '</div></div>' +
     '<div class="card"><h3>1. Pilih Kategori</h3><div class="chips">' +
-      ['Semua','Teknis','Sosiokultural'].map(k=>'<button class="chip ' + (pick.kategori===k?'on':'') + '" onclick="setKategori(\''+k+'\')">' + k + '</button>').join('') +
+      getKategoriList().map(function(k){
+        const safe = jsEsc(k);
+        return '<button class="chip ' + (pick.kategori===k?'on':'') + '" onclick="setKategori(\''+safe+'\')">' + esc(k) + '</button>';
+      }).join('') +
       '</div><h3 style="margin-top:22px">2. Pilih Mode</h3><div class="chips">' +
       '<button class="chip ' + (pick.mode==='semua'?'on':'') + '" onclick="setMode(\'semua\')">Kerjakan Semua (' + filtered.length + ' soal)</button>' +
       '<button class="chip ' + (pick.mode==='pilih'?'on':'') + '" onclick="setMode(\'pilih\')">Pilih Soal Sendiri</button>' +
@@ -477,7 +492,7 @@ function pickerItems(list){
   if(!items.length) return '<p class="muted" style="padding:12px">Tidak ada soal yang cocok.</p>';
   return items.map(q => '<label class="pick-item ' + (pick.selected.indexOf(q.id)>=0?'on':'') + '">' +
     '<input type="checkbox" ' + (pick.selected.indexOf(q.id)>=0?'checked':'') + ' onchange="togglePilih(\''+q.id+'\')">' +
-    '<span class="badge ' + (q.kategori==='Teknis'?'b-tek':'b-sos') + '">' + (q.kategori==='Teknis'?'T':'S') + q.nomor + '</span>' +
+    katBadge(q.kategori) + ' <span class="muted tiny">No ' + q.nomor + '</span>' +
     '<span class="pick-text">' + esc(q.pertanyaan) + '</span></label>').join('');
 }
 function renderPickerList(){ const box = document.getElementById('picker-list'); if(!box) return; box.innerHTML = pickerItems(filterByKategori(getQuestions(), pick.kategori)); }
@@ -537,7 +552,7 @@ function viewQuiz(){
   return topbar(q.kategori + ' - Soal ' + (quiz.idx+1) + ' dari ' + total,
     '<span class="pill">Waktu: <b id="timer">00:00</b></span><span class="pill">Terjawab: ' + answered + '/' + total + '</span>') +
     '<div class="container narrow"><div class="card">' +
-      '<div class="row between"><span class="badge ' + (q.kategori==='Teknis'?'b-tek':'b-sos') + '">' + q.kategori + '</span>' +
+      '<div class="row between">' + katBadge(q.kategori) +
         '<span class="muted small">Soal No. ' + q.nomor + '</span></div>' +
       '<h3 class="qtext">' + esc(q.pertanyaan) + '</h3><div>' +
       opts.map(o => '<button class="opt ' + (quiz.answers[q.id]===o.i?'sel':'') + '" onclick="pilihOpsi(' + o.i + ')">' +
@@ -608,7 +623,7 @@ function reviewHTML(detail){
   return (detail||[]).map(d => {
     const opts = (d.opsi||[]).map((t,i)=>({t,i})).filter(o => o.t && o.t.trim());
     return '<div class="rev"><div class="row between">' +
-      '<span class="badge ' + (d.kategori==='Teknis'?'b-tek':'b-sos') + '">' + d.kategori + ' - No ' + d.nomor + '</span>' +
+      katBadge(d.kategori) + ' <span class="muted small">No ' + d.nomor + '</span>' +
       '<span class="tag ' + d.status + '">' + (d.status==='benar'?'Benar':d.status==='salah'?'Salah':'Kosong') + '</span></div>' +
       '<p class="qtext small">' + esc(d.pertanyaan) + '</p>' +
       opts.map(o => {
@@ -653,7 +668,9 @@ function adminSoalHTML(){
     '<div class="row gap wrap">' +
       '<input class="input" style="max-width:220px" placeholder="Cari soal..." value="' + esc(adminFilter.q) + '" oninput="adminFilter.q=this.value; renderSoalList()">' +
       '<select class="input" style="max-width:160px" onchange="adminFilter.kategori=this.value; renderSoalList()">' +
-        ['Semua','Teknis','Sosiokultural'].map(k=>'<option ' + (adminFilter.kategori===k?'selected':'') + '>' + k + '</option>').join('') +
+        getKategoriList().map(function(k){
+          return '<option ' + (adminFilter.kategori===k?'selected':'') + '>' + esc(k) + '</option>';
+        }).join('') +
       '</select></div>' +
     '<div class="row gap wrap">' +
       (synced ? '<button class="btn tiny" onclick="refreshSoalManual()">↻ Refresh dari Server</button>' : '') +
@@ -686,7 +703,7 @@ async function refreshSoalManual(){
     return;
   }
   store.set(KEY.Q, list); render();
-  alert('Berhasil memuat ' + list.length + ' soal dari server.');
+  alert('Berhasil memuat ' + list.length + ' soal dari server (' + (getKategoriList().length-1) + ' kategori).');
 }
 function renderSoalList(){
   const box = document.getElementById('soal-list'); if(!box) return;
@@ -697,7 +714,7 @@ function renderSoalList(){
   box.innerHTML = '<p class="muted small" style="margin-top:16px">' + list.length + ' soal ditampilkan</p>' +
     (list.length ? list.map(q =>
       '<div class="q-admin"><div class="row between wrap">' +
-      '<span class="badge ' + (q.kategori==='Teknis'?'b-tek':'b-sos') + '">' + q.kategori + ' - No ' + q.nomor + '</span>' +
+      katBadge(q.kategori) + ' <span class="muted small">No ' + q.nomor + '</span>' +
       '<div class="row gap"><button class="btn tiny" onclick="openEditor(\''+q.id+'\')">Edit</button>' +
         '<button class="btn tiny danger" onclick="hapusSoal(\''+q.id+'\')">Hapus</button></div></div>' +
       '<p class="q-admin-text">' + esc(q.pertanyaan) + '</p><div class="q-admin-opts">' +
@@ -717,9 +734,12 @@ function openEditor(id){
     '<div class="overlay" onclick="if(event.target===this) closeModal()"><div class="modal">' +
     '<div class="row between" style="margin-bottom:6px"><h3>' + (q ? 'Edit Soal' : 'Tambah Soal Baru') + '</h3>' +
     '<button class="btn tiny ghost" onclick="closeModal()">X</button></div>' +
-    '<div class="grid2"><div><label>Kategori</label><select id="ed-kategori" class="input">' +
-      '<option ' + (d.kategori==='Teknis'?'selected':'') + '>Teknis</option>' +
-      '<option ' + (d.kategori==='Sosiokultural'?'selected':'') + '>Sosiokultural</option></select></div>' +
+    '<div class="grid2"><div><label>Kategori</label>' +
+      '<input id="ed-kategori" class="input" list="ed-kat-list" value="' + esc(d.kategori||'Teknis') + '" placeholder="mis. Teknis, Manajerial, ...">' +
+      '<datalist id="ed-kat-list">' +
+        getKategoriList().filter(k=>k!=='Semua').map(k => '<option value="' + esc(k) + '">').join('') +
+      '</datalist>' +
+      '<div class="tiny muted" style="margin-top:4px">Boleh ketik kategori baru</div></div>' +
       '<div><label>Nomor Soal</label><input id="ed-nomor" class="input" type="number" min="1" value="' + d.nomor + '"></div></div>' +
     '<label>Pertanyaan</label><textarea id="ed-q" class="input" rows="3">' + esc(d.pertanyaan) + '</textarea>' +
     '<label>Pilihan Jawaban <span class="muted tiny">(kosongkan bila tidak dipakai)</span></label>' +
@@ -734,7 +754,8 @@ function openEditor(id){
 }
 function closeModal(){ document.getElementById('modal-root').innerHTML = ''; }
 function simpanSoal(id){
-  const kategori = document.getElementById('ed-kategori').value;
+  let kategori = document.getElementById('ed-kategori').value.trim();
+  if(!kategori) kategori = 'Teknis';
   const nomor = Number(document.getElementById('ed-nomor').value) || 1;
   const pertanyaan = document.getElementById('ed-q').value.trim();
   const opsi = [0,1,2,3,4].map(i => document.getElementById('ed-o'+i).value.trim());
@@ -772,7 +793,7 @@ function importSoalFile(input){
       const counter = {}; existing.forEach(q => { counter[q.kategori] = Math.max(counter[q.kategori]||0, Number(q.nomor)||0); });
       list.forEach(q => { counter[q.kategori] = (counter[q.kategori]||0) + 1; q.nomor = counter[q.kategori]; q.id = uid(); existing.push(q); });
       setQuestions(existing); input.value = ''; render();
-      alert(list.length + ' soal berhasil ditambahkan. Total sekarang: ' + existing.length + ' soal.');
+      alert(list.length + ' soal berhasil ditambahkan. Total sekarang: ' + existing.length + ' soal, ' + (getKategoriList().length-1) + ' kategori.');
     }catch(e){ alert('File tidak valid: ' + e.message); }
   };
   rd.readAsText(f, 'UTF-8');
@@ -820,7 +841,7 @@ function parseCSVLine(line, delim){
 function downloadSoalTemplate(){
   const head = ['kategori','nomor','pertanyaan','opsi_a','opsi_b','opsi_c','opsi_d','opsi_e','jawaban','pembahasan'];
   const ex1 = ['Teknis','1','Apa kepanjangan TFR?','Total Fertility Rate','Tingkat Fertilitas Rendah','Total Fertilitas Rata-rata','Total Fekunditas Rate','Tingkat Fekunditas Rata-rata','A','TFR = Total Fertility Rate.'];
-  const ex2 = ['Sosiokultural','1','Contoh soal sosiokultural?','Jawaban A','Jawaban B','Jawaban C','Jawaban D','Jawaban E','B',''];
+  const ex2 = ['Manajerial','1','Fungsi utama POAC adalah...','Planning','Organizing','Actuating','Controlling','Evaluasi','A','POAC = Planning, Organizing, Actuating, Controlling.'];
   const csv = '\uFEFF' + [head, ex1, ex2].map(row => row.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(';')).join('\r\n');
   const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'template-soal.csv';
@@ -837,15 +858,19 @@ function openWordImport(){
     '<p class="small">Copy soal dari Word/PDF/teks apa pun, lalu paste di kotak di bawah. Klik <b>Parsing Saja</b> untuk preview, lalu <b>Import</b>.</p>' +
     '<div class="grid2">' +
       '<div><label>Kategori default (jika tidak ada baris KATEGORI:)</label>' +
-        '<select id="wi-kat" class="input"><option>Teknis</option><option>Sosiokultural</option></select></div>' +
+        '<input id="wi-kat" class="input" list="wi-kat-list" value="Teknis" placeholder="mis. Teknis, Manajerial, ...">' +
+        '<datalist id="wi-kat-list">' +
+          getKategoriList().filter(k=>k!=='Semua').map(k => '<option value="' + esc(k) + '">').join('') +
+        '</datalist>' +
+        '<div class="tiny muted" style="margin-top:4px">Boleh ketik kategori baru</div></div>' +
       '<div><label>Upload .docx / .txt (opsional)</label>' +
         '<label class="btn" style="margin:0;width:100%">Pilih File' +
           '<input type="file" accept=".docx,.txt,.text" hidden onchange="loadWordFile(this)"></label></div>' +
     '</div>' +
     '<label>Tempel / tulis soal di sini</label>' +
-    '<textarea id="wi-text" class="input" rows="12" style="font-family:monospace;font-size:12.5px" placeholder="KATEGORI: Teknis&#10;&#10;1. Pertanyaan soal pertama?&#10;A. Opsi A&#10;B. Opsi B&#10;C. Opsi C&#10;D. Opsi D&#10;Jawaban: A&#10;Pembahasan: penjelasan opsional&#10;&#10;2. Pertanyaan soal kedua?&#10;A. ...&#10;B. ...&#10;C. ...&#10;D. ...&#10;Jawaban: C&#10;&#10;KATEGORI: Sosiokultural&#10;&#10;1. Pertanyaan soal sosio?&#10;A. ...&#10;B. ...&#10;Jawaban: B"></textarea>' +
+    '<textarea id="wi-text" class="input" rows="12" style="font-family:monospace;font-size:12.5px" placeholder="KATEGORI: Teknis&#10;&#10;1. Pertanyaan soal pertama?&#10;A. Opsi A&#10;B. Opsi B&#10;C. Opsi C&#10;D. Opsi D&#10;Jawaban: A&#10;Pembahasan: penjelasan opsional&#10;&#10;2. Pertanyaan soal kedua?&#10;A. ...&#10;B. ...&#10;C. ...&#10;D. ...&#10;Jawaban: C&#10;&#10;KATEGORI: Manajerial&#10;&#10;1. Fungsi POAC adalah...&#10;A. ...&#10;B. ...&#10;Jawaban: A"></textarea>' +
     '<details style="margin-top:10px"><summary style="cursor:pointer;font-size:13px;color:var(--pri);font-weight:600">Format yang didukung</summary>' +
-      '<pre class="code" style="font-size:11px">KATEGORI: Teknis  (atau Kategori / Category)\n\n1. Pertanyaan soal?\nA. Opsi A    (boleh A. / A) / a. / a))\nB. Opsi B\nC. Opsi C\nD. Opsi D\nE. Opsi E\nJawaban: A  (boleh Jawaban / Kunci / Answer / Key)\nPembahasan: teks opsional\n\n2. Soal berikutnya...\nA. ...\nJawaban: B\n\nKATEGORI: Sosiokultural\n\n1. Soal sosio...\nA. ...\nJawaban: A</pre>' +
+      '<pre class="code" style="font-size:11px">KATEGORI: Teknis  (atau Kategori / Category - bebas teks)\n\n1. Pertanyaan soal?\nA. Opsi A    (boleh A. / A) / a. / a))\nB. Opsi B\nC. Opsi C\nD. Opsi D\nE. Opsi E\nJawaban: A  (boleh Jawaban / Kunci / Answer / Key)\nPembahasan: teks opsional\n\n2. Soal berikutnya...\nA. ...\nJawaban: B\n\nKATEGORI: Manajerial  <-- kategori baru juga bisa</pre>' +
     '</details>' +
     '<div id="wi-status" style="margin-top:12px"></div>' +
     '<div id="wi-preview" style="margin-top:12px;max-height:300px;overflow:auto"></div>' +
@@ -855,7 +880,6 @@ function openWordImport(){
       '<button class="btn ghost" onclick="closeModal()">Batal</button>' +
     '</div></div></div>';
 }
-
 async function loadWordFile(input){
   const f = input.files[0]; if(!f) return;
   const status = document.getElementById('wi-status');
@@ -876,10 +900,9 @@ async function loadWordFile(input){
   }
   input.value = '';
 }
-
 function previewWordParse(){
   const raw = document.getElementById('wi-text').value;
-  const kat = document.getElementById('wi-kat').value;
+  const kat = document.getElementById('wi-kat').value.trim() || 'Teknis';
   const status = document.getElementById('wi-status');
   const preview = document.getElementById('wi-preview');
   if(!raw.trim()){ alert('Teks masih kosong.'); return; }
@@ -899,10 +922,9 @@ function previewWordParse(){
     (q.pembahasan ? '<div class="o" style="color:#92400e;margin-top:4px"><b>Pembahasan:</b> ' + esc(q.pembahasan) + '</div>' : '') +
     '</div>').join('');
 }
-
 function prosesImportWord(){
   const raw = document.getElementById('wi-text').value;
-  const kat = document.getElementById('wi-kat').value;
+  const kat = document.getElementById('wi-kat').value.trim() || 'Teknis';
   const status = document.getElementById('wi-status');
   if(!raw.trim()){ alert('Teks masih kosong.'); return; }
   let parsed;
@@ -915,9 +937,8 @@ function prosesImportWord(){
   parsed.forEach(q => { counter[q.kategori] = (counter[q.kategori]||0) + 1; q.nomor = counter[q.kategori]; q.id = uid(); existing.push(q); });
   setQuestions(existing);
   closeModal(); render();
-  alert(parsed.length + ' soal berhasil ditambahkan. Total sekarang: ' + existing.length + ' soal.');
+  alert(parsed.length + ' soal berhasil ditambahkan. Total sekarang: ' + existing.length + ' soal, ' + (getKategoriList().length-1) + ' kategori.');
 }
-
 function parseSoalText(text, defaultKat){
   text = String(text).replace(/\r\n/g,'\n').replace(/\r/g,'\n').replace(/\f/g,'\n').replace(/\u00A0/g,' ');
   const lines = text.split('\n');
@@ -948,7 +969,7 @@ function parseSoalText(text, defaultKat){
     if(mKat){
       let k = mKat[1].trim();
       if(/sosio/i.test(k)) kategori = 'Sosiokultural';
-      else if(/teknis/i.test(k)) kategori = 'Teknis';
+      else if(/^teknis$/i.test(k)) kategori = 'Teknis';
       else kategori = k;
       continue;
     }
@@ -1152,6 +1173,7 @@ function adminSettingHTML(){
   const us = store.get(KEY.U, []);
   const curUrl = getSyncUrl();
   const statusPill = isSyncReady() ? '<span class="pill ok">Terhubung</span>' : '<span class="pill">Belum terhubung</span>';
+  const katList = getKategoriList().filter(k=>k!=='Semua');
   return '<div class="card"><div class="row between wrap"><h3 style="margin:0">Sinkronisasi Google Sheets</h3>' + statusPill + '</div>' +
     '<p class="small">Soal dan hasil peserta otomatis tersinkron ke Google Sheet sehingga konsisten di semua perangkat.</p>' +
     '<details style="margin:10px 0 14px"><summary style="cursor:pointer;font-weight:600;color:var(--pri);font-size:13.5px">Langkah membuat backend</summary>' +
@@ -1179,8 +1201,11 @@ function adminSettingHTML(){
     '<button class="btn ghost" onclick="resetSoal()">Reset Soal ke Default</button></div>' +
     '<hr class="sep"><h3>Statistik</h3><div class="stats">' +
     '<div><strong>' + qs.length + '</strong><span>Soal</span></div>' +
+    '<div><strong>' + katList.length + '</strong><span>Kategori</span></div>' +
     '<div><strong>' + rs.length + '</strong><span>Hasil Lokal</span></div>' +
-    '<div><strong>' + us.length + '</strong><span>Peserta</span></div></div></div>';
+    '<div><strong>' + us.length + '</strong><span>Peserta</span></div></div>' +
+    '<div style="margin-top:12px"><b>Kategori:</b> ' + (katList.length ? katList.map(katBadge).join(' ') : '<span class="muted">belum ada</span>') + '</div>' +
+    '</div>';
 }
 function simpanSyncUrl(){
   const v = document.getElementById('sync-url').value.trim();
@@ -1217,7 +1242,7 @@ function gantiPass(){
   alert('Password admin berhasil diubah.'); render();
 }
 function exportAll(){
-  const data = { app:'Latihan Soal Penyuluh KB', versi:2, diekspor:new Date().toISOString(),
+  const data = { app:'Latihan Soal Penyuluh KB', versi:3, diekspor:new Date().toISOString(),
     questions:getQuestions(), results:store.get(KEY.R, []), users:store.get(KEY.U, []),
     settings:store.get(KEY.S, {adminPassword:'admin123'}) };
   downloadJSON(data, 'backup-latihan-kb-' + new Date().toISOString().slice(0,10) + '.json');
@@ -1250,8 +1275,6 @@ function resetSoal(){
   if(!store.get(KEY.S, null)) store.set(KEY.S, { adminPassword:'admin123' });
   session = store.get(KEY.SES, null);
   render();
-
-  // Peserta yang sudah login sebelumnya: refresh soal dari server
   if(session && session.role === 'peserta' && isSyncReady()){
     ambilSoalServer().then(list => {
       if(Array.isArray(list) && list.length > 0){
