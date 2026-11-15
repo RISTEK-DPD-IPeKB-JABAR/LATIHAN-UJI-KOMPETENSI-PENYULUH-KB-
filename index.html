@@ -8,16 +8,14 @@
 *,*::before,*::after{box-sizing:border-box}
 :root{--pri:#4f46e5;--pri-d:#4338ca;--teal:#0d9488;--ink:#0f172a;--muted:#64748b;--line:#e5e9f2;--ok:#16a34a;--bad:#dc2626;--shadow:0 14px 40px -18px rgba(15,23,42,.35)}
 html,body{height:100%}
-body{margin:0;color:var(--ink);font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
-  background:radial-gradient(900px 520px at 0% -10%,#dbeafe 0%,transparent 60%),radial-gradient(820px 520px at 100% 0%,#ccfbf1 0%,transparent 55%),#f6f8fc;min-height:100vh}
-h1,h2,h3,h4{margin:0 0 .4em;line-height:1.25}
-h2{font-size:20px}h3{font-size:17px}
+body{margin:0;color:var(--ink);font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;background:radial-gradient(900px 520px at 0% -10%,#dbeafe 0%,transparent 60%),radial-gradient(820px 520px at 100% 0%,#ccfbf1 0%,transparent 55%),#f6f8fc;min-height:100vh}
+h1,h2,h3,h4{margin:0 0 .4em;line-height:1.25}h2{font-size:20px}h3{font-size:17px}
 p{margin:0 0 .5em;color:var(--muted);line-height:1.6;font-size:14.5px}
 small,.small{font-size:12.5px}.tiny{font-size:11.5px}.muted{color:var(--muted)}
 code{background:#eef2ff;color:var(--pri-d);padding:1px 6px;border-radius:6px;font-size:12.5px}
 pre.code{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:12px;overflow:auto;font-size:11.5px;line-height:1.55;max-height:340px;margin:8px 0}
 hr.sep{border:none;border-top:1px dashed var(--line);margin:22px 0}
-.container{max-width:1080px;margin:0 auto;padding:22px 18px 70px}.narrow{max-width:840px}
+.container{max-width:1100px;margin:0 auto;padding:22px 18px 70px}.narrow{max-width:840px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
 .brand{display:flex;gap:13px;align-items:center}
 .brand .logo{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pri),var(--teal));color:#fff;font-weight:800;font-size:16px;box-shadow:0 8px 20px -8px rgba(79,70,229,.8);flex:0 0 auto}
@@ -36,6 +34,9 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .btn.ghost{background:transparent}
 .btn.danger{color:var(--bad);border-color:#fecaca;background:#fef2f2}
 .btn.danger:hover{background:#fee2e2}
+.btn.doubt{background:#fef3c7;border-color:#fcd34d;color:#92400e}
+.btn.doubt:hover{background:#fde68a}
+.btn.doubt.active{background:linear-gradient(135deg,#f59e0b,#d97706);border-color:transparent;color:#fff}
 .btn.tiny{padding:7px 12px;font-size:12.5px;border-radius:9px}
 .btn.block{width:100%;margin-top:18px}
 .row{display:flex;align-items:center;gap:10px}.row.gap{gap:10px}.row.between{justify-content:space-between}.row.wrap{flex-wrap:wrap}
@@ -53,7 +54,7 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .chip.on{background:linear-gradient(135deg,var(--pri),#6366f1);color:#fff;border-color:transparent;box-shadow:0 8px 18px -10px rgba(79,70,229,.9)}
 .badge{display:inline-block;padding:4px 10px;border-radius:8px;font-size:11.5px;font-weight:700;letter-spacing:.2px}
 .pill{display:inline-block;padding:6px 12px;border-radius:999px;background:#f1f5f9;font-size:12.5px;font-weight:600;color:#475569}
-.pill.ok{background:#ecfdf5;color:#166534}.pill.bad{background:#fef2f2;color:#991b1b}
+.pill.ok{background:#ecfdf5;color:#166534}.pill.bad{background:#fef2f2;color:#991b1b}.pill.warn{background:#fef3c7;color:#92400e}
 .hero{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,#eef2ff 0%,#f0fdfa 100%)}
 .hero-stat{display:flex;gap:14px}
 .hero-stat>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 16px;text-align:center;min-width:92px}
@@ -77,17 +78,21 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .opt.sel{border-color:var(--pri);background:#eef2ff;box-shadow:0 0 0 3px rgba(79,70,229,.12)}
 .opt .ltr{flex:0 0 28px;height:28px;border-radius:9px;background:#eef2ff;color:var(--pri);display:grid;place-items:center;font-weight:800;font-size:13px}
 .opt.sel .ltr{background:var(--pri);color:#fff}
-.opt.static{cursor:default}
-.opt.static:hover{border-color:var(--line);background:#fff;transform:none}
-.opt.correct{border-color:#86efac;background:#f0fdf4}
-.opt.correct .ltr{background:var(--ok);color:#fff}
-.opt.wrong{border-color:#fecaca;background:#fef2f2}
-.opt.wrong .ltr{background:var(--bad);color:#fff}
-.palette{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;border-top:1px dashed var(--line);padding-top:16px}
-.pal{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-weight:700;font-size:13px;color:#475569;cursor:pointer;font-family:inherit;transition:.12s}
-.pal:hover{border-color:#c7d2fe}
+.opt.static{cursor:default}.opt.static:hover{border-color:var(--line);background:#fff;transform:none}
+.opt.correct{border-color:#86efac;background:#f0fdf4}.opt.correct .ltr{background:var(--ok);color:#fff}
+.opt.wrong{border-color:#fecaca;background:#fef2f2}.opt.wrong .ltr{background:var(--bad);color:#fff}
+.palette{display:flex;flex-wrap:wrap;gap:6px}
+.pal{width:30px;height:30px;border-radius:8px;border:1.5px solid var(--line);background:#f8fafc;font-weight:700;font-size:12px;color:#64748b;cursor:pointer;font-family:inherit;transition:.12s}
+.pal:hover{border-color:#c7d2fe;transform:scale(1.08)}
 .pal.done{background:#dcfce7;border-color:#86efac;color:#166534}
+.pal.doubt{background:#fef3c7;border-color:#fcd34d;color:#92400e}
 .pal.cur{outline:2.5px solid var(--pri);outline-offset:1px}
+.quiz-layout{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:start}
+.quiz-nav{position:sticky;top:74px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:var(--shadow)}
+.quiz-nav h4{margin:0 0 10px;font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.legend{display:flex;flex-direction:column;gap:6px;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:10.5px;color:var(--muted)}
+.legend b{display:inline-flex;align-items:center;gap:5px;font-weight:500}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;border:1px solid}
 .result-head{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
 .score-ring{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:conic-gradient(var(--pri) calc(var(--p)*1%),#e8ecf5 0)}
 .score-ring>div{width:120px;height:120px;border-radius:50%;background:#fff;display:grid;place-items:center;align-content:center}
@@ -95,9 +100,10 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .score-ring span{font-size:11.5px;color:var(--muted);letter-spacing:.5px}
 .rev{border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;background:#fff}
 .rev .opt{margin-bottom:8px;padding:10px 13px;font-size:13.8px}
+.rev.ragu{border-color:#fcd34d;background:#fffbeb}
 .bahas{margin-top:10px;background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:10px 13px;font-size:13px;line-height:1.55}
 .tag{font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:8px}
-.tag.benar{background:#dcfce7;color:#166534}.tag.salah{background:#fee2e2;color:#991b1b}.tag.kosong{background:#f1f5f9;color:#475569}
+.tag.benar{background:#dcfce7;color:#166534}.tag.salah{background:#fee2e2;color:#991b1b}.tag.kosong{background:#f1f5f9;color:#475569}.tag.ragu{background:#fef3c7;color:#92400e}
 .score{font-weight:800}.score.ok{color:var(--ok)}.score.bad{color:var(--bad)}
 .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}
 table.tbl{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
@@ -119,97 +125,162 @@ table.tbl tbody tr:hover{background:#fafbff}
 .preview-item .o{font-size:12px;color:#475569;padding:2px 0}
 .preview-item .o.key{color:#166534;font-weight:700}
 .preview-badge{display:inline-block;padding:2px 8px;border-radius:6px;background:#eef2ff;color:#4338ca;font-size:10.5px;font-weight:700;margin-bottom:6px}
-@media(max-width:640px){.grid2{grid-template-columns:1fr}.hero-stat{width:100%}.hero-stat>div{flex:1}.login-card{padding:20px}.card{padding:17px;border-radius:15px}.row.between.wrap{gap:10px}.qtext{font-size:15.5px}.score-ring{width:126px;height:126px}.score-ring>div{width:100px;height:100px}.score-ring strong{font-size:28px}}
+.lb-list{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.lb-item{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid #f1f5f9;background:#fff;transition:.15s}
+.lb-item:last-child{border-bottom:none}
+.lb-item.rank-1{background:linear-gradient(90deg,#fffbeb,#fff)}
+.lb-item.rank-2{background:linear-gradient(90deg,#f8fafc,#fff)}
+.lb-item.rank-3{background:linear-gradient(90deg,#fef3c7,#fff)}
+.lb-rank{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;flex-shrink:0}
+.lb-rank.gold{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff}
+.lb-rank.silver{background:linear-gradient(135deg,#cbd5e1,#94a3b8);color:#fff}
+.lb-rank.bronze{background:linear-gradient(135deg,#d97706,#b45309);color:#fff}
+.lb-rank.normal{background:#f1f5f9;color:#64748b;border:1px solid var(--line)}
+.lb-info{flex:1;min-width:0}
+.lb-name{font-weight:700;font-size:14px;color:#0f172a}
+.lb-sub{font-size:11.5px;color:var(--muted);margin-top:3px}
+.lb-score{text-align:right;flex-shrink:0}
+.lb-score b{font-size:24px;font-weight:800;color:var(--pri)}
+.lb-score small{display:block;font-size:10px;color:var(--muted);font-weight:500;margin-top:1px}
+.kenaikan-card{border:1px solid #86efac;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:14px;padding:16px;margin-bottom:12px}
+.kenaikan-card .krow{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.kenaikan-card .kname{font-weight:800;font-size:15px;color:#166534;margin-bottom:6px}
+.kenaikan-card .kfrom{font-size:12px;color:#475569;margin-bottom:3px}
+.kenaikan-card .kfrom b{color:#64748b;text-decoration:line-through}
+.kenaikan-card .karrow{font-size:12px;color:#166534;font-weight:700;margin:4px 0}
+.kenaikan-card .kto{font-size:13.5px;color:#166534;font-weight:800}
+.kenaikan-card .kscore{font-size:28px;font-weight:800;color:#166534;text-align:right}
+.kenaikan-card .kscore small{display:block;font-size:10.5px;color:#166534;font-weight:600}
+.jenjang-badge{display:inline-block;padding:3px 9px;border-radius:7px;font-size:11px;font-weight:700;background:#f1f5f9;color:#475569;border:1px solid var(--line);white-space:nowrap}
+.jenjang-badge.naik{background:#dcfce7;color:#166534;border-color:#86efac}
+.jenjang-badge.utama{background:#ede9fe;color:#6d28d9;border-color:#c4b5fd}
+.doubt-note{background:#fef3c7;border:1px solid #fcd34d;color:#92400e;border-radius:10px;padding:10px 13px;font-size:13px;margin-bottom:12px;line-height:1.5}
+.empty-state{text-align:center;padding:30px 20px}
+.empty-state .icon{font-size:52px;margin-bottom:14px}
+.empty-state h2{color:var(--ink);margin-bottom:10px}
+.empty-state p{max-width:520px;margin:0 auto 20px}
+.empty-action{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;max-width:680px;margin:22px auto 0;text-align:left}
+.empty-action .btn{justify-content:flex-start;padding:16px 18px;border-radius:14px}
+.empty-action .btn small{display:block;font-weight:400;color:#64748b;font-size:11.5px;margin-top:3px}
+.empty-action .btn.primary small{color:rgba(255,255,255,.85)}
+.jenjang-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.jenjang-check{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:12.5px;font-weight:500;cursor:pointer;margin:0;background:#fff;transition:.12s}
+.jenjang-check:hover{border-color:#c7d2fe;background:#f8faff}
+.jenjang-check input{accent-color:var(--pri);width:15px;height:15px;flex-shrink:0}
+.jenjang-check.all{border-color:#86efac;background:#f0fdf4;font-weight:700;grid-column:1/-1}
+.jenjang-check.all.checked{background:linear-gradient(135deg,#dcfce7,#bbf7d0)}
+.jenjang-tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:10px;font-weight:700;background:#eef2ff;color:#4338ca;margin-right:3px;margin-top:3px}
+@media(max-width:720px){.quiz-layout{grid-template-columns:1fr}.quiz-nav{position:static}}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}.hero-stat{width:100%}.hero-stat>div{flex:1}.login-card{padding:20px}.card{padding:17px;border-radius:15px}.row.between.wrap{gap:10px}.qtext{font-size:15.5px}.score-ring{width:126px;height:126px}.score-ring>div{width:100px;height:100px}.score-ring strong{font-size:28px}.lb-score b{font-size:20px}.jenjang-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <div id="modal-root"></div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
-
 <script>
 /* =========================================================
-   BANK SOAL BAWAAN
+   KONSTANTA JENJANG
    ========================================================= */
-const SEED = [
+const JENJANG_LIST = ['Penyuluh KB Terampil','Penyuluh KB Mahir','Penyuluh KB Penyelia','Penyuluh KB Ahli Pertama','Penyuluh KB Ahli Muda','Penyuluh KB Ahli Madya','Penyuluh KB Ahli Utama'];
+const JENJANG_NEXT = {'Penyuluh KB Terampil':'Penyuluh KB Mahir','Penyuluh KB Mahir':'Penyuluh KB Penyelia','Penyuluh KB Penyelia':'Penyuluh KB Ahli Pertama','Penyuluh KB Ahli Pertama':'Penyuluh KB Ahli Muda','Penyuluh KB Ahli Muda':'Penyuluh KB Ahli Madya','Penyuluh KB Ahli Madya':'Penyuluh KB Ahli Utama','Penyuluh KB Ahli Utama':null};
+const NILAI_LULUS_NAIK = 70;
+
+/* =========================================================
+   BANK BAWAAN (bootstrap) — dipakai hanya saat admin klik tombol
+   Array berisi 55 soal. Field "j" = tag jenjang (dihitung otomatis).
+   ========================================================= */
+const BOOTSTRAP_RAW = [
 {k:'Teknis',n:1,q:'Dependent Variabel (DV) dari Demografi formal adalah ...',o:['Tingkat Kelahiran dan Komposisi Umur','Migrasi keluar dan Pertumbuhan Ekonomi','Kemiskinan dan Kebutuhan Pangan','Kebutuhan Pangan dan Tingkat Kelahiran','Komposisi Umur dan Pertumbuhan Ekonomi'],a:0},
 {k:'Teknis',n:2,q:'Penduduk Tumbuh Seimbang dapat dicapai apabila ...',o:['TFR 1 dan NRR 2,1','TFR 2,1 dan NRR 2','TFR 2,1 dan NRR 1','CBR 2,1 dan NRR 1'],a:2},
-{k:'Teknis',n:3,q:'Jumlah kelahiran setiap 1000 wanita berumur 15-49 tahun disebut sebagai ...',o:['NRR','ASFR','GFR','CBR'],a:2,b:'GFR (General Fertility Rate) = jumlah kelahiran per 1000 wanita usia subur 15-49 tahun.'},
-{k:'Teknis',n:4,q:'Angka kematian bayi (IMR) didefinisikan sebagai ...',o:['Jumlah kematian anak berumur 0-5 tahun selama satu tahun tertentu per 1000 anak umur yang sama pada pertengahan tahun tersebut','Jumlah kematian bayi usia kurang dari satu tahun pada suatu tahun tertentu per 1000 kelahiran hidup pada tahun yang sama','Jumlah kematian bayi sebelum berumur satu bulan atau 28 hari per 1000 kelahiran hidup pada suatu tahun tertentu','Banyaknya kematian pada bayi yang berumur antara 1 bulan sampai kurang dari 1 tahun per 1000 kelahiran hidup pada satu tahun tertentu'],a:1},
-{k:'Teknis',n:5,q:'Program Bangga Kencana merupakan istilah baru untuk Kependudukan Keluarga Berencana dan Pembangunan Keluarga (KKBPK). Alasan paling tepat terjadinya perubahan istilah tersebut adalah ...',o:['Lebih mendekatkan kepada generasi milenial','Menyesuaikan dengan Nawa Cita ke-3','Amanat UU No. 52 Tahun 2009','Mengikuti RENSTRA BKKBN Tahun 2020-2024'],a:3},
+{k:'Teknis',n:3,q:'Jumlah kelahiran setiap 1000 wanita berumur 15-49 tahun disebut sebagai ...',o:['NRR','ASFR','GFR','CBR'],a:2,b:'GFR = jumlah kelahiran per 1000 wanita usia subur 15-49 tahun.'},
+{k:'Teknis',n:4,q:'Angka kematian bayi (IMR) didefinisikan sebagai ...',o:['Kematian anak 0-5 tahun per 1000 anak umur sama','Kematian bayi <1 tahun per 1000 kelahiran hidup pada tahun yang sama','Kematian bayi <1 bulan/28 hari per 1000 kelahiran hidup','Kematian bayi 1 bulan sampai <1 tahun per 1000 kelahiran hidup'],a:1},
+{k:'Teknis',n:5,q:'Program Bangga Kencana merupakan istilah baru untuk KKBPK. Alasan paling tepat perubahan istilah tersebut adalah ...',o:['Lebih mendekatkan generasi milenial','Menyesuaikan Nawa Cita ke-3','Amanat UU No. 52 Tahun 2009','Mengikuti RENSTRA BKKBN Tahun 2020-2024'],a:3},
 {k:'Teknis',n:6,q:'Pengukuran keberhasilan Kampung KB oleh Kemendukbangga adalah ...',o:['iBANGGA','Angka stunting','Jumlah keluarga miskin','Status IDM'],a:0},
-{k:'Teknis',n:7,q:'Siapakah yang menjadi jangkauan sistem pencatatan dan pelaporan program Bangga Kencana di berbagai tingkatan wilayah?',o:['Para Pengelola Pencatatan dan Pelaporan','Para Perumus Kebijakan Pencatatan dan Pelaporan','Para Pengendali Pencatatan dan Pelaporan','Para Perancang Sistem Pencatatan dan Pelaporan','Para Pemangku Kepentingan Pencatatan dan Pelaporan'],a:0},
-{k:'Teknis',n:8,q:'Peraturan Kepala BKKBN yang mengatur tentang "Panduan Tata Cara Pengelolaan Data Rutin Program Bangga Kencana" adalah ...',o:['Perka BKKBN Nomor 316 Tahun 2016','Perka BKKBN Nomor 316 Tahun 2015','Perka BKKBN Nomor 136 Tahun 2015','Perka BKKBN Nomor 361 Tahun 2015','Perka BKKBN Nomor 361 Tahun 2016'],a:0},
-{k:'Teknis',n:9,q:'Di bawah ini yang bukan merupakan prinsip 12 Kaidah Plus yang menjadi landasan dalam pencatatan dan pelaporan program Bangga Kencana adalah ...',o:['Mudah Ditetusuri','Sistematis','Relatif Cepat Berubah','Bersifat Kuantitatif','Terukur'],a:2},
-{k:'Teknis',n:10,q:'Kondisi yang timbul dari penggunaan metode kontrasepsi yang berakibat buruk bagi kesehatan klien disebut ...',o:['Kegagalan Alokon','Komplikasi','Dampak Alokon','Pendarahan','Gejala Klinis'],a:1},
-{k:'Teknis',n:11,q:'Pemahaman mengenai kesehatan reproduksi dan usia pernikahan anak merupakan isu strategis ...',o:['Satu data kependudukan','Pemenuhan layanan dasar','Membangun kebudayaan dan karakter bangsa','8 (delapan) fungsi keluarga'],a:2},
-{k:'Teknis',n:12,q:'Pendekatan yang digunakan dalam pelaksanaan fasilitasi Program Bangga Kencana adalah ...',o:['Tekstual dan Kontekstual','Sistematis dan Terarah','Homogen dan Heterogen','Individu dan Kelompok','Rutin dan Operasional'],a:3},
-{k:'Teknis',n:13,q:'Keterampilan menanggapi untuk meningkatkan eksplorasi klien pada konseling yang dilakukan di Satyagatra disebut ...',o:['Diskusi','Pra Konseling','Argumentasi','Personalisasi','Responding'],a:4},
-{k:'Teknis',n:14,q:'Dalam konseling terdapat 6 langkah yang dikenal dengan istilah SATU TUJU. Apa arti huruf "T" yang pertama pada istilah tersebut?',o:['Tanyakan','Tunjukkan','Tindakan','Terbuka','Tampilkan'],a:0},
-{k:'Teknis',n:15,q:'Kemendukbangga/BKKBN mendukung 3 Prioritas Nasional dalam RPJMN 2025-2029. Yang paling relevan dengan tugas penyuluh KB adalah ...',o:['PN 1, PN 2, PN 3','PN 2, PN 4, PN 6','PN 1, PN 4, PN 5','PN 3, PN 5, PN 7','PN 2, PN 3, PN 4'],a:1},
-{k:'Teknis',n:16,q:'Instrumen yang dapat digunakan untuk mengukur pelaksanaan pembangunan berwawasan kependudukan adalah ...',o:['IPM / HDI','IPG / GDI','IPBK','IPeKB'],a:2,b:'IPBK = Indeks Pembangunan Berwawasan Kependudukan.'},
-{k:'Teknis',n:17,q:'Isu penurunan pemakaian kontrasepsi modern merupakan bagian dari isu ...',o:['Pemenuhan layanan dasar','Karakter Bangsa','Membangun kebudayaan','Penambahan penduduk'],a:0},
-{k:'Teknis',n:18,q:'Di bawah ini yang bukan merupakan manfaat dari analisis demografi adalah ...',o:['Mempelajari kuantitas dan distribusi penduduk dalam suatu daerah tertentu','Menjelaskan pertumbuhan penduduk pada masa lampau, kecenderungannya, dan persebarannya dengan sebaik-baiknya dengan data yang tersedia','Meningkatkan kesejahteraan penduduk melalui penjaminan memperoleh pendidikan','Mengembangkan hubungan sebab akibat antara perkembangan penduduk dengan bermacam-macam aspek organisasi sosial, ekonomi, budaya, lingkungan dan lain-lain','Memperkirakan pertumbuhan penduduk (proyeksi penduduk) pada masa yang akan datang dan kemungkinan-konsekuensinya'],a:2},
-{k:'Teknis',n:19,q:'Pernyataan yang benar mengenai alat kontrasepsi dalam rahim (AKDR) adalah ...',o:['Pemasangannya membutuhkan waktu yang lama','Tidak dapat dipasang segera atau setelah melahirkan','Tidak mengandung hormon yang dapat membuat gemuk','Mempengaruhi kualitas dan volume ASI','Mengganggu hubungan suami istri'],a:2},
-{k:'Teknis',n:20,q:'Peran Kemendukbangga dalam MBG 3B adalah ...',o:['Mengelola dapur produksi MBG','Memasak MBG di Kampung KB','Memastikan distribusi tepat sasaran melalui jaringan Tim Pendamping Keluarga (TPK)','Menentukan menu MBG nasional','Membagikan uang MBG'],a:2},
-{k:'Teknis',n:21,q:'Akademi Keluarga mengintegrasikan 3 program, yaitu ...',o:['BKB, BKR, BKL','GenRe, PIK Remaja, Sekolah Siaga Kependudukan (SSK)','Genting, Tamasya, GATI','TPK, Kampung KB, UPPKA','GenRe, PIK Remaja, Tamasya'],a:1},
-{k:'Teknis',n:22,q:'Di wilayah kerja Anda TFR 2,4; mCPR 55%; unmet need 15%; prevalensi stunting 24%; dan pernikahan dini 18%. Sebagai ahli, Anda diminta membuat prioritas masalah. Urutan prioritas yang paling logis berdasarkan analisis kausal adalah ...',o:['Pernikahan dini, unmet need, stunting','Unmet need, pernikahan dini, unmet need','Unmet need, stunting, pernikahan dini','MCPR, TFR, stunting','Semua sama penting, kerjakan secara acak'],a:0},
-{k:'Teknis',n:23,q:'SIDAYA menjawab tantangan aging population. Indonesia diprediksi memasuki era aged society ketika ...',o:['Penduduk lansia > 7% dari total penduduk','Penduduk lansia > 10% dari total penduduk','Penduduk lansia > 14% dari total penduduk','Penduduk lansia > 20% dari total penduduk','Penduduk lansia > 5% dari total penduduk'],a:2,b:'Aging society > 7%, aged society > 14%, super-aged society > 20%.'},
-{k:'Teknis',n:24,q:'Dalam konteks pembangunan keluarga, resilience keluarga yang diukur dalam program Bangga Kencana meliputi ...',o:['Hanya ketahanan ekonomi','Ketahanan fisik, psikologis, sosial, ekonomi, dan spiritual','Hanya ketahanan fisik','Hanya ketahanan sosial','Hanya ketahanan ekonomi dan fisik'],a:1},
-{k:'Teknis',n:25,q:'Prinsip utama dalam pendekatan GATI terhadap peran ayah dalam keluarga adalah ...',o:['Ayah sebagai mitra aktif dalam pengasuhan dan pembentukan karakter anak','Ayah sebagai pelindung dan pengatur keuangan','Ayah sebagai pemberi keputusan akhir','Ayah sebagai panutan yang menjaga jarak emosional','Ayah sebagai penggiat bagi pengasuhan anak saat tumbuh kembang'],a:0},
-{k:'Teknis',n:26,q:'Kepmen PANRB Nomor SKJ.4 Tahun 2022 tentang SKJ Penyuluh KB ditetapkan untuk melaksanakan ketentuan ...',o:['UU No. 5 Tahun 2014 tentang ASN','Permen PANRB No. 38 Tahun 2017 tentang Standar Kompetensi Jabatan ASN, Pasal 2 ayat (2)','Permen PANRB No. 52 Tahun 2022 tentang JF Penyuluh KB','UU No. 52 Tahun 2009 tentang Perkembangan Kependudukan','PP No. 11 Tahun 2017 tentang Manajemen PNS'],a:1},
-{k:'Teknis',n:27,q:'Berikut ini yang merupakan kompetensi teknis Penyuluh Keluarga Berencana, kecuali ...',o:['Fasilitasi kemitraan','Penyusunan substansi kebijakan pengendalian penduduk, keluarga berencana dan pembangunan keluarga','Pelayanan publik','Analisis data dan informasi pembangunan keluarga, kependudukan, dan keluarga berencana','Pencatatan dan pelaporan pembangunan keluarga, kependudukan dan keluarga berencana'],a:1},
-{k:'Teknis',n:28,q:'Unsur Standar Kompetensi Jabatan dalam SKJ.4 Tahun 2022 meliputi ...',o:['Identitas jabatan, kompetensi jabatan dan hasil kerja','Identitas jabatan dan kompetensi jabatan','Kompetensi teknis, manajerial dan sosio kultural','Tugas pokok, fungsi dan wewenang','Identitas jabatan, hasil kerja dan angka kredit'],a:0},
-{k:'Teknis',n:29,q:'Kompetensi jabatan dalam SKJ Penyuluh KB dibagi menjadi 3, yaitu ...',o:['Kompetensi teknis, kompetensi manajerial, kompetensi sosio kultural','Kompetensi teknis, kompetensi sosial, kompetensi kepemimpinan','Kompetensi inti, kompetensi pilihan, kompetensi pendukung','Kompetensi dasar, kompetensi lanjutan, kompetensi ahli','Kompetensi pengetahuan, sikap, keterampilan'],a:0},
-{k:'Teknis',n:30,q:'Manakah yang termasuk dalam level 3 pada kompetensi teknis pencatatan dan pelaporan untuk penyuluh KB Ahli Muda?',o:['Memetakan kebutuhan data dan informasi yang harus dicatat dan dilaporkan secara berkala','Merancang format pencatatan dan pelaporan program','Menyusun prosedur pencatatan dan pelaporan program','Memberikan umpan balik perbaikan atas hasil pencatatan dan pelaporan','Merancang standar kualitas pencatatan dan pelaporan program'],a:3},
-{k:'Teknis',n:31,q:'Manakah yang bukan termasuk indikator teknis kompetensi fasilitasi kemitraan pada penyuluh KB Penyelia?',o:['Menjelaskan teknik fasilitasi kemitraan penyusunan target dan sasaran kemitraan masing-masing pemangku kepentingan','Menjelaskan harapan dan kepentingan mitra program','Mengidentifikasi peluang kemitraan dengan pemangku kepentingan sesuai dengan harapan dan keinginan mitra','Melakukan fasilitasi kemitraan dengan pemangku kepentingan di tingkat kelompok dan keluarga'],a:3},
-{k:'Teknis',n:32,q:'Program pokok pencegahan dan percepatan penurunan stunting berdasarkan Peraturan Menteri Kemendukbangga Nomor 1 Tahun 2026 tentang Tim Pendamping Keluarga, yaitu ...',o:['Penyelenggaraan Poktan sesuai siklus hidup','KIE mengenai keluarga berencana dan kesehatan reproduksi','KIE mengenai pola konsumsi pangan sehat dan gizi seimbang','Pendampingan PUS dalam perencanaan kehamilan','Fasilitasi pelayanan rujukan keluarga berencana dan kesehatan reproduksi'],a:2},
-{k:'Teknis',n:33,q:'Berdasarkan Peraturan Menteri Kemendukbangga Nomor 1 Tahun 2026, masa kepengurusan TPK ditetapkan selama ...',o:['1 Tahun','2 Tahun','3 Tahun','5 Tahun','Seumur Hidup'],a:1},
-{k:'Teknis',n:34,q:'Pengertian bina suasana dilihat dari segi komunikasi hubungan antara manusia adalah ...',o:['Menciptakan hubungan suasana yang kondusif','Proses komunikasi yang sehat, jujur, relaks dan terhindar dari rasa cemas dalam rangkaian pencapaian tujuan pelatihan yang telah ditetapkan','Cara berinteraksi dalam mengadakan hubungan antar pribadi yang baik','Bagian dari dinamika kelompok, yang di dalamnya merupakan Hubungan antar Manusia (HAM)','Menciptakan suasana yang mendukung tercapainya tujuan pelatihan'],a:1},
-{k:'Teknis',n:35,q:'Matriks rencana aksi advokasi antara lain memuat informasi mengenai ...',o:['Sasaran, isi pesan, teknik, dan jenis advokasi','Sasaran, isi pesan, teknik, dan bahan advokasi','Sasaran, isi pesan, jenis advokasi dan waktu','Sasaran, teknik, jenis advokasi dan tempat'],a:1},
-{k:'Teknis',n:36,q:'Ruang lingkup sistem pencatatan dan pelaporan program Bangga Kencana terdiri dari ...',o:['Subsistem pelayanan KB, pembangunan keluarga dan kependudukan','Subsistem pelayanan KB, pengendalian lapangan, dan pendataan keluarga','Subsistem pengendalian lapangan, Verval KRS dan Elsimil','Subsistem pendataan keluarga, pengendalian lapangan dan kampung KB','Subsistem pelayanan KB, pelayanan kesehatan dan pelayanan sosial'],a:1},
-{k:'Teknis',n:37,q:'Manakah pernyataan yang salah tentang pemanfaatan data New Siga untuk perencanaan program?',o:['Data SIGA dapat digunakan untuk menentukan sasaran prioritas intervensi','Data SIGA dapat digunakan untuk monitoring capaian CPR, TFR dan unmet need','Data SIGA hanya boleh digunakan untuk laporan administratif, tidak digunakan untuk pengambilan keputusan program','Data SIGA yang sudah terverifikasi dapat menjadi dasar penyusunan rencana kerja dan anggaran','Data SIGA dapat dipadankan dengan data Dukcapil berbasis NIK untuk sinkronisasi satu data'],a:2},
-{k:'Teknis',n:38,q:'Penyajian data yang paling tepat untuk menunjukkan perkembangan CPR Desa A dari tahun 2021 sampai 2025 adalah ...',o:['Tabel distribusi frekuensi','Grafik garis (line chart) tren','Diagram lingkaran (pie chart)','Peta wilayah','Narasi wawancara'],a:1},
-{k:'Teknis',n:39,q:'Dalam analisis data, penyuluh KB membandingkan capaian CPR Desa A (70%) dengan Desa B (45%) dan menemukan fakta bahwa unmet need Desa B tinggi karena jauhnya akses faskes. Kegiatan ini disebut analisis ...',o:['Deskriptif','Diagnostik','Prediktif','Preskriptif'],a:1},
-{k:'Teknis',n:40,q:'Pelaksanaan program Bangga Kencana yang paling mendasar adalah dilakukan dengan cara ...',o:['Meningkatkan kinerja para tenaga lini lapangan agar lebih profesional dalam menangani program Bangga Kencana','Meminta semua penyuluh di lapangan melaksanakan program Bangga Kencana','Menciptakan jejaring kemitraan untuk membantu Penyuluh KB menyelenggarakan program Bangga Kencana','Meningkatkan kebutuhan masyarakat akan Bangga Kencana'],a:0},
-{k:'Teknis',n:41,q:'Jenis kemitraan yang memberikan mitra keuntungan dan pengaruh dengan masalah pengembangan sistemik melalui penambahan ruang lingkup aktivitas baru seperti advokasi dan penelitian adalah ...',o:['Potential Partnership','Nascent Partnership','Complementary Partnership','Synergistic Partnership'],a:3},
-{k:'Teknis',n:42,q:'Kampung KB Desa A memiliki nilai indeks input = 3,5; indeks proses = 2,8; indeks output = 3,6. Maka klasifikasi Kampung KB Desa A adalah ...',o:['Dasar','Berkembang','Mandiri','Berkelanjutan'],a:2},
-{k:'Teknis',n:43,q:'Dasar hukum utama optimalisasi penyelenggaraan Kampung KB yang masih berlaku sampai 2026 adalah ...',o:['UU No. 52 Tahun 2009','Inpres No. 3 Tahun 2022','PermenPANRB No. 52 Tahun 2022','Perpres No. 72 Tahun 2021'],a:1},
-{k:'Teknis',n:44,q:'Dalam kurikulum Merdeka (2025-2026), integrasi materi Bangga Kencana di SSK dilakukan melalui ...',o:['Mata pelajaran baru Kependudukan','Modul ajar dan modul Proyek Penguatan Profil Pelajar Pancasila (P5), sesuai pokok bahasan','Ekstrakurikuler wajib Pramuka','Bimbingan Konseling'],a:1},
-{k:'Teknis',n:45,q:'Untuk mencapai SSK Paripurna, jumlah guru yang ikut orientasi penyusunan RPP terintegrasi dan jumlah RPP terintegrasi adalah ...',o:['1-2 guru dan 1-2 RPP','> 2 guru dan > 2 RPP terintegrasi','1 guru dan 1 RPP','Semua guru harus ikut orientasi'],a:1},
-{k:'Teknis',n:46,q:'Kemampuan yang harus dibangun dalam membentuk tim efektif adalah ...',o:['Melakukan pendekatan informal dan formal kepada tokoh masyarakat','Menguasai wilayah kerja dengan baik','Menguasai masalah yang akan diselesaikan dengan berbagai alternatif pemecahan','Meyakinkan seluruh anggota tim bahwa untuk memecahkan permasalahan bersama membutuhkan keterampilan atau keahlian dari anggota tim'],a:3},
+{k:'Teknis',n:7,q:'Siapakah jangkauan sistem pencatatan dan pelaporan program Bangga Kencana di berbagai tingkatan wilayah?',o:['Para Pengelola Pencatatan dan Pelaporan','Para Perumus Kebijakan','Para Pengendali','Para Perancang','Para Pemangku Kepentingan'],a:0},
+{k:'Teknis',n:8,q:'Perka BKKBN tentang Panduan Tata Cara Pengelolaan Data Rutin Program Bangga Kencana adalah ...',o:['Nomor 316 Tahun 2016','Nomor 316 Tahun 2015','Nomor 136 Tahun 2015','Nomor 361 Tahun 2015','Nomor 361 Tahun 2016'],a:0},
+{k:'Teknis',n:9,q:'Yang bukan prinsip 12 Kaidah Plus pencatatan dan pelaporan Bangga Kencana adalah ...',o:['Mudah Ditetusuri','Sistematis','Relatif Cepat Berubah','Bersifat Kuantitatif','Terukur'],a:2},
+{k:'Teknis',n:10,q:'Kondisi dari penggunaan metode kontrasepsi yang berakibat buruk bagi kesehatan klien disebut ...',o:['Kegagalan Alokon','Komplikasi','Dampak Alokon','Pendarahan','Gejala Klinis'],a:1},
+{k:'Teknis',n:11,q:'Pemahaman kesehatan reproduksi dan usia pernikahan anak merupakan isu strategis ...',o:['Satu data kependudukan','Pemenuhan layanan dasar','Membangun kebudayaan dan karakter bangsa','8 fungsi keluarga'],a:2},
+{k:'Teknis',n:12,q:'Pendekatan fasilitasi Program Bangga Kencana adalah ...',o:['Tekstual dan Kontekstual','Sistematis dan Terarah','Homogen dan Heterogen','Individu dan Kelompok','Rutin dan Operasional'],a:3},
+{k:'Teknis',n:13,q:'Keterampilan menanggapi untuk meningkatkan eksplorasi klien pada konseling di Satyagatra disebut ...',o:['Diskusi','Pra Konseling','Argumentasi','Personalisasi','Responding'],a:4},
+{k:'Teknis',n:14,q:'Dalam konseling 6 langkah SATU TUJU, arti huruf "T" pertama adalah ...',o:['Tanyakan','Tunjukkan','Tindakan','Terbuka','Tampilkan'],a:0},
+{k:'Teknis',n:15,q:'3 Prioritas Nasional RPJMN 2025-2029 paling relevan dengan tugas penyuluh KB adalah ...',o:['PN 1, PN 2, PN 3','PN 2, PN 4, PN 6','PN 1, PN 4, PN 5','PN 3, PN 5, PN 7','PN 2, PN 3, PN 4'],a:1},
+{k:'Teknis',n:16,q:'Instrumen untuk mengukur pembangunan berwawasan kependudukan adalah ...',o:['IPM/HDI','IPG/GDI','IPBK','IPeKB'],a:2,b:'IPBK = Indeks Pembangunan Berwawasan Kependudukan.'},
+{k:'Teknis',n:17,q:'Isu penurunan pemakaian kontrasepsi modern adalah bagian dari isu ...',o:['Pemenuhan layanan dasar','Karakter Bangsa','Membangun kebudayaan','Penambahan penduduk'],a:0},
+{k:'Teknis',n:18,q:'Yang bukan manfaat analisis demografi adalah ...',o:['Mempelajari kuantitas dan distribusi penduduk','Menjelaskan pertumbuhan penduduk masa lampau','Meningkatkan kesejahteraan melalui penjaminan pendidikan','Mengembangkan hubungan sebab akibat','Memperkirakan pertumbuhan penduduk'],a:2},
+{k:'Teknis',n:19,q:'Pernyataan benar tentang AKDR adalah ...',o:['Pemasangan lama','Tidak dapat dipasang segera setelah melahirkan','Tidak mengandung hormon yang membuat gemuk','Mempengaruhi kualitas ASI','Mengganggu hubungan suami istri'],a:2},
+{k:'Teknis',n:20,q:'Peran Kemendukbangga dalam MBG 3B adalah ...',o:['Mengelola dapur produksi','Memasak MBG di Kampung KB','Memastikan distribusi tepat sasaran via TPK','Menentukan menu nasional','Membagikan uang'],a:2},
+{k:'Teknis',n:21,q:'Akademi Keluarga mengintegrasikan 3 program, yaitu ...',o:['BKB, BKR, BKL','GenRe, PIK Remaja, SSK','Genting, Tamasya, GATI','TPK, Kampung KB, UPPKA','GenRe, PIK Remaja, Tamasya'],a:1},
+{k:'Teknis',n:22,q:'TFR 2,4; mCPR 55%; unmet need 15%; stunting 24%; pernikahan dini 18%. Urutan prioritas paling logis berdasarkan analisis kausal adalah ...',o:['Pernikahan dini, unmet need, stunting','Unmet need, pernikahan dini, unmet need','Unmet need, stunting, pernikahan dini','MCPR, TFR, stunting','Semua sama penting'],a:0},
+{k:'Teknis',n:23,q:'Indonesia diprediksi memasuki era aged society ketika ...',o:['Lansia > 7%','Lansia > 10%','Lansia > 14%','Lansia > 20%','Lansia > 5%'],a:2,b:'Aging > 7%, aged > 14%, super-aged > 20%.'},
+{k:'Teknis',n:24,q:'Resilience keluarga dalam Bangga Kencana meliputi ...',o:['Hanya ekonomi','Fisik, psikologis, sosial, ekonomi, spiritual','Hanya fisik','Hanya sosial','Ekonomi dan fisik'],a:1},
+{k:'Teknis',n:25,q:'Prinsip utama pendekatan GATI terhadap peran ayah adalah ...',o:['Ayah sebagai mitra aktif pengasuhan dan pembentukan karakter anak','Ayah sebagai pelindung dan pengatur keuangan','Ayah sebagai pemberi keputusan akhir','Ayah sebagai panutan yang menjaga jarak emosional','Ayah sebagai penggiat pengasuhan saat tumbuh kembang'],a:0},
+{k:'Teknis',n:26,q:'Kepmen PANRB Nomor SKJ.4 Tahun 2022 tentang SKJ Penyuluh KB ditetapkan untuk melaksanakan ketentuan ...',o:['UU No. 5 Tahun 2014','Permen PANRB No. 38 Tahun 2017 Pasal 2 ayat (2)','Permen PANRB No. 52 Tahun 2022','UU No. 52 Tahun 2009','PP No. 11 Tahun 2017'],a:1},
+{k:'Teknis',n:27,q:'Yang merupakan kompetensi teknis Penyuluh KB, kecuali ...',o:['Fasilitasi kemitraan','Penyusunan substansi kebijakan','Pelayanan publik','Analisis data dan informasi','Pencatatan dan pelaporan'],a:1},
+{k:'Teknis',n:28,q:'Unsur Standar Kompetensi Jabatan dalam SKJ.4 Tahun 2022 meliputi ...',o:['Identitas jabatan, kompetensi jabatan, hasil kerja','Identitas jabatan dan kompetensi jabatan','Kompetensi teknis, manajerial, sosio kultural','Tugas pokok, fungsi, wewenang','Identitas, hasil kerja, angka kredit'],a:0},
+{k:'Teknis',n:29,q:'Kompetensi jabatan dalam SKJ Penyuluh KB dibagi menjadi 3, yaitu ...',o:['Teknis, manajerial, sosio kultural','Teknis, sosial, kepemimpinan','Inti, pilihan, pendukung','Dasar, lanjutan, ahli','Pengetahuan, sikap, keterampilan'],a:0},
+{k:'Teknis',n:30,q:'Level 3 kompetensi teknis pencatatan dan pelaporan untuk Penyuluh KB Ahli Muda adalah ...',o:['Memetakan kebutuhan data','Merancang format','Menyusun prosedur','Memberikan umpan balik perbaikan hasil','Merancang standar kualitas'],a:3},
+{k:'Teknis',n:31,q:'Yang bukan indikator teknis fasilitasi kemitraan pada Penyuluh KB Penyelia adalah ...',o:['Menjelaskan teknik fasilitasi kemitraan','Menjelaskan harapan dan kepentingan mitra','Mengidentifikasi peluang kemitraan','Melakukan fasilitasi kemitraan tingkat kelompok dan keluarga'],a:3},
+{k:'Teknis',n:32,q:'Program pokok pencegahan dan percepatan penurunan stunting menurut Permen Kemendukbangga No. 1 Tahun 2026 tentang TPK adalah ...',o:['Penyelenggaraan Poktan sesuai siklus hidup','KIE KB dan kesehatan reproduksi','KIE pola konsumsi pangan sehat dan gizi seimbang','Pendampingan PUS dalam perencanaan kehamilan','Fasilitasi rujukan KB dan kesehatan reproduksi'],a:2},
+{k:'Teknis',n:33,q:'Masa kepengurusan TPK menurut Permen Kemendukbangga No. 1 Tahun 2026 adalah ...',o:['1 Tahun','2 Tahun','3 Tahun','5 Tahun','Seumur Hidup'],a:1},
+{k:'Teknis',n:34,q:'Pengertian bina suasana dari segi komunikasi hubungan antar manusia adalah ...',o:['Menciptakan hubungan suasana kondusif','Proses komunikasi sehat, jujur, relaks, terhindar dari rasa cemas untuk mencapai tujuan pelatihan','Cara berinteraksi antar pribadi yang baik','Bagian dinamika kelompok (HAM)','Menciptakan suasana mendukung tujuan pelatihan'],a:1},
+{k:'Teknis',n:35,q:'Matriks rencana aksi advokasi memuat informasi ...',o:['Sasaran, isi pesan, teknik, jenis advokasi','Sasaran, isi pesan, teknik, bahan advokasi','Sasaran, isi pesan, jenis advokasi, waktu','Sasaran, teknik, jenis advokasi, tempat'],a:1},
+{k:'Teknis',n:36,q:'Ruang lingkup sistem pencatatan dan pelaporan program Bangga Kencana terdiri dari ...',o:['Subsistem pelayanan KB, pembangunan keluarga, kependudukan','Subsistem pelayanan KB, pengendalian lapangan, pendataan keluarga','Subsistem pengendalian lapangan, Verval KRS, Elsimil','Subsistem pendataan keluarga, pengendalian lapangan, kampung KB','Subsistem pelayanan KB, kesehatan, sosial'],a:1},
+{k:'Teknis',n:37,q:'Pernyataan yang salah tentang data New Siga untuk perencanaan program adalah ...',o:['Untuk menentukan sasaran prioritas intervensi','Untuk monitoring CPR, TFR, unmet need','Hanya untuk laporan administratif, tidak untuk pengambilan keputusan','Terverifikasi dapat jadi dasar RKA','Dapat dipadankan Dukcapil berbasis NIK'],a:2},
+{k:'Teknis',n:38,q:'Penyajian data paling tepat untuk menunjukkan perkembangan CPR Desa A 2021-2025 adalah ...',o:['Tabel distribusi frekuensi','Grafik garis (line chart) tren','Diagram lingkaran (pie chart)','Peta wilayah','Narasi wawancara'],a:1},
+{k:'Teknis',n:39,q:'Membandingkan CPR Desa A (70%) dengan Desa B (45%) dan menemukan unmet need Desa B tinggi karena jauhnya akses faskes. Analisis ini disebut ...',o:['Deskriptif','Diagnostik','Prediktif','Preskriptif'],a:1},
+{k:'Teknis',n:40,q:'Pelaksanaan program Bangga Kencana paling mendasar dilakukan dengan cara ...',o:['Meningkatkan kinerja tenaga lini lapangan agar profesional','Meminta semua penyuluh melaksanakan program','Menciptakan jejaring kemitraan untuk membantu Penyuluh KB','Meningkatkan kebutuhan masyarakat akan Bangga Kencana'],a:0},
+{k:'Teknis',n:41,q:'Jenis kemitraan yang memberi mitra keuntungan dan pengaruh dengan pengembangan sistemik via advokasi dan penelitian adalah ...',o:['Potential Partnership','Nascent Partnership','Complementary Partnership','Synergistic Partnership'],a:3},
+{k:'Teknis',n:42,q:'Kampung KB Desa A dengan indeks input=3,5; proses=2,8; output=3,6. Klasifikasinya adalah ...',o:['Dasar','Berkembang','Mandiri','Berkelanjutan'],a:2},
+{k:'Teknis',n:43,q:'Dasar hukum utama optimalisasi penyelenggaraan Kampung KB sampai 2026 adalah ...',o:['UU No. 52 Tahun 2009','Inpres No. 3 Tahun 2022','PermenPANRB No. 52 Tahun 2022','Perpres No. 72 Tahun 2021'],a:1},
+{k:'Teknis',n:44,q:'Dalam kurikulum Merdeka (2025-2026), integrasi materi Bangga Kencana di SSK melalui ...',o:['Mata pelajaran baru Kependudukan','Modul ajar dan modul P5 sesuai pokok bahasan','Ekstrakurikuler wajib Pramuka','Bimbingan Konseling'],a:1},
+{k:'Teknis',n:45,q:'Syarat SSK Paripurna adalah ...',o:['1-2 guru dan 1-2 RPP terintegrasi','> 2 guru dan > 2 RPP terintegrasi','1 guru dan 1 RPP','Semua guru ikut orientasi'],a:1},
+{k:'Teknis',n:46,q:'Kemampuan membentuk tim efektif adalah ...',o:['Pendekatan informal dan formal ke tokoh masyarakat','Menguasai wilayah kerja','Menguasai masalah dan alternatif pemecahan','Meyakinkan anggota tim bahwa pemecahan masalah bersama butuh keterampilan dari anggota tim'],a:3},
 {k:'Teknis',n:47,q:'Dasar hukum utama penyelenggaraan TAMASYA adalah ...',o:['PermenPANRB No. 52 Tahun 2022','Kepmen Kemendukbangga Nomor 29/KEP/F1/2025','UU No. 52 Tahun 2009','Permendikbud No. 137 Tahun 2014','Perpres No. 72 Tahun 2021'],a:1},
-{k:'Teknis',n:48,q:'Seorang PUS berusia 38 tahun, merokok, tekanan darah 170/110 mmHg, ingin ber-KB. Metode yang paling tidak tepat untuk direkomendasikan adalah ...',o:['IUD Cu T 380A','Implan','Pil Kombinasi','Kondom','MOW jika sudah tidak ingin anak lagi'],a:2,b:'Tekanan darah tinggi (>=160/100) + perokok >=35 tahun merupakan kontraindikasi pil kombinasi.'},
-{k:'Teknis',n:49,q:'Kegiatan pembangunan keluarga meliputi beberapa keterampilan, salah satunya adalah ...',o:['Keterampilan untuk memotivasi PUS untuk menjadi peserta KB','Keterampilan melaksanakan advokasi dan KIE individu dan kelompok','Keterampilan untuk mengambil data keluarga','Keterampilan untuk melakukan kegiatan layanan penyuluhan bagi keluarga yang memiliki anak remaja','Keterampilan untuk mengingatkan peserta KB hormonal untuk mendapatkan layanan ulang'],a:1},
-{k:'Teknis',n:50,q:'Berikut beberapa bentuk kerja sama. Pilih satu jawaban yang kurang tepat!',o:['Tawar menawar (bargaining) ialah membentuk kerja sama tentang kesepakatan pertukaran produk atau jasa antara dua orang atau lebih','Koalisi (coalition) ialah gabungan dari dua lembaga/organisasi atau lebih yang memiliki tujuan yang sama, mereka bekerja sama agar mencapai tujuan orang per orang','Joint Venture ialah kerja sama untuk mengerjakan proyek tertentu supaya cepat terselesaikan dan tujuan cepat tercapai','Kerja sama Asas Kerukunan ialah kerja sama yang didasari karena kerukunan sesama manusia, biasanya tidak mengharapkan imbalan'],a:1},
-{k:'Sosiokultural',n:1,q:'Yang termasuk dampak negatif akibat keberagaman budaya, kecuali ...',o:['Sebagai alat bersatunya masyarakat walau berbeda agama','Menimbulkan konflik antar elite dan golongan politik','Menimbulkan krisis ekonomi dan moneter','Menimbulkan konflik antar suku bangsa','Menimbulkan konflik antara yang kaya dan miskin'],a:0,b:'Kata "kecuali" meminta dampak positif. Keberagaman dapat memperkuat persatuan melalui sikap saling menghargai.'},
-{k:'Sosiokultural',n:2,q:'Contoh konflik yang disebabkan oleh kecemburuan sosial (Poso) merupakan contoh konflik yang disebabkan karena ...',o:['Perbedaan agama Islam dan Kristen','Perbedaan Suku Bangsa','Perebutan Kekuasaan','Kepentingan Politik Antara Pemerintah dan Masyarakat','Kepentingan Politik Antara Tokoh Masyarakat'],a:0,b:'Konflik Poso kerap dikaitkan dengan ketegangan antarkomunitas Muslim dan Kristen, meski penyebab historisnya juga mencakup dinamika sosial, ekonomi, dan politik.'},
-{k:'Sosiokultural',n:3,q:'Ketika banyak anggota tim kerja Anda yang berbeda agama dengan Anda, maka Anda akan ...',o:['Bersikap toleran dan menghormati mereka','Menjaga jarak dengan mereka','Waspada dalam bersikap','Khawatir jika ucapan Anda dapat menyinggung mereka','Meminta atasan untuk memindahkan Anda ke tim kerja lain'],a:0,b:'Toleransi dan penghormatan terhadap keyakinan rekan kerja mendukung kerja sama tanpa diskriminasi.'},
-{k:'Sosiokultural',n:4,q:'Rekan kerja Anda yang sangat dekat mengundang Anda ke acara ulang tahun anaknya besok malam di restoran cepat saji tidak jauh dari kontrakan Anda. Anda tahu acaranya akan meriah dengan banyak anak-anak, padahal Anda sangat tidak menyukai anak-anak. Yang Anda lakukan ...',o:['Datang dan memberi kado serta mengikuti acara sampai selesai','Menelpon dan memohon maaf karena tidak akan hadir dan memberi kado di lain kesempatan','Hadir sebentar saja, memberikan kado dan segera pulang untuk menghargai undangannya','Datang dengan ekspresi yang tidak menyenangkan karena banyak anak-anak','Tidak datang tanpa konfirmasi apa pun karena akan merasa sangat terganggu'],a:2,b:'Menghadiri acara sebentar dengan sopan merupakan kompromi antara menghargai undangan dan menjaga kenyamanan pribadi.'},
-{k:'Sosiokultural',n:5,q:'Tertib sosial merupakan ...',o:['Upaya mematuhi dan menerapkan nilai-nilai dan norma yang berlaku','Kekacauan yang timbul akibat pelanggaran norma','Sikap acuh terhadap aturan masyarakat','Keinginan untuk bebas tanpa aturan','Proses perubahan sosial yang cepat'],a:0}
+{k:'Teknis',n:48,q:'PUS 38 tahun, merokok, tekanan darah 170/110 mmHg, ingin ber-KB. Metode paling tidak tepat adalah ...',o:['IUD Cu T 380A','Implan','Pil Kombinasi','Kondom','MOW'],a:2,b:'HT (>=160/100) + perokok >=35 tahun kontraindikasi pil kombinasi.'},
+{k:'Teknis',n:49,q:'Kegiatan pembangunan keluarga meliputi keterampilan ...',o:['Memotivasi PUS jadi peserta KB','Melaksanakan advokasi dan KIE individu dan kelompok','Mengambil data keluarga','Layanan penyuluhan keluarga dengan anak remaja','Mengingatkan peserta KB hormonal layanan ulang'],a:1},
+{k:'Teknis',n:50,q:'Pilih satu jawaban yang kurang tepat tentang bentuk kerja sama!',o:['Bargaining = kesepakatan pertukaran produk/jasa','Coalition = gabungan lembaga dengan tujuan sama, bekerja sama mencapai tujuan orang per orang','Joint Venture = kerja sama proyek tertentu supaya cepat selesai','Kerja sama Asas Kerukunan = didasari kerukunan tanpa mengharapkan imbalan'],a:1},
+{k:'Sosiokultural',n:1,q:'Yang termasuk dampak negatif keberagaman budaya, kecuali ...',o:['Alat bersatunya masyarakat walau berbeda agama','Konflik antar elite dan golongan politik','Krisis ekonomi dan moneter','Konflik antar suku bangsa','Konflik antara kaya dan miskin'],a:0,b:'Kata "kecuali" meminta dampak positif.'},
+{k:'Sosiokultural',n:2,q:'Konflik Poso yang disebabkan kecemburuan sosial merupakan contoh konflik karena ...',o:['Perbedaan agama Islam dan Kristen','Perbedaan Suku Bangsa','Perebutan Kekuasaan','Kepentingan Politik Antara Pemerintah dan Masyarakat','Kepentingan Politik Antara Tokoh Masyarakat'],a:0},
+{k:'Sosiokultural',n:3,q:'Ketika banyak anggota tim kerja Anda berbeda agama dengan Anda, maka Anda akan ...',o:['Bersikap toleran dan menghormati mereka','Menjaga jarak dengan mereka','Waspada dalam bersikap','Khawatir jika ucapan menyinggung mereka','Meminta atasan memindahkan tim kerja'],a:0},
+{k:'Sosiokultural',n:4,q:'Rekan kerja mengundang Anda ke ulang tahun anaknya. Anda sangat tidak menyukai anak-anak. Yang Anda lakukan ...',o:['Datang dan memberi kado serta mengikuti acara sampai selesai','Menelpon dan memohon maaf tidak hadir, kado di lain waktu','Hadir sebentar saja, memberi kado dan segera pulang','Datang dengan ekspresi tidak menyenangkan','Tidak datang tanpa konfirmasi'],a:2},
+{k:'Sosiokultural',n:5,q:'Tertib sosial merupakan ...',o:['Upaya mematuhi dan menerapkan nilai-nilai dan norma yang berlaku','Kekacauan akibat pelanggaran norma','Sikap acuh terhadap aturan masyarakat','Keinginan bebas tanpa aturan','Proses perubahan sosial cepat'],a:0}
 ];
+
+/* Helper: assign jenjang tag berdasarkan nomor soal (untuk bootstrap)
+   Soal 1-10 Teknis = semua jenjang; 11-20 = Mahir ke atas; dst. */
+function bootstrapJenjang(kat, nomor){
+  if(kat === 'Sosiokultural') return 'Semua';
+  if(nomor <= 10) return 'Semua';
+  if(nomor <= 20) return 'Penyuluh KB Mahir, Penyuluh KB Penyelia, Penyuluh KB Ahli Pertama, Penyuluh KB Ahli Muda, Penyuluh KB Ahli Madya, Penyuluh KB Ahli Utama';
+  if(nomor <= 30) return 'Penyuluh KB Penyelia, Penyuluh KB Ahli Pertama, Penyuluh KB Ahli Muda, Penyuluh KB Ahli Madya, Penyuluh KB Ahli Utama';
+  if(nomor <= 40) return 'Penyuluh KB Ahli Pertama, Penyuluh KB Ahli Muda, Penyuluh KB Ahli Madya, Penyuluh KB Ahli Utama';
+  return 'Penyuluh KB Ahli Muda, Penyuluh KB Ahli Madya, Penyuluh KB Ahli Utama';
+}
 
 /* =========================================================
    STORAGE & STATE
    ========================================================= */
 const KEY = { Q:'pkb_questions_v1', R:'pkb_results_v1', U:'pkb_users_v1', S:'pkb_settings_v1', SES:'pkb_session_v1' };
 const LETTERS = ['A','B','C','D','E'];
-const DEFAULT_SYNC_URL = '';
 let serverResultsCache = [];
 let currentResultsList = [];
 let soalSyncing = false;
+let adminHasilView = 'semua';
+let lastSheetCount = -1;
+let pollInterval = null;
 
 const store = {
   get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
-  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){ alert('Penyimpanan penuh / tidak tersedia.'); } }
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){ alert('Penyimpanan penuh.'); } }
 };
 let session = null;
 let loginTab = 'peserta';
 let quiz = null;
 let lastResult = null;
 let adminTab = 'soal';
-let adminFilter = { kategori:'Semua', q:'' };
+let adminFilter = { kategori:'Semua', jenjang:'Semua', q:'' };
 let pick = { kategori:'Semua', mode:'semua', selected:[], search:'', acak:false };
 let timerInt = null;
 
@@ -224,48 +295,62 @@ function fmtDate(iso){ try{ return new Date(iso).toLocaleString('id-ID',{dateSty
 function fmtDur(s){ const m = Math.floor(s/60), r = s%60; return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0'); }
 
 /* =========================================================
+   JENJANG HELPERS
+   ========================================================= */
+function jenjangMatches(questionJenjang, userJenjang){
+  const q = String(questionJenjang || '').trim();
+  if(!q || /^semua$/i.test(q)) return true;
+  const u = String(userJenjang || '').toLowerCase();
+  if(!u) return true;
+  const targets = q.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+  return targets.some(t => u.includes(t) || t.includes(u));
+}
+function shortJenjang(full){
+  return String(full || '').replace(/^Penyuluh KB\s+/i, '');
+}
+function jenjangBadge(full){
+  if(!full) return '<span class="jenjang-badge">-</span>';
+  const isHigh = /ahli utama|ahli madya/i.test(full);
+  return '<span class="jenjang-badge' + (isHigh?' utama':'') + '">' + esc(shortJenjang(full)) + '</span>';
+}
+
+/* =========================================================
    KATEGORI DINAMIS
    ========================================================= */
-const CAT_COLORS = [
-  {bg:'#eef2ff', fg:'#4338ca'},
-  {bg:'#ccfbf1', fg:'#0f766e'},
-  {bg:'#fef3c7', fg:'#92400e'},
-  {bg:'#fce7f3', fg:'#9d174d'},
-  {bg:'#dbeafe', fg:'#1e40af'},
-  {bg:'#dcfce7', fg:'#166534'},
-  {bg:'#ede9fe', fg:'#6d28d9'},
-  {bg:'#fee2e2', fg:'#991b1b'}
-];
+const CAT_COLORS = [{bg:'#eef2ff',fg:'#4338ca'},{bg:'#ccfbf1',fg:'#0f766e'},{bg:'#fef3c7',fg:'#92400e'},{bg:'#fce7f3',fg:'#9d174d'},{bg:'#dbeafe',fg:'#1e40af'},{bg:'#dcfce7',fg:'#166534'},{bg:'#ede9fe',fg:'#6d28d9'},{bg:'#fee2e2',fg:'#991b1b'}];
 function getQuestions(){ return store.get(KEY.Q, []); }
+function getQuestionsForJenjang(jenjang){
+  return getQuestions().filter(q => jenjangMatches(q.jenjang, jenjang));
+}
 function getKategoriList(){
   const set = new Set();
   getQuestions().forEach(q => { if(q.kategori && q.kategori.trim()) set.add(q.kategori.trim()); });
-  const arr = Array.from(set).sort();
-  return ['Semua'].concat(arr);
+  return ['Semua'].concat(Array.from(set).sort());
 }
-function catColor(kat){
-  let h = 0;
-  for(let i=0; i<kat.length; i++) h = ((h*31) + kat.charCodeAt(i)) >>> 0;
-  return CAT_COLORS[h % CAT_COLORS.length];
+function getKategoriListForJenjang(jenjang){
+  const set = new Set();
+  getQuestionsForJenjang(jenjang).forEach(q => { if(q.kategori && q.kategori.trim()) set.add(q.kategori.trim()); });
+  return ['Semua'].concat(Array.from(set).sort());
 }
-function katBadge(kat){
-  const c = catColor(kat);
-  return '<span class="badge" style="background:' + c.bg + ';color:' + c.fg + '">' + esc(kat) + '</span>';
-}
-function filterByKategori(list, kat){ return kat === 'Semua' ? list.slice() : list.filter(q => q.kategori === kat); }
-function seedQuestions(){
-  return SEED.map(s => ({
-    id: s.k.toLowerCase().slice(0,3) + '-' + s.n,
-    kategori: s.k, nomor: s.n, pertanyaan: s.q,
-    opsi: s.o.concat(['','','','','']).slice(0,5),
-    jawaban: s.a, pembahasan: s.b || ''
+function catColor(kat){ let h=0; for(let i=0;i<kat.length;i++) h=((h*31)+kat.charCodeAt(i))>>>0; return CAT_COLORS[h%CAT_COLORS.length]; }
+function katBadge(kat){ const c=catColor(kat); return '<span class="badge" style="background:'+c.bg+';color:'+c.fg+'">'+esc(kat)+'</span>'; }
+function filterByKategori(list, kat){ return kat==='Semua' ? list.slice() : list.filter(q => q.kategori===kat); }
+function filterByJenjang(list, jenjang){ return jenjang==='Semua' ? list.slice() : list.filter(q => jenjangMatches(q.jenjang, jenjang)); }
+
+function bootstrapQuestions(){
+  return BOOTSTRAP_RAW.map(s => ({
+    id: s.k.toLowerCase().slice(0,3)+'-'+s.n,
+    kategori: s.k, jenjang: bootstrapJenjang(s.k, s.n), nomor: s.n,
+    pertanyaan: s.q, opsi: s.o.concat(['','','','','']).slice(0,5),
+    jawaban: s.a, pembahasan: s.b||''
   }));
 }
 function myResults(){ return store.get(KEY.R, []).filter(r => r.username === session.username); }
+
 function setQuestions(list, opts){
   opts = opts || {};
   store.set(KEY.Q, list);
-  if(!opts.skipSync && session && session.role === 'admin' && isSyncReady()){
+  if(!opts.skipSync && session && session.role==='admin' && isSyncReady()){
     pushSoalKeServer(list);
   }
 }
@@ -273,82 +358,133 @@ function setQuestions(list, opts){
 /* =========================================================
    GOOGLE SHEETS SYNC
    ========================================================= */
-function getSyncUrl(){ const st = store.get(KEY.S, {}); return String(st.syncUrl || DEFAULT_SYNC_URL || '').trim(); }
+function getSyncUrl(){ const st=store.get(KEY.S, {}); return String(st.syncUrl||'').trim(); }
 function isSyncReady(){ return /^https?:\/\/.+\/exec$/.test(getSyncUrl()); }
+function getAutoPoll(){ const st=store.get(KEY.S, {}); return st.autoPoll !== false; }
 
 function jsonpGet(url, params, timeout){
   timeout = timeout || 12000;
   return new Promise((resolve, reject) => {
     const cbName = 'jsonp_' + Math.random().toString(36).slice(2);
     const sep = url.indexOf('?') >= 0 ? '&' : '?';
-    const q = Object.keys(params || {}).map(k => encodeURIComponent(k)+'='+encodeURIComponent(params[k])).join('&');
+    const q = Object.keys(params||{}).map(k => encodeURIComponent(k)+'='+encodeURIComponent(params[k])).join('&');
     const script = document.createElement('script');
     let done = false;
     const cleanup = () => { try{ delete window[cbName]; }catch(_){} script.remove(); };
-    const timer = setTimeout(() => { if(done) return; done = true; cleanup(); reject(new Error('timeout')); }, timeout);
-    window[cbName] = (data) => { if(done) return; done = true; clearTimeout(timer); cleanup(); resolve(data); };
-    script.onerror = () => { if(done) return; done = true; clearTimeout(timer); cleanup(); reject(new Error('network error')); };
-    script.src = url + sep + q + (q ? '&' : '') + 'callback=' + cbName;
+    const timer = setTimeout(() => { if(done) return; done=true; cleanup(); reject(new Error('timeout')); }, timeout);
+    window[cbName] = (data) => { if(done) return; done=true; clearTimeout(timer); cleanup(); resolve(data); };
+    script.onerror = () => { if(done) return; done=true; clearTimeout(timer); cleanup(); reject(new Error('network error')); };
+    script.src = url + sep + q + (q?'&':'') + 'callback=' + cbName;
     document.body.appendChild(script);
   });
 }
 async function ambilSoalServer(){
   const url = getSyncUrl(); if(!url) return null;
-  try{
-    const res = await fetch(url + '?action=soal', { cache:'no-store' });
+  try{ const res = await fetch(url+'?action=soal', {cache:'no-store'});
     if(res.ok){ const j = await res.json(); if(Array.isArray(j)) return j; if(j && Array.isArray(j.data)) return j.data; }
-  }catch(e){ console.warn('fetch soal gagal, coba JSONP', e); }
-  try{ const j = await jsonpGet(url, { action:'soal' }); if(Array.isArray(j)) return j; }
-  catch(e){ console.warn('JSONP soal gagal:', e); }
+  }catch(e){}
+  try{ const j = await jsonpGet(url, {action:'soal'}); if(Array.isArray(j)) return j; }catch(e){}
   return null;
 }
 async function pushSoalKeServer(list){
-  const url = getSyncUrl(); if(!url) return { ok:false, reason:'no-url' };
-  if(soalSyncing) return { ok:false, reason:'busy' };
+  const url = getSyncUrl(); if(!url) return {ok:false};
+  if(soalSyncing) return {ok:false};
   soalSyncing = true;
   try{
-    await fetch(url, {
-      method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify({ action:'syncSoal', data:list })
-    });
+    await fetch(url, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({action:'syncSoal', data:list})});
     soalSyncing = false;
-    showSoalSyncStatus(true);
-    return { ok:true };
-  }catch(e){
-    soalSyncing = false;
-    showSoalSyncStatus(false, e.message);
-    return { ok:false, error:String(e) };
-  }
+    lastSheetCount = list.length;
+    updateSyncBanner();
+    return {ok:true};
+  }catch(e){ soalSyncing=false; return {ok:false}; }
 }
-function showSoalSyncStatus(ok, msg){
+function updateSyncBanner(){
   const el = document.getElementById('soal-sync-note');
   if(!el) return;
-  if(ok){ el.innerHTML = '<span class="pill ok">✓ Soal tersinkron ke Google Sheet (' + getQuestions().length + ' soal, ' + (getKategoriList().length-1) + ' kategori)</span>'; }
-  else { el.innerHTML = '<span class="pill bad">✗ Gagal sinkron: ' + esc(msg||'?') + ' — soal hanya tersimpan di perangkat ini</span>'; }
+  const local = getQuestions().length;
+  if(!isSyncReady()){
+    el.innerHTML = '<span class="pill warn">📴 Mode lokal · '+local+' soal · atur URL di Pengaturan</span>';
+    return;
+  }
+  if(lastSheetCount === -1){
+    el.innerHTML = '<span class="pill">📥 Sheet: belum ditarik · 💾 Lokal: '+local+' soal</span>';
+    return;
+  }
+  if(lastSheetCount === local){
+    el.innerHTML = '<span class="pill ok">✓ Sinkron · '+local+' soal · Sheet & lokal sama</span>';
+  } else {
+    el.innerHTML = '<span class="pill warn">⚠️ Sheet: '+lastSheetCount+' · Lokal: '+local+' · Berbeda — klik Tarik/Kirim</span>';
+  }
 }
+async function silentPullFromSheet(){
+  if(!isSyncReady()) return false;
+  const list = await ambilSoalServer();
+  if(!Array.isArray(list)) return false;
+  lastSheetCount = list.length;
+  if(list.length === 0) return false;
+  const local = getQuestions();
+  if(JSON.stringify(list) === JSON.stringify(local)) return false;
+  store.set(KEY.Q, list);
+  return true;
+}
+async function manualPullFromSheet(){
+  if(!isSyncReady()){ alert('Atur URL Apps Script dulu di Pengaturan.'); return; }
+  if(!confirm('⚠️ Tarik dari Sheet akan MENGGANTI bank soal lokal dengan isi Sheet saat ini.\n\nLanjutkan?')) return;
+  const note = document.getElementById('soal-sync-note');
+  if(note) note.innerHTML = '<span class="pill">📥 Memuat dari sheet...</span>';
+  const list = await ambilSoalServer();
+  if(!Array.isArray(list)){ if(note) note.innerHTML = '<span class="pill bad">✗ Gagal terhubung ke sheet</span>'; return; }
+  if(list.length === 0){ alert('Sheet "Soal" masih kosong.'); if(note) updateSyncBanner(); return; }
+  store.set(KEY.Q, list);
+  lastSheetCount = list.length;
+  render();
+  alert('✓ Berhasil menarik '+list.length+' soal dari sheet.');
+}
+async function manualPushToSheet(){
+  if(!isSyncReady()){ alert('Atur URL Apps Script dulu di Pengaturan.'); return; }
+  const count = getQuestions().length;
+  if(count === 0){ alert('Tidak ada soal untuk dikirim.'); return; }
+  if(!confirm('⚠️ Kirim '+count+' soal ke Sheet akan MENGGANTI seluruh isi sheet "Soal".\n\nLanjutkan?')) return;
+  const note = document.getElementById('soal-sync-note');
+  if(note) note.innerHTML = '<span class="pill">📤 Mengirim ke sheet...</span>';
+  const out = await pushSoalKeServer(getQuestions());
+  if(out.ok){ alert('✓ Berhasil mengirim '+count+' soal ke sheet.'); }
+  else { alert('✗ Gagal mengirim ke sheet.'); }
+  updateSyncBanner();
+}
+function startPollingIfNeeded(){
+  stopPolling();
+  if(!session || session.role!=='admin' || adminTab!=='soal') return;
+  if(!isSyncReady() || !getAutoPoll()) return;
+  pollInterval = setInterval(async () => {
+    if(document.hidden) return;
+    if(!session || session.role!=='admin' || adminTab!=='soal'){ stopPolling(); return; }
+    const changed = await silentPullFromSheet();
+    if(changed){ renderSoalList(); updateSyncBanner(); }
+    else updateSyncBanner();
+  }, 90000);
+}
+function stopPolling(){ if(pollInterval){ clearInterval(pollInterval); pollInterval = null; } }
+
 async function kirimHasilKeServer(r){
-  const url = getSyncUrl(); if(!url) return { ok:false, reason:'no-url' };
-  try{
-    await fetch(url, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({ action:'simpan', data:r }) });
-    return { ok:true };
-  }catch(e){ return { ok:false, error:String(e) }; }
+  const url = getSyncUrl(); if(!url) return {ok:false, reason:'no-url'};
+  try{ await fetch(url, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({action:'simpan', data:r})}); return {ok:true}; }
+  catch(e){ return {ok:false}; }
 }
 async function hapusHasilServer(id){
   const url = getSyncUrl(); if(!url) return;
-  try{ await fetch(url, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({ action:'hapus', id }) }); }catch(e){}
+  try{ await fetch(url, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({action:'hapus', id})}); }catch(e){}
 }
 async function hapusSemuaHasilServer(){
   const url = getSyncUrl(); if(!url) return;
-  try{ await fetch(url, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({ action:'hapusSemua' }) }); }catch(e){}
+  try{ await fetch(url, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({action:'hapusSemua'})}); }catch(e){}
 }
 async function ambilHasilServer(){
   const url = getSyncUrl(); if(!url) return null;
-  try{ const res = await fetch(url + '?action=daftar', { cache:'no-store' });
+  try{ const res = await fetch(url+'?action=daftar', {cache:'no-store'});
     if(res.ok){ const j = await res.json(); if(Array.isArray(j)) return j; if(j && Array.isArray(j.data)) return j.data; }
-  }catch(e){ console.warn('fetch hasil gagal, coba JSONP', e); }
-  try{ const j = await jsonpGet(url, { action:'daftar' }); if(Array.isArray(j)) return j; return []; }
-  catch(e){ return null; }
+  }catch(e){}
+  try{ const j = await jsonpGet(url, {action:'daftar'}); if(Array.isArray(j)) return j; return []; }catch(e){ return null; }
 }
 
 /* =========================================================
@@ -357,10 +493,10 @@ async function ambilHasilServer(){
 function render(){
   const app = document.getElementById('app');
   if(!session){ app.innerHTML = viewLogin(); return; }
-  if(session.role === 'admin'){
+  if(session.role==='admin'){
     app.innerHTML = viewAdmin();
-    if(adminTab === 'soal') renderSoalList();
-    if(adminTab === 'hasil') renderHasilList();
+    if(adminTab==='soal'){ renderSoalList(); }
+    if(adminTab==='hasil'){ renderHasilList(); }
     return;
   }
   if(quiz){ app.innerHTML = viewQuiz(); startTimer(); return; }
@@ -370,8 +506,8 @@ function render(){
 function topbar(sub, extra){
   return '<header class="topbar"><div class="brand small"><div class="logo">KB</div><div>' +
     '<strong style="font-size:14px">Latihan Soal Penyuluh KB</strong>' +
-    '<div class="tiny muted">' + esc(sub||'') + '</div></div></div>' +
-    '<div class="row gap">' + (extra||'') + '<button class="btn ghost tiny" onclick="logout()">Keluar</button></div></header>';
+    '<div class="tiny muted">'+esc(sub||'')+'</div></div></div>' +
+    '<div class="row gap">'+(extra||'')+'<button class="btn ghost tiny" onclick="logout()">Keluar</button></div></header>';
 }
 
 /* =========================================================
@@ -380,16 +516,20 @@ function topbar(sub, extra){
 function viewLogin(){
   return '<div class="login-wrap"><div class="login-card"><div class="brand"><div class="logo">KB</div><div>' +
     '<h1 style="font-size:19px">Latihan Soal Penyuluh KB</h1>' +
-    '<p style="margin:0;font-size:12.5px">Try Out Persiapan Ujikom — Multi Kategori</p></div></div>' +
-    '<div class="tabs"><button class="tab ' + (loginTab==='peserta'?'active':'') + '" onclick="setLoginTab(\'peserta\')">Peserta</button>' +
-    '<button class="tab ' + (loginTab==='admin'?'active':'') + '" onclick="setLoginTab(\'admin\')">Admin</button></div>' +
-    (loginTab === 'peserta' ? formPeserta() : formAdmin()) +
-    '<p class="hint">Password admin bawaan: <code>admin123</code><br>Data soal & hasil tersinkron ke Google Sheets bila URL sudah diatur.</p></div></div>';
+    '<p style="margin:0;font-size:12.5px">Try Out Persiapan Ujikom — Per Jenjang Jabatan</p></div></div>' +
+    '<div class="tabs"><button class="tab '+(loginTab==='peserta'?'active':'')+'" onclick="setLoginTab(\'peserta\')">Peserta</button>' +
+    '<button class="tab '+(loginTab==='admin'?'active':'')+'" onclick="setLoginTab(\'admin\')">Admin</button></div>' +
+    (loginTab==='peserta' ? formPeserta() : formAdmin()) +
+    '<p class="hint">Password admin bawaan: <code>admin123</code><br>Pilih jenjang jabatan Anda — soal akan disesuaikan otomatis.</p></div></div>';
 }
 function formPeserta(){
   return '<form onsubmit="doLoginPeserta(event)">' +
     '<label>Nama Lengkap</label><input id="in-nama" class="input" placeholder="Contoh: Siti Aminah" required />' +
     '<label>Username</label><input id="in-user" class="input" placeholder="contoh: siti01" required />' +
+    '<label>Jenjang Jabatan Penyuluh KB</label>' +
+    '<select id="in-jenjang" class="input" required><option value="">-- Pilih jenjang --</option>' +
+      JENJANG_LIST.map(function(j){ return '<option>'+j+'</option>'; }).join('') +
+    '</select>' +
     '<button class="btn primary block" type="submit">Masuk sebagai Peserta</button></form>';
 }
 function formAdmin(){
@@ -398,140 +538,150 @@ function formAdmin(){
     '<button class="btn primary block" type="submit">Masuk sebagai Admin</button></form>';
 }
 function setLoginTab(t){ loginTab = t; render(); }
-
 function doLoginPeserta(e){
   e.preventDefault();
   const nama = document.getElementById('in-nama').value.trim();
   const user = document.getElementById('in-user').value.trim().toLowerCase();
-  if(!nama || !user) return;
+  const jenjang = document.getElementById('in-jenjang').value;
+  if(!nama||!user||!jenjang){ alert('Lengkapi semua field.'); return; }
   const users = store.get(KEY.U, []);
-  const found = users.find(u => u.username === user);
-  if(found){ found.nama = nama; } else { users.push({ username:user, nama: nama }); }
+  const found = users.find(u => u.username===user);
+  if(found){ found.nama = nama; found.jenjang = jenjang; }
+  else { users.push({username:user, nama, jenjang}); }
   store.set(KEY.U, users);
-  session = { role:'peserta', username:user, nama: nama };
+  session = {role:'peserta', username:user, nama, jenjang};
   store.set(KEY.SES, session);
   quiz = null; lastResult = null; render();
-  refreshSoalDariServer('peserta');
+  pullSoalForPeserta();
+}
+async function pullSoalForPeserta(){
+  if(!isSyncReady()) return;
+  const list = await ambilSoalServer();
+  if(Array.isArray(list) && list.length>0){
+    const local = getQuestions();
+    if(JSON.stringify(list) !== JSON.stringify(local)){
+      store.set(KEY.Q, list);
+      if(!quiz && !lastResult) render();
+    }
+  }
 }
 function doLoginAdmin(e){
   e.preventDefault();
   const pass = document.getElementById('in-pass').value;
-  const st = store.get(KEY.S, { adminPassword:'admin123' });
+  const st = store.get(KEY.S, {adminPassword:'admin123'});
   if(pass !== st.adminPassword){ alert('Password admin salah.'); return; }
-  session = { role:'admin', username:'admin', nama:'Administrator' };
+  session = {role:'admin', username:'admin', nama:'Administrator'};
   store.set(KEY.SES, session);
   quiz = null; lastResult = null; render();
-  refreshSoalDariServer('admin');
+  autoPullAdminLogin();
 }
-async function refreshSoalDariServer(who){
+async function autoPullAdminLogin(){
   if(!isSyncReady()) return;
   const list = await ambilSoalServer();
   if(!Array.isArray(list)) return;
-  if(list.length === 0 && who === 'admin'){
-    const local = getQuestions();
-    if(local.length) pushSoalKeServer(local);
-    return;
-  }
-  if(list.length > 0){
-    store.set(KEY.Q, list);
-    if(who === 'admin' && adminTab === 'soal'){ render(); }
-    else if(who === 'peserta' && !quiz && !lastResult){ render(); }
-  }
+  lastSheetCount = list.length;
+  if(list.length > 0){ store.set(KEY.Q, list); render(); }
 }
 function logout(){
-  session = null; quiz = null; lastResult = null; adminTab = 'soal';
+  session = null; quiz = null; lastResult = null; adminTab='soal';
   localStorage.removeItem(KEY.SES);
   clearInterval(timerInt);
+  stopPolling();
   render();
 }
 
 /* =========================================================
-   DASHBOARD PESERTA
+   DASHBOARD PESERTA (jenjang-filtered)
    ========================================================= */
 function viewPeserta(){
-  const qs = getQuestions();
-  const filtered = filterByKategori(qs, pick.kategori);
+  const allForJenjang = getQuestionsForJenjang(session.jenjang);
+  if(allForJenjang.length === 0){
+    return topbar('Halo, '+session.nama+' · '+shortJenjang(session.jenjang))+'<div class="container"><div class="card empty-state">' +
+      '<div class="icon">📭</div>' +
+      '<h2>Belum ada soal untuk jenjang '+esc(shortJenjang(session.jenjang))+'</h2>' +
+      '<p>Admin belum menyiapkan soal untuk jenjang ini. Silakan hubungi admin atau muat ulang jika sheet sudah diisi.</p>' +
+      '<button class="btn primary" onclick="reloadPeserta()">🔄 Muat Ulang dari Server</button>' +
+      '</div></div>';
+  }
+  const katList = getKategoriListForJenjang(session.jenjang);
+  if(pick.kategori !== 'Semua' && katList.indexOf(pick.kategori) < 0){ pick.kategori = 'Semua'; }
+  const filtered = filterByKategori(allForJenjang, pick.kategori);
+  const katCount = katList.length - 1;
   const synced = isSyncReady();
-  const katCount = getKategoriList().length - 1;
-  return topbar('Halo, ' + session.nama) + '<div class="container">' +
+  return topbar('Halo, '+session.nama+' · '+shortJenjang(session.jenjang))+'<div class="container">' +
     '<div class="card hero"><div style="flex:1;min-width:230px"><h2>Mulai Latihan Soal</h2>' +
-      '<p>Pilih kategori, tentukan mode pengerjaan, lalu mulai. Anda bisa memilih sendiri soal mana yang ingin dikerjakan.</p>' +
-      (synced ? '<span class="pill ok">Soal diambil dari server — selalu versi terbaru</span>'
-              : '<span class="pill">Mode lokal — hasil tersimpan di perangkat ini</span>') + '</div>' +
-      '<div class="hero-stat">' +
-        '<div><strong>' + qs.length + '</strong><span>Total Soal</span></div>' +
-        '<div><strong>' + katCount + '</strong><span>Kategori</span></div>' +
-        '<div><strong>' + myResults().length + '</strong><span>Riwayat</span></div>' +
-      '</div></div>' +
+      '<p>Soal yang ditampilkan sudah disesuaikan dengan jenjang jabatan Anda.</p>' +
+      '<div class="row gap wrap">'+jenjangBadge(session.jenjang) +
+      (synced ? '<span class="pill ok">Soal dari server</span>' : '<span class="pill">Mode lokal</span>')+'</div></div>' +
+      '<div class="hero-stat"><div><strong>'+allForJenjang.length+'</strong><span>Soal Anda</span></div>' +
+        '<div><strong>'+katCount+'</strong><span>Kategori</span></div>' +
+        '<div><strong>'+myResults().length+'</strong><span>Riwayat</span></div></div></div>' +
     '<div class="card"><h3>1. Pilih Kategori</h3><div class="chips">' +
-      getKategoriList().map(function(k){
-        const safe = jsEsc(k);
-        return '<button class="chip ' + (pick.kategori===k?'on':'') + '" onclick="setKategori(\''+safe+'\')">' + esc(k) + '</button>';
-      }).join('') +
+      katList.map(function(k){ const safe = jsEsc(k); return '<button class="chip '+(pick.kategori===k?'on':'')+'" onclick="setKategori(\''+safe+'\')">'+esc(k)+'</button>'; }).join('') +
       '</div><h3 style="margin-top:22px">2. Pilih Mode</h3><div class="chips">' +
-      '<button class="chip ' + (pick.mode==='semua'?'on':'') + '" onclick="setMode(\'semua\')">Kerjakan Semua (' + filtered.length + ' soal)</button>' +
-      '<button class="chip ' + (pick.mode==='pilih'?'on':'') + '" onclick="setMode(\'pilih\')">Pilih Soal Sendiri</button>' +
+      '<button class="chip '+(pick.mode==='semua'?'on':'')+'" onclick="setMode(\'semua\')">Kerjakan Semua ('+filtered.length+' soal)</button>' +
+      '<button class="chip '+(pick.mode==='pilih'?'on':'')+'" onclick="setMode(\'pilih\')">Pilih Soal Sendiri</button>' +
       '</div>' + (pick.mode==='pilih' ? pickerHTML(filtered) : '') +
       '<div class="row between wrap" style="margin-top:20px">' +
-        '<label class="switch"><input type="checkbox" ' + (pick.acak?'checked':'') + ' onchange="pick.acak=this.checked"> Acak urutan soal</label>' +
-        '<button class="btn primary" onclick="startQuiz()">Mulai Latihan</button>' +
-      '</div></div>' + riwayatHTML() + '</div>';
+        '<label class="switch"><input type="checkbox" '+(pick.acak?'checked':'')+' onchange="pick.acak=this.checked"> Acak urutan soal</label>' +
+        '<button class="btn primary" onclick="startQuiz()">Mulai Latihan</button></div></div>' + riwayatHTML() + '</div>';
+}
+async function reloadPeserta(){
+  if(!isSyncReady()){ alert('Admin belum mengatur server. Hubungi admin.'); return; }
+  const list = await ambilSoalServer();
+  if(Array.isArray(list) && list.length>0){ store.set(KEY.Q, list); render(); }
+  else alert('Sheet soal masih kosong. Hubungi admin.');
 }
 function pickerHTML(list){
   return '<div class="picker">' +
-    '<input class="input" placeholder="Cari soal berdasarkan teks atau nomor..." value="' + esc(pick.search) + '" oninput="pick.search=this.value; renderPickerList()">' +
-    '<div class="row between wrap" style="margin:10px 0"><small class="muted">Centang soal yang ingin dikerjakan</small>' +
+    '<input class="input" placeholder="Cari soal..." value="'+esc(pick.search)+'" oninput="pick.search=this.value; renderPickerList()">' +
+    '<div class="row between wrap" style="margin:10px 0"><small class="muted">Centang soal</small>' +
       '<div class="row gap"><button class="btn tiny" onclick="pilihSemua()">Pilih semua</button>' +
         '<button class="btn tiny ghost" onclick="pilihKosong()">Kosongkan</button></div></div>' +
-    '<div id="picker-list" class="picker-list">' + pickerItems(list) + '</div>' +
-    '<div class="pill" id="pick-count">Dipilih: ' + pick.selected.length + ' soal</div></div>';
+    '<div id="picker-list" class="picker-list">'+pickerItems(list)+'</div>' +
+    '<div class="pill" id="pick-count">Dipilih: '+pick.selected.length+' soal</div></div>';
 }
 function pickerItems(list){
   const s = pick.search.toLowerCase().trim();
-  const items = list.filter(q => !s || q.pertanyaan.toLowerCase().indexOf(s) >= 0 || String(q.nomor).indexOf(s) >= 0);
-  if(!items.length) return '<p class="muted" style="padding:12px">Tidak ada soal yang cocok.</p>';
-  return items.map(q => '<label class="pick-item ' + (pick.selected.indexOf(q.id)>=0?'on':'') + '">' +
-    '<input type="checkbox" ' + (pick.selected.indexOf(q.id)>=0?'checked':'') + ' onchange="togglePilih(\''+q.id+'\')">' +
-    katBadge(q.kategori) + ' <span class="muted tiny">No ' + q.nomor + '</span>' +
-    '<span class="pick-text">' + esc(q.pertanyaan) + '</span></label>').join('');
+  const items = list.filter(q => !s || q.pertanyaan.toLowerCase().indexOf(s)>=0 || String(q.nomor).indexOf(s)>=0);
+  if(!items.length) return '<p class="muted" style="padding:12px">Tidak ada soal cocok.</p>';
+  return items.map(q => '<label class="pick-item '+(pick.selected.indexOf(q.id)>=0?'on':'')+'">' +
+    '<input type="checkbox" '+(pick.selected.indexOf(q.id)>=0?'checked':'')+' onchange="togglePilih(\''+q.id+'\')">' +
+    katBadge(q.kategori)+' <span class="muted tiny">No '+q.nomor+'</span>' +
+    '<span class="pick-text">'+esc(q.pertanyaan)+'</span></label>').join('');
 }
-function renderPickerList(){ const box = document.getElementById('picker-list'); if(!box) return; box.innerHTML = pickerItems(filterByKategori(getQuestions(), pick.kategori)); }
-function togglePilih(id){
-  const i = pick.selected.indexOf(id); if(i >= 0) pick.selected.splice(i,1); else pick.selected.push(id);
-  renderPickerList();
-  const c = document.getElementById('pick-count'); if(c) c.textContent = 'Dipilih: ' + pick.selected.length + ' soal';
+function renderPickerList(){ const b = document.getElementById('picker-list'); if(!b) return;
+  const list = filterByKategori(getQuestionsForJenjang(session.jenjang), pick.kategori);
+  b.innerHTML = pickerItems(list);
 }
-function pilihSemua(){ pick.selected = filterByKategori(getQuestions(), pick.kategori).map(q => q.id); render(); }
+function togglePilih(id){ const i = pick.selected.indexOf(id); if(i>=0) pick.selected.splice(i,1); else pick.selected.push(id); renderPickerList(); const c = document.getElementById('pick-count'); if(c) c.textContent = 'Dipilih: '+pick.selected.length+' soal'; }
+function pilihSemua(){ pick.selected = filterByKategori(getQuestionsForJenjang(session.jenjang), pick.kategori).map(q=>q.id); render(); }
 function pilihKosong(){ pick.selected = []; render(); }
 function setKategori(k){ pick.kategori = k; pick.selected = []; render(); }
 function setMode(m){ pick.mode = m; render(); }
 function riwayatHTML(){
   const list = myResults();
   return '<div class="card"><h3>Riwayat Saya</h3>' +
-    (list.length ? '<div class="table-wrap"><table class="tbl"><thead><tr><th>Tanggal</th><th>Kategori</th><th>Benar</th><th>Nilai</th><th></th></tr></thead><tbody>' +
-      list.map(r=>'<tr><td>' + fmtDate(r.tanggal) + '</td><td>' + esc(r.kategori) + '</td><td>' + r.benar + '/' + r.total + '</td>' +
-        '<td><b class="score ' + (r.nilai>=70?'ok':'bad') + '">' + r.nilai + '</b></td>' +
+    (list.length ? '<div class="table-wrap"><table class="tbl"><thead><tr><th>Tanggal</th><th>Kategori</th><th>Jenjang</th><th>Benar</th><th>Nilai</th><th></th></tr></thead><tbody>' +
+      list.map(r=>'<tr><td>'+fmtDate(r.tanggal)+'</td><td>'+esc(r.kategori)+'</td><td class="small">'+esc(shortJenjang(r.jenjang))+'</td>' +
+        '<td>'+r.benar+'/'+r.total+'</td><td><b class="score '+(r.nilai>=70?'ok':'bad')+'">'+r.nilai+'</b></td>' +
         '<td><button class="btn tiny" onclick="lihatHasil(\''+r.id+'\')">Lihat</button></td></tr>').join('') + '</tbody></table></div>'
-    : '<p class="muted">Belum ada riwayat. Yuk mulai latihan pertama Anda!</p>') + '</div>';
+    : '<p class="muted">Belum ada riwayat.</p>') + '</div>';
 }
-function lihatHasil(id){
-  const r = store.get(KEY.R, []).find(x => x.id === id);
-  if(!r) return;
-  lastResult = Object.assign({}, r, { _fresh:false }); render();
-}
+function lihatHasil(id){ const r = store.get(KEY.R, []).find(x=>x.id===id); if(!r) return; lastResult = Object.assign({}, r, {_fresh:false}); render(); }
 
 /* =========================================================
    QUIZ
    ========================================================= */
 function startQuiz(){
-  const all = getQuestions();
+  const pool = getQuestionsForJenjang(session.jenjang);
   let items;
-  if(pick.mode === 'semua'){ items = filterByKategori(all, pick.kategori); }
-  else { items = all.filter(q => pick.selected.indexOf(q.id) >= 0); if(!items.length){ alert('Pilih minimal satu soal terlebih dahulu.'); return; } }
-  if(!items.length){ alert('Belum ada soal pada kategori ini.'); return; }
-  items.sort((a,b) => a.kategori.localeCompare(b.kategori) || a.nomor - b.nomor);
+  if(pick.mode==='semua'){ items = filterByKategori(pool, pick.kategori); }
+  else { items = pool.filter(q => pick.selected.indexOf(q.id)>=0); if(!items.length){ alert('Pilih minimal satu soal.'); return; } }
+  if(!items.length){ alert('Belum ada soal.'); return; }
+  items.sort((a,b) => a.kategori.localeCompare(b.kategori) || a.nomor-b.nomor);
   if(pick.acak) items = shuffle(items);
-  quiz = { ids: items.map(q => q.id), answers:{}, idx:0, start: Date.now(), kategori: pick.kategori, acak: pick.acak };
+  quiz = { ids: items.map(q=>q.id), answers:{}, ragu:{}, idx:0, start: Date.now(), kategori: pick.kategori, acak: pick.acak };
   lastResult = null; render();
 }
 function startTimer(){
@@ -539,242 +689,334 @@ function startTimer(){
   timerInt = setInterval(() => {
     const el = document.getElementById('timer');
     if(!el || !quiz){ clearInterval(timerInt); return; }
-    el.textContent = fmtDur(Math.floor((Date.now() - quiz.start)/1000));
+    el.textContent = fmtDur(Math.floor((Date.now()-quiz.start)/1000));
   }, 1000);
+}
+function palClass(id, idx){
+  let cls = 'pal ';
+  const doubt = quiz.ragu[id];
+  const answered = quiz.answers[id] !== undefined;
+  if(doubt) cls += 'doubt ';
+  else if(answered) cls += 'done ';
+  if(idx===quiz.idx) cls += 'cur';
+  return cls.trim();
 }
 function viewQuiz(){
   const all = getQuestions();
-  const q = all.find(x => x.id === quiz.ids[quiz.idx]);
+  const q = all.find(x=>x.id===quiz.ids[quiz.idx]);
   if(!q){ quiz = null; render(); return ''; }
   const total = quiz.ids.length;
   const answered = Object.keys(quiz.answers).length;
-  const opts = q.opsi.map((t,i)=>({t,i})).filter(o => o.t && o.t.trim());
-  return topbar(q.kategori + ' - Soal ' + (quiz.idx+1) + ' dari ' + total,
-    '<span class="pill">Waktu: <b id="timer">00:00</b></span><span class="pill">Terjawab: ' + answered + '/' + total + '</span>') +
-    '<div class="container narrow"><div class="card">' +
-      '<div class="row between">' + katBadge(q.kategori) +
-        '<span class="muted small">Soal No. ' + q.nomor + '</span></div>' +
-      '<h3 class="qtext">' + esc(q.pertanyaan) + '</h3><div>' +
-      opts.map(o => '<button class="opt ' + (quiz.answers[q.id]===o.i?'sel':'') + '" onclick="pilihOpsi(' + o.i + ')">' +
-        '<span class="ltr">' + LETTERS[o.i] + '</span><span>' + esc(o.t) + '</span></button>').join('') +
-      '</div><div class="row between wrap" style="margin-top:18px">' +
-        '<button class="btn ghost" onclick="navQ(-1)" ' + (quiz.idx===0?'disabled':'') + '>Sebelumnya</button>' +
+  const doubtful = Object.keys(quiz.ragu).filter(id=>quiz.ragu[id]).length;
+  const opts = q.opsi.map((t,i)=>({t,i})).filter(o=>o.t && o.t.trim());
+  const isDoubt = !!quiz.ragu[q.id];
+  return topbar(q.kategori+' · Soal '+(quiz.idx+1)+'/'+total,
+    '<span class="pill">⏱ <b id="timer">00:00</b></span>' +
+    '<span class="pill">✓ '+answered+'/'+total+'</span>' +
+    (doubtful>0?'<span class="pill warn">❓ '+doubtful+' ragu</span>':'')) +
+    '<div class="container"><div class="quiz-layout">' +
+    '<aside class="quiz-nav"><h4>Nomor Soal</h4><div class="palette">' +
+      quiz.ids.map((id,i)=>'<button class="'+palClass(id,i)+'" onclick="gotoQ('+i+')">'+(i+1)+'</button>').join('') +
+    '</div><div class="legend">' +
+      '<b><i style="background:#dcfce7;border-color:#86efac"></i> Terjawab</b>' +
+      '<b><i style="background:#fef3c7;border-color:#fcd34d"></i> Ragu-ragu</b>' +
+      '<b><i style="background:#f8fafc;border-color:#e2e8f0"></i> Belum dijawab</b>' +
+    '</div></aside>' +
+    '<main><div class="card">' +
+      '<div class="row between wrap">'+katBadge(q.kategori)+' '+jenjangBadge(session.jenjang)+
+        '<span class="muted small">Soal No. '+q.nomor+' · '+(quiz.idx+1)+' dari '+total+'</span></div>' +
+      (isDoubt?'<div class="doubt-note">❓ Soal ini ditandai <b>ragu-ragu</b>.</div>':'') +
+      '<h3 class="qtext">'+esc(q.pertanyaan)+'</h3><div>' +
+      opts.map(o=>'<button class="opt '+(quiz.answers[q.id]===o.i?'sel':'')+'" onclick="pilihOpsi('+o.i+')">' +
+        '<span class="ltr">'+LETTERS[o.i]+'</span><span>'+esc(o.t)+'</span></button>').join('') +
+      '</div><div class="row gap wrap" style="margin-top:16px">' +
+        '<button class="btn doubt '+(isDoubt?'active':'')+'" onclick="toggleRagu()">' +
+          (isDoubt?'✓ Ragu-ragu (aktif)':'❓ Tandai Ragu-ragu')+'</button>' +
+      '</div>' +
+      '<div class="row between wrap" style="margin-top:18px;border-top:1px dashed var(--line);padding-top:16px">' +
+        '<button class="btn ghost" onclick="navQ(-1)" '+(quiz.idx===0?'disabled':'')+'>← Sebelumnya</button>' +
         '<div class="row gap"><button class="btn ghost" onclick="finishQuiz()">Selesai & Nilai</button>' +
-          '<button class="btn primary" onclick="' + (quiz.idx===total-1?'finishQuiz()':'navQ(1)') + '">' +
-          (quiz.idx===total-1?'Selesai':'Selanjutnya') + '</button></div></div>' +
-      '<div class="palette">' + quiz.ids.map((id,i) => '<button class="pal ' + (quiz.answers[id]!==undefined?'done':'') + ' ' + (i===quiz.idx?'cur':'') + '" onclick="gotoQ(' + i + ')">' + (i+1) + '</button>').join('') + '</div>' +
-    '</div></div>';
+          '<button class="btn primary" onclick="'+(quiz.idx===total-1?'finishQuiz()':'navQ(1)')+'">' +
+            (quiz.idx===total-1?'Selesai':'Selanjutnya →')+'</button></div></div>' +
+    '</div></main></div></div>';
 }
 function pilihOpsi(i){ quiz.answers[quiz.ids[quiz.idx]] = i; render(); }
+function toggleRagu(){ const id = quiz.ids[quiz.idx]; quiz.ragu[id] = !quiz.ragu[id]; render(); }
 function gotoQ(i){ quiz.idx = i; render(); }
-function navQ(d){ const n = quiz.idx + d; if(n < 0 || n >= quiz.ids.length) return; quiz.idx = n; render(); }
+function navQ(d){ const n = quiz.idx+d; if(n<0 || n>=quiz.ids.length) return; quiz.idx = n; render(); }
 
 function finishQuiz(){
-  const all = getQuestions();
-  const kosongCount = quiz.ids.length - Object.keys(quiz.answers).length;
-  if(kosongCount > 0 && !confirm('Masih ada ' + kosongCount + ' soal yang belum dijawab. Tetap selesaikan?')) return;
-  let benar = 0, salah = 0, kosong = 0;
-  const detail = quiz.ids.map(id => {
-    const q = all.find(x => x.id === id) || { nomor:'?', kategori:'-', pertanyaan:'(soal dihapus)', opsi:[], jawaban:-1, pembahasan:'' };
-    const dipilih = quiz.answers[id];
-    let status; if(dipilih === undefined) status = 'kosong'; else if(dipilih === q.jawaban) status = 'benar'; else status = 'salah';
-    if(status === 'benar') benar++; else if(status === 'salah') salah++; else kosong++;
-    return { id:id, nomor:q.nomor, kategori:q.kategori, pertanyaan:q.pertanyaan, opsi:q.opsi, jawaban:q.jawaban,
-      dipilih: (dipilih===undefined?null:dipilih), status:status, pembahasan: q.pembahasan || '' };
-  });
   const total = quiz.ids.length;
-  const nilai = Math.round(benar / total * 100);
-  const res = { id: uid(), username: session.username, nama: session.nama, kategori: quiz.kategori,
-    tanggal: new Date().toISOString(), total: total, benar: benar, salah: salah, kosong: kosong,
-    nilai: nilai, detail: detail, durasi: Math.round((Date.now() - quiz.start)/1000) };
+  const unanswered = quiz.ids.filter(id=>quiz.answers[id]===undefined).length;
+  const doubtful = quiz.ids.filter(id=>quiz.ragu[id]).length;
+  if(unanswered>0 || doubtful>0){
+    let msg = '⚠️ KONFIRMASI SUBMIT UJIAN\n\n';
+    if(unanswered>0) msg += '• '+unanswered+' soal BELUM DIJAWAB\n';
+    if(doubtful>0) msg += '• '+doubtful+' soal DITANDAI RAGU-RAGU\n';
+    msg += '\nSoal ragu dinilai berdasarkan jawaban saat ini.\n\nYakin menyelesaikan?';
+    if(!confirm(msg)) return;
+  }
+  const all = getQuestions();
+  let benar=0, salah=0, kosong=0;
+  const detail = quiz.ids.map(id => {
+    const q = all.find(x=>x.id===id) || {nomor:'?',kategori:'-',pertanyaan:'(dihapus)',opsi:[],jawaban:-1,pembahasan:''};
+    const dipilih = quiz.answers[id];
+    let status; if(dipilih===undefined) status='kosong'; else if(dipilih===q.jawaban) status='benar'; else status='salah';
+    if(status==='benar') benar++; else if(status==='salah') salah++; else kosong++;
+    return {id, nomor:q.nomor, kategori:q.kategori, pertanyaan:q.pertanyaan, opsi:q.opsi, jawaban:q.jawaban,
+      dipilih:(dipilih===undefined?null:dipilih), status, ragu:!!quiz.ragu[id], pembahasan:q.pembahasan||''};
+  });
+  const nilai = Math.round(benar/total*100);
+  const res = {id:uid(), username:session.username, nama:session.nama, jenjang:session.jenjang||'-',
+    kategori:quiz.kategori, tanggal:new Date().toISOString(), total, benar, salah, kosong, nilai, detail,
+    durasi:Math.round((Date.now()-quiz.start)/1000)};
   const rs = store.get(KEY.R, []); rs.unshift(res); store.set(KEY.R, rs);
-  lastResult = Object.assign({}, res, { _fresh:true });
-  quiz = null; clearInterval(timerInt); render(); window.scrollTo({top:0, behavior:'smooth'});
-  kirimHasilKeServer(res).then(out => {
+  lastResult = Object.assign({}, res, {_fresh:true});
+  quiz = null; clearInterval(timerInt); render(); window.scrollTo({top:0,behavior:'smooth'});
+  kirimHasilKeServer(res).then(out=>{
     const el = document.getElementById('sync-note'); if(!el) return;
-    if(out.ok) el.innerHTML = '<span class="pill ok">Hasil terkirim ke server</span>';
-    else if(out.reason === 'no-url') el.innerHTML = '<span class="pill">Mode lokal — hasil tersimpan di perangkat ini.</span>';
-    else el.innerHTML = '<span class="pill bad">Gagal mengirim ke server. Hasil tetap tersimpan di perangkat ini.</span>';
+    if(out.ok) el.innerHTML = '<span class="pill ok">Hasil terkirim</span>';
+    else if(out.reason==='no-url') el.innerHTML = '<span class="pill">Mode lokal.</span>';
+    else el.innerHTML = '<span class="pill bad">Gagal kirim ke server.</span>';
   });
 }
 
 /* =========================================================
-   HASIL
+   HASIL PESERTA
    ========================================================= */
 function viewHasil(){
   const r = lastResult;
-  const grade = r.nilai >= 80 ? 'Luar biasa!' : r.nilai >= 70 ? 'Bagus!' : r.nilai >= 60 ? 'Cukup, tingkatkan lagi.' : 'Perlu belajar lebih giat.';
-  return topbar('Hasil Latihan') + '<div class="container narrow"><div class="card"><div class="result-head">' +
-    '<div class="score-ring" style="--p:' + r.nilai + '"><div><strong>' + r.nilai + '</strong><span>NILAI</span></div></div>' +
-    '<div style="flex:1;min-width:220px"><h2 style="margin-bottom:4px">' + esc(grade) + '</h2>' +
-    '<p style="margin-bottom:12px">' + esc(r.nama) + ' - ' + esc(r.kategori) + ' - ' + fmtDate(r.tanggal) + '</p>' +
-    '<div class="stats"><div><strong style="color:var(--ok)">' + r.benar + '</strong><span>Benar</span></div>' +
-    '<div><strong style="color:var(--bad)">' + r.salah + '</strong><span>Salah</span></div>' +
-    '<div><strong>' + r.kosong + '</strong><span>Kosong</span></div>' +
-    '<div><strong>' + fmtDur(r.durasi||0) + '</strong><span>Durasi</span></div></div></div></div>' +
+  const grade = r.nilai>=80?'Luar biasa!':r.nilai>=70?'Bagus!':r.nilai>=60?'Cukup, tingkatkan lagi.':'Perlu belajar lebih giat.';
+  const nextJenjang = JENJANG_NEXT[r.jenjang];
+  const lulusNaik = r.nilai>=NILAI_LULUS_NAIK && nextJenjang;
+  return topbar('Hasil Latihan')+'<div class="container narrow"><div class="card"><div class="result-head">' +
+    '<div class="score-ring" style="--p:'+r.nilai+'"><div><strong>'+r.nilai+'</strong><span>NILAI</span></div></div>' +
+    '<div style="flex:1;min-width:220px"><h2 style="margin-bottom:4px">'+esc(grade)+'</h2>' +
+    '<p style="margin-bottom:12px">'+esc(r.nama)+' · '+esc(r.kategori)+' · '+fmtDate(r.tanggal)+'</p>' +
+    '<div class="row gap wrap" style="margin-bottom:12px">'+jenjangBadge(r.jenjang) +
+    (lulusNaik?'<span class="jenjang-badge naik">✓ Siap naik ke '+esc(shortJenjang(nextJenjang))+'</span>':'')+'</div>' +
+    '<div class="stats"><div><strong style="color:var(--ok)">'+r.benar+'</strong><span>Benar</span></div>' +
+    '<div><strong style="color:var(--bad)">'+r.salah+'</strong><span>Salah</span></div>' +
+    '<div><strong>'+r.kosong+'</strong><span>Kosong</span></div>' +
+    '<div><strong>'+fmtDur(r.durasi||0)+'</strong><span>Durasi</span></div></div></div></div>' +
     '<div class="row gap wrap" style="margin-top:22px"><button class="btn primary" onclick="ulangi()">Kerjakan Lagi</button>' +
-    '<button class="btn" onclick="kembaliDashboard()">Kembali ke Dashboard</button>' +
-    '<button class="btn ghost" onclick="unduhHasilSaya()">Unduh Hasil (JSON)</button></div>' +
-    '<div id="sync-note" style="margin-top:12px">' + (r._fresh?'<span class="pill">Mengirim ke server...</span>':'') + '</div></div>' +
-    '<div class="card"><h3>Pembahasan</h3><p class="small">Hijau = kunci jawaban, merah = jawaban Anda yang salah.</p>' +
-    reviewHTML(r.detail) + '</div></div>';
+    '<button class="btn" onclick="kembaliDashboard()">Kembali</button>' +
+    '<button class="btn ghost" onclick="unduhHasilSaya()">Unduh JSON</button></div>' +
+    '<div id="sync-note" style="margin-top:12px">'+(r._fresh?'<span class="pill">Mengirim ke server...</span>':'')+'</div></div>' +
+    '<div class="card"><h3>Pembahasan</h3><p class="small">Hijau = kunci, merah = salah. Border kuning = ragu.</p>' +
+    reviewHTML(r.detail)+'</div></div>';
 }
 function reviewHTML(detail){
   return (detail||[]).map(d => {
-    const opts = (d.opsi||[]).map((t,i)=>({t,i})).filter(o => o.t && o.t.trim());
-    return '<div class="rev"><div class="row between">' +
-      katBadge(d.kategori) + ' <span class="muted small">No ' + d.nomor + '</span>' +
-      '<span class="tag ' + d.status + '">' + (d.status==='benar'?'Benar':d.status==='salah'?'Salah':'Kosong') + '</span></div>' +
-      '<p class="qtext small">' + esc(d.pertanyaan) + '</p>' +
-      opts.map(o => {
-        let cls = ''; if(o.i === d.jawaban) cls = 'correct'; else if(o.i === d.dipilih) cls = 'wrong';
-        return '<div class="opt static ' + cls + '"><span class="ltr">' + LETTERS[o.i] + '</span><span>' + esc(o.t) + '</span></div>';
-      }).join('') +
-      (d.pembahasan ? '<div class="bahas"><b>Pembahasan:</b> ' + esc(d.pembahasan) + '</div>' : '') + '</div>';
+    const opts = (d.opsi||[]).map((t,i)=>({t,i})).filter(o=>o.t && o.t.trim());
+    let tagHtml = '';
+    if(d.status==='benar') tagHtml = '<span class="tag benar">✔ Benar</span>';
+    else if(d.status==='salah') tagHtml = '<span class="tag salah">✘ Salah</span>';
+    else tagHtml = '<span class="tag kosong">— Kosong</span>';
+    if(d.ragu) tagHtml += ' <span class="tag ragu">❓ Ragu</span>';
+    return '<div class="rev '+(d.ragu?'ragu':'')+'"><div class="row between">'+
+      katBadge(d.kategori)+' <span class="muted small">No '+d.nomor+'</span>'+tagHtml+'</div>' +
+      '<p class="qtext small">'+esc(d.pertanyaan)+'</p>' +
+      opts.map(o=>{ let cls=''; if(o.i===d.jawaban) cls='correct'; else if(o.i===d.dipilih) cls='wrong';
+        return '<div class="opt static '+cls+'"><span class="ltr">'+LETTERS[o.i]+'</span><span>'+esc(o.t)+'</span></div>'; }).join('') +
+      (d.pembahasan?'<div class="bahas"><b>Pembahasan:</b> '+esc(d.pembahasan)+'</div>':'')+'</div>';
   }).join('');
 }
 function ulangi(){ lastResult = null; render(); }
 function kembaliDashboard(){ lastResult = null; render(); }
-function unduhHasilSaya(){ downloadJSON(lastResult, 'hasil-' + lastResult.username + '-' + lastResult.id + '.json'); }
+function unduhHasilSaya(){ downloadJSON(lastResult, 'hasil-'+lastResult.username+'-'+lastResult.id+'.json'); }
 function downloadJSON(obj, filename){
   const blob = new Blob([JSON.stringify(obj, null, 2)], {type:'application/json'});
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename;
   document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
 }
 
 /* =========================================================
    ADMIN
    ========================================================= */
 function viewAdmin(){
-  return topbar('Panel Administrator', '<span class="pill">Admin</span>') + '<div class="container">' +
+  return topbar('Panel Administrator', '<span class="pill">Admin</span>')+'<div class="container">' +
     '<div class="tabs big">' +
-      '<button class="tab ' + (adminTab==='soal'?'active':'') + '" onclick="setAdminTab(\'soal\')">Kelola Soal</button>' +
-      '<button class="tab ' + (adminTab==='hasil'?'active':'') + '" onclick="setAdminTab(\'hasil\')">Hasil Ujian</button>' +
-      '<button class="tab ' + (adminTab==='setting'?'active':'') + '" onclick="setAdminTab(\'setting\')">Pengaturan</button>' +
+      '<button class="tab '+(adminTab==='soal'?'active':'')+'" onclick="setAdminTab(\'soal\')">Kelola Soal</button>' +
+      '<button class="tab '+(adminTab==='hasil'?'active':'')+'" onclick="setAdminTab(\'hasil\')">Hasil & Ranking</button>' +
+      '<button class="tab '+(adminTab==='setting'?'active':'')+'" onclick="setAdminTab(\'setting\')">Pengaturan</button>' +
     '</div>' +
-    (adminTab==='soal' ? adminSoalHTML() : adminTab==='hasil' ? adminHasilHTML() : adminSettingHTML()) + '</div>';
+    (adminTab==='soal' ? adminSoalHTML() : adminTab==='hasil' ? adminHasilHTML() : adminSettingHTML())+'</div>';
 }
 function setAdminTab(t){
   adminTab = t; render();
-  if(t === 'soal' && isSyncReady() && !quiz){ refreshSoalDariServer('admin'); }
-  if(t === 'hasil'){ renderHasilList(); }
+  if(t==='soal'){
+    if(isSyncReady() && !quiz) silentPullFromSheet().then(changed => { if(changed) render(); startPollingIfNeeded(); });
+    startPollingIfNeeded();
+  } else { stopPolling(); }
+  if(t==='hasil'){ renderHasilList(); }
 }
 
 /* ---------- KELOLA SOAL ---------- */
 function adminSoalHTML(){
+  const qs = getQuestions();
+  if(qs.length === 0){
+    return emptyStateHTML();
+  }
   const synced = isSyncReady();
   return '<div class="card"><div class="row between wrap">' +
     '<div class="row gap wrap">' +
-      '<input class="input" style="max-width:220px" placeholder="Cari soal..." value="' + esc(adminFilter.q) + '" oninput="adminFilter.q=this.value; renderSoalList()">' +
-      '<select class="input" style="max-width:160px" onchange="adminFilter.kategori=this.value; renderSoalList()">' +
-        getKategoriList().map(function(k){
-          return '<option ' + (adminFilter.kategori===k?'selected':'') + '>' + esc(k) + '</option>';
-        }).join('') +
+      '<input class="input" style="max-width:180px" placeholder="Cari soal..." value="'+esc(adminFilter.q)+'" oninput="adminFilter.q=this.value; renderSoalList()">' +
+      '<select class="input" style="max-width:140px" onchange="adminFilter.kategori=this.value; renderSoalList()">' +
+        getKategoriList().map(function(k){ return '<option '+(adminFilter.kategori===k?'selected':'')+'>'+esc(k)+'</option>'; }).join('') +
+      '</select>' +
+      '<select class="input" style="max-width:180px" onchange="adminFilter.jenjang=this.value; renderSoalList()">' +
+        '<option value="Semua"'+(adminFilter.jenjang==='Semua'?' selected':'')+'>Semua Jenjang</option>' +
+        JENJANG_LIST.map(function(j){ return '<option value="'+j+'"'+(adminFilter.jenjang===j?' selected':'')+'>'+shortJenjang(j)+'</option>'; }).join('') +
       '</select></div>' +
     '<div class="row gap wrap">' +
-      (synced ? '<button class="btn tiny" onclick="refreshSoalManual()">↻ Refresh dari Server</button>' : '') +
+      (synced ? '<button class="btn tiny" onclick="manualPullFromSheet()">⬇ Tarik dari Sheet</button>' +
+                '<button class="btn tiny" onclick="manualPushToSheet()">⬆ Kirim ke Sheet</button>' : '') +
       '<button class="btn tiny ghost" onclick="downloadSoalTemplate()">Template</button>' +
-      '<label class="btn tiny" style="margin:0">Import CSV/JSON' +
-        '<input type="file" accept=".csv,.json,.txt" hidden onchange="importSoalFile(this)">' +
-      '</label>' +
-      '<button class="btn primary" onclick="openWordImport()">+ Paste dari Word/Teks</button>' +
-      '<button class="btn" onclick="openEditor()">+ 1 Soal Manual</button>' +
+      '<label class="btn tiny" style="margin:0">Import CSV/JSON<input type="file" accept=".csv,.json,.txt" hidden onchange="importSoalFile(this)"></label>' +
+      '<button class="btn primary" onclick="openWordImport()">+ Paste Word/Teks</button>' +
+      '<button class="btn" onclick="openEditor()">+ 1 Soal</button>' +
+      '<button class="btn tiny danger" onclick="hapusSemuaSoal()">🗑 Hapus Semua</button>' +
     '</div></div>' +
-    '<div id="soal-sync-note" style="margin-top:10px">' +
-      (synced ? '<span class="pill">Setiap perubahan otomatis tersinkron ke Google Sheet</span>'
-              : '<span class="pill">Mode lokal — atur URL Apps Script di Pengaturan agar soal tersinkron ke semua perangkat</span>') +
-    '</div>' +
+    '<div id="soal-sync-note" style="margin-top:10px"></div>' +
     '<div id="soal-list"></div></div>';
 }
-async function refreshSoalManual(){
-  if(!isSyncReady()){ alert('URL Apps Script belum diatur di Pengaturan.'); return; }
-  const note = document.getElementById('soal-sync-note');
-  if(note) note.innerHTML = '<span class="pill">Memuat soal dari server...</span>';
-  const list = await ambilSoalServer();
-  if(!Array.isArray(list)){
-    if(note) note.innerHTML = '<span class="pill bad">Gagal memuat dari server.</span>';
-    return;
-  }
-  if(list.length === 0){
-    if(note) note.innerHTML = '<span class="pill">Sheet Soal kosong. Soal lokal akan didorong ke server sebagai data awal.</span>';
-    const local = getQuestions();
-    if(local.length){ await pushSoalKeServer(local); render(); }
-    return;
-  }
-  store.set(KEY.Q, list); render();
-  alert('Berhasil memuat ' + list.length + ' soal dari server (' + (getKategoriList().length-1) + ' kategori).');
+function emptyStateHTML(){
+  const synced = isSyncReady();
+  return '<div class="card empty-state">' +
+    '<div class="icon">📚</div>' +
+    '<h2>Bank Soal Masih Kosong</h2>' +
+    '<p>Pilih cara memulai. Setelah diisi, soal otomatis tersinkron ke Google Sheet.</p>' +
+    '<div class="empty-action">' +
+      '<button class="btn primary" onclick="bootstrapSoal()">📦 Isi Bank Bawaan<small>55 soal dengan tag jenjang otomatis</small></button>' +
+      '<button class="btn" onclick="openWordImport()">📝 Paste dari Word/Teks<small>Copy dari Word, paste, selesai</small></button>' +
+      '<label class="btn" style="margin:0">📤 Import CSV/JSON<small>Dari Excel atau file backup</small><input type="file" accept=".csv,.json,.txt" hidden onchange="importSoalFile(this)"></label>' +
+      (synced ? '<button class="btn ghost" onclick="manualPullFromSheet()">⬇ Tarik dari Sheet<small>Jika sheet sudah berisi soal</small></button>' : '') +
+    '</div>' +
+    (!synced ? '<div class="doubt-note" style="margin-top:22px;max-width:680px;margin-left:auto;margin-right:auto">💡 Atur URL Apps Script dulu di tab Pengaturan agar soal tersinkron ke semua perangkat.</div>' : '') +
+    '</div>';
 }
+async function bootstrapSoal(){
+  if(!confirm('Isi bank soal dengan 55 soal bawaan?\n\nSetiap soal sudah diberi tag jenjang:\n• Teknis 1-10 & Sosiokultural → semua jenjang\n• Teknis 11-20 → Mahir ke atas\n• Teknis 21-30 → Penyelia ke atas\n• Teknis 31-40 → Ahli Pertama ke atas\n• Teknis 41-50 → Ahli Muda ke atas\n\nSoal otomatis dikirim ke sheet.')) return;
+  const list = bootstrapQuestions();
+  setQuestions(list);
+  render();
+  alert('✓ 55 soal bawaan dimuat.');
+}
+function hapusSemuaSoal(){
+  const total = getQuestions().length;
+  if(total===0){ alert('Tidak ada soal.'); return; }
+  const c = prompt('⚠️ HAPUS SEMUA '+total+' SOAL?\n\n'+(isSyncReady()?'Akan sinkron ke sheet juga.\n':'')+'Tindakan tidak bisa dibatalkan.\n\nKetik HAPUS:');
+  if(c === null || c !== 'HAPUS'){ if(c!==null) alert('Dibatalkan.'); return; }
+  setQuestions([]);
+  lastSheetCount = 0;
+  render();
+}
+async function refreshSoalManual(){ await manualPullFromSheet(); }
 function renderSoalList(){
   const box = document.getElementById('soal-list'); if(!box) return;
+  const qs = getQuestions();
+  if(qs.length === 0){ if(adminTab === 'soal') render(); return; }
+  updateSyncBanner();
   const s = adminFilter.q.toLowerCase().trim();
-  const list = filterByKategori(getQuestions(), adminFilter.kategori)
-    .filter(q => !s || q.pertanyaan.toLowerCase().indexOf(s) >= 0 || String(q.nomor).indexOf(s) >= 0)
-    .sort((a,b) => a.kategori.localeCompare(b.kategori) || a.nomor - b.nomor);
-  box.innerHTML = '<p class="muted small" style="margin-top:16px">' + list.length + ' soal ditampilkan</p>' +
-    (list.length ? list.map(q =>
-      '<div class="q-admin"><div class="row between wrap">' +
-      katBadge(q.kategori) + ' <span class="muted small">No ' + q.nomor + '</span>' +
-      '<div class="row gap"><button class="btn tiny" onclick="openEditor(\''+q.id+'\')">Edit</button>' +
-        '<button class="btn tiny danger" onclick="hapusSoal(\''+q.id+'\')">Hapus</button></div></div>' +
-      '<p class="q-admin-text">' + esc(q.pertanyaan) + '</p><div class="q-admin-opts">' +
-      q.opsi.map((t,i) => (t && t.trim()) ? '<div class="' + (i===q.jawaban?'ok':'') + '">' + LETTERS[i] + '. ' + esc(t) + (i===q.jawaban?' (kunci)':'') + '</div>' : '').join('') +
-      '</div>' + (q.pembahasan ? '<div class="bahas" style="font-size:12.5px"><b>Pembahasan:</b> ' + esc(q.pembahasan) + '</div>' : '') +
-      '</div>').join('')
-    : '<p class="muted">Tidak ada soal yang cocok.</p>');
+  let list = filterByKategori(qs, adminFilter.kategori);
+  if(adminFilter.jenjang !== 'Semua') list = filterByJenjang(list, adminFilter.jenjang);
+  list = list.filter(q => !s || q.pertanyaan.toLowerCase().indexOf(s)>=0 || String(q.nomor).indexOf(s)>=0)
+    .sort((a,b) => a.kategori.localeCompare(b.kategori) || a.nomor-b.nomor);
+  box.innerHTML = '<p class="muted small" style="margin-top:16px">'+list.length+' soal ditampilkan</p>' +
+    (list.length ? list.map(q => {
+      const jenjangTags = q.jenjang && q.jenjang !== 'Semua'
+        ? q.jenjang.split(',').map(j => '<span class="jenjang-tag">'+esc(shortJenjang(j.trim()))+'</span>').join('')
+        : '<span class="jenjang-tag" style="background:#dcfce7;color:#166534">Semua Jenjang</span>';
+      return '<div class="q-admin"><div class="row between wrap">'+katBadge(q.kategori)+' <span class="muted small">No '+q.nomor+'</span>' +
+        '<div class="row gap"><button class="btn tiny" onclick="openEditor(\''+q.id+'\')">Edit</button>' +
+          '<button class="btn tiny danger" onclick="hapusSoal(\''+q.id+'\')">Hapus</button></div></div>' +
+        '<div style="margin:8px 0">'+jenjangTags+'</div>' +
+        '<p class="q-admin-text">'+esc(q.pertanyaan)+'</p><div class="q-admin-opts">' +
+        q.opsi.map((t,i)=>(t&&t.trim())?'<div class="'+(i===q.jawaban?'ok':'')+'">'+LETTERS[i]+'. '+esc(t)+(i===q.jawaban?' (kunci)':'')+'</div>':'').join('') +
+        '</div>'+(q.pembahasan?'<div class="bahas" style="font-size:12.5px"><b>Pembahasan:</b> '+esc(q.pembahasan)+'</div>':'')+'</div>';
+    }).join('')
+    : '<p class="muted">Tidak ada soal cocok.</p>');
 }
-function nextNomor(kategori){
-  const list = getQuestions().filter(q => q.kategori === kategori);
-  return list.length ? Math.max.apply(null, list.map(q => Number(q.nomor)||0)) + 1 : 1;
-}
+function nextNomor(kat){ const l = getQuestions().filter(q=>q.kategori===kat); return l.length ? Math.max.apply(null, l.map(q=>Number(q.nomor)||0))+1 : 1; }
 function openEditor(id){
-  const q = id ? getQuestions().find(x => x.id === id) : null;
-  const d = q || { id:'', kategori:'Teknis', nomor: nextNomor('Teknis'), pertanyaan:'', opsi:['','','','',''], jawaban:0, pembahasan:'' };
+  const q = id ? getQuestions().find(x=>x.id===id) : null;
+  const d = q || {id:'', kategori:'Teknis', jenjang:'Semua', nomor: nextNomor('Teknis'), pertanyaan:'', opsi:['','','','',''], jawaban:0, pembahasan:''};
+  const curJenjang = (d.jenjang||'Semua');
+  const isSemua = curJenjang === 'Semua' || !curJenjang.trim();
+  const selected = isSemua ? [] : curJenjang.split(',').map(s => s.trim());
+
   document.getElementById('modal-root').innerHTML =
     '<div class="overlay" onclick="if(event.target===this) closeModal()"><div class="modal">' +
-    '<div class="row between" style="margin-bottom:6px"><h3>' + (q ? 'Edit Soal' : 'Tambah Soal Baru') + '</h3>' +
+    '<div class="row between" style="margin-bottom:6px"><h3>'+(q?'Edit Soal':'Tambah Soal')+'</h3>' +
     '<button class="btn tiny ghost" onclick="closeModal()">X</button></div>' +
     '<div class="grid2"><div><label>Kategori</label>' +
-      '<input id="ed-kategori" class="input" list="ed-kat-list" value="' + esc(d.kategori||'Teknis') + '" placeholder="mis. Teknis, Manajerial, ...">' +
-      '<datalist id="ed-kat-list">' +
-        getKategoriList().filter(k=>k!=='Semua').map(k => '<option value="' + esc(k) + '">').join('') +
-      '</datalist>' +
-      '<div class="tiny muted" style="margin-top:4px">Boleh ketik kategori baru</div></div>' +
-      '<div><label>Nomor Soal</label><input id="ed-nomor" class="input" type="number" min="1" value="' + d.nomor + '"></div></div>' +
-    '<label>Pertanyaan</label><textarea id="ed-q" class="input" rows="3">' + esc(d.pertanyaan) + '</textarea>' +
-    '<label>Pilihan Jawaban <span class="muted tiny">(kosongkan bila tidak dipakai)</span></label>' +
-    [0,1,2,3,4].map(i => '<div class="row gap" style="margin-bottom:8px"><span class="ltr-static">' + LETTERS[i] + '</span>' +
-      '<input id="ed-o' + i + '" class="input" value="' + esc(d.opsi[i]||'') + '" placeholder="Pilihan ' + LETTERS[i] + '"></div>').join('') +
+      '<input id="ed-kategori" class="input" list="ed-kat-list" value="'+esc(d.kategori||'Teknis')+'">' +
+      '<datalist id="ed-kat-list">'+getKategoriList().filter(k=>k!=='Semua').map(k=>'<option value="'+esc(k)+'">').join('')+'</datalist></div>' +
+      '<div><label>Nomor Soal</label><input id="ed-nomor" class="input" type="number" min="1" value="'+d.nomor+'"></div></div>' +
+    '<label>Jenjang Jabatan <span class="muted tiny">(bisa pilih lebih dari satu)</span></label>' +
+    '<div class="jenjang-grid">' +
+      '<label class="jenjang-check all '+(isSemua?'checked':'')+'" id="ed-j-all-label">' +
+        '<input type="checkbox" id="ed-j-all" '+(isSemua?'checked':'')+' onchange="toggleJenjangAll()"> ' +
+        '<b>Semua Jenjang</b> <span class="tiny muted">(berlaku untuk semua)</span>' +
+      '</label>' +
+      JENJANG_LIST.map(function(j){
+        const ck = selected.indexOf(j) >= 0;
+        return '<label class="jenjang-check"><input type="checkbox" class="ed-j-item" value="'+esc(j)+'" '+(ck?'checked':'')+' onchange="onJenjangItemChange()"> '+shortJenjang(j)+'</label>';
+      }).join('') +
+    '</div>' +
+    '<label>Pertanyaan</label><textarea id="ed-q" class="input" rows="3">'+esc(d.pertanyaan)+'</textarea>' +
+    '<label>Pilihan Jawaban</label>' +
+    [0,1,2,3,4].map(i=>'<div class="row gap" style="margin-bottom:8px"><span class="ltr-static">'+LETTERS[i]+'</span>' +
+      '<input id="ed-o'+i+'" class="input" value="'+esc(d.opsi[i]||'')+'"></div>').join('') +
     '<label>Kunci Jawaban</label><select id="ed-a" class="input">' +
-      [0,1,2,3,4].map(i => '<option value="' + i + '" ' + (d.jawaban===i?'selected':'') + '>' + LETTERS[i] + '</option>').join('') +
+      [0,1,2,3,4].map(i=>'<option value="'+i+'" '+(d.jawaban===i?'selected':'')+'>'+LETTERS[i]+'</option>').join('') +
     '</select>' +
-    '<label>Pembahasan (opsional)</label><textarea id="ed-bahas" class="input" rows="2">' + esc(d.pembahasan||'') + '</textarea>' +
-    '<div class="row gap" style="margin-top:18px"><button class="btn primary" onclick="simpanSoal(\'' + d.id + '\')">Simpan</button>' +
+    '<label>Pembahasan</label><textarea id="ed-bahas" class="input" rows="2">'+esc(d.pembahasan||'')+'</textarea>' +
+    '<div class="row gap" style="margin-top:18px"><button class="btn primary" onclick="simpanSoal(\''+d.id+'\')">Simpan</button>' +
     '<button class="btn ghost" onclick="closeModal()">Batal</button></div></div></div>';
+}
+function toggleJenjangAll(){
+  const isAll = document.getElementById('ed-j-all').checked;
+  document.querySelectorAll('.ed-j-item').forEach(cb => { cb.checked = false; cb.disabled = isAll; });
+  document.getElementById('ed-j-all-label').classList.toggle('checked', isAll);
+}
+function onJenjangItemChange(){
+  const anyChecked = Array.from(document.querySelectorAll('.ed-j-item')).some(cb => cb.checked);
+  if(anyChecked){ document.getElementById('ed-j-all').checked = false; document.getElementById('ed-j-all-label').classList.remove('checked'); }
 }
 function closeModal(){ document.getElementById('modal-root').innerHTML = ''; }
 function simpanSoal(id){
-  let kategori = document.getElementById('ed-kategori').value.trim();
-  if(!kategori) kategori = 'Teknis';
+  let kategori = document.getElementById('ed-kategori').value.trim() || 'Teknis';
   const nomor = Number(document.getElementById('ed-nomor').value) || 1;
   const pertanyaan = document.getElementById('ed-q').value.trim();
-  const opsi = [0,1,2,3,4].map(i => document.getElementById('ed-o'+i).value.trim());
+  const opsi = [0,1,2,3,4].map(i=>document.getElementById('ed-o'+i).value.trim());
   const jawaban = Number(document.getElementById('ed-a').value);
   const pembahasan = document.getElementById('ed-bahas').value.trim();
-  if(!pertanyaan){ alert('Pertanyaan tidak boleh kosong.'); return; }
-  if(opsi.filter(t=>t).length < 2){ alert('Isi minimal 2 pilihan jawaban.'); return; }
-  if(!opsi[jawaban]){ alert('Kunci jawaban yang dipilih masih kosong.'); return; }
+
+  const isAll = document.getElementById('ed-j-all').checked;
+  let jenjang = 'Semua';
+  if(!isAll){
+    const checked = Array.from(document.querySelectorAll('.ed-j-item:checked')).map(cb => cb.value);
+    if(checked.length) jenjang = checked.join(', ');
+  }
+
+  if(!pertanyaan){ alert('Pertanyaan kosong.'); return; }
+  if(opsi.filter(t=>t).length<2){ alert('Minimal 2 pilihan.'); return; }
+  if(!opsi[jawaban]){ alert('Kunci jawaban kosong.'); return; }
+
   const list = getQuestions();
-  if(id){ const idx = list.findIndex(x => x.id === id); if(idx >= 0) list[idx] = { id:id, kategori, nomor, pertanyaan, opsi, jawaban, pembahasan }; }
-  else { list.push({ id: uid(), kategori, nomor, pertanyaan, opsi, jawaban, pembahasan }); }
+  if(id){ const idx = list.findIndex(x=>x.id===id); if(idx>=0) list[idx] = {id, kategori, jenjang, nomor, pertanyaan, opsi, jawaban, pembahasan}; }
+  else { list.push({id:uid(), kategori, jenjang, nomor, pertanyaan, opsi, jawaban, pembahasan}); }
   setQuestions(list); closeModal(); render();
 }
 function hapusSoal(id){
-  if(!confirm('Yakin ingin menghapus soal ini?')) return;
-  setQuestions(getQuestions().filter(q => q.id !== id)); render();
+  if(!confirm('Hapus soal ini?')) return;
+  setQuestions(getQuestions().filter(q=>q.id!==id)); render();
 }
 
-/* ---------- IMPORT SOAL (CSV/JSON) ---------- */
+/* ---------- IMPORT CSV/JSON ---------- */
 function importSoalFile(input){
   const f = input.files[0]; if(!f) return;
   const name = f.name.toLowerCase();
@@ -784,101 +1026,94 @@ function importSoalFile(input){
       let list = [];
       if(name.endsWith('.json')){
         const data = JSON.parse(rd.result);
-        const arr = Array.isArray(data) ? data : (data.questions || []);
+        const arr = Array.isArray(data) ? data : (data.questions||[]);
         list = arr.map(normalizeImportedQ);
       } else { list = parseCSVQuestions(rd.result); }
       list = list.filter(q => q && q.pertanyaan);
-      if(!list.length){ alert('Tidak ada soal valid di file tersebut.'); input.value=''; return; }
+      if(!list.length){ alert('Tidak ada soal valid.'); input.value=''; return; }
       const existing = getQuestions();
       const counter = {}; existing.forEach(q => { counter[q.kategori] = Math.max(counter[q.kategori]||0, Number(q.nomor)||0); });
-      list.forEach(q => { counter[q.kategori] = (counter[q.kategori]||0) + 1; q.nomor = counter[q.kategori]; q.id = uid(); existing.push(q); });
+      list.forEach(q => { counter[q.kategori] = (counter[q.kategori]||0)+1; q.nomor = counter[q.kategori]; q.id = uid(); existing.push(q); });
       setQuestions(existing); input.value = ''; render();
-      alert(list.length + ' soal berhasil ditambahkan. Total sekarang: ' + existing.length + ' soal, ' + (getKategoriList().length-1) + ' kategori.');
-    }catch(e){ alert('File tidak valid: ' + e.message); }
+      alert(list.length+' soal ditambahkan. Total: '+existing.length+' soal.');
+    }catch(e){ alert('File tidak valid: '+e.message); }
   };
   rd.readAsText(f, 'UTF-8');
 }
 function normalizeImportedQ(raw){
   if(!raw || !raw.pertanyaan) return null;
   let opsi = Array.isArray(raw.opsi) ? raw.opsi.slice(0,5) : [];
-  while(opsi.length < 5) opsi.push('');
+  while(opsi.length<5) opsi.push('');
   let jaw = raw.jawaban;
-  if(typeof jaw === 'string'){ const t = jaw.trim().toUpperCase(); const idx = LETTERS.indexOf(t); jaw = idx >= 0 ? idx : (Number(t) - 1); }
-  if(typeof jaw !== 'number' || isNaN(jaw) || jaw < 0 || jaw > 4) jaw = 0;
-  return { kategori: (raw.kategori || 'Teknis').trim(), nomor: Number(raw.nomor) || 1,
-    pertanyaan: String(raw.pertanyaan).trim(), opsi: opsi.map(s => String(s||'').trim()),
-    jawaban: jaw, pembahasan: String(raw.pembahasan || '').trim() };
+  if(typeof jaw==='string'){ const t=jaw.trim().toUpperCase(); const idx=LETTERS.indexOf(t); jaw=idx>=0?idx:(Number(t)-1); }
+  if(typeof jaw!=='number' || isNaN(jaw) || jaw<0 || jaw>4) jaw = 0;
+  let jenjang = String(raw.jenjang || '').trim();
+  if(!jenjang) jenjang = 'Semua';
+  return {kategori:(raw.kategori||'Teknis').trim(), jenjang, nomor:Number(raw.nomor)||1, pertanyaan:String(raw.pertanyaan).trim(),
+    opsi:opsi.map(s=>String(s||'').trim()), jawaban:jaw, pembahasan:String(raw.pembahasan||'').trim()};
 }
 function parseCSVQuestions(text){
-  const lines = text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n').filter(l => l.trim());
+  const lines = text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n').filter(l=>l.trim());
   if(!lines.length) return [];
   const first = lines[0];
   const delim = (first.split(';').length >= first.split(',').length) ? ';' : ',';
-  const rows = lines.map(line => parseCSVLine(line, delim));
-  const head = rows.shift().map(h => h.trim().toLowerCase());
-  const find = function(){ for(let i=0; i<arguments.length; i++){ const idx = head.indexOf(arguments[i]); if(idx >= 0) return idx; } return -1; };
-  const iKat=find('kategori','category'), iNom=find('nomor','no','number'), iQ=find('pertanyaan','question','soal');
-  const iA=find('opsi_a','opsia','a','pilihan_a'), iB=find('opsi_b','opsib','b','pilihan_b'),
-        iC=find('opsi_c','opsic','c','pilihan_c'), iD=find('opsi_d','opsid','d','pilihan_d'),
-        iE=find('opsi_e','opsie','e','pilihan_e');
+  const rows = lines.map(line=>parseCSVLine(line, delim));
+  const head = rows.shift().map(h=>h.trim().toLowerCase());
+  const find = function(){ for(let i=0;i<arguments.length;i++){ const idx=head.indexOf(arguments[i]); if(idx>=0) return idx; } return -1; };
+  const iKat=find('kategori','category'), iJen=find('jenjang','level'), iNom=find('nomor','no','number'), iQ=find('pertanyaan','question','soal');
+  const iA=find('opsi_a','opsia','a','pilihan_a'), iB=find('opsi_b','opsib','b','pilihan_b');
+  const iC=find('opsi_c','opsic','c','pilihan_c'), iD=find('opsi_d','opsid','d','pilihan_d'), iE=find('opsi_e','opsie','e','pilihan_e');
   const iJ=find('jawaban','kunci','answer','key'), iP=find('pembahasan','penjelasan','explanation');
-  if(iQ < 0) throw new Error('Kolom "pertanyaan" tidak ada di header CSV. Lihat tombol Template.');
-  return rows.map(r => {
-    const get = i => i >= 0 ? (r[i] || '').trim() : '';
-    return normalizeImportedQ({ kategori:get(iKat), nomor:get(iNom), pertanyaan:get(iQ),
-      opsi:[get(iA),get(iB),get(iC),get(iD),get(iE)], jawaban:get(iJ), pembahasan:get(iP) });
-  }).filter(q => q && q.pertanyaan);
+  if(iQ<0) throw new Error('Kolom "pertanyaan" tidak ada di header CSV.');
+  return rows.map(r=>{
+    const get = i=>i>=0?(r[i]||'').trim():'';
+    return normalizeImportedQ({kategori:get(iKat), jenjang:get(iJen), nomor:get(iNom), pertanyaan:get(iQ),
+      opsi:[get(iA),get(iB),get(iC),get(iD),get(iE)], jawaban:get(iJ), pembahasan:get(iP)});
+  }).filter(q=>q && q.pertanyaan);
 }
 function parseCSVLine(line, delim){
-  const out = []; let cur = '', inQ = false;
-  for(let i=0; i<line.length; i++){
+  const out = []; let cur='', inQ=false;
+  for(let i=0;i<line.length;i++){
     const ch = line[i];
-    if(inQ){ if(ch === '"'){ if(line[i+1] === '"'){ cur += '"'; i++; } else inQ = false; } else cur += ch; }
-    else { if(ch === '"') inQ = true; else if(ch === delim){ out.push(cur); cur = ''; } else cur += ch; }
+    if(inQ){ if(ch==='"'){ if(line[i+1]==='"'){ cur+='"'; i++; } else inQ=false; } else cur+=ch; }
+    else { if(ch==='"') inQ=true; else if(ch===delim){ out.push(cur); cur=''; } else cur+=ch; }
   }
   out.push(cur); return out;
 }
 function downloadSoalTemplate(){
-  const head = ['kategori','nomor','pertanyaan','opsi_a','opsi_b','opsi_c','opsi_d','opsi_e','jawaban','pembahasan'];
-  const ex1 = ['Teknis','1','Apa kepanjangan TFR?','Total Fertility Rate','Tingkat Fertilitas Rendah','Total Fertilitas Rata-rata','Total Fekunditas Rate','Tingkat Fekunditas Rata-rata','A','TFR = Total Fertility Rate.'];
-  const ex2 = ['Manajerial','1','Fungsi utama POAC adalah...','Planning','Organizing','Actuating','Controlling','Evaluasi','A','POAC = Planning, Organizing, Actuating, Controlling.'];
-  const csv = '\uFEFF' + [head, ex1, ex2].map(row => row.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(';')).join('\r\n');
+  const head = ['kategori','jenjang','nomor','pertanyaan','opsi_a','opsi_b','opsi_c','opsi_d','opsi_e','jawaban','pembahasan'];
+  const ex1 = ['Teknis','Semua','1','Apa kepanjangan TFR?','Total Fertility Rate','Tingkat Fertilitas Rendah','Total Fertilitas Rata-rata','Total Fekunditas Rate','Tingkat Fekunditas Rata-rata','A','TFR = Total Fertility Rate.'];
+  const ex2 = ['Manajerial','Penyuluh KB Penyelia, Penyuluh KB Ahli Pertama','1','Fungsi POAC...','Planning','Organizing','Actuating','Controlling','Evaluasi','A','POAC.'];
+  const csv = '\uFEFF' + [head, ex1, ex2].map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');
   const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'template-soal.csv';
   document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
 }
 
-/* ---------- IMPORT VIA PASTE WORD/TEKS ---------- */
+/* ---------- IMPORT PASTE WORD ---------- */
 function openWordImport(){
   document.getElementById('modal-root').innerHTML =
     '<div class="overlay" onclick="if(event.target===this) closeModal()"><div class="modal">' +
-    '<div class="row between" style="margin-bottom:6px"><h3 style="margin:0">Paste Soal dari Word / Teks</h3>' +
+    '<div class="row between" style="margin-bottom:6px"><h3 style="margin:0">Paste Soal dari Word/Teks</h3>' +
     '<button class="btn tiny ghost" onclick="closeModal()">X</button></div>' +
-    '<p class="small">Copy soal dari Word/PDF/teks apa pun, lalu paste di kotak di bawah. Klik <b>Parsing Saja</b> untuk preview, lalu <b>Import</b>.</p>' +
-    '<div class="grid2">' +
-      '<div><label>Kategori default (jika tidak ada baris KATEGORI:)</label>' +
-        '<input id="wi-kat" class="input" list="wi-kat-list" value="Teknis" placeholder="mis. Teknis, Manajerial, ...">' +
-        '<datalist id="wi-kat-list">' +
-          getKategoriList().filter(k=>k!=='Semua').map(k => '<option value="' + esc(k) + '">').join('') +
-        '</datalist>' +
-        '<div class="tiny muted" style="margin-top:4px">Boleh ketik kategori baru</div></div>' +
-      '<div><label>Upload .docx / .txt (opsional)</label>' +
-        '<label class="btn" style="margin:0;width:100%">Pilih File' +
-          '<input type="file" accept=".docx,.txt,.text" hidden onchange="loadWordFile(this)"></label></div>' +
-    '</div>' +
-    '<label>Tempel / tulis soal di sini</label>' +
-    '<textarea id="wi-text" class="input" rows="12" style="font-family:monospace;font-size:12.5px" placeholder="KATEGORI: Teknis&#10;&#10;1. Pertanyaan soal pertama?&#10;A. Opsi A&#10;B. Opsi B&#10;C. Opsi C&#10;D. Opsi D&#10;Jawaban: A&#10;Pembahasan: penjelasan opsional&#10;&#10;2. Pertanyaan soal kedua?&#10;A. ...&#10;B. ...&#10;C. ...&#10;D. ...&#10;Jawaban: C&#10;&#10;KATEGORI: Manajerial&#10;&#10;1. Fungsi POAC adalah...&#10;A. ...&#10;B. ...&#10;Jawaban: A"></textarea>' +
-    '<details style="margin-top:10px"><summary style="cursor:pointer;font-size:13px;color:var(--pri);font-weight:600">Format yang didukung</summary>' +
-      '<pre class="code" style="font-size:11px">KATEGORI: Teknis  (atau Kategori / Category - bebas teks)\n\n1. Pertanyaan soal?\nA. Opsi A    (boleh A. / A) / a. / a))\nB. Opsi B\nC. Opsi C\nD. Opsi D\nE. Opsi E\nJawaban: A  (boleh Jawaban / Kunci / Answer / Key)\nPembahasan: teks opsional\n\n2. Soal berikutnya...\nA. ...\nJawaban: B\n\nKATEGORI: Manajerial  <-- kategori baru juga bisa</pre>' +
-    '</details>' +
+    '<div class="grid2"><div><label>Kategori default</label>' +
+      '<input id="wi-kat" class="input" list="wi-kat-list" value="Teknis">' +
+      '<datalist id="wi-kat-list">'+getKategoriList().filter(k=>k!=='Semua').map(k=>'<option value="'+esc(k)+'">').join('')+'</datalist></div>' +
+      '<div><label>Upload .docx / .txt</label><label class="btn" style="margin:0;width:100%">Pilih File<input type="file" accept=".docx,.txt,.text" hidden onchange="loadWordFile(this)"></label></div></div>' +
+    '<label>Jenjang default (jika soal tidak punya baris JENJANG:)</label>' +
+    '<input id="wi-jenjang" class="input" list="wi-jenjang-list" value="Semua" placeholder="Semua atau nama jenjang">' +
+    '<datalist id="wi-jenjang-list"><option value="Semua"><option value="Penyuluh KB Terampil"><option value="Penyuluh KB Mahir"><option value="Penyuluh KB Penyelia"><option value="Penyuluh KB Ahli Pertama"><option value="Penyuluh KB Ahli Muda"><option value="Penyuluh KB Ahli Madya"><option value="Penyuluh KB Ahli Utama"></datalist>' +
+    '<label>Tempel soal</label>' +
+    '<textarea id="wi-text" class="input" rows="12" style="font-family:monospace;font-size:12.5px" placeholder="KATEGORI: Teknis&#10;JENJANG: Semua&#10;&#10;1. Pertanyaan?&#10;A. Opsi A&#10;B. Opsi B&#10;C. Opsi C&#10;D. Opsi D&#10;Jawaban: A&#10;Pembahasan: opsional&#10;&#10;KATEGORI: Manajerial&#10;JENJANG: Penyuluh KB Penyelia, Penyuluh KB Ahli Pertama&#10;&#10;1. Fungsi POAC...&#10;A. ...&#10;Jawaban: A"></textarea>' +
+    '<details style="margin-top:10px"><summary style="cursor:pointer;font-size:13px;color:var(--pri);font-weight:600">Format</summary>' +
+      '<pre class="code" style="font-size:11px">KATEGORI: Teknis\nJENJANG: Semua  (atau nama spesifik, atau gabungan dengan koma)\n\n1. Soal?\nA. Opsi A\nB. Opsi B\nC. Opsi C\nD. Opsi D\nJawaban: A\nPembahasan: opsional</pre></details>' +
     '<div id="wi-status" style="margin-top:12px"></div>' +
     '<div id="wi-preview" style="margin-top:12px;max-height:300px;overflow:auto"></div>' +
     '<div class="row gap wrap" style="margin-top:14px">' +
       '<button class="btn primary" onclick="prosesImportWord()">Parsing & Import</button>' +
-      '<button class="btn ghost" onclick="previewWordParse()">Parsing Saja (Preview)</button>' +
-      '<button class="btn ghost" onclick="closeModal()">Batal</button>' +
-    '</div></div></div>';
+      '<button class="btn ghost" onclick="previewWordParse()">Parsing Saja</button>' +
+      '<button class="btn ghost" onclick="closeModal()">Batal</button></div></div></div>';
 }
 async function loadWordFile(input){
   const f = input.files[0]; if(!f) return;
@@ -888,81 +1123,71 @@ async function loadWordFile(input){
   try{
     let text;
     if(name.endsWith('.docx')){
-      if(typeof mammoth === 'undefined'){ throw new Error('Library mammoth belum termuat. Muat ulang halaman, atau simpan Word sebagai .txt.'); }
+      if(typeof mammoth==='undefined') throw new Error('Library mammoth belum termuat.');
       const ab = await f.arrayBuffer();
       const res = await mammoth.extractRawText({arrayBuffer: ab});
       text = res.value;
     } else { text = await f.text(); }
     document.getElementById('wi-text').value = text;
-    if(status) status.innerHTML = '<span class="pill ok">File terbaca (' + text.length + ' karakter). Klik "Parsing & Import".</span>';
-  }catch(e){
-    if(status) status.innerHTML = '<span class="pill bad">Gagal membaca: ' + esc(e.message) + '</span>';
-  }
+    if(status) status.innerHTML = '<span class="pill ok">File terbaca ('+text.length+' karakter).</span>';
+  }catch(e){ if(status) status.innerHTML = '<span class="pill bad">Gagal: '+esc(e.message)+'</span>'; }
   input.value = '';
 }
 function previewWordParse(){
   const raw = document.getElementById('wi-text').value;
   const kat = document.getElementById('wi-kat').value.trim() || 'Teknis';
-  const status = document.getElementById('wi-status');
-  const preview = document.getElementById('wi-preview');
-  if(!raw.trim()){ alert('Teks masih kosong.'); return; }
+  const jenjang = document.getElementById('wi-jenjang').value.trim() || 'Semua';
+  const status = document.getElementById('wi-status'), preview = document.getElementById('wi-preview');
+  if(!raw.trim()){ alert('Teks kosong.'); return; }
   let parsed;
-  try{ parsed = parseSoalText(raw, kat); }
-  catch(e){ if(status) status.innerHTML = '<span class="pill bad">Error: ' + esc(e.message) + '</span>'; return; }
-  if(!parsed.length){
-    if(status) status.innerHTML = '<span class="pill bad">Tidak ada soal terdeteksi.</span>';
-    if(preview) preview.innerHTML = '';
-    return;
-  }
-  if(status) status.innerHTML = '<span class="pill ok">Terdeteksi ' + parsed.length + ' soal. Periksa preview di bawah, lalu klik Import.</span>';
-  if(preview) preview.innerHTML = parsed.map((q, i) =>
-    '<div class="preview-item"><span class="preview-badge">' + esc(q.kategori) + ' - Soal ' + (i+1) + '</span>' +
-    '<div class="q">' + esc(q.pertanyaan) + '</div>' +
-    q.opsi.map((t,j) => (t && t.trim()) ? '<div class="o ' + (j===q.jawaban?'key':'') + '">' + LETTERS[j] + '. ' + esc(t) + (j===q.jawaban?' (kunci)':'') + '</div>' : '').join('') +
-    (q.pembahasan ? '<div class="o" style="color:#92400e;margin-top:4px"><b>Pembahasan:</b> ' + esc(q.pembahasan) + '</div>' : '') +
+  try{ parsed = parseSoalText(raw, kat, jenjang); }catch(e){ if(status) status.innerHTML = '<span class="pill bad">Error: '+esc(e.message)+'</span>'; return; }
+  if(!parsed.length){ if(status) status.innerHTML = '<span class="pill bad">Tidak ada soal terdeteksi.</span>'; if(preview) preview.innerHTML = ''; return; }
+  if(status) status.innerHTML = '<span class="pill ok">Terdeteksi '+parsed.length+' soal.</span>';
+  if(preview) preview.innerHTML = parsed.map((q,i) =>
+    '<div class="preview-item"><span class="preview-badge">'+esc(q.kategori)+' · '+esc(shortJenjang(q.jenjang))+' · Soal '+(i+1)+'</span>' +
+    '<div class="q">'+esc(q.pertanyaan)+'</div>' +
+    q.opsi.map((t,j)=>(t&&t.trim())?'<div class="o '+(j===q.jawaban?'key':'')+'">'+LETTERS[j]+'. '+esc(t)+(j===q.jawaban?' (kunci)':'')+'</div>':'').join('') +
     '</div>').join('');
 }
 function prosesImportWord(){
   const raw = document.getElementById('wi-text').value;
   const kat = document.getElementById('wi-kat').value.trim() || 'Teknis';
+  const jenjang = document.getElementById('wi-jenjang').value.trim() || 'Semua';
   const status = document.getElementById('wi-status');
-  if(!raw.trim()){ alert('Teks masih kosong.'); return; }
+  if(!raw.trim()){ alert('Teks kosong.'); return; }
   let parsed;
-  try{ parsed = parseSoalText(raw, kat); }
-  catch(e){ if(status) status.innerHTML = '<span class="pill bad">Error: ' + esc(e.message) + '</span>'; return; }
-  if(!parsed.length){ if(status) status.innerHTML = '<span class="pill bad">Tidak ada soal terdeteksi.</span>'; return; }
-  if(!confirm('Akan menambahkan ' + parsed.length + ' soal. Lanjutkan?')) return;
+  try{ parsed = parseSoalText(raw, kat, jenjang); }catch(e){ if(status) status.innerHTML = '<span class="pill bad">Error: '+esc(e.message)+'</span>'; return; }
+  if(!parsed.length){ if(status) status.innerHTML = '<span class="pill bad">Tidak ada soal.</span>'; return; }
+  if(!confirm('Tambah '+parsed.length+' soal?')) return;
   const existing = getQuestions();
   const counter = {}; existing.forEach(q => { counter[q.kategori] = Math.max(counter[q.kategori]||0, Number(q.nomor)||0); });
-  parsed.forEach(q => { counter[q.kategori] = (counter[q.kategori]||0) + 1; q.nomor = counter[q.kategori]; q.id = uid(); existing.push(q); });
-  setQuestions(existing);
-  closeModal(); render();
-  alert(parsed.length + ' soal berhasil ditambahkan. Total sekarang: ' + existing.length + ' soal, ' + (getKategoriList().length-1) + ' kategori.');
+  parsed.forEach(q => { counter[q.kategori] = (counter[q.kategori]||0)+1; q.nomor = counter[q.kategori]; q.id = uid(); existing.push(q); });
+  setQuestions(existing); closeModal(); render();
+  alert('✓ '+parsed.length+' soal ditambahkan. Total: '+existing.length+' soal.');
 }
-function parseSoalText(text, defaultKat){
+function parseSoalText(text, defaultKat, defaultJenjang){
   text = String(text).replace(/\r\n/g,'\n').replace(/\r/g,'\n').replace(/\f/g,'\n').replace(/\u00A0/g,' ');
-  const lines = text.split('\n');
-  const questions = [];
-  let cur = null, mode = null;
-  let kategori = defaultKat || 'Teknis';
+  const lines = text.split('\n'), questions = [];
+  let cur=null, mode=null, kategori=defaultKat||'Teknis', jenjang=defaultJenjang||'Semua';
   const reKat = /^\s*(?:kategori|category)\s*[:\-]\s*(.+)$/i;
+  const reJen = /^\s*jenjang\s*[:\-]\s*(.+)$/i;
   const reQ = /^\s*(\d+)\s*[\.\)]\s*(.+)$/;
   const reOpt = /^\s*([A-Ea-e])\s*[\.\)]\s*(.+)$/;
   const reAns = /^\s*(?:jawaban|kunci|answer|key)\s*[:\-]?\s*([A-Ea-e]|\d)\b/i;
   const reBahas = /^\s*(?:pembahasan|penjelasan|bahas|explanation)\s*[:\-]\s*(.*)$/i;
   function flush(){
     if(cur && cur.pertanyaan && cur.pertanyaan.trim()){
-      while(cur.opsi.length < 5) cur.opsi.push('');
-      if(cur.jawaban == null) cur.jawaban = 0;
-      if(cur.jawaban < 0 || cur.jawaban > 4) cur.jawaban = 0;
+      while(cur.opsi.length<5) cur.opsi.push('');
+      if(cur.jawaban==null) cur.jawaban = 0;
+      if(cur.jawaban<0 || cur.jawaban>4) cur.jawaban = 0;
       if(!cur.opsi[cur.jawaban] || !cur.opsi[cur.jawaban].trim()){
-        for(let k=0; k<5; k++){ if(cur.opsi[k] && cur.opsi[k].trim()){ cur.jawaban = k; break; } }
+        for(let k=0;k<5;k++){ if(cur.opsi[k] && cur.opsi[k].trim()){ cur.jawaban = k; break; } }
       }
       questions.push(cur);
     }
     cur = null; mode = null;
   }
-  for(let i=0; i<lines.length; i++){
+  for(let i=0;i<lines.length;i++){
     const ln = lines[i].replace(/\s+$/,'').replace(/^\s+/,'');
     if(!ln) continue;
     const mKat = ln.match(reKat);
@@ -973,111 +1198,164 @@ function parseSoalText(text, defaultKat){
       else kategori = k;
       continue;
     }
+    const mJen = ln.match(reJen);
+    if(mJen){ jenjang = mJen[1].trim() || 'Semua'; continue; }
     const mQ = ln.match(reQ);
-    if(mQ){ flush(); cur = { kategori: kategori, pertanyaan: mQ[2].trim(), opsi: [], jawaban: null, pembahasan: '' }; mode = 'q'; continue; }
+    if(mQ){ flush(); cur = {kategori, jenjang, pertanyaan:mQ[2].trim(), opsi:[], jawaban:null, pembahasan:''}; mode='q'; continue; }
     const mOpt = ln.match(reOpt);
-    if(mOpt && cur && mode !== 'bahas'){
+    if(mOpt && cur && mode!=='bahas'){
       const idx = LETTERS.indexOf(mOpt[1].toUpperCase());
-      if(idx >= 0){ cur.opsi[idx] = mOpt[2].trim(); mode = 'opt'; continue; }
+      if(idx>=0){ cur.opsi[idx] = mOpt[2].trim(); mode='opt'; continue; }
     }
     const mAns = ln.match(reAns);
     if(mAns && cur){
       const v = mAns[1].toUpperCase();
       const idx = LETTERS.indexOf(v);
-      cur.jawaban = idx >= 0 ? idx : Math.max(0, Math.min(4, Number(v)-1));
+      cur.jawaban = idx>=0 ? idx : Math.max(0, Math.min(4, Number(v)-1));
       mode = 'ans'; continue;
     }
     const mBah = ln.match(reBahas);
-    if(mBah && cur){ cur.pembahasan = mBah[1].trim(); mode = 'bahas'; continue; }
+    if(mBah && cur){ cur.pembahasan = mBah[1].trim(); mode='bahas'; continue; }
     if(cur){
-      if(mode === 'q') cur.pertanyaan += ' ' + ln.trim();
-      else if(mode === 'bahas') cur.pembahasan += ' ' + ln.trim();
-      else if(mode === 'opt'){ for(let j=4; j>=0; j--){ if(cur.opsi[j]){ cur.opsi[j] += ' ' + ln.trim(); break; } } }
+      if(mode==='q') cur.pertanyaan += ' '+ln.trim();
+      else if(mode==='bahas') cur.pembahasan += ' '+ln.trim();
+      else if(mode==='opt'){ for(let j=4;j>=0;j--){ if(cur.opsi[j]){ cur.opsi[j] += ' '+ln.trim(); break; } } }
     }
   }
   flush();
-  return questions.map(q => ({ kategori: q.kategori, nomor: 1, pertanyaan: q.pertanyaan,
-    opsi: q.opsi.slice(0,5), jawaban: q.jawaban, pembahasan: q.pembahasan }));
+  return questions.map(q=>({kategori:q.kategori, jenjang:q.jenjang, nomor:1, pertanyaan:q.pertanyaan, opsi:q.opsi.slice(0,5), jawaban:q.jawaban, pembahasan:q.pembahasan}));
 }
 
-/* ---------- HASIL UJIAN ---------- */
+/* ---------- HASIL & RANKING ---------- */
 function adminHasilHTML(){
   const ready = isSyncReady();
   return '<div class="card"><div class="row between wrap">' +
-    '<div><h3 style="margin:0 0 4px">Hasil Ujian Peserta</h3>' +
-      '<div id="sync-status">' + (ready ? '<span class="pill">Memuat dari server...</span>' : '<span class="pill">Mode lokal — belum ada URL Google Apps Script</span>') + '</div></div>' +
+    '<div><h3 style="margin:0 0 4px">Hasil & Ranking</h3>' +
+      '<div id="sync-status">'+(ready?'<span class="pill">Memuat...</span>':'<span class="pill">Mode lokal</span>')+'</div></div>' +
     '<div class="row gap wrap">' +
-      '<button class="btn tiny" onclick="renderHasilList()">Muat Ulang</button>' +
-      '<button class="btn tiny" onclick="exportCSV()">Ekspor CSV</button>' +
-      '<label class="btn tiny" style="margin:0">Impor Hasil<input type="file" accept=".json" hidden onchange="importHasil(this)"></label>' +
-      '<button class="btn tiny danger" onclick="hapusSemuaHasil()">Hapus Semua</button>' +
-    '</div></div><div id="hasil-list" style="margin-top:16px"></div></div>';
+      '<button class="btn tiny" onclick="renderHasilList()">↻ Muat Ulang</button>' +
+      '<button class="btn tiny" onclick="exportCSV()">⬇ Ekspor CSV</button>' +
+      '<label class="btn tiny" style="margin:0">⬆ Impor<input type="file" accept=".json" hidden onchange="importHasil(this)"></label>' +
+      '<button class="btn tiny danger" onclick="hapusSemuaHasil()">🗑 Hapus Semua</button></div></div>' +
+    '<div class="chips" style="margin-top:16px">' +
+      '<button class="chip '+(adminHasilView==='semua'?'on':'')+'" onclick="setHasilView(\'semua\')">📋 Semua Hasil</button>' +
+      '<button class="chip '+(adminHasilView==='leaderboard'?'on':'')+'" onclick="setHasilView(\'leaderboard\')">🏆 Peringkat Tertinggi</button>' +
+      '<button class="chip '+(adminHasilView==='kenaikan'?'on':'')+'" onclick="setHasilView(\'kenaikan\')">📈 Kenaikan Jabatan</button></div>' +
+    '<div id="hasil-list" style="margin-top:16px"></div></div>';
 }
+function setHasilView(v){ adminHasilView = v; render(); }
 async function renderHasilList(){
-  const box = document.getElementById('hasil-list');
-  const statusBox = document.getElementById('sync-status');
+  const box = document.getElementById('hasil-list'), statusBox = document.getElementById('sync-status');
   if(!box) return;
-  box.innerHTML = '<p class="muted">Memuat hasil...</p>';
+  box.innerHTML = '<p class="muted">Memuat...</p>';
   const url = getSyncUrl();
   let serverList = null;
   if(url){
-    if(statusBox) statusBox.innerHTML = '<span class="pill">Mengambil dari Google Sheets...</span>';
+    if(statusBox) statusBox.innerHTML = '<span class="pill">Mengambil dari sheet...</span>';
     serverList = await ambilHasilServer();
-    if(serverList === null){ if(statusBox) statusBox.innerHTML = '<span class="pill bad">Gagal memuat dari server — menampilkan data lokal.</span>'; serverList = []; }
-    else { serverResultsCache = serverList; if(statusBox) statusBox.innerHTML = '<span class="pill ok">Terhubung — ' + serverList.length + ' hasil dari server</span>'; }
-  } else { if(statusBox) statusBox.innerHTML = '<span class="pill">Mode lokal — atur URL Apps Script di Pengaturan.</span>'; }
+    if(serverList===null){ if(statusBox) statusBox.innerHTML = '<span class="pill bad">Gagal dari server — pakai lokal.</span>'; serverList = []; }
+    else { serverResultsCache = serverList; if(statusBox) statusBox.innerHTML = '<span class="pill ok">Terhubung — '+serverList.length+' hasil</span>'; }
+  }
   const local = store.get(KEY.R, []);
   const map = new Map();
   (serverList||[]).concat(local).forEach(x => { if(x && x.id) map.set(x.id, x); });
-  const rs = Array.from(map.values()).sort((a,b) => new Date(b.tanggal) - new Date(a.tanggal));
+  const rs = Array.from(map.values()).sort((a,b) => new Date(b.tanggal)-new Date(a.tanggal));
   currentResultsList = rs;
-  if(!rs.length){ box.innerHTML = '<p class="muted">Belum ada peserta yang mengerjakan latihan.</p>'; return; }
+  if(!rs.length){ box.innerHTML = '<p class="muted">Belum ada peserta.</p>'; return; }
+  if(adminHasilView==='semua') renderViewSemua(box, rs);
+  else if(adminHasilView==='leaderboard') renderViewLeaderboard(box, rs);
+  else renderViewKenaikan(box, rs);
+}
+function renderViewSemua(box, rs){
   box.innerHTML = '<div class="table-wrap"><table class="tbl"><thead><tr>' +
-    '<th>Nama</th><th>Username</th><th>Kategori</th><th>Tanggal</th><th>Benar</th><th>Nilai</th><th>Aksi</th>' +
-    '</tr></thead><tbody>' + rs.map(r =>
-    '<tr><td><b>' + esc(r.nama) + '</b></td><td class="muted">' + esc(r.username) + '</td>' +
-    '<td>' + esc(r.kategori) + '</td><td class="small">' + fmtDate(r.tanggal) + '</td>' +
-    '<td>' + r.benar + '/' + r.total + '</td>' +
-    '<td><b class="score ' + (r.nilai>=70?'ok':'bad') + '">' + r.nilai + '</b></td>' +
-    '<td><button class="btn tiny" onclick="adminLihatDetail(\''+r.id+'\')">Detail</button> ' +
-      '<button class="btn tiny danger" onclick="hapusHasil(\''+r.id+'\')">Hapus</button></td></tr>').join('') + '</tbody></table></div>';
+    '<th>Nama</th><th>Jenjang</th><th>Kategori</th><th>Tanggal</th><th>Benar</th><th>Nilai</th><th>Aksi</th>' +
+    '</tr></thead><tbody>' + rs.map(r=>{
+      const next = JENJANG_NEXT[r.jenjang];
+      const bisaNaik = r.nilai>=NILAI_LULUS_NAIK && next;
+      return '<tr><td><b>'+esc(r.nama)+'</b><div class="tiny muted">@'+esc(r.username)+'</div></td>' +
+        '<td>'+jenjangBadge(r.jenjang)+(bisaNaik?' <span class="jenjang-badge naik">↑</span>':'')+'</td>' +
+        '<td class="small">'+esc(r.kategori)+'</td><td class="small">'+fmtDate(r.tanggal)+'</td>' +
+        '<td>'+r.benar+'/'+r.total+'</td><td><b class="score '+(r.nilai>=70?'ok':'bad')+'">'+r.nilai+'</b></td>' +
+        '<td><button class="btn tiny" onclick="adminLihatDetail(\''+r.id+'\')">Detail</button> ' +
+          '<button class="btn tiny danger" onclick="hapusHasil(\''+r.id+'\')">×</button></td></tr>';
+    }).join('')+'</tbody></table></div>';
+}
+function renderViewLeaderboard(box, rs){
+  const byUser = {};
+  rs.forEach(r => { if(!byUser[r.username] || r.nilai > byUser[r.username].nilai) byUser[r.username] = r; });
+  const lb = Object.values(byUser).sort((a,b) => b.nilai-a.nilai || new Date(a.tanggal)-new Date(b.tanggal));
+  if(!lb.length){ box.innerHTML = '<p class="muted">Belum ada data.</p>'; return; }
+  box.innerHTML = '<p class="small">Nilai tertinggi setiap peserta. '+lb.length+' peserta.</p><div class="lb-list">' + lb.map((r,i)=>{
+    const rank = i+1;
+    let cls = 'normal'; if(rank===1) cls='gold'; else if(rank===2) cls='silver'; else if(rank===3) cls='bronze';
+    const next = JENJANG_NEXT[r.jenjang];
+    const bisaNaik = r.nilai>=NILAI_LULUS_NAIK && next;
+    return '<div class="lb-item rank-'+Math.min(rank,3)+'"><div class="lb-rank '+cls+'">'+rank+'</div>' +
+      '<div class="lb-info"><div class="lb-name">'+esc(r.nama)+'</div><div class="lb-sub">' +
+        jenjangBadge(r.jenjang) + (bisaNaik?' <span class="jenjang-badge naik">↑ ' + esc(shortJenjang(next)) + '</span>':'') +
+        ' · @'+esc(r.username)+' · '+esc(r.kategori)+' · '+fmtDate(r.tanggal)+'</div></div>' +
+      '<div class="lb-score"><b>'+r.nilai+'</b><small>'+r.benar+'/'+r.total+' benar</small></div>' +
+      '<button class="btn tiny" onclick="adminLihatDetail(\''+r.id+'\')">Detail</button></div>';
+  }).join('')+'</div>';
+}
+function renderViewKenaikan(box, rs){
+  const byUser = {};
+  rs.forEach(r => { if(!byUser[r.username] || r.nilai > byUser[r.username].nilai) byUser[r.username] = r; });
+  const list = Object.values(byUser).filter(r => r.nilai>=NILAI_LULUS_NAIK && JENJANG_NEXT[r.jenjang]).sort((a,b) => b.nilai-a.nilai);
+  if(!list.length){ box.innerHTML = '<div class="doubt-note">Belum ada peserta yang memenuhi syarat kenaikan jabatan (nilai ≥ '+NILAI_LULUS_NAIK+').</div>'; return; }
+  box.innerHTML = '<p class="small">Peserta dengan nilai tertinggi ≥ '+NILAI_LULUS_NAIK+' — calon kuat kenaikan jabatan.</p>' + list.map(r=>{
+    const next = JENJANG_NEXT[r.jenjang];
+    return '<div class="kenaikan-card"><div class="krow"><div style="flex:1;min-width:200px">' +
+      '<div class="kname">'+esc(r.nama)+'</div>' +
+      '<div class="kfrom">Jenjang sekarang: <b>'+esc(r.jenjang)+'</b></div>' +
+      '<div class="karrow">⬇ Rekomendasi naik ke:</div>' +
+      '<div class="kto">'+esc(next)+'</div>' +
+      '<div class="tiny muted" style="margin-top:6px">@'+esc(r.username)+' · '+fmtDate(r.tanggal)+'</div></div>' +
+      '<div style="text-align:right"><div class="kscore">'+r.nilai+'<small>NILAI TERTINGGI</small></div>' +
+      '<div class="tiny muted" style="margin-top:8px">'+r.benar+'/'+r.total+' benar</div>' +
+      '<button class="btn tiny" style="margin-top:8px" onclick="adminLihatDetail(\''+r.id+'\')">Detail</button></div></div></div>';
+  }).join('');
 }
 function adminLihatDetail(id){
-  const r = store.get(KEY.R, []).find(x => x.id === id) || serverResultsCache.find(x => x.id === id) || currentResultsList.find(x => x.id === id);
+  const r = store.get(KEY.R, []).find(x=>x.id===id) || serverResultsCache.find(x=>x.id===id) || currentResultsList.find(x=>x.id===id);
   if(!r){ alert('Data tidak ditemukan.'); return; }
+  const next = JENJANG_NEXT[r.jenjang];
+  const bisaNaik = r.nilai>=NILAI_LULUS_NAIK && next;
   document.getElementById('modal-root').innerHTML =
     '<div class="overlay" onclick="if(event.target===this) closeModal()"><div class="modal">' +
-    '<div class="row between"><div><h3 style="margin-bottom:2px">' + esc(r.nama) + '</h3>' +
-    '<p class="small" style="margin:0">' + esc(r.username) + ' - ' + esc(r.kategori) + ' - ' + fmtDate(r.tanggal) + '</p></div>' +
+    '<div class="row between"><div><h3 style="margin-bottom:2px">'+esc(r.nama)+'</h3>' +
+    '<p class="small" style="margin:0">@'+esc(r.username)+' · '+esc(r.kategori)+' · '+fmtDate(r.tanggal)+'</p></div>' +
     '<button class="btn tiny ghost" onclick="closeModal()">X</button></div>' +
+    '<div class="row gap wrap" style="margin:12px 0">'+jenjangBadge(r.jenjang) +
+      (bisaNaik?'<span class="jenjang-badge naik">✓ Siap naik ke '+esc(shortJenjang(next))+'</span>':'')+'</div>' +
     '<div class="stats" style="margin:16px 0">' +
-      '<div><strong>' + r.nilai + '</strong><span>Nilai</span></div>' +
-      '<div><strong style="color:var(--ok)">' + r.benar + '</strong><span>Benar</span></div>' +
-      '<div><strong style="color:var(--bad)">' + r.salah + '</strong><span>Salah</span></div>' +
-      '<div><strong>' + r.kosong + '</strong><span>Kosong</span></div></div>' +
-    '<div style="max-height:52vh;overflow:auto">' + reviewHTML(r.detail || []) + '</div></div></div>';
+      '<div><strong>'+r.nilai+'</strong><span>Nilai</span></div>' +
+      '<div><strong style="color:var(--ok)">'+r.benar+'</strong><span>Benar</span></div>' +
+      '<div><strong style="color:var(--bad)">'+r.salah+'</strong><span>Salah</span></div>' +
+      '<div><strong>'+r.kosong+'</strong><span>Kosong</span></div></div>' +
+    '<div style="max-height:52vh;overflow:auto">'+reviewHTML(r.detail||[])+'</div></div></div>';
 }
 async function hapusHasil(id){
   if(!confirm('Hapus hasil ini?')) return;
-  store.set(KEY.R, store.get(KEY.R, []).filter(r => r.id !== id));
-  serverResultsCache = serverResultsCache.filter(r => r.id !== id);
+  store.set(KEY.R, store.get(KEY.R, []).filter(r => r.id!==id));
+  serverResultsCache = serverResultsCache.filter(r => r.id!==id);
   await hapusHasilServer(id); render();
 }
 async function hapusSemuaHasil(){
-  if(!confirm('Hapus SEMUA hasil ujian (lokal & server)?')) return;
+  if(!confirm('Hapus SEMUA hasil ujian?')) return;
   store.set(KEY.R, []); serverResultsCache = []; await hapusSemuaHasilServer(); render();
 }
 function exportCSV(){
   const rs = currentResultsList.length ? currentResultsList : store.get(KEY.R, []);
-  if(!rs.length){ alert('Belum ada data untuk diekspor.'); return; }
-  const head = ['Nama','Username','Kategori','Tanggal','Jumlah Soal','Benar','Salah','Kosong','Nilai','Durasi (detik)'];
-  const rows = rs.map(r => [r.nama, r.username, r.kategori, fmtDate(r.tanggal), r.total, r.benar, r.salah, r.kosong, r.nilai, r.durasi||0]);
-  const csv = '\uFEFF' + [head].concat(rows).map(row => row.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(';')).join('\r\n');
+  if(!rs.length){ alert('Belum ada data.'); return; }
+  const head = ['Nama','Username','Jenjang','Kategori','Tanggal','Jumlah Soal','Benar','Salah','Kosong','Nilai','Durasi'];
+  const rows = rs.map(r=>[r.nama, r.username, r.jenjang||'-', r.kategori, fmtDate(r.tanggal), r.total, r.benar, r.salah, r.kosong, r.nilai, r.durasi||0]);
+  const csv = '\uFEFF' + [head].concat(rows).map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');
   const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = 'hasil-ujian-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.download = 'hasil-ujian-'+new Date().toISOString().slice(0,10)+'.csv';
   document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
 }
 function importHasil(input){
   const f = input.files[0]; if(!f) return;
@@ -1085,19 +1363,21 @@ function importHasil(input){
   rd.onload = () => {
     try{
       let data = JSON.parse(rd.result); if(!Array.isArray(data)) data = [data];
-      const cur = store.get(KEY.R, []); const ids = new Set(cur.map(r => r.id)); let added = 0;
+      const cur = store.get(KEY.R, []); const ids = new Set(cur.map(r=>r.id)); let added = 0;
       data.forEach(r => { if(r && r.id && r.detail && !ids.has(r.id)){ cur.push(r); ids.add(r.id); added++; } });
-      store.set(KEY.R, cur); render(); alert(added + ' hasil berhasil diimpor.');
-    }catch(e){ alert('File tidak valid: ' + e.message); }
+      store.set(KEY.R, cur); render(); alert(added+' hasil diimpor.');
+    }catch(e){ alert('File tidak valid: '+e.message); }
   };
   rd.readAsText(f); input.value = '';
 }
 
-/* ---------- PENGATURAN ---------- */
+/* =========================================================
+   PENGATURAN
+   ========================================================= */
 const APPS_SCRIPT_CODE = `const SHEET='Hasil';
 const SHEET_SOAL='Soal';
 const HEADERS=['id','username','nama','kategori','tanggal','total','benar','salah','kosong','nilai','durasi','detail'];
-const HEADERS_SOAL=['id','kategori','nomor','pertanyaan','opsi_a','opsi_b','opsi_c','opsi_d','opsi_e','jawaban','pembahasan'];
+const HEADERS_SOAL=['id','kategori','jenjang','nomor','pertanyaan','opsi_a','opsi_b','opsi_c','opsi_d','opsi_e','jawaban','pembahasan'];
 const L=['A','B','C','D','E'];
 
 function doPost(e){
@@ -1121,10 +1401,11 @@ function doPost(e){
     }
     if(a==='syncSoal'){
       const sh=getSheet(SHEET_SOAL,HEADERS_SOAL);
-      if(sh.getLastRow()>1)sh.deleteRows(2,sh.getLastRow()-1);
+      sh.clear();
+      sh.appendRow(HEADERS_SOAL);
       const arr=b.data||[];
       if(arr.length){
-        const rows=arr.map(q=>[q.id,q.kategori,q.nomor,q.pertanyaan,q.opsi[0]||'',q.opsi[1]||'',q.opsi[2]||'',q.opsi[3]||'',q.opsi[4]||'',L[q.jawaban]||'A',q.pembahasan||'']);
+        const rows=arr.map(q=>[q.id,q.kategori,q.jenjang||'Semua',q.nomor,q.pertanyaan,q.opsi[0]||'',q.opsi[1]||'',q.opsi[2]||'',q.opsi[3]||'',q.opsi[4]||'',L[q.jawaban]||'A',q.pembahasan||'']);
         sh.getRange(2,1,rows.length,HEADERS_SOAL.length).setValues(rows);
       }
       return out({ok:true,count:arr.length});
@@ -1136,7 +1417,7 @@ function doPost(e){
 function doGet(e){
   const a=(e&&e.parameter&&e.parameter.action)||'';
   const cb=e&&e.parameter&&e.parameter.callback;
-  if(a==='ping')return out({ok:true,status:'ok',versi:2,waktu:new Date().toISOString()},cb);
+  if(a==='ping')return out({ok:true,status:'ok',versi:3,waktu:new Date().toISOString()},cb);
   if(a==='daftar'){
     const sh=getSheet(SHEET,HEADERS);
     if(sh.getLastRow()<2)return out([],cb);
@@ -1148,7 +1429,9 @@ function doGet(e){
     const sh=getSheet(SHEET_SOAL,HEADERS_SOAL);
     if(sh.getLastRow()<2)return out([],cb);
     const v=sh.getDataRange().getValues(),h=v.shift();
-    const rows=v.map(r=>{const o={};h.forEach((x,i)=>o[x]=r[i]);return{id:String(o.id||''),kategori:String(o.kategori||'Teknis'),nomor:Number(o.nomor)||1,pertanyaan:String(o.pertanyaan||''),opsi:[o.opsi_a||'',o.opsi_b||'',o.opsi_c||'',o.opsi_d||'',o.opsi_e||''],jawaban:Math.max(0,L.indexOf(String(o.jawaban||'A').toUpperCase())),pembahasan:String(o.pembahasan||'')};});
+    const rows=v.map(r=>{const o={};h.forEach((x,i)=>o[x]=r[i]);
+      return{id:String(o.id||''),kategori:String(o.kategori||'Teknis'),jenjang:String(o.jenjang||'Semua'),nomor:Number(o.nomor)||1,pertanyaan:String(o.pertanyaan||''),opsi:[o.opsi_a||'',o.opsi_b||'',o.opsi_c||'',o.opsi_d||'',o.opsi_e||''],jawaban:Math.max(0,L.indexOf(String(o.jawaban||'A').toUpperCase())),pembahasan:String(o.pembahasan||'')};
+    });
     return out(rows,cb);
   }
   return out({ok:true,pesan:'Actions: ping, daftar, soal'},cb);
@@ -1174,42 +1457,58 @@ function adminSettingHTML(){
   const curUrl = getSyncUrl();
   const statusPill = isSyncReady() ? '<span class="pill ok">Terhubung</span>' : '<span class="pill">Belum terhubung</span>';
   const katList = getKategoriList().filter(k=>k!=='Semua');
-  return '<div class="card"><div class="row between wrap"><h3 style="margin:0">Sinkronisasi Google Sheets</h3>' + statusPill + '</div>' +
-    '<p class="small">Soal dan hasil peserta otomatis tersinkron ke Google Sheet sehingga konsisten di semua perangkat.</p>' +
+  const autoPoll = getAutoPoll();
+
+  const jenjangCount = JENJANG_LIST.map(j => {
+    const c = getQuestions().filter(q => jenjangMatches(q.jenjang, j)).length;
+    return '<div style="display:flex;justify-content:space-between;padding:5px 10px;border-bottom:1px solid #f1f5f9;font-size:12.5px"><span>'+esc(shortJenjang(j))+'</span><b style="color:var(--pri)">'+c+' soal</b></div>';
+  }).join('');
+
+  return '<div class="card"><div class="row between wrap"><h3 style="margin:0">Sinkronisasi Google Sheets</h3>'+statusPill+'</div>' +
+    '<p class="small">Soal dan hasil peserta otomatis tersinkron ke Google Sheet.</p>' +
     '<details style="margin:10px 0 14px"><summary style="cursor:pointer;font-weight:600;color:var(--pri);font-size:13.5px">Langkah membuat backend</summary>' +
     '<ol style="margin:10px 0 0 18px;font-size:13.5px;line-height:1.75;color:#334155">' +
-      '<li>Buka <a href="https://sheets.new" target="_blank" rel="noopener">sheets.new</a> - buat Google Sheet baru.</li>' +
-      '<li>Menu Extensions - Apps Script.</li>' +
+      '<li>Buka <a href="https://sheets.new" target="_blank" rel="noopener">sheets.new</a> — buat Google Sheet.</li>' +
+      '<li>Extensions — Apps Script.</li>' +
       '<li>Hapus isi editor, tempel kode di bawah.</li>' +
-      '<li>Deploy - New deployment - Web app. Execute as: Me, Who has access: Anyone.</li>' +
+      '<li>Deploy — New deployment — Web app. Execute as: Me, Who has access: Anyone.</li>' +
       '<li>Salin URL /exec, tempel di kolom di bawah, klik Simpan & Uji.</li></ol></details>' +
-    '<label>URL Google Apps Script (Web App)</label>' +
-    '<div class="row gap wrap"><input id="sync-url" class="input" style="flex:1;min-width:240px" placeholder="https://script.google.com/macros/s/XXXX/exec" value="' + esc(curUrl) + '">' +
-    '<button class="btn primary" onclick="simpanSyncUrl()">Simpan & Uji Koneksi</button>' +
+    '<label>URL Google Apps Script</label>' +
+    '<div class="row gap wrap"><input id="sync-url" class="input" style="flex:1;min-width:240px" placeholder="https://script.google.com/macros/s/XXXX/exec" value="'+esc(curUrl)+'">' +
+    '<button class="btn primary" onclick="simpanSyncUrl()">Simpan & Uji</button>' +
     '<button class="btn ghost" onclick="testSync()">Uji Saja</button></div>' +
     '<div id="sync-test" style="margin-top:10px"></div>' +
+    '<hr class="sep"><h3>Auto-Sync</h3>' +
+    '<label class="switch" style="margin-bottom:8px"><input type="checkbox" '+(autoPoll?'checked':'')+' onchange="toggleAutoPoll(this.checked)"> Polling otomatis tiap 90 detik saat di tab Kelola Soal</label>' +
+    '<hr class="sep"><h3>Distribusi Soal per Jenjang</h3>' +
+    '<div style="border:1px solid var(--line);border-radius:10px;overflow:hidden">'+jenjangCount+'</div>' +
     '<hr class="sep"><h3>Kode Apps Script</h3>' +
     '<div class="row gap" style="margin-bottom:8px"><button class="btn tiny primary" onclick="copyAppsScript(this)">Salin Kode</button>' +
-    '<span class="muted tiny">' + APPS_SCRIPT_CODE.split('\n').length + ' baris</span></div>' +
-    '<pre class="code">' + esc(APPS_SCRIPT_CODE) + '</pre>' +
+    '<span class="muted tiny">'+APPS_SCRIPT_CODE.split('\n').length+' baris</span></div>' +
+    '<pre class="code">'+esc(APPS_SCRIPT_CODE)+'</pre>' +
     '<hr class="sep"><h3>Ganti Password Admin</h3>' +
     '<div class="row gap wrap"><input id="new-pass" class="input" style="max-width:280px" placeholder="Password baru (min. 5 karakter)">' +
     '<button class="btn primary" onclick="gantiPass()">Simpan</button></div>' +
     '<hr class="sep"><h3>Backup & Restore</h3>' +
-    '<div class="row gap wrap"><button class="btn" onclick="exportAll()">Unduh Semua Data</button>' +
-    '<label class="btn" style="margin:0">Impor Data<input type="file" accept=".json" hidden onchange="importAll(this)"></label>' +
-    '<button class="btn ghost" onclick="resetSoal()">Reset Soal ke Default</button></div>' +
+    '<div class="row gap wrap"><button class="btn" onclick="exportAll()">⬇ Unduh Semua</button>' +
+    '<label class="btn" style="margin:0">⬆ Impor Data<input type="file" accept=".json" hidden onchange="importAll(this)"></label></div>' +
     '<hr class="sep"><h3>Statistik</h3><div class="stats">' +
-    '<div><strong>' + qs.length + '</strong><span>Soal</span></div>' +
-    '<div><strong>' + katList.length + '</strong><span>Kategori</span></div>' +
-    '<div><strong>' + rs.length + '</strong><span>Hasil Lokal</span></div>' +
-    '<div><strong>' + us.length + '</strong><span>Peserta</span></div></div>' +
-    '<div style="margin-top:12px"><b>Kategori:</b> ' + (katList.length ? katList.map(katBadge).join(' ') : '<span class="muted">belum ada</span>') + '</div>' +
+    '<div><strong>'+qs.length+'</strong><span>Soal</span></div>' +
+    '<div><strong>'+katList.length+'</strong><span>Kategori</span></div>' +
+    '<div><strong>'+rs.length+'</strong><span>Hasil</span></div>' +
+    '<div><strong>'+us.length+'</strong><span>Peserta</span></div></div>' +
+    '<div style="margin-top:12px"><b>Kategori:</b> '+(katList.length?katList.map(katBadge).join(' '):'<span class="muted">belum ada</span>')+'</div>' +
     '</div>';
+}
+function toggleAutoPoll(enabled){
+  const st = store.get(KEY.S, {}); st.autoPoll = enabled; store.set(KEY.S, st);
+  if(enabled && adminTab==='soal') startPollingIfNeeded();
+  else stopPolling();
+  render();
 }
 function simpanSyncUrl(){
   const v = document.getElementById('sync-url').value.trim();
-  if(v && !/^https?:\/\/.+\/exec$/.test(v)){ if(!confirm('URL tidak berakhiran /exec. Tetap disimpan?')) return; }
+  if(v && !/^https?:\/\/.+\/exec$/.test(v)){ if(!confirm('URL tidak berakhiran /exec. Tetap?')) return; }
   const st = store.get(KEY.S, {}); st.syncUrl = v; store.set(KEY.S, st); testSync();
 }
 async function testSync(){
@@ -1217,35 +1516,35 @@ async function testSync(){
   box.innerHTML = '<span class="pill">Menguji...</span>';
   const url = getSyncUrl();
   if(!url){ box.innerHTML = '<span class="pill bad">URL belum diisi.</span>'; return; }
-  try{ const r = await fetch(url + '?action=ping', {cache:'no-store'}); const j = await r.json();
-    if(j && j.ok){ box.innerHTML = '<span class="pill ok">Backend terhubung (versi ' + (j.versi||'?') + ').</span>'; return; }
+  try{ const r = await fetch(url+'?action=ping', {cache:'no-store'}); const j = await r.json();
+    if(j && j.ok){ box.innerHTML = '<span class="pill ok">Backend terhubung (versi '+(j.versi||'?')+').</span>'; return; }
   }catch(e){}
   try{ const j = await jsonpGet(url, {action:'ping'});
-    if(j && j.ok){ box.innerHTML = '<span class="pill ok">Backend terhubung (JSONP, versi ' + (j.versi||'?') + ').</span>'; return; }
+    if(j && j.ok){ box.innerHTML = '<span class="pill ok">Backend terhubung (JSONP, versi '+(j.versi||'?')+').</span>'; return; }
   }catch(e){}
-  box.innerHTML = '<span class="pill bad">Gagal terhubung. Cek: (1) URL /exec, (2) deployment Anyone, (3) sudah Deploy versi baru.</span>';
+  box.innerHTML = '<span class="pill bad">Gagal terhubung.</span>';
 }
 function copyAppsScript(btn){
   const text = APPS_SCRIPT_CODE;
-  const done = () => { const old = btn.textContent; btn.textContent = 'Tersalin!'; setTimeout(() => btn.textContent = old, 1500); };
-  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done).catch(() => { fallbackCopy(text); done(); }); }
+  const done = () => { const old = btn.textContent; btn.textContent = 'Tersalin!'; setTimeout(()=>btn.textContent=old, 1500); };
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done).catch(()=>{fallbackCopy(text);done();}); }
   else { fallbackCopy(text); done(); }
 }
 function fallbackCopy(text){
-  const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
-  document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta);
+  const ta = document.createElement('textarea'); ta.value = text; ta.style.position='fixed'; ta.style.left='-9999px';
+  document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta);
 }
 function gantiPass(){
   const v = document.getElementById('new-pass').value.trim();
-  if(v.length < 5){ alert('Password minimal 5 karakter.'); return; }
-  const st = store.get(KEY.S, { adminPassword:'admin123' }); st.adminPassword = v; store.set(KEY.S, st);
-  alert('Password admin berhasil diubah.'); render();
+  if(v.length<5){ alert('Minimal 5 karakter.'); return; }
+  const st = store.get(KEY.S, {adminPassword:'admin123'}); st.adminPassword = v; store.set(KEY.S, st);
+  alert('Password diubah.'); render();
 }
 function exportAll(){
-  const data = { app:'Latihan Soal Penyuluh KB', versi:3, diekspor:new Date().toISOString(),
+  const data = {app:'Latihan Soal Penyuluh KB', versi:6, diekspor:new Date().toISOString(),
     questions:getQuestions(), results:store.get(KEY.R, []), users:store.get(KEY.U, []),
-    settings:store.get(KEY.S, {adminPassword:'admin123'}) };
-  downloadJSON(data, 'backup-latihan-kb-' + new Date().toISOString().slice(0,10) + '.json');
+    settings:store.get(KEY.S, {adminPassword:'admin123'})};
+  downloadJSON(data, 'backup-latihan-kb-'+new Date().toISOString().slice(0,10)+'.json');
 }
 function importAll(input){
   const f = input.files[0]; if(!f) return;
@@ -1257,32 +1556,34 @@ function importAll(input){
       if(d.results) store.set(KEY.R, d.results);
       if(d.users) store.set(KEY.U, d.users);
       if(d.settings) store.set(KEY.S, d.settings);
-      render(); alert('Data berhasil diimpor.');
-    }catch(e){ alert('File tidak valid: ' + e.message); }
+      render(); alert('Data diimpor.');
+    }catch(e){ alert('File tidak valid: '+e.message); }
   };
   rd.readAsText(f); input.value = '';
 }
 function resetSoal(){
-  if(!confirm('Kembalikan seluruh soal ke bank bawaan? Perubahan yang Anda buat akan hilang.')) return;
-  setQuestions(seedQuestions()); render(); alert('Soal berhasil direset ke bawaan.');
+  if(!confirm('Kembalikan seluruh soal ke bank bawaan (55 soal)?')) return;
+  setQuestions(bootstrapQuestions()); render(); alert('Soal direset ke bank bawaan.');
 }
 
 /* =========================================================
    INIT
    ========================================================= */
 (function init(){
-  if(!store.get(KEY.Q, null)) store.set(KEY.Q, seedQuestions());
-  if(!store.get(KEY.S, null)) store.set(KEY.S, { adminPassword:'admin123' });
+  if(!store.get(KEY.S, null)) store.set(KEY.S, {adminPassword:'admin123', autoPoll: true});
   session = store.get(KEY.SES, null);
   render();
-  if(session && session.role === 'peserta' && isSyncReady()){
-    ambilSoalServer().then(list => {
-      if(Array.isArray(list) && list.length > 0){
-        store.set(KEY.Q, list);
-        if(!quiz && !lastResult) render();
-      }
-    });
+  if(session){
+    if(session.role === 'peserta' && isSyncReady()){ pullSoalForPeserta(); }
+    if(session.role === 'admin' && isSyncReady()){ autoPullAdminLogin(); }
   }
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden) return;
+    if(!session) return;
+    if(session.role==='admin' && adminTab==='soal' && isSyncReady()){
+      silentPullFromSheet().then(changed => { if(changed){ renderSoalList(); updateSyncBanner(); } });
+    }
+  });
 })();
 </script>
 </body>
