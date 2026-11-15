@@ -6,65 +6,30 @@
 <title>Latihan Soal Penyuluh KB — Try Out Ujikom</title>
 <style>
 *,*::before,*::after{box-sizing:border-box}
-:root{
-  --pri:#4f46e5; --pri-d:#4338ca; --teal:#0d9488;
-  --ink:#0f172a; --muted:#64748b; --line:#e5e9f2;
-  --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
-  --shadow:0 14px 40px -18px rgba(15,23,42,.35);
-}
+:root{--pri:#4f46e5;--pri-d:#4338ca;--teal:#0d9488;--ink:#0f172a;--muted:#64748b;--line:#e5e9f2;--ok:#16a34a;--bad:#dc2626;--shadow:0 14px 40px -18px rgba(15,23,42,.35)}
 html,body{height:100%}
-body{
-  margin:0;color:var(--ink);
-  font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
-  background:
-    radial-gradient(900px 520px at 0% -10%, #dbeafe 0%, transparent 60%),
-    radial-gradient(820px 520px at 100% 0%, #ccfbf1 0%, transparent 55%),
-    #f6f8fc;
-  min-height:100vh;
-}
+body{margin:0;color:var(--ink);font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+  background:radial-gradient(900px 520px at 0% -10%,#dbeafe 0%,transparent 60%),radial-gradient(820px 520px at 100% 0%,#ccfbf1 0%,transparent 55%),#f6f8fc;min-height:100vh}
 h1,h2,h3,h4{margin:0 0 .4em;line-height:1.25}
 h2{font-size:20px}h3{font-size:17px}
 p{margin:0 0 .5em;color:var(--muted);line-height:1.6;font-size:14.5px}
-small,.small{font-size:12.5px}
-.tiny{font-size:11.5px}
-.muted{color:var(--muted)}
+small,.small{font-size:12.5px}.tiny{font-size:11.5px}.muted{color:var(--muted)}
 code{background:#eef2ff;color:var(--pri-d);padding:1px 6px;border-radius:6px;font-size:12.5px}
 pre.code{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:12px;overflow:auto;font-size:11.5px;line-height:1.55;max-height:340px;margin:8px 0}
 hr.sep{border:none;border-top:1px dashed var(--line);margin:22px 0}
-
-.container{max-width:1080px;margin:0 auto;padding:22px 18px 70px}
-.narrow{max-width:840px}
+.container{max-width:1080px;margin:0 auto;padding:22px 18px 70px}.narrow{max-width:840px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
-
 .brand{display:flex;gap:13px;align-items:center}
-.brand .logo{
-  width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--pri),var(--teal));color:#fff;font-weight:800;font-size:16px;
-  box-shadow:0 8px 20px -8px rgba(79,70,229,.8);flex:0 0 auto;
-}
+.brand .logo{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pri),var(--teal));color:#fff;font-weight:800;font-size:16px;box-shadow:0 8px 20px -8px rgba(79,70,229,.8);flex:0 0 auto}
 .brand.small .logo{width:38px;height:38px;border-radius:11px;font-size:13px}
-.topbar{
-  position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;
-  gap:12px;flex-wrap:wrap;padding:10px 18px;
-  background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
-}
-
+.topbar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 18px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 label{display:block;font-size:13px;font-weight:600;color:#334155;margin:12px 0 6px}
-.input{
-  width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;
-  font-size:14.5px;font-family:inherit;color:var(--ink);background:#fff;outline:none;transition:.15s;
-}
+.input{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;font-size:14.5px;font-family:inherit;color:var(--ink);background:#fff;outline:none;transition:.15s}
 .input:focus{border-color:var(--pri);box-shadow:0 0 0 4px rgba(79,70,229,.12)}
 textarea.input{resize:vertical}
 select.input{appearance:none;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2364748b'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;background-size:20px;padding-right:32px}
-
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:7px;
-  padding:11px 18px;border-radius:12px;border:1.5px solid var(--line);background:#fff;
-  color:var(--ink);font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:.15s;
-}
-.btn:hover{background:#f8fafc;transform:translateY(-1px)}
-.btn:active{transform:translateY(0)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 18px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:.15s}
+.btn:hover{background:#f8fafc;transform:translateY(-1px)}.btn:active{transform:translateY(0)}
 .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
 .btn.primary{background:linear-gradient(135deg,var(--pri),#6366f1);color:#fff;border-color:transparent;box-shadow:0 10px 22px -12px rgba(79,70,229,.9)}
 .btn.primary:hover{background:linear-gradient(135deg,var(--pri-d),#4f46e5)}
@@ -73,50 +38,31 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .btn.danger:hover{background:#fee2e2}
 .btn.tiny{padding:7px 12px;font-size:12.5px;border-radius:9px}
 .btn.block{width:100%;margin-top:18px}
-
-.row{display:flex;align-items:center;gap:10px}
-.row.gap{gap:10px}
-.row.between{justify-content:space-between}
-.row.wrap{flex-wrap:wrap}
+.row{display:flex;align-items:center;gap:10px}.row.gap{gap:10px}.row.between{justify-content:space-between}.row.wrap{flex-wrap:wrap}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
 .login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px}
-.login-card{
-  width:100%;max-width:450px;background:#fff;border-radius:22px;padding:26px;
-  border:1px solid var(--line);box-shadow:0 40px 70px -35px rgba(30,41,59,.5);
-}
+.login-card{width:100%;max-width:450px;background:#fff;border-radius:22px;padding:26px;border:1px solid var(--line);box-shadow:0 40px 70px -35px rgba(30,41,59,.5)}
 .tabs{display:flex;gap:6px;background:#f1f5f9;padding:5px;border-radius:14px;margin:22px 0 6px}
 .tabs.big{margin:0 0 18px}
-.tab{
-  flex:1;padding:10px;border:none;background:transparent;border-radius:10px;
-  font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:.15s;
-}
+.tab{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:.15s}
 .tab.active{background:#fff;color:var(--pri);box-shadow:0 4px 12px -4px rgba(15,23,42,.2)}
 .hint{font-size:12px;color:var(--muted);margin-top:18px;text-align:center;line-height:1.6}
-
 .chips{display:flex;gap:9px;flex-wrap:wrap}
-.chip{
-  padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;
-  font-size:13.5px;font-weight:600;color:#475569;cursor:pointer;font-family:inherit;transition:.15s;
-}
+.chip{padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:13.5px;font-weight:600;color:#475569;cursor:pointer;font-family:inherit;transition:.15s}
 .chip:hover{border-color:#c7d2fe}
 .chip.on{background:linear-gradient(135deg,var(--pri),#6366f1);color:#fff;border-color:transparent;box-shadow:0 8px 18px -10px rgba(79,70,229,.9)}
 .badge{display:inline-block;padding:4px 10px;border-radius:8px;font-size:11.5px;font-weight:700;letter-spacing:.2px}
-.b-tek{background:#eef2ff;color:#4338ca}
-.b-sos{background:#ccfbf1;color:#0f766e}
+.b-tek{background:#eef2ff;color:#4338ca}.b-sos{background:#ccfbf1;color:#0f766e}
 .pill{display:inline-block;padding:6px 12px;border-radius:999px;background:#f1f5f9;font-size:12.5px;font-weight:600;color:#475569}
-
-.hero{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap;
-  background:linear-gradient(135deg,#eef2ff 0%,#f0fdfa 100%)}
+.pill.ok{background:#ecfdf5;color:#166534}.pill.bad{background:#fef2f2;color:#991b1b}
+.hero{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,#eef2ff 0%,#f0fdfa 100%)}
 .hero-stat{display:flex;gap:14px}
 .hero-stat>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 16px;text-align:center;min-width:92px}
 .hero-stat strong{display:block;font-size:20px;color:var(--pri)}
 .hero-stat span{font-size:11.5px;color:var(--muted)}
 .stats{display:flex;gap:14px;flex-wrap:wrap}
 .stats>div{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:12px 20px;text-align:center;min-width:110px}
-.stats strong{display:block;font-size:22px;color:var(--pri)}
-.stats span{font-size:12px;color:var(--muted)}
-
+.stats strong{display:block;font-size:22px;color:var(--pri)}.stats span{font-size:12px;color:var(--muted)}
 .picker{margin-top:16px;border:1px dashed var(--line);border-radius:14px;padding:14px;background:#fbfcff}
 .picker-list{max-height:330px;overflow:auto;margin:8px 0}
 .pick-item{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:10px;cursor:pointer;font-weight:400;margin:0;transition:.12s}
@@ -125,20 +71,12 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .pick-text{font-size:13.3px;color:#334155;line-height:1.45}
 .switch{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500;color:#475569;margin:0;cursor:pointer}
 .switch input{accent-color:var(--pri);width:16px;height:16px}
-
 .qtext{font-size:16.5px;line-height:1.55;margin:14px 0 18px;color:#111827}
 .qtext.small{font-size:14.5px}
-.opt{
-  display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;
-  padding:14px 16px;border-radius:14px;border:1.5px solid var(--line);background:#fff;
-  cursor:pointer;font-size:14.5px;font-family:inherit;color:inherit;margin-bottom:10px;transition:.15s;line-height:1.5;
-}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;padding:14px 16px;border-radius:14px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-size:14.5px;font-family:inherit;color:inherit;margin-bottom:10px;transition:.15s;line-height:1.5}
 .opt:hover{border-color:#c7d2fe;background:#f8faff}
 .opt.sel{border-color:var(--pri);background:#eef2ff;box-shadow:0 0 0 3px rgba(79,70,229,.12)}
-.opt .ltr{
-  flex:0 0 28px;height:28px;border-radius:9px;background:#eef2ff;color:var(--pri);
-  display:grid;place-items:center;font-weight:800;font-size:13px;
-}
+.opt .ltr{flex:0 0 28px;height:28px;border-radius:9px;background:#eef2ff;color:var(--pri);display:grid;place-items:center;font-weight:800;font-size:13px}
 .opt.sel .ltr{background:var(--pri);color:#fff}
 .opt.static{cursor:default}
 .opt.static:hover{border-color:var(--line);background:#fff;transform:none}
@@ -147,82 +85,54 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .opt.wrong{border-color:#fecaca;background:#fef2f2}
 .opt.wrong .ltr{background:var(--bad);color:#fff}
 .palette{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;border-top:1px dashed var(--line);padding-top:16px}
-.pal{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:#fff;
-  font-weight:700;font-size:13px;color:#475569;cursor:pointer;font-family:inherit;transition:.12s}
+.pal{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-weight:700;font-size:13px;color:#475569;cursor:pointer;font-family:inherit;transition:.12s}
 .pal:hover{border-color:#c7d2fe}
 .pal.done{background:#dcfce7;border-color:#86efac;color:#166534}
 .pal.cur{outline:2.5px solid var(--pri);outline-offset:1px}
-
 .result-head{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
-.score-ring{
-  width:150px;height:150px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;
-  background:conic-gradient(var(--pri) calc(var(--p)*1%), #e8ecf5 0);
-}
-.score-ring>div{
-  width:120px;height:120px;border-radius:50%;background:#fff;display:grid;place-items:center;align-content:center;
-}
+.score-ring{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:conic-gradient(var(--pri) calc(var(--p)*1%),#e8ecf5 0)}
+.score-ring>div{width:120px;height:120px;border-radius:50%;background:#fff;display:grid;place-items:center;align-content:center}
 .score-ring strong{font-size:34px;line-height:1;color:var(--pri)}
 .score-ring span{font-size:11.5px;color:var(--muted);letter-spacing:.5px}
 .rev{border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;background:#fff}
 .rev .opt{margin-bottom:8px;padding:10px 13px;font-size:13.8px}
 .bahas{margin-top:10px;background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:10px 13px;font-size:13px;line-height:1.55}
 .tag{font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:8px}
-.tag.benar{background:#dcfce7;color:#166534}
-.tag.salah{background:#fee2e2;color:#991b1b}
-.tag.kosong{background:#f1f5f9;color:#475569}
-.score{font-weight:800}
-.score.ok{color:var(--ok)}
-.score.bad{color:var(--bad)}
-
+.tag.benar{background:#dcfce7;color:#166534}.tag.salah{background:#fee2e2;color:#991b1b}.tag.kosong{background:#f1f5f9;color:#475569}
+.score{font-weight:800}.score.ok{color:var(--ok)}.score.bad{color:var(--bad)}
 .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}
 table.tbl{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
-table.tbl th{background:#f8fafc;text-align:left;padding:11px 13px;font-size:12px;text-transform:uppercase;
-  letter-spacing:.4px;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap}
+table.tbl th{background:#f8fafc;text-align:left;padding:11px 13px;font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap}
 table.tbl td{padding:11px 13px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
 table.tbl tr:last-child td{border-bottom:none}
 table.tbl tbody tr:hover{background:#fafbff}
-
 .q-admin{border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px;background:#fff}
 .q-admin-text{font-size:14px;color:#1e293b;margin:8px 0 10px;line-height:1.55}
 .q-admin-opts div{font-size:13.3px;color:#475569;padding:3px 0;line-height:1.5}
 .q-admin-opts div.ok{color:#166534;font-weight:700}
-
-.overlay{
-  position:fixed;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(3px);
-  display:grid;place-items:center;padding:18px;z-index:100;animation:fade .16s ease;
-}
+.overlay{position:fixed;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(3px);display:grid;place-items:center;padding:18px;z-index:100;animation:fade .16s ease}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-.modal{
-  width:100%;max-width:640px;max-height:90vh;overflow:auto;background:#fff;border-radius:20px;
-  padding:22px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);animation:pop .18s ease;
-}
+.modal{width:100%;max-width:680px;max-height:92vh;overflow:auto;background:#fff;border-radius:20px;padding:22px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);animation:pop .18s ease}
 @keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
-.ltr-static{
-  flex:0 0 34px;height:38px;border-radius:10px;background:#eef2ff;color:var(--pri);
-  display:grid;place-items:center;font-weight:800;font-size:13px;
-}
-
-@media(max-width:640px){
-  .grid2{grid-template-columns:1fr}
-  .hero-stat{width:100%}
-  .hero-stat>div{flex:1}
-  .login-card{padding:20px}
-  .card{padding:17px;border-radius:15px}
-  .row.between.wrap{gap:10px}
-  .qtext{font-size:15.5px}
-  .score-ring{width:126px;height:126px}
-  .score-ring>div{width:100px;height:100px}
-  .score-ring strong{font-size:28px}
-}
+.ltr-static{flex:0 0 34px;height:38px;border-radius:10px;background:#eef2ff;color:var(--pri);display:grid;place-items:center;font-weight:800;font-size:13px}
+.preview-item{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:#fafbff}
+.preview-item .q{font-size:13px;color:#1e293b;line-height:1.5;margin-bottom:6px}
+.preview-item .o{font-size:12px;color:#475569;padding:2px 0}
+.preview-item .o.key{color:#166534;font-weight:700}
+.preview-badge{display:inline-block;padding:2px 8px;border-radius:6px;background:#eef2ff;color:#4338ca;font-size:10.5px;font-weight:700;margin-bottom:6px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}.hero-stat{width:100%}.hero-stat>div{flex:1}.login-card{padding:20px}.card{padding:17px;border-radius:15px}.row.between.wrap{gap:10px}.qtext{font-size:15.5px}.score-ring{width:126px;height:126px}.score-ring>div{width:100px;height:100px}.score-ring strong{font-size:28px}}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <div id="modal-root"></div>
 
+<!-- Library mammoth untuk baca file .docx -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+
 <script>
 /* =========================================================
-   1. BANK SOAL BAWAAN
+   BANK SOAL BAWAAN (dipakai saat sheet "Soal" masih kosong)
    ========================================================= */
 const SEED = [
 {k:'Teknis',n:1,q:'Dependent Variabel (DV) dari Demografi formal adalah ...',o:['Tingkat Kelahiran dan Komposisi Umur','Migrasi keluar dan Pertumbuhan Ekonomi','Kemiskinan dan Kebutuhan Pangan','Kebutuhan Pangan dan Tingkat Kelahiran','Komposisi Umur dan Pertumbuhan Ekonomi'],a:0},
@@ -283,20 +193,19 @@ const SEED = [
 ];
 
 /* =========================================================
-   2. STORAGE, STATE & GLOBALS
+   STORAGE & STATE
    ========================================================= */
 const KEY = { Q:'pkb_questions_v1', R:'pkb_results_v1', U:'pkb_users_v1', S:'pkb_settings_v1', SES:'pkb_session_v1' };
 const LETTERS = ['A','B','C','D','E'];
 const DEFAULT_SYNC_URL = '';
-
 let serverResultsCache = [];
 let currentResultsList = [];
+let soalSyncing = false;
 
 const store = {
   get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
   set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){ alert('Penyimpanan penuh / tidak tersedia.'); } }
 };
-
 let session = null;
 let loginTab = 'peserta';
 let quiz = null;
@@ -307,16 +216,14 @@ let pick = { kategori:'Semua', mode:'semua', selected:[], search:'', acak:false 
 let timerInt = null;
 
 /* =========================================================
-   3. UTILITAS
+   UTILITAS
    ========================================================= */
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function fmtDate(iso){ try{ return new Date(iso).toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'}); }catch(e){ return iso; } }
 function fmtDur(s){ const m = Math.floor(s/60), r = s%60; return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0'); }
-
 function getQuestions(){ return store.get(KEY.Q, []); }
-function setQuestions(list){ store.set(KEY.Q, list); }
 function filterByKategori(list, kat){ return kat === 'Semua' ? list.slice() : list.filter(q => q.kategori === kat); }
 function seedQuestions(){
   return SEED.map(s => ({
@@ -328,58 +235,23 @@ function seedQuestions(){
 }
 function myResults(){ return store.get(KEY.R, []).filter(r => r.username === session.username); }
 
-/* =========================================================
-   4. KONEKSI GOOGLE SHEETS (APPS SCRIPT)
-   ========================================================= */
-function getSyncUrl(){
-  const st = store.get(KEY.S, {});
-  return String(st.syncUrl || DEFAULT_SYNC_URL || '').trim();
-}
-function isSyncReady(){ return /^https?:\/\/.+\/exec$/.test(getSyncUrl()); }
-
-async function kirimHasilKeServer(r){
-  const url = getSyncUrl();
-  if(!url) return { ok:false, reason:'no-url' };
-  try{
-    await fetch(url, {
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify({ action:'simpan', data:r })
-    });
-    return { ok:true };
-  }catch(e){
-    console.warn('Kirim hasil gagal:', e);
-    return { ok:false, error:String(e) };
+/* Set question bank — auto-sync ke server kalau admin & URL sudah diset */
+function setQuestions(list, opts){
+  opts = opts || {};
+  store.set(KEY.Q, list);
+  if(!opts.skipSync && session && session.role === 'admin' && isSyncReady()){
+    pushSoalKeServer(list);
   }
 }
 
-async function hapusHasilServer(id){
-  const url = getSyncUrl();
-  if(!url) return;
-  try{
-    await fetch(url, {
-      method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify({ action:'hapus', id })
-    });
-  }catch(e){ console.warn(e); }
-}
-
-async function hapusSemuaHasilServer(){
-  const url = getSyncUrl();
-  if(!url) return;
-  try{
-    await fetch(url, {
-      method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify({ action:'hapusSemua' })
-    });
-  }catch(e){ console.warn(e); }
-}
+/* =========================================================
+   GOOGLE SHEETS SYNC — KONFIGURASI
+   ========================================================= */
+function getSyncUrl(){ const st = store.get(KEY.S, {}); return String(st.syncUrl || DEFAULT_SYNC_URL || '').trim(); }
+function isSyncReady(){ return /^https?:\/\/.+\/exec$/.test(getSyncUrl()); }
 
 function jsonpGet(url, params, timeout){
-  timeout = timeout || 10000;
+  timeout = timeout || 12000;
   return new Promise((resolve, reject) => {
     const cbName = 'jsonp_' + Math.random().toString(36).slice(2);
     const sep = url.indexOf('?') >= 0 ? '&' : '?';
@@ -395,29 +267,75 @@ function jsonpGet(url, params, timeout){
   });
 }
 
-async function ambilHasilServer(){
-  const url = getSyncUrl();
-  if(!url) return null;
+/* ---------- SOAL (questions) ---------- */
+async function ambilSoalServer(){
+  const url = getSyncUrl(); if(!url) return null;
   try{
-    const res = await fetch(url + '?action=daftar', { cache:'no-store' });
-    if(res.ok){
-      const j = await res.json();
-      if(Array.isArray(j)) return j;
-      if(j && Array.isArray(j.data)) return j.data;
-    }
-  }catch(e){ console.warn('Fetch GET gagal, mencoba JSONP...', e); }
+    const res = await fetch(url + '?action=soal', { cache:'no-store' });
+    if(res.ok){ const j = await res.json(); if(Array.isArray(j)) return j; if(j && Array.isArray(j.data)) return j.data; }
+  }catch(e){ console.warn('fetch soal gagal, coba JSONP', e); }
+  try{ const j = await jsonpGet(url, { action:'soal' }); if(Array.isArray(j)) return j; }
+  catch(e){ console.warn('JSONP soal gagal:', e); }
+  return null;
+}
+
+async function pushSoalKeServer(list){
+  const url = getSyncUrl(); if(!url) return { ok:false, reason:'no-url' };
+  if(soalSyncing) return { ok:false, reason:'busy' };
+  soalSyncing = true;
   try{
-    const j = await jsonpGet(url, { action:'daftar' });
-    if(Array.isArray(j)) return j;
-    return [];
+    await fetch(url, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({ action:'syncSoal', data:list })
+    });
+    soalSyncing = false;
+    showSoalSyncStatus(true);
+    return { ok:true };
   }catch(e){
-    console.warn('JSONP gagal:', e);
-    return null;
+    soalSyncing = false;
+    showSoalSyncStatus(false, e.message);
+    return { ok:false, error:String(e) };
   }
 }
 
+function showSoalSyncStatus(ok, msg){
+  const el = document.getElementById('soal-sync-note');
+  if(!el) return;
+  if(ok){
+    el.innerHTML = '<span class="pill ok">✓ Soal tersinkron ke Google Sheet (' + getQuestions().length + ' soal)</span>';
+  } else {
+    el.innerHTML = '<span class="pill bad">✗ Gagal sinkron: ' + esc(msg||'?') + ' — soal hanya tersimpan di perangkat ini</span>';
+  }
+}
+
+/* ---------- HASIL (results) ---------- */
+async function kirimHasilKeServer(r){
+  const url = getSyncUrl(); if(!url) return { ok:false, reason:'no-url' };
+  try{
+    await fetch(url, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({ action:'simpan', data:r }) });
+    return { ok:true };
+  }catch(e){ return { ok:false, error:String(e) }; }
+}
+async function hapusHasilServer(id){
+  const url = getSyncUrl(); if(!url) return;
+  try{ await fetch(url, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({ action:'hapus', id }) }); }catch(e){}
+}
+async function hapusSemuaHasilServer(){
+  const url = getSyncUrl(); if(!url) return;
+  try{ await fetch(url, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({ action:'hapusSemua' }) }); }catch(e){}
+}
+async function ambilHasilServer(){
+  const url = getSyncUrl(); if(!url) return null;
+  try{ const res = await fetch(url + '?action=daftar', { cache:'no-store' });
+    if(res.ok){ const j = await res.json(); if(Array.isArray(j)) return j; if(j && Array.isArray(j.data)) return j.data; }
+  }catch(e){ console.warn('fetch hasil gagal, coba JSONP', e); }
+  try{ const j = await jsonpGet(url, { action:'daftar' }); if(Array.isArray(j)) return j; return []; }
+  catch(e){ return null; }
+}
+
 /* =========================================================
-   5. RENDER UTAMA
+   RENDER UTAMA
    ========================================================= */
 function render(){
   const app = document.getElementById('app');
@@ -432,60 +350,35 @@ function render(){
   if(lastResult){ app.innerHTML = viewHasil(); return; }
   app.innerHTML = viewPeserta();
 }
-
 function topbar(sub, extra){
-  return '<header class="topbar">' +
-    '<div class="brand small">' +
-      '<div class="logo">KB</div>' +
-      '<div>' +
-        '<strong style="font-size:14px">Latihan Soal Penyuluh KB</strong>' +
-        '<div class="tiny muted">' + esc(sub||'') + '</div>' +
-      '</div>' +
-    '</div>' +
-    '<div class="row gap">' +
-      (extra||'') +
-      '<button class="btn ghost tiny" onclick="logout()">Keluar</button>' +
-    '</div>' +
-  '</header>';
+  return '<header class="topbar"><div class="brand small"><div class="logo">KB</div><div>' +
+    '<strong style="font-size:14px">Latihan Soal Penyuluh KB</strong>' +
+    '<div class="tiny muted">' + esc(sub||'') + '</div></div></div>' +
+    '<div class="row gap">' + (extra||'') + '<button class="btn ghost tiny" onclick="logout()">Keluar</button></div></header>';
 }
 
 /* =========================================================
-   6. LOGIN
+   LOGIN
    ========================================================= */
 function viewLogin(){
-  return '<div class="login-wrap">' +
-    '<div class="login-card">' +
-      '<div class="brand">' +
-        '<div class="logo">KB</div>' +
-        '<div>' +
-          '<h1 style="font-size:19px">Latihan Soal Penyuluh KB</h1>' +
-          '<p style="margin:0;font-size:12.5px">Try Out Persiapan Ujikom - Teknis & Sosiokultural</p>' +
-        '</div>' +
-      '</div>' +
-      '<div class="tabs">' +
-        '<button class="tab ' + (loginTab==='peserta'?'active':'') + '" onclick="setLoginTab(\'peserta\')">Peserta</button>' +
-        '<button class="tab ' + (loginTab==='admin'?'active':'') + '" onclick="setLoginTab(\'admin\')">Admin</button>' +
-      '</div>' +
-      (loginTab === 'peserta' ? formPeserta() : formAdmin()) +
-      '<p class="hint">Password admin bawaan: <code>admin123</code><br>Data tersimpan di browser ini & (opsional) ke Google Sheets.</p>' +
-    '</div>' +
-  '</div>';
+  return '<div class="login-wrap"><div class="login-card"><div class="brand"><div class="logo">KB</div><div>' +
+    '<h1 style="font-size:19px">Latihan Soal Penyuluh KB</h1>' +
+    '<p style="margin:0;font-size:12.5px">Try Out Persiapan Ujikom - Teknis & Sosiokultural</p></div></div>' +
+    '<div class="tabs"><button class="tab ' + (loginTab==='peserta'?'active':'') + '" onclick="setLoginTab(\'peserta\')">Peserta</button>' +
+    '<button class="tab ' + (loginTab==='admin'?'active':'') + '" onclick="setLoginTab(\'admin\')">Admin</button></div>' +
+    (loginTab === 'peserta' ? formPeserta() : formAdmin()) +
+    '<p class="hint">Password admin bawaan: <code>admin123</code><br>Data soal & hasil tersinkron ke Google Sheets bila URL sudah diatur.</p></div></div>';
 }
 function formPeserta(){
   return '<form onsubmit="doLoginPeserta(event)">' +
-    '<label>Nama Lengkap</label>' +
-    '<input id="in-nama" class="input" placeholder="Contoh: Siti Aminah" required />' +
-    '<label>Username</label>' +
-    '<input id="in-user" class="input" placeholder="contoh: siti01" required />' +
-    '<button class="btn primary block" type="submit">Masuk sebagai Peserta</button>' +
-  '</form>';
+    '<label>Nama Lengkap</label><input id="in-nama" class="input" placeholder="Contoh: Siti Aminah" required />' +
+    '<label>Username</label><input id="in-user" class="input" placeholder="contoh: siti01" required />' +
+    '<button class="btn primary block" type="submit">Masuk sebagai Peserta</button></form>';
 }
 function formAdmin(){
   return '<form onsubmit="doLoginAdmin(event)">' +
-    '<label>Password Admin</label>' +
-    '<input id="in-pass" type="password" class="input" placeholder="********" required />' +
-    '<button class="btn primary block" type="submit">Masuk sebagai Admin</button>' +
-  '</form>';
+    '<label>Password Admin</label><input id="in-pass" type="password" class="input" placeholder="********" required />' +
+    '<button class="btn primary block" type="submit">Masuk sebagai Admin</button></form>';
 }
 function setLoginTab(t){ loginTab = t; render(); }
 
@@ -500,8 +393,9 @@ function doLoginPeserta(e){
   store.set(KEY.U, users);
   session = { role:'peserta', username:user, nama: nama };
   store.set(KEY.SES, session);
-  quiz = null; lastResult = null;
-  render();
+  quiz = null; lastResult = null; render();
+  // Ambil soal terbaru dari server
+  refreshSoalDariServer('peserta');
 }
 
 function doLoginAdmin(e){
@@ -511,8 +405,26 @@ function doLoginAdmin(e){
   if(pass !== st.adminPassword){ alert('Password admin salah.'); return; }
   session = { role:'admin', username:'admin', nama:'Administrator' };
   store.set(KEY.SES, session);
-  quiz = null; lastResult = null;
-  render();
+  quiz = null; lastResult = null; render();
+  // Pull soal terbaru dari server (kalau ada)
+  refreshSoalDariServer('admin');
+}
+
+async function refreshSoalDariServer(who){
+  if(!isSyncReady()) return;
+  const list = await ambilSoalServer();
+  if(!Array.isArray(list)) return;
+  if(list.length === 0 && who === 'admin'){
+    // Sheet masih kosong — dorong soal lokal sebagai seed
+    const local = getQuestions();
+    if(local.length) pushSoalKeServer(local);
+    return;
+  }
+  if(list.length > 0){
+    store.set(KEY.Q, list);
+    if(who === 'admin' && adminTab === 'soal'){ render(); }
+    else if(who === 'peserta' && !quiz && !lastResult){ render(); }
+  }
 }
 
 function logout(){
@@ -523,143 +435,93 @@ function logout(){
 }
 
 /* =========================================================
-   7. DASHBOARD PESERTA
+   DASHBOARD PESERTA
    ========================================================= */
 function viewPeserta(){
   const qs = getQuestions();
   const filtered = filterByKategori(qs, pick.kategori);
   const synced = isSyncReady();
-  return topbar('Halo, ' + session.nama) +
-  '<div class="container">' +
-    '<div class="card hero">' +
-      '<div style="flex:1;min-width:230px">' +
-        '<h2>Mulai Latihan Soal</h2>' +
-        '<p>Pilih kategori, tentukan mode pengerjaan, lalu mulai. Anda bisa memilih sendiri soal mana yang ingin dikerjakan.</p>' +
-        (synced
-          ? '<span class="pill" style="background:#ecfdf5;color:#166534">Hasil otomatis terkirim ke server</span>'
-          : '<span class="pill">Mode lokal - hasil tersimpan di perangkat ini</span>') +
-      '</div>' +
+  return topbar('Halo, ' + session.nama) + '<div class="container">' +
+    '<div class="card hero"><div style="flex:1;min-width:230px"><h2>Mulai Latihan Soal</h2>' +
+      '<p>Pilih kategori, tentukan mode pengerjaan, lalu mulai. Anda bisa memilih sendiri soal mana yang ingin dikerjakan.</p>' +
+      (synced ? '<span class="pill ok">Soal diambil dari server — selalu versi terbaru</span>'
+              : '<span class="pill">Mode lokal — hasil tersimpan di perangkat ini</span>') + '</div>' +
       '<div class="hero-stat">' +
-        '<div><strong>' + qs.filter(function(x){return x.kategori==='Teknis';}).length + '</strong><span>Soal Teknis</span></div>' +
-        '<div><strong>' + qs.filter(function(x){return x.kategori==='Sosiokultural';}).length + '</strong><span>Sosiokultural</span></div>' +
+        '<div><strong>' + qs.filter(x=>x.kategori==='Teknis').length + '</strong><span>Soal Teknis</span></div>' +
+        '<div><strong>' + qs.filter(x=>x.kategori==='Sosiokultural').length + '</strong><span>Sosiokultural</span></div>' +
         '<div><strong>' + myResults().length + '</strong><span>Riwayat</span></div>' +
-      '</div>' +
-    '</div>' +
-
-    '<div class="card">' +
-      '<h3>1. Pilih Kategori</h3>' +
-      '<div class="chips">' +
-        ['Semua','Teknis','Sosiokultural'].map(function(k){
-          return '<button class="chip ' + (pick.kategori===k?'on':'') + '" onclick="setKategori(\''+k+'\')">' + k + '</button>';
-        }).join('') +
-      '</div>' +
-      '<h3 style="margin-top:22px">2. Pilih Mode</h3>' +
-      '<div class="chips">' +
-        '<button class="chip ' + (pick.mode==='semua'?'on':'') + '" onclick="setMode(\'semua\')">Kerjakan Semua (' + filtered.length + ' soal)</button>' +
-        '<button class="chip ' + (pick.mode==='pilih'?'on':'') + '" onclick="setMode(\'pilih\')">Pilih Soal Sendiri</button>' +
-      '</div>' +
-      (pick.mode==='pilih' ? pickerHTML(filtered) : '') +
+      '</div></div>' +
+    '<div class="card"><h3>1. Pilih Kategori</h3><div class="chips">' +
+      ['Semua','Teknis','Sosiokultural'].map(k=>'<button class="chip ' + (pick.kategori===k?'on':'') + '" onclick="setKategori(\''+k+'\')">' + k + '</button>').join('') +
+      '</div><h3 style="margin-top:22px">2. Pilih Mode</h3><div class="chips">' +
+      '<button class="chip ' + (pick.mode==='semua'?'on':'') + '" onclick="setMode(\'semua\')">Kerjakan Semua (' + filtered.length + ' soal)</button>' +
+      '<button class="chip ' + (pick.mode==='pilih'?'on':'') + '" onclick="setMode(\'pilih\')">Pilih Soal Sendiri</button>' +
+      '</div>' + (pick.mode==='pilih' ? pickerHTML(filtered) : '') +
       '<div class="row between wrap" style="margin-top:20px">' +
         '<label class="switch"><input type="checkbox" ' + (pick.acak?'checked':'') + ' onchange="pick.acak=this.checked"> Acak urutan soal</label>' +
         '<button class="btn primary" onclick="startQuiz()">Mulai Latihan</button>' +
-      '</div>' +
-    '</div>' +
-
-    riwayatHTML() +
-  '</div>';
+      '</div></div>' + riwayatHTML() + '</div>';
 }
-
 function pickerHTML(list){
   return '<div class="picker">' +
     '<input class="input" placeholder="Cari soal berdasarkan teks atau nomor..." value="' + esc(pick.search) + '" oninput="pick.search=this.value; renderPickerList()">' +
-    '<div class="row between wrap" style="margin:10px 0">' +
-      '<small class="muted">Centang soal yang ingin dikerjakan</small>' +
-      '<div class="row gap">' +
-        '<button class="btn tiny" onclick="pilihSemua()">Pilih semua</button>' +
-        '<button class="btn tiny ghost" onclick="pilihKosong()">Kosongkan</button>' +
-      '</div>' +
-    '</div>' +
+    '<div class="row between wrap" style="margin:10px 0"><small class="muted">Centang soal yang ingin dikerjakan</small>' +
+      '<div class="row gap"><button class="btn tiny" onclick="pilihSemua()">Pilih semua</button>' +
+        '<button class="btn tiny ghost" onclick="pilihKosong()">Kosongkan</button></div></div>' +
     '<div id="picker-list" class="picker-list">' + pickerItems(list) + '</div>' +
-    '<div class="pill" id="pick-count">Dipilih: ' + pick.selected.length + ' soal</div>' +
-  '</div>';
+    '<div class="pill" id="pick-count">Dipilih: ' + pick.selected.length + ' soal</div></div>';
 }
 function pickerItems(list){
   const s = pick.search.toLowerCase().trim();
-  const items = list.filter(function(q){
-    return !s || q.pertanyaan.toLowerCase().indexOf(s) >= 0 || String(q.nomor).indexOf(s) >= 0;
-  });
+  const items = list.filter(q => !s || q.pertanyaan.toLowerCase().indexOf(s) >= 0 || String(q.nomor).indexOf(s) >= 0);
   if(!items.length) return '<p class="muted" style="padding:12px">Tidak ada soal yang cocok.</p>';
-  return items.map(function(q){
-    return '<label class="pick-item ' + (pick.selected.indexOf(q.id)>=0?'on':'') + '">' +
-      '<input type="checkbox" ' + (pick.selected.indexOf(q.id)>=0?'checked':'') + ' onchange="togglePilih(\''+q.id+'\')">' +
-      '<span class="badge ' + (q.kategori==='Teknis'?'b-tek':'b-sos') + '">' + (q.kategori==='Teknis'?'T':'S') + q.nomor + '</span>' +
-      '<span class="pick-text">' + esc(q.pertanyaan) + '</span>' +
-    '</label>';
-  }).join('');
+  return items.map(q => '<label class="pick-item ' + (pick.selected.indexOf(q.id)>=0?'on':'') + '">' +
+    '<input type="checkbox" ' + (pick.selected.indexOf(q.id)>=0?'checked':'') + ' onchange="togglePilih(\''+q.id+'\')">' +
+    '<span class="badge ' + (q.kategori==='Teknis'?'b-tek':'b-sos') + '">' + (q.kategori==='Teknis'?'T':'S') + q.nomor + '</span>' +
+    '<span class="pick-text">' + esc(q.pertanyaan) + '</span></label>').join('');
 }
-function renderPickerList(){
-  const box = document.getElementById('picker-list');
-  if(!box) return;
-  box.innerHTML = pickerItems(filterByKategori(getQuestions(), pick.kategori));
-}
+function renderPickerList(){ const box = document.getElementById('picker-list'); if(!box) return; box.innerHTML = pickerItems(filterByKategori(getQuestions(), pick.kategori)); }
 function togglePilih(id){
-  const i = pick.selected.indexOf(id);
-  if(i >= 0) pick.selected.splice(i,1); else pick.selected.push(id);
+  const i = pick.selected.indexOf(id); if(i >= 0) pick.selected.splice(i,1); else pick.selected.push(id);
   renderPickerList();
-  const c = document.getElementById('pick-count');
-  if(c) c.textContent = 'Dipilih: ' + pick.selected.length + ' soal';
+  const c = document.getElementById('pick-count'); if(c) c.textContent = 'Dipilih: ' + pick.selected.length + ' soal';
 }
-function pilihSemua(){ pick.selected = filterByKategori(getQuestions(), pick.kategori).map(function(q){return q.id;}); render(); }
+function pilihSemua(){ pick.selected = filterByKategori(getQuestions(), pick.kategori).map(q => q.id); render(); }
 function pilihKosong(){ pick.selected = []; render(); }
 function setKategori(k){ pick.kategori = k; pick.selected = []; render(); }
 function setMode(m){ pick.mode = m; render(); }
-
 function riwayatHTML(){
   const list = myResults();
-  return '<div class="card">' +
-    '<h3>Riwayat Saya</h3>' +
-    (list.length
-      ? '<div class="table-wrap"><table class="tbl"><thead><tr><th>Tanggal</th><th>Kategori</th><th>Benar</th><th>Nilai</th><th></th></tr></thead><tbody>' +
-        list.map(function(r){
-          return '<tr><td>' + fmtDate(r.tanggal) + '</td>' +
-            '<td>' + esc(r.kategori) + '</td>' +
-            '<td>' + r.benar + '/' + r.total + '</td>' +
-            '<td><b class="score ' + (r.nilai>=70?'ok':'bad') + '">' + r.nilai + '</b></td>' +
-            '<td><button class="btn tiny" onclick="lihatHasil(\''+r.id+'\')">Lihat</button></td></tr>';
-        }).join('') + '</tbody></table></div>'
-      : '<p class="muted">Belum ada riwayat. Yuk mulai latihan pertama Anda!</p>') +
-  '</div>';
+  return '<div class="card"><h3>Riwayat Saya</h3>' +
+    (list.length ? '<div class="table-wrap"><table class="tbl"><thead><tr><th>Tanggal</th><th>Kategori</th><th>Benar</th><th>Nilai</th><th></th></tr></thead><tbody>' +
+      list.map(r=>'<tr><td>' + fmtDate(r.tanggal) + '</td><td>' + esc(r.kategori) + '</td><td>' + r.benar + '/' + r.total + '</td>' +
+        '<td><b class="score ' + (r.nilai>=70?'ok':'bad') + '">' + r.nilai + '</b></td>' +
+        '<td><button class="btn tiny" onclick="lihatHasil(\''+r.id+'\')">Lihat</button></td></tr>').join('') + '</tbody></table></div>'
+    : '<p class="muted">Belum ada riwayat. Yuk mulai latihan pertama Anda!</p>') + '</div>';
 }
 function lihatHasil(id){
-  const r = store.get(KEY.R, []).find(function(x){return x.id===id;});
+  const r = store.get(KEY.R, []).find(x => x.id === id);
   if(!r) return;
-  lastResult = Object.assign({}, r, { _fresh:false });
-  render();
+  lastResult = Object.assign({}, r, { _fresh:false }); render();
 }
 
 /* =========================================================
-   8. QUIZ
+   QUIZ
    ========================================================= */
 function startQuiz(){
   const all = getQuestions();
   let items;
-  if(pick.mode === 'semua'){
-    items = filterByKategori(all, pick.kategori);
-  } else {
-    items = all.filter(function(q){ return pick.selected.indexOf(q.id) >= 0; });
-    if(!items.length){ alert('Pilih minimal satu soal terlebih dahulu.'); return; }
-  }
+  if(pick.mode === 'semua'){ items = filterByKategori(all, pick.kategori); }
+  else { items = all.filter(q => pick.selected.indexOf(q.id) >= 0); if(!items.length){ alert('Pilih minimal satu soal terlebih dahulu.'); return; } }
   if(!items.length){ alert('Belum ada soal pada kategori ini.'); return; }
-  items.sort(function(a,b){ return a.kategori.localeCompare(b.kategori) || a.nomor - b.nomor; });
+  items.sort((a,b) => a.kategori.localeCompare(b.kategori) || a.nomor - b.nomor);
   if(pick.acak) items = shuffle(items);
-
-  quiz = { ids: items.map(function(q){return q.id;}), answers:{}, idx:0, start: Date.now(), kategori: pick.kategori, acak: pick.acak };
-  lastResult = null;
-  render();
+  quiz = { ids: items.map(q => q.id), answers:{}, idx:0, start: Date.now(), kategori: pick.kategori, acak: pick.acak };
+  lastResult = null; render();
 }
 function startTimer(){
   clearInterval(timerInt);
-  timerInt = setInterval(function(){
+  timerInt = setInterval(() => {
     const el = document.getElementById('timer');
     if(!el || !quiz){ clearInterval(timerInt); return; }
     el.textContent = fmtDur(Math.floor((Date.now() - quiz.start)/1000));
@@ -667,743 +529,737 @@ function startTimer(){
 }
 function viewQuiz(){
   const all = getQuestions();
-  const q = all.find(function(x){ return x.id === quiz.ids[quiz.idx]; });
+  const q = all.find(x => x.id === quiz.ids[quiz.idx]);
   if(!q){ quiz = null; render(); return ''; }
   const total = quiz.ids.length;
   const answered = Object.keys(quiz.answers).length;
-  const opts = q.opsi.map(function(t,i){ return {t:t,i:i}; }).filter(function(o){ return o.t && o.t.trim(); });
-
+  const opts = q.opsi.map((t,i)=>({t,i})).filter(o => o.t && o.t.trim());
   return topbar(q.kategori + ' - Soal ' + (quiz.idx+1) + ' dari ' + total,
-      '<span class="pill">Waktu: <b id="timer">00:00</b></span><span class="pill">Terjawab: ' + answered + '/' + total + '</span>') +
-  '<div class="container narrow">' +
-    '<div class="card">' +
-      '<div class="row between">' +
-        '<span class="badge ' + (q.kategori==='Teknis'?'b-tek':'b-sos') + '">' + q.kategori + '</span>' +
-        '<span class="muted small">Soal No. ' + q.nomor + '</span>' +
-      '</div>' +
-      '<h3 class="qtext">' + esc(q.pertanyaan) + '</h3>' +
-      '<div>' +
-        opts.map(function(o){
-          return '<button class="opt ' + (quiz.answers[q.id]===o.i?'sel':'') + '" onclick="pilihOpsi(' + o.i + ')">' +
-            '<span class="ltr">' + LETTERS[o.i] + '</span><span>' + esc(o.t) + '</span>' +
-          '</button>';
-        }).join('') +
-      '</div>' +
-      '<div class="row between wrap" style="margin-top:18px">' +
+    '<span class="pill">Waktu: <b id="timer">00:00</b></span><span class="pill">Terjawab: ' + answered + '/' + total + '</span>') +
+    '<div class="container narrow"><div class="card">' +
+      '<div class="row between"><span class="badge ' + (q.kategori==='Teknis'?'b-tek':'b-sos') + '">' + q.kategori + '</span>' +
+        '<span class="muted small">Soal No. ' + q.nomor + '</span></div>' +
+      '<h3 class="qtext">' + esc(q.pertanyaan) + '</h3><div>' +
+      opts.map(o => '<button class="opt ' + (quiz.answers[q.id]===o.i?'sel':'') + '" onclick="pilihOpsi(' + o.i + ')">' +
+        '<span class="ltr">' + LETTERS[o.i] + '</span><span>' + esc(o.t) + '</span></button>').join('') +
+      '</div><div class="row between wrap" style="margin-top:18px">' +
         '<button class="btn ghost" onclick="navQ(-1)" ' + (quiz.idx===0?'disabled':'') + '>Sebelumnya</button>' +
-        '<div class="row gap">' +
-          '<button class="btn ghost" onclick="finishQuiz()">Selesai & Nilai</button>' +
+        '<div class="row gap"><button class="btn ghost" onclick="finishQuiz()">Selesai & Nilai</button>' +
           '<button class="btn primary" onclick="' + (quiz.idx===total-1?'finishQuiz()':'navQ(1)') + '">' +
-            (quiz.idx===total-1?'Selesai':'Selanjutnya') +
-          '</button>' +
-        '</div>' +
-      '</div>' +
-      '<div class="palette">' +
-        quiz.ids.map(function(id,i){
-          return '<button class="pal ' + (quiz.answers[id]!==undefined?'done':'') + ' ' + (i===quiz.idx?'cur':'') + '" onclick="gotoQ(' + i + ')">' + (i+1) + '</button>';
-        }).join('') +
-      '</div>' +
-    '</div>' +
-  '</div>';
+          (quiz.idx===total-1?'Selesai':'Selanjutnya') + '</button></div></div>' +
+      '<div class="palette">' + quiz.ids.map((id,i) => '<button class="pal ' + (quiz.answers[id]!==undefined?'done':'') + ' ' + (i===quiz.idx?'cur':'') + '" onclick="gotoQ(' + i + ')">' + (i+1) + '</button>').join('') + '</div>' +
+    '</div></div>';
 }
 function pilihOpsi(i){ quiz.answers[quiz.ids[quiz.idx]] = i; render(); }
 function gotoQ(i){ quiz.idx = i; render(); }
-function navQ(d){
-  const n = quiz.idx + d;
-  if(n < 0 || n >= quiz.ids.length) return;
-  quiz.idx = n; render();
-}
+function navQ(d){ const n = quiz.idx + d; if(n < 0 || n >= quiz.ids.length) return; quiz.idx = n; render(); }
 
 function finishQuiz(){
   const all = getQuestions();
   const kosongCount = quiz.ids.length - Object.keys(quiz.answers).length;
   if(kosongCount > 0 && !confirm('Masih ada ' + kosongCount + ' soal yang belum dijawab. Tetap selesaikan?')) return;
-
   let benar = 0, salah = 0, kosong = 0;
-  const detail = quiz.ids.map(function(id){
-    const q = all.find(function(x){ return x.id === id; }) || { nomor:'?', kategori:'-', pertanyaan:'(soal dihapus)', opsi:[], jawaban:-1, pembahasan:'' };
+  const detail = quiz.ids.map(id => {
+    const q = all.find(x => x.id === id) || { nomor:'?', kategori:'-', pertanyaan:'(soal dihapus)', opsi:[], jawaban:-1, pembahasan:'' };
     const dipilih = quiz.answers[id];
-    let status;
-    if(dipilih === undefined) status = 'kosong';
-    else if(dipilih === q.jawaban) status = 'benar';
-    else status = 'salah';
-    if(status === 'benar') benar++;
-    else if(status === 'salah') salah++;
-    else kosong++;
-    return {
-      id: id, nomor:q.nomor, kategori:q.kategori, pertanyaan:q.pertanyaan, opsi:q.opsi,
-      jawaban:q.jawaban, dipilih: (dipilih===undefined?null:dipilih), status:status,
-      pembahasan: q.pembahasan || ''
-    };
+    let status; if(dipilih === undefined) status = 'kosong'; else if(dipilih === q.jawaban) status = 'benar'; else status = 'salah';
+    if(status === 'benar') benar++; else if(status === 'salah') salah++; else kosong++;
+    return { id:id, nomor:q.nomor, kategori:q.kategori, pertanyaan:q.pertanyaan, opsi:q.opsi, jawaban:q.jawaban,
+      dipilih: (dipilih===undefined?null:dipilih), status:status, pembahasan: q.pembahasan || '' };
   });
-
   const total = quiz.ids.length;
   const nilai = Math.round(benar / total * 100);
-  const res = {
-    id: uid(), username: session.username, nama: session.nama,
-    kategori: quiz.kategori, tanggal: new Date().toISOString(),
-    total: total, benar: benar, salah: salah, kosong: kosong, nilai: nilai, detail: detail,
-    durasi: Math.round((Date.now() - quiz.start)/1000)
-  };
-
-  const rs = store.get(KEY.R, []);
-  rs.unshift(res);
-  store.set(KEY.R, rs);
-
+  const res = { id: uid(), username: session.username, nama: session.nama, kategori: quiz.kategori,
+    tanggal: new Date().toISOString(), total: total, benar: benar, salah: salah, kosong: kosong,
+    nilai: nilai, detail: detail, durasi: Math.round((Date.now() - quiz.start)/1000) };
+  const rs = store.get(KEY.R, []); rs.unshift(res); store.set(KEY.R, rs);
   lastResult = Object.assign({}, res, { _fresh:true });
-  quiz = null;
-  clearInterval(timerInt);
-  render();
-  window.scrollTo({top:0, behavior:'smooth'});
-
-  kirimHasilKeServer(res).then(function(out){
-    const el = document.getElementById('sync-note');
-    if(!el) return;
-    if(out.ok){
-      el.innerHTML = '<span class="pill" style="background:#ecfdf5;color:#166534">Hasil terkirim ke server (Google Sheets)</span>';
-    } else if(out.reason === 'no-url'){
-      el.innerHTML = '<span class="pill">Mode lokal - hasil tersimpan di perangkat ini. Unduh JSON dan kirim ke admin bila perlu.</span>';
-    } else {
-      el.innerHTML = '<span class="pill" style="background:#fef2f2;color:#991b1b">Gagal mengirim ke server. Hasil tetap tersimpan di perangkat ini.</span>';
-    }
+  quiz = null; clearInterval(timerInt); render(); window.scrollTo({top:0, behavior:'smooth'});
+  kirimHasilKeServer(res).then(out => {
+    const el = document.getElementById('sync-note'); if(!el) return;
+    if(out.ok) el.innerHTML = '<span class="pill ok">Hasil terkirim ke server</span>';
+    else if(out.reason === 'no-url') el.innerHTML = '<span class="pill">Mode lokal — hasil tersimpan di perangkat ini.</span>';
+    else el.innerHTML = '<span class="pill bad">Gagal mengirim ke server. Hasil tetap tersimpan di perangkat ini.</span>';
   });
 }
 
 /* =========================================================
-   9. HASIL / PEMBAHASAN
+   HASIL
    ========================================================= */
 function viewHasil(){
   const r = lastResult;
   const grade = r.nilai >= 80 ? 'Luar biasa!' : r.nilai >= 70 ? 'Bagus!' : r.nilai >= 60 ? 'Cukup, tingkatkan lagi.' : 'Perlu belajar lebih giat.';
-  return topbar('Hasil Latihan') +
-  '<div class="container narrow">' +
-    '<div class="card">' +
-      '<div class="result-head">' +
-        '<div class="score-ring" style="--p:' + r.nilai + '"><div>' +
-          '<strong>' + r.nilai + '</strong><span>NILAI</span>' +
-        '</div></div>' +
-        '<div style="flex:1;min-width:220px">' +
-          '<h2 style="margin-bottom:4px">' + esc(grade) + '</h2>' +
-          '<p style="margin-bottom:12px">' + esc(r.nama) + ' - ' + esc(r.kategori) + ' - ' + fmtDate(r.tanggal) + '</p>' +
-          '<div class="stats">' +
-            '<div><strong style="color:var(--ok)">' + r.benar + '</strong><span>Benar</span></div>' +
-            '<div><strong style="color:var(--bad)">' + r.salah + '</strong><span>Salah</span></div>' +
-            '<div><strong>' + r.kosong + '</strong><span>Kosong</span></div>' +
-            '<div><strong>' + fmtDur(r.durasi||0) + '</strong><span>Durasi</span></div>' +
-          '</div>' +
-        '</div>' +
-      '</div>' +
-      '<div class="row gap wrap" style="margin-top:22px">' +
-        '<button class="btn primary" onclick="ulangi()">Kerjakan Lagi</button>' +
-        '<button class="btn" onclick="kembaliDashboard()">Kembali ke Dashboard</button>' +
-        '<button class="btn ghost" onclick="unduhHasilSaya()">Unduh Hasil (JSON)</button>' +
-      '</div>' +
-      '<div id="sync-note" style="margin-top:12px">' + (r._fresh?'<span class="pill">Mengirim ke server...</span>':'') + '</div>' +
-    '</div>' +
-
-    '<div class="card">' +
-      '<h3>Pembahasan</h3>' +
-      '<p class="small">Hijau = kunci jawaban, merah = jawaban Anda yang salah.</p>' +
-      reviewHTML(r.detail) +
-    '</div>' +
-  '</div>';
+  return topbar('Hasil Latihan') + '<div class="container narrow"><div class="card"><div class="result-head">' +
+    '<div class="score-ring" style="--p:' + r.nilai + '"><div><strong>' + r.nilai + '</strong><span>NILAI</span></div></div>' +
+    '<div style="flex:1;min-width:220px"><h2 style="margin-bottom:4px">' + esc(grade) + '</h2>' +
+    '<p style="margin-bottom:12px">' + esc(r.nama) + ' - ' + esc(r.kategori) + ' - ' + fmtDate(r.tanggal) + '</p>' +
+    '<div class="stats"><div><strong style="color:var(--ok)">' + r.benar + '</strong><span>Benar</span></div>' +
+    '<div><strong style="color:var(--bad)">' + r.salah + '</strong><span>Salah</span></div>' +
+    '<div><strong>' + r.kosong + '</strong><span>Kosong</span></div>' +
+    '<div><strong>' + fmtDur(r.durasi||0) + '</strong><span>Durasi</span></div></div></div></div>' +
+    '<div class="row gap wrap" style="margin-top:22px"><button class="btn primary" onclick="ulangi()">Kerjakan Lagi</button>' +
+    '<button class="btn" onclick="kembaliDashboard()">Kembali ke Dashboard</button>' +
+    '<button class="btn ghost" onclick="unduhHasilSaya()">Unduh Hasil (JSON)</button></div>' +
+    '<div id="sync-note" style="margin-top:12px">' + (r._fresh?'<span class="pill">Mengirim ke server...</span>':'') + '</div></div>' +
+    '<div class="card"><h3>Pembahasan</h3><p class="small">Hijau = kunci jawaban, merah = jawaban Anda yang salah.</p>' +
+    reviewHTML(r.detail) + '</div></div>';
 }
-
 function reviewHTML(detail){
-  return (detail||[]).map(function(d){
-    const opts = (d.opsi||[]).map(function(t,i){ return {t:t,i:i}; }).filter(function(o){ return o.t && o.t.trim(); });
-    return '<div class="rev">' +
-      '<div class="row between">' +
-        '<span class="badge ' + (d.kategori==='Teknis'?'b-tek':'b-sos') + '">' + d.kategori + ' - No ' + d.nomor + '</span>' +
-        '<span class="tag ' + d.status + '">' + (d.status==='benar'?'Benar':d.status==='salah'?'Salah':'Kosong') + '</span>' +
-      '</div>' +
+  return (detail||[]).map(d => {
+    const opts = (d.opsi||[]).map((t,i)=>({t,i})).filter(o => o.t && o.t.trim());
+    return '<div class="rev"><div class="row between">' +
+      '<span class="badge ' + (d.kategori==='Teknis'?'b-tek':'b-sos') + '">' + d.kategori + ' - No ' + d.nomor + '</span>' +
+      '<span class="tag ' + d.status + '">' + (d.status==='benar'?'Benar':d.status==='salah'?'Salah':'Kosong') + '</span></div>' +
       '<p class="qtext small">' + esc(d.pertanyaan) + '</p>' +
-      opts.map(function(o){
-        let cls = '';
-        if(o.i === d.jawaban) cls = 'correct';
-        else if(o.i === d.dipilih) cls = 'wrong';
+      opts.map(o => {
+        let cls = ''; if(o.i === d.jawaban) cls = 'correct'; else if(o.i === d.dipilih) cls = 'wrong';
         return '<div class="opt static ' + cls + '"><span class="ltr">' + LETTERS[o.i] + '</span><span>' + esc(o.t) + '</span></div>';
       }).join('') +
-      (d.pembahasan ? '<div class="bahas"><b>Pembahasan:</b> ' + esc(d.pembahasan) + '</div>' : '') +
-    '</div>';
+      (d.pembahasan ? '<div class="bahas"><b>Pembahasan:</b> ' + esc(d.pembahasan) + '</div>' : '') + '</div>';
   }).join('');
 }
-
 function ulangi(){ lastResult = null; render(); }
 function kembaliDashboard(){ lastResult = null; render(); }
 function unduhHasilSaya(){ downloadJSON(lastResult, 'hasil-' + lastResult.username + '-' + lastResult.id + '.json'); }
-
 function downloadJSON(obj, filename){
   const blob = new Blob([JSON.stringify(obj, null, 2)], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename;
   document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1500);
+  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
 }
 
 /* =========================================================
-   10. ADMIN
+   ADMIN
    ========================================================= */
 function viewAdmin(){
-  return topbar('Panel Administrator', '<span class="pill">Admin</span>') +
-  '<div class="container">' +
+  return topbar('Panel Administrator', '<span class="pill">Admin</span>') + '<div class="container">' +
     '<div class="tabs big">' +
       '<button class="tab ' + (adminTab==='soal'?'active':'') + '" onclick="setAdminTab(\'soal\')">Kelola Soal</button>' +
       '<button class="tab ' + (adminTab==='hasil'?'active':'') + '" onclick="setAdminTab(\'hasil\')">Hasil Ujian</button>' +
       '<button class="tab ' + (adminTab==='setting'?'active':'') + '" onclick="setAdminTab(\'setting\')">Pengaturan</button>' +
     '</div>' +
-    (adminTab==='soal' ? adminSoalHTML() : adminTab==='hasil' ? adminHasilHTML() : adminSettingHTML()) +
-  '</div>';
+    (adminTab==='soal' ? adminSoalHTML() : adminTab==='hasil' ? adminHasilHTML() : adminSettingHTML()) + '</div>';
 }
-function setAdminTab(t){ adminTab = t; render(); }
+function setAdminTab(t){
+  adminTab = t; render();
+  if(t === 'soal' && isSyncReady() && !quiz){ refreshSoalDariServer('admin'); }
+  if(t === 'hasil'){ renderHasilList(); }
+}
 
+/* ---------- KELOLA SOAL ---------- */
 function adminSoalHTML(){
-  return '<div class="card">' +
-    '<div class="row between wrap">' +
-      '<div class="row gap wrap">' +
-        '<input class="input" style="max-width:250px" placeholder="Cari soal..." value="' + esc(adminFilter.q) + '" oninput="adminFilter.q=this.value; renderSoalList()">' +
-        '<select class="input" style="max-width:180px" onchange="adminFilter.kategori=this.value; renderSoalList()">' +
-          ['Semua','Teknis','Sosiokultural'].map(function(k){
-            return '<option ' + (adminFilter.kategori===k?'selected':'') + '>' + k + '</option>';
-          }).join('') +
-        '</select>' +
-      '</div>' +
-      '<button class="btn primary" onclick="openEditor()">+ Tambah Soal</button>' +
+  const synced = isSyncReady();
+  return '<div class="card"><div class="row between wrap">' +
+    '<div class="row gap wrap">' +
+      '<input class="input" style="max-width:220px" placeholder="Cari soal..." value="' + esc(adminFilter.q) + '" oninput="adminFilter.q=this.value; renderSoalList()">' +
+      '<select class="input" style="max-width:160px" onchange="adminFilter.kategori=this.value; renderSoalList()">' +
+        ['Semua','Teknis','Sosiokultural'].map(k=>'<option ' + (adminFilter.kategori===k?'selected':'') + '>' + k + '</option>').join('') +
+      '</select></div>' +
+    '<div class="row gap wrap">' +
+      (synced ? '<button class="btn tiny" onclick="refreshSoalManual()">↻ Refresh dari Server</button>' : '') +
+      '<button class="btn tiny ghost" onclick="downloadSoalTemplate()">Template</button>' +
+      '<label class="btn tiny" style="margin:0">Import CSV/JSON' +
+        '<input type="file" accept=".csv,.json,.txt" hidden onchange="importSoalFile(this)">' +
+      '</label>' +
+      '<button class="btn primary" onclick="openWordImport()">+ Paste dari Word/Teks</button>' +
+      '<button class="btn" onclick="openEditor()">+ 1 Soal Manual</button>' +
+    '</div></div>' +
+    '<div id="soal-sync-note" style="margin-top:10px">' +
+      (synced ? '<span class="pill">Setiap perubahan otomatis tersinkron ke Google Sheet</span>'
+              : '<span class="pill">Mode lokal — atur URL Apps Script di Pengaturan agar soal tersinkron ke semua perangkat</span>') +
     '</div>' +
-    '<div id="soal-list"></div>' +
-  '</div>';
+    '<div id="soal-list"></div></div>';
+}
+async function refreshSoalManual(){
+  if(!isSyncReady()){ alert('URL Apps Script belum diatur di Pengaturan.'); return; }
+  const note = document.getElementById('soal-sync-note');
+  if(note) note.innerHTML = '<span class="pill">Memuat soal dari server...</span>';
+  const list = await ambilSoalServer();
+  if(!Array.isArray(list)){
+    if(note) note.innerHTML = '<span class="pill bad">Gagal memuat dari server.</span>';
+    return;
+  }
+  if(list.length === 0){
+    if(note) note.innerHTML = '<span class="pill">Sheet Soal kosong. Soal lokal akan didorong ke server sebagai data awal.</span>';
+    const local = getQuestions();
+    if(local.length){ await pushSoalKeServer(local); render(); }
+    return;
+  }
+  store.set(KEY.Q, list); render();
+  alert('Berhasil memuat ' + list.length + ' soal dari server.');
 }
 function renderSoalList(){
-  const box = document.getElementById('soal-list');
-  if(!box) return;
+  const box = document.getElementById('soal-list'); if(!box) return;
   const s = adminFilter.q.toLowerCase().trim();
   const list = filterByKategori(getQuestions(), adminFilter.kategori)
-    .filter(function(q){ return !s || q.pertanyaan.toLowerCase().indexOf(s) >= 0 || String(q.nomor).indexOf(s) >= 0; })
-    .sort(function(a,b){ return a.kategori.localeCompare(b.kategori) || a.nomor - b.nomor; });
-
+    .filter(q => !s || q.pertanyaan.toLowerCase().indexOf(s) >= 0 || String(q.nomor).indexOf(s) >= 0)
+    .sort((a,b) => a.kategori.localeCompare(b.kategori) || a.nomor - b.nomor);
   box.innerHTML = '<p class="muted small" style="margin-top:16px">' + list.length + ' soal ditampilkan</p>' +
-  (list.length ? list.map(function(q){
-    return '<div class="q-admin">' +
-      '<div class="row between wrap">' +
-        '<span class="badge ' + (q.kategori==='Teknis'?'b-tek':'b-sos') + '">' + q.kategori + ' - No ' + q.nomor + '</span>' +
-        '<div class="row gap">' +
-          '<button class="btn tiny" onclick="openEditor(\''+q.id+'\')">Edit</button>' +
-          '<button class="btn tiny danger" onclick="hapusSoal(\''+q.id+'\')">Hapus</button>' +
-        '</div>' +
-      '</div>' +
-      '<p class="q-admin-text">' + esc(q.pertanyaan) + '</p>' +
-      '<div class="q-admin-opts">' +
-        q.opsi.map(function(t,i){
-          return (t && t.trim()) ? '<div class="' + (i===q.jawaban?'ok':'') + '">' + LETTERS[i] + '. ' + esc(t) + (i===q.jawaban?' (kunci)':'') + '</div>' : '';
-        }).join('') +
-      '</div>' +
-      (q.pembahasan ? '<div class="bahas" style="font-size:12.5px"><b>Pembahasan:</b> ' + esc(q.pembahasan) + '</div>' : '') +
-    '</div>';
-  }).join('') : '<p class="muted">Tidak ada soal yang cocok.</p>');
+    (list.length ? list.map(q =>
+      '<div class="q-admin"><div class="row between wrap">' +
+      '<span class="badge ' + (q.kategori==='Teknis'?'b-tek':'b-sos') + '">' + q.kategori + ' - No ' + q.nomor + '</span>' +
+      '<div class="row gap"><button class="btn tiny" onclick="openEditor(\''+q.id+'\')">Edit</button>' +
+        '<button class="btn tiny danger" onclick="hapusSoal(\''+q.id+'\')">Hapus</button></div></div>' +
+      '<p class="q-admin-text">' + esc(q.pertanyaan) + '</p><div class="q-admin-opts">' +
+      q.opsi.map((t,i) => (t && t.trim()) ? '<div class="' + (i===q.jawaban?'ok':'') + '">' + LETTERS[i] + '. ' + esc(t) + (i===q.jawaban?' (kunci)':'') + '</div>' : '').join('') +
+      '</div>' + (q.pembahasan ? '<div class="bahas" style="font-size:12.5px"><b>Pembahasan:</b> ' + esc(q.pembahasan) + '</div>' : '') +
+      '</div>').join('')
+    : '<p class="muted">Tidak ada soal yang cocok.</p>');
 }
 function nextNomor(kategori){
-  const list = getQuestions().filter(function(q){ return q.kategori === kategori; });
-  return list.length ? Math.max.apply(null, list.map(function(q){ return Number(q.nomor)||0; })) + 1 : 1;
+  const list = getQuestions().filter(q => q.kategori === kategori);
+  return list.length ? Math.max.apply(null, list.map(q => Number(q.nomor)||0)) + 1 : 1;
 }
 function openEditor(id){
-  const q = id ? getQuestions().find(function(x){ return x.id === id; }) : null;
+  const q = id ? getQuestions().find(x => x.id === id) : null;
   const d = q || { id:'', kategori:'Teknis', nomor: nextNomor('Teknis'), pertanyaan:'', opsi:['','','','',''], jawaban:0, pembahasan:'' };
   document.getElementById('modal-root').innerHTML =
-  '<div class="overlay" onclick="if(event.target===this) closeModal()">' +
-    '<div class="modal">' +
-      '<div class="row between" style="margin-bottom:6px">' +
-        '<h3>' + (q ? 'Edit Soal' : 'Tambah Soal Baru') + '</h3>' +
-        '<button class="btn tiny ghost" onclick="closeModal()">X</button>' +
-      '</div>' +
-      '<div class="grid2">' +
-        '<div><label>Kategori</label>' +
-          '<select id="ed-kategori" class="input">' +
-            '<option ' + (d.kategori==='Teknis'?'selected':'') + '>Teknis</option>' +
-            '<option ' + (d.kategori==='Sosiokultural'?'selected':'') + '>Sosiokultural</option>' +
-          '</select>' +
-        '</div>' +
-        '<div><label>Nomor Soal</label>' +
-          '<input id="ed-nomor" class="input" type="number" min="1" value="' + d.nomor + '">' +
-        '</div>' +
-      '</div>' +
-      '<label>Pertanyaan</label>' +
-      '<textarea id="ed-q" class="input" rows="3">' + esc(d.pertanyaan) + '</textarea>' +
-      '<label>Pilihan Jawaban <span class="muted tiny">(kosongkan bila tidak dipakai)</span></label>' +
-      [0,1,2,3,4].map(function(i){
-        return '<div class="row gap" style="margin-bottom:8px">' +
-          '<span class="ltr-static">' + LETTERS[i] + '</span>' +
-          '<input id="ed-o' + i + '" class="input" value="' + esc(d.opsi[i]||'') + '" placeholder="Pilihan ' + LETTERS[i] + '">' +
-        '</div>';
-      }).join('') +
-      '<label>Kunci Jawaban</label>' +
-      '<select id="ed-a" class="input">' +
-        [0,1,2,3,4].map(function(i){
-          return '<option value="' + i + '" ' + (d.jawaban===i?'selected':'') + '>' + LETTERS[i] + '</option>';
-        }).join('') +
-      '</select>' +
-      '<label>Pembahasan (opsional)</label>' +
-      '<textarea id="ed-bahas" class="input" rows="2">' + esc(d.pembahasan||'') + '</textarea>' +
-      '<div class="row gap" style="margin-top:18px">' +
-        '<button class="btn primary" onclick="simpanSoal(\'' + d.id + '\')">Simpan</button>' +
-        '<button class="btn ghost" onclick="closeModal()">Batal</button>' +
-      '</div>' +
-    '</div>' +
-  '</div>';
+    '<div class="overlay" onclick="if(event.target===this) closeModal()"><div class="modal">' +
+    '<div class="row between" style="margin-bottom:6px"><h3>' + (q ? 'Edit Soal' : 'Tambah Soal Baru') + '</h3>' +
+    '<button class="btn tiny ghost" onclick="closeModal()">X</button></div>' +
+    '<div class="grid2"><div><label>Kategori</label><select id="ed-kategori" class="input">' +
+      '<option ' + (d.kategori==='Teknis'?'selected':'') + '>Teknis</option>' +
+      '<option ' + (d.kategori==='Sosiokultural'?'selected':'') + '>Sosiokultural</option></select></div>' +
+      '<div><label>Nomor Soal</label><input id="ed-nomor" class="input" type="number" min="1" value="' + d.nomor + '"></div></div>' +
+    '<label>Pertanyaan</label><textarea id="ed-q" class="input" rows="3">' + esc(d.pertanyaan) + '</textarea>' +
+    '<label>Pilihan Jawaban <span class="muted tiny">(kosongkan bila tidak dipakai)</span></label>' +
+    [0,1,2,3,4].map(i => '<div class="row gap" style="margin-bottom:8px"><span class="ltr-static">' + LETTERS[i] + '</span>' +
+      '<input id="ed-o' + i + '" class="input" value="' + esc(d.opsi[i]||'') + '" placeholder="Pilihan ' + LETTERS[i] + '"></div>').join('') +
+    '<label>Kunci Jawaban</label><select id="ed-a" class="input">' +
+      [0,1,2,3,4].map(i => '<option value="' + i + '" ' + (d.jawaban===i?'selected':'') + '>' + LETTERS[i] + '</option>').join('') +
+    '</select>' +
+    '<label>Pembahasan (opsional)</label><textarea id="ed-bahas" class="input" rows="2">' + esc(d.pembahasan||'') + '</textarea>' +
+    '<div class="row gap" style="margin-top:18px"><button class="btn primary" onclick="simpanSoal(\'' + d.id + '\')">Simpan</button>' +
+    '<button class="btn ghost" onclick="closeModal()">Batal</button></div></div></div>';
 }
 function closeModal(){ document.getElementById('modal-root').innerHTML = ''; }
 function simpanSoal(id){
   const kategori = document.getElementById('ed-kategori').value;
   const nomor = Number(document.getElementById('ed-nomor').value) || 1;
   const pertanyaan = document.getElementById('ed-q').value.trim();
-  const opsi = [0,1,2,3,4].map(function(i){ return document.getElementById('ed-o'+i).value.trim(); });
+  const opsi = [0,1,2,3,4].map(i => document.getElementById('ed-o'+i).value.trim());
   const jawaban = Number(document.getElementById('ed-a').value);
   const pembahasan = document.getElementById('ed-bahas').value.trim();
-
   if(!pertanyaan){ alert('Pertanyaan tidak boleh kosong.'); return; }
-  if(opsi.filter(function(t){return t;}).length < 2){ alert('Isi minimal 2 pilihan jawaban.'); return; }
+  if(opsi.filter(t=>t).length < 2){ alert('Isi minimal 2 pilihan jawaban.'); return; }
   if(!opsi[jawaban]){ alert('Kunci jawaban yang dipilih masih kosong.'); return; }
-
   const list = getQuestions();
-  if(id){
-    const idx = list.findIndex(function(x){ return x.id === id; });
-    if(idx >= 0) list[idx] = { id:id, kategori:kategori, nomor:nomor, pertanyaan:pertanyaan, opsi:opsi, jawaban:jawaban, pembahasan:pembahasan };
-  } else {
-    list.push({ id: uid(), kategori:kategori, nomor:nomor, pertanyaan:pertanyaan, opsi:opsi, jawaban:jawaban, pembahasan:pembahasan });
-  }
-  setQuestions(list);
-  closeModal();
-  render();
+  if(id){ const idx = list.findIndex(x => x.id === id); if(idx >= 0) list[idx] = { id:id, kategori, nomor, pertanyaan, opsi, jawaban, pembahasan }; }
+  else { list.push({ id: uid(), kategori, nomor, pertanyaan, opsi, jawaban, pembahasan }); }
+  setQuestions(list); closeModal(); render();
 }
 function hapusSoal(id){
   if(!confirm('Yakin ingin menghapus soal ini?')) return;
-  setQuestions(getQuestions().filter(function(q){ return q.id !== id; }));
-  render();
+  setQuestions(getQuestions().filter(q => q.id !== id)); render();
 }
 
+/* ---------- IMPORT SOAL (CSV/JSON) ---------- */
+function importSoalFile(input){
+  const f = input.files[0]; if(!f) return;
+  const name = f.name.toLowerCase();
+  const rd = new FileReader();
+  rd.onload = function(){
+    try{
+      let list = [];
+      if(name.endsWith('.json')){
+        const data = JSON.parse(rd.result);
+        const arr = Array.isArray(data) ? data : (data.questions || []);
+        list = arr.map(normalizeImportedQ);
+      } else { list = parseCSVQuestions(rd.result); }
+      list = list.filter(q => q && q.pertanyaan);
+      if(!list.length){ alert('Tidak ada soal valid di file tersebut.'); input.value=''; return; }
+      const existing = getQuestions();
+      const counter = {}; existing.forEach(q => { counter[q.kategori] = Math.max(counter[q.kategori]||0, Number(q.nomor)||0); });
+      list.forEach(q => { counter[q.kategori] = (counter[q.kategori]||0) + 1; q.nomor = counter[q.kategori]; q.id = uid(); existing.push(q); });
+      setQuestions(existing); input.value = ''; render();
+      alert(list.length + ' soal berhasil ditambahkan. Total sekarang: ' + existing.length + ' soal.');
+    }catch(e){ alert('File tidak valid: ' + e.message); }
+  };
+  rd.readAsText(f, 'UTF-8');
+}
+function normalizeImportedQ(raw){
+  if(!raw || !raw.pertanyaan) return null;
+  let opsi = Array.isArray(raw.opsi) ? raw.opsi.slice(0,5) : [];
+  while(opsi.length < 5) opsi.push('');
+  let jaw = raw.jawaban;
+  if(typeof jaw === 'string'){ const t = jaw.trim().toUpperCase(); const idx = LETTERS.indexOf(t); jaw = idx >= 0 ? idx : (Number(t) - 1); }
+  if(typeof jaw !== 'number' || isNaN(jaw) || jaw < 0 || jaw > 4) jaw = 0;
+  return { kategori: (raw.kategori || 'Teknis').trim(), nomor: Number(raw.nomor) || 1,
+    pertanyaan: String(raw.pertanyaan).trim(), opsi: opsi.map(s => String(s||'').trim()),
+    jawaban: jaw, pembahasan: String(raw.pembahasan || '').trim() };
+}
+function parseCSVQuestions(text){
+  const lines = text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n').filter(l => l.trim());
+  if(!lines.length) return [];
+  const first = lines[0];
+  const delim = (first.split(';').length >= first.split(',').length) ? ';' : ',';
+  const rows = lines.map(line => parseCSVLine(line, delim));
+  const head = rows.shift().map(h => h.trim().toLowerCase());
+  const find = function(){ for(let i=0; i<arguments.length; i++){ const idx = head.indexOf(arguments[i]); if(idx >= 0) return idx; } return -1; };
+  const iKat=find('kategori','category'), iNom=find('nomor','no','number'), iQ=find('pertanyaan','question','soal');
+  const iA=find('opsi_a','opsia','a','pilihan_a'), iB=find('opsi_b','opsib','b','pilihan_b'),
+        iC=find('opsi_c','opsic','c','pilihan_c'), iD=find('opsi_d','opsid','d','pilihan_d'),
+        iE=find('opsi_e','opsie','e','pilihan_e');
+  const iJ=find('jawaban','kunci','answer','key'), iP=find('pembahasan','penjelasan','explanation');
+  if(iQ < 0) throw new Error('Kolom "pertanyaan" tidak ada di header CSV. Lihat tombol Template.');
+  return rows.map(r => {
+    const get = i => i >= 0 ? (r[i] || '').trim() : '';
+    return normalizeImportedQ({ kategori:get(iKat), nomor:get(iNom), pertanyaan:get(iQ),
+      opsi:[get(iA),get(iB),get(iC),get(iD),get(iE)], jawaban:get(iJ), pembahasan:get(iP) });
+  }).filter(q => q && q.pertanyaan);
+}
+function parseCSVLine(line, delim){
+  const out = []; let cur = '', inQ = false;
+  for(let i=0; i<line.length; i++){
+    const ch = line[i];
+    if(inQ){ if(ch === '"'){ if(line[i+1] === '"'){ cur += '"'; i++; } else inQ = false; } else cur += ch; }
+    else { if(ch === '"') inQ = true; else if(ch === delim){ out.push(cur); cur = ''; } else cur += ch; }
+  }
+  out.push(cur); return out;
+}
+function downloadSoalTemplate(){
+  const head = ['kategori','nomor','pertanyaan','opsi_a','opsi_b','opsi_c','opsi_d','opsi_e','jawaban','pembahasan'];
+  const ex1 = ['Teknis','1','Apa kepanjangan TFR?','Total Fertility Rate','Tingkat Fertilitas Rendah','Total Fertilitas Rata-rata','Total Fekunditas Rate','Tingkat Fekunditas Rata-rata','A','TFR = Total Fertility Rate.'];
+  const ex2 = ['Sosiokultural','1','Contoh soal sosiokultural?','Jawaban A','Jawaban B','Jawaban C','Jawaban D','Jawaban E','B',''];
+  const csv = '\uFEFF' + [head, ex1, ex2].map(row => row.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(';')).join('\r\n');
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'template-soal.csv';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+}
+
+/* ---------- IMPORT VIA PASTE WORD/TEKS ---------- */
+function openWordImport(){
+  document.getElementById('modal-root').innerHTML =
+    '<div class="overlay" onclick="if(event.target===this) closeModal()"><div class="modal">' +
+    '<div class="row between" style="margin-bottom:6px"><h3 style="margin:0">Paste Soal dari Word / Teks</h3>' +
+    '<button class="btn tiny ghost" onclick="closeModal()">X</button></div>' +
+    '<p class="small">Copy soal dari Word/PDF/teks apa pun, lalu paste di kotak di bawah. Klik <b>Parsing Saja</b> untuk preview, lalu <b>Import</b>.</p>' +
+    '<div class="grid2">' +
+      '<div><label>Kategori default (jika tidak ada baris KATEGORI:)</label>' +
+        '<select id="wi-kat" class="input"><option>Teknis</option><option>Sosiokultural</option></select></div>' +
+      '<div><label>Upload .docx / .txt (opsional)</label>' +
+        '<label class="btn" style="margin:0;width:100%">Pilih File' +
+          '<input type="file" accept=".docx,.txt,.text" hidden onchange="loadWordFile(this)"></label></div>' +
+    '</div>' +
+    '<label>Tempel / tulis soal di sini</label>' +
+    '<textarea id="wi-text" class="input" rows="12" style="font-family:monospace;font-size:12.5px" placeholder="KATEGORI: Teknis&#10;&#10;1. Pertanyaan soal pertama?&#10;A. Opsi A&#10;B. Opsi B&#10;C. Opsi C&#10;D. Opsi D&#10;Jawaban: A&#10;Pembahasan: penjelasan opsional&#10;&#10;2. Pertanyaan soal kedua?&#10;A. ...&#10;B. ...&#10;C. ...&#10;D. ...&#10;Jawaban: C&#10;&#10;KATEGORI: Sosiokultural&#10;&#10;1. Pertanyaan soal sosio?&#10;A. ...&#10;B. ...&#10;Jawaban: B"></textarea>' +
+    '<details style="margin-top:10px"><summary style="cursor:pointer;font-size:13px;color:var(--pri);font-weight:600">Format yang didukung</summary>' +
+      '<pre class="code" style="font-size:11px">KATEGORI: Teknis  (atau Kategori / Category)\n\n1. Pertanyaan soal?\nA. Opsi A    (boleh A. / A) / a. / a))\nB. Opsi B\nC. Opsi C\nD. Opsi D\nE. Opsi E\nJawaban: A  (boleh Jawaban / Kunci / Answer / Key)\nPembahasan: teks opsional\n\n2. Soal berikutnya...\nA. ...\nJawaban: B\n\nKATEGORI: Sosiokultural\n\n1. Soal sosio...\nA. ...\nJawaban: A</pre>' +
+    '</details>' +
+    '<div id="wi-status" style="margin-top:12px"></div>' +
+    '<div id="wi-preview" style="margin-top:12px;max-height:300px;overflow:auto"></div>' +
+    '<div class="row gap wrap" style="margin-top:14px">' +
+      '<button class="btn primary" onclick="prosesImportWord()">Parsing & Import</button>' +
+      '<button class="btn ghost" onclick="previewWordParse()">Parsing Saja (Preview)</button>' +
+      '<button class="btn ghost" onclick="closeModal()">Batal</button>' +
+    '</div></div></div>';
+}
+
+async function loadWordFile(input){
+  const f = input.files[0]; if(!f) return;
+  const status = document.getElementById('wi-status');
+  if(status) status.innerHTML = '<span class="pill">Membaca file...</span>';
+  const name = f.name.toLowerCase();
+  try{
+    let text;
+    if(name.endsWith('.docx')){
+      if(typeof mammoth === 'undefined'){ throw new Error('Library mammoth belum termuat. Muat ulang halaman, atau simpan Word sebagai .txt.'); }
+      const ab = await f.arrayBuffer();
+      const res = await mammoth.extractRawText({arrayBuffer: ab});
+      text = res.value;
+    } else { text = await f.text(); }
+    document.getElementById('wi-text').value = text;
+    if(status) status.innerHTML = '<span class="pill ok">File terbaca (' + text.length + ' karakter). Klik "Parsing & Import".</span>';
+  }catch(e){
+    if(status) status.innerHTML = '<span class="pill bad">Gagal membaca: ' + esc(e.message) + '</span>';
+  }
+  input.value = '';
+}
+
+function previewWordParse(){
+  const raw = document.getElementById('wi-text').value;
+  const kat = document.getElementById('wi-kat').value;
+  const status = document.getElementById('wi-status');
+  const preview = document.getElementById('wi-preview');
+  if(!raw.trim()){ alert('Teks masih kosong.'); return; }
+  let parsed;
+  try{ parsed = parseSoalText(raw, kat); }
+  catch(e){ if(status) status.innerHTML = '<span class="pill bad">Error: ' + esc(e.message) + '</span>'; return; }
+  if(!parsed.length){
+    if(status) status.innerHTML = '<span class="pill bad">Tidak ada soal terdeteksi.</span>';
+    if(preview) preview.innerHTML = '';
+    return;
+  }
+  if(status) status.innerHTML = '<span class="pill ok">Terdeteksi ' + parsed.length + ' soal. Periksa preview di bawah, lalu klik Import.</span>';
+  if(preview) preview.innerHTML = parsed.map((q, i) =>
+    '<div class="preview-item"><span class="preview-badge">' + esc(q.kategori) + ' - Soal ' + (i+1) + '</span>' +
+    '<div class="q">' + esc(q.pertanyaan) + '</div>' +
+    q.opsi.map((t,j) => (t && t.trim()) ? '<div class="o ' + (j===q.jawaban?'key':'') + '">' + LETTERS[j] + '. ' + esc(t) + (j===q.jawaban?' (kunci)':'') + '</div>' : '').join('') +
+    (q.pembahasan ? '<div class="o" style="color:#92400e;margin-top:4px"><b>Pembahasan:</b> ' + esc(q.pembahasan) + '</div>' : '') +
+    '</div>').join('');
+}
+
+function prosesImportWord(){
+  const raw = document.getElementById('wi-text').value;
+  const kat = document.getElementById('wi-kat').value;
+  const status = document.getElementById('wi-status');
+  if(!raw.trim()){ alert('Teks masih kosong.'); return; }
+  let parsed;
+  try{ parsed = parseSoalText(raw, kat); }
+  catch(e){ if(status) status.innerHTML = '<span class="pill bad">Error: ' + esc(e.message) + '</span>'; return; }
+  if(!parsed.length){ if(status) status.innerHTML = '<span class="pill bad">Tidak ada soal terdeteksi.</span>'; return; }
+  if(!confirm('Akan menambahkan ' + parsed.length + ' soal. Lanjutkan?')) return;
+  const existing = getQuestions();
+  const counter = {}; existing.forEach(q => { counter[q.kategori] = Math.max(counter[q.kategori]||0, Number(q.nomor)||0); });
+  parsed.forEach(q => { counter[q.kategori] = (counter[q.kategori]||0) + 1; q.nomor = counter[q.kategori]; q.id = uid(); existing.push(q); });
+  setQuestions(existing);
+  closeModal(); render();
+  alert(parsed.length + ' soal berhasil ditambahkan. Total sekarang: ' + existing.length + ' soal.');
+}
+
+function parseSoalText(text, defaultKat){
+  text = String(text).replace(/\r\n/g,'\n').replace(/\r/g,'\n').replace(/\f/g,'\n').replace(/\u00A0/g,' ');
+  const lines = text.split('\n');
+  const questions = [];
+  let cur = null, mode = null;
+  let kategori = defaultKat || 'Teknis';
+  const reKat = /^\s*(?:kategori|category)\s*[:\-]\s*(.+)$/i;
+  const reQ = /^\s*(\d+)\s*[\.\)]\s*(.+)$/;
+  const reOpt = /^\s*([A-Ea-e])\s*[\.\)]\s*(.+)$/;
+  const reAns = /^\s*(?:jawaban|kunci|answer|key)\s*[:\-]?\s*([A-Ea-e]|\d)\b/i;
+  const reBahas = /^\s*(?:pembahasan|penjelasan|bahas|explanation)\s*[:\-]\s*(.*)$/i;
+  function flush(){
+    if(cur && cur.pertanyaan && cur.pertanyaan.trim()){
+      while(cur.opsi.length < 5) cur.opsi.push('');
+      if(cur.jawaban == null) cur.jawaban = 0;
+      if(cur.jawaban < 0 || cur.jawaban > 4) cur.jawaban = 0;
+      if(!cur.opsi[cur.jawaban] || !cur.opsi[cur.jawaban].trim()){
+        for(let k=0; k<5; k++){ if(cur.opsi[k] && cur.opsi[k].trim()){ cur.jawaban = k; break; } }
+      }
+      questions.push(cur);
+    }
+    cur = null; mode = null;
+  }
+  for(let i=0; i<lines.length; i++){
+    const ln = lines[i].replace(/\s+$/,'').replace(/^\s+/,'');
+    if(!ln) continue;
+    const mKat = ln.match(reKat);
+    if(mKat){
+      let k = mKat[1].trim();
+      if(/sosio/i.test(k)) kategori = 'Sosiokultural';
+      else if(/teknis/i.test(k)) kategori = 'Teknis';
+      else kategori = k;
+      continue;
+    }
+    const mQ = ln.match(reQ);
+    if(mQ){ flush(); cur = { kategori: kategori, pertanyaan: mQ[2].trim(), opsi: [], jawaban: null, pembahasan: '' }; mode = 'q'; continue; }
+    const mOpt = ln.match(reOpt);
+    if(mOpt && cur && mode !== 'bahas'){
+      const idx = LETTERS.indexOf(mOpt[1].toUpperCase());
+      if(idx >= 0){ cur.opsi[idx] = mOpt[2].trim(); mode = 'opt'; continue; }
+    }
+    const mAns = ln.match(reAns);
+    if(mAns && cur){
+      const v = mAns[1].toUpperCase();
+      const idx = LETTERS.indexOf(v);
+      cur.jawaban = idx >= 0 ? idx : Math.max(0, Math.min(4, Number(v)-1));
+      mode = 'ans'; continue;
+    }
+    const mBah = ln.match(reBahas);
+    if(mBah && cur){ cur.pembahasan = mBah[1].trim(); mode = 'bahas'; continue; }
+    if(cur){
+      if(mode === 'q') cur.pertanyaan += ' ' + ln.trim();
+      else if(mode === 'bahas') cur.pembahasan += ' ' + ln.trim();
+      else if(mode === 'opt'){ for(let j=4; j>=0; j--){ if(cur.opsi[j]){ cur.opsi[j] += ' ' + ln.trim(); break; } } }
+    }
+  }
+  flush();
+  return questions.map(q => ({ kategori: q.kategori, nomor: 1, pertanyaan: q.pertanyaan,
+    opsi: q.opsi.slice(0,5), jawaban: q.jawaban, pembahasan: q.pembahasan }));
+}
+
+/* ---------- HASIL UJIAN ---------- */
 function adminHasilHTML(){
   const ready = isSyncReady();
-  return '<div class="card">' +
-    '<div class="row between wrap">' +
-      '<div>' +
-        '<h3 style="margin:0 0 4px">Hasil Ujian Peserta</h3>' +
-        '<div id="sync-status">' + (ready ? '<span class="pill">Memuat dari server...</span>' : '<span class="pill">Mode lokal - belum ada URL Google Apps Script</span>') + '</div>' +
-      '</div>' +
-      '<div class="row gap wrap">' +
-        '<button class="btn tiny" onclick="renderHasilList()">Muat Ulang</button>' +
-        '<button class="btn tiny" onclick="exportCSV()">Ekspor CSV</button>' +
-        '<label class="btn tiny" style="margin:0">Impor Hasil' +
-          '<input type="file" accept=".json" hidden onchange="importHasil(this)">' +
-        '</label>' +
-        '<button class="btn tiny danger" onclick="hapusSemuaHasil()">Hapus Semua</button>' +
-      '</div>' +
-    '</div>' +
-    '<div id="hasil-list" style="margin-top:16px"></div>' +
-  '</div>';
+  return '<div class="card"><div class="row between wrap">' +
+    '<div><h3 style="margin:0 0 4px">Hasil Ujian Peserta</h3>' +
+      '<div id="sync-status">' + (ready ? '<span class="pill">Memuat dari server...</span>' : '<span class="pill">Mode lokal — belum ada URL Google Apps Script</span>') + '</div></div>' +
+    '<div class="row gap wrap">' +
+      '<button class="btn tiny" onclick="renderHasilList()">Muat Ulang</button>' +
+      '<button class="btn tiny" onclick="exportCSV()">Ekspor CSV</button>' +
+      '<label class="btn tiny" style="margin:0">Impor Hasil<input type="file" accept=".json" hidden onchange="importHasil(this)"></label>' +
+      '<button class="btn tiny danger" onclick="hapusSemuaHasil()">Hapus Semua</button>' +
+    '</div></div><div id="hasil-list" style="margin-top:16px"></div></div>';
 }
-
 async function renderHasilList(){
   const box = document.getElementById('hasil-list');
   const statusBox = document.getElementById('sync-status');
   if(!box) return;
   box.innerHTML = '<p class="muted">Memuat hasil...</p>';
-
   const url = getSyncUrl();
   let serverList = null;
   if(url){
-    if(statusBox) statusBox.innerHTML = '<span class="pill">Mengambil data dari Google Sheets...</span>';
+    if(statusBox) statusBox.innerHTML = '<span class="pill">Mengambil dari Google Sheets...</span>';
     serverList = await ambilHasilServer();
-    if(serverList === null){
-      if(statusBox) statusBox.innerHTML = '<span class="pill" style="background:#fef2f2;color:#991b1b">Gagal memuat dari server - menampilkan data lokal saja.</span>';
-      serverList = [];
-    } else {
-      serverResultsCache = serverList;
-      if(statusBox) statusBox.innerHTML = '<span class="pill" style="background:#ecfdf5;color:#166534">Terhubung ke Google Sheets - ' + serverList.length + ' hasil dari server</span>';
-    }
-  } else {
-    if(statusBox) statusBox.innerHTML = '<span class="pill">Mode lokal - atur URL Apps Script di tab Pengaturan.</span>';
-  }
-
+    if(serverList === null){ if(statusBox) statusBox.innerHTML = '<span class="pill bad">Gagal memuat dari server — menampilkan data lokal.</span>'; serverList = []; }
+    else { serverResultsCache = serverList; if(statusBox) statusBox.innerHTML = '<span class="pill ok">Terhubung — ' + serverList.length + ' hasil dari server</span>'; }
+  } else { if(statusBox) statusBox.innerHTML = '<span class="pill">Mode lokal — atur URL Apps Script di Pengaturan.</span>'; }
   const local = store.get(KEY.R, []);
   const map = new Map();
-  (serverList||[]).concat(local).forEach(function(x){ if(x && x.id) map.set(x.id, x); });
-  const rs = Array.from(map.values()).sort(function(a,b){ return new Date(b.tanggal) - new Date(a.tanggal); });
+  (serverList||[]).concat(local).forEach(x => { if(x && x.id) map.set(x.id, x); });
+  const rs = Array.from(map.values()).sort((a,b) => new Date(b.tanggal) - new Date(a.tanggal));
   currentResultsList = rs;
-
   if(!rs.length){ box.innerHTML = '<p class="muted">Belum ada peserta yang mengerjakan latihan.</p>'; return; }
-
-  box.innerHTML = '<div class="table-wrap"><table class="tbl">' +
-    '<thead><tr><th>Nama</th><th>Username</th><th>Kategori</th><th>Tanggal</th><th>Benar</th><th>Nilai</th><th>Aksi</th></tr></thead>' +
-    '<tbody>' + rs.map(function(r){
-      return '<tr>' +
-        '<td><b>' + esc(r.nama) + '</b></td>' +
-        '<td class="muted">' + esc(r.username) + '</td>' +
-        '<td>' + esc(r.kategori) + '</td>' +
-        '<td class="small">' + fmtDate(r.tanggal) + '</td>' +
-        '<td>' + r.benar + '/' + r.total + '</td>' +
-        '<td><b class="score ' + (r.nilai>=70?'ok':'bad') + '">' + r.nilai + '</b></td>' +
-        '<td><button class="btn tiny" onclick="adminLihatDetail(\''+r.id+'\')">Detail</button> ' +
-            '<button class="btn tiny danger" onclick="hapusHasil(\''+r.id+'\')">Hapus</button></td>' +
-      '</tr>';
-    }).join('') + '</tbody>' +
-  '</table></div>';
+  box.innerHTML = '<div class="table-wrap"><table class="tbl"><thead><tr>' +
+    '<th>Nama</th><th>Username</th><th>Kategori</th><th>Tanggal</th><th>Benar</th><th>Nilai</th><th>Aksi</th>' +
+    '</tr></thead><tbody>' + rs.map(r =>
+    '<tr><td><b>' + esc(r.nama) + '</b></td><td class="muted">' + esc(r.username) + '</td>' +
+    '<td>' + esc(r.kategori) + '</td><td class="small">' + fmtDate(r.tanggal) + '</td>' +
+    '<td>' + r.benar + '/' + r.total + '</td>' +
+    '<td><b class="score ' + (r.nilai>=70?'ok':'bad') + '">' + r.nilai + '</b></td>' +
+    '<td><button class="btn tiny" onclick="adminLihatDetail(\''+r.id+'\')">Detail</button> ' +
+      '<button class="btn tiny danger" onclick="hapusHasil(\''+r.id+'\')">Hapus</button></td></tr>').join('') + '</tbody></table></div>';
 }
-
 function adminLihatDetail(id){
-  const local = store.get(KEY.R, []).find(function(x){ return x.id === id; });
-  const fromServer = serverResultsCache.find(function(x){ return x.id === id; });
-  const fromMerged = currentResultsList.find(function(x){ return x.id === id; });
-  const r = local || fromServer || fromMerged;
+  const r = store.get(KEY.R, []).find(x => x.id === id) || serverResultsCache.find(x => x.id === id) || currentResultsList.find(x => x.id === id);
   if(!r){ alert('Data tidak ditemukan.'); return; }
   document.getElementById('modal-root').innerHTML =
-  '<div class="overlay" onclick="if(event.target===this) closeModal()">' +
-    '<div class="modal">' +
-      '<div class="row between">' +
-        '<div>' +
-          '<h3 style="margin-bottom:2px">' + esc(r.nama) + '</h3>' +
-          '<p class="small" style="margin:0">' + esc(r.username) + ' - ' + esc(r.kategori) + ' - ' + fmtDate(r.tanggal) + '</p>' +
-        '</div>' +
-        '<button class="btn tiny ghost" onclick="closeModal()">X</button>' +
-      '</div>' +
-      '<div class="stats" style="margin:16px 0">' +
-        '<div><strong>' + r.nilai + '</strong><span>Nilai</span></div>' +
-        '<div><strong style="color:var(--ok)">' + r.benar + '</strong><span>Benar</span></div>' +
-        '<div><strong style="color:var(--bad)">' + r.salah + '</strong><span>Salah</span></div>' +
-        '<div><strong>' + r.kosong + '</strong><span>Kosong</span></div>' +
-      '</div>' +
-      '<div style="max-height:52vh;overflow:auto">' + reviewHTML(r.detail || []) + '</div>' +
-    '</div>' +
-  '</div>';
+    '<div class="overlay" onclick="if(event.target===this) closeModal()"><div class="modal">' +
+    '<div class="row between"><div><h3 style="margin-bottom:2px">' + esc(r.nama) + '</h3>' +
+    '<p class="small" style="margin:0">' + esc(r.username) + ' - ' + esc(r.kategori) + ' - ' + fmtDate(r.tanggal) + '</p></div>' +
+    '<button class="btn tiny ghost" onclick="closeModal()">X</button></div>' +
+    '<div class="stats" style="margin:16px 0">' +
+      '<div><strong>' + r.nilai + '</strong><span>Nilai</span></div>' +
+      '<div><strong style="color:var(--ok)">' + r.benar + '</strong><span>Benar</span></div>' +
+      '<div><strong style="color:var(--bad)">' + r.salah + '</strong><span>Salah</span></div>' +
+      '<div><strong>' + r.kosong + '</strong><span>Kosong</span></div></div>' +
+    '<div style="max-height:52vh;overflow:auto">' + reviewHTML(r.detail || []) + '</div></div></div>';
 }
-
 async function hapusHasil(id){
-  if(!confirm('Hapus hasil ini? Data juga akan dihapus dari server (jika terhubung).')) return;
-  store.set(KEY.R, store.get(KEY.R, []).filter(function(r){ return r.id !== id; }));
-  serverResultsCache = serverResultsCache.filter(function(r){ return r.id !== id; });
-  await hapusHasilServer(id);
-  render();
+  if(!confirm('Hapus hasil ini?')) return;
+  store.set(KEY.R, store.get(KEY.R, []).filter(r => r.id !== id));
+  serverResultsCache = serverResultsCache.filter(r => r.id !== id);
+  await hapusHasilServer(id); render();
 }
-
 async function hapusSemuaHasil(){
-  if(!confirm('Hapus SEMUA hasil ujian (lokal dan server)? Tindakan ini tidak bisa dibatalkan.')) return;
-  store.set(KEY.R, []);
-  serverResultsCache = [];
-  await hapusSemuaHasilServer();
-  render();
+  if(!confirm('Hapus SEMUA hasil ujian (lokal & server)?')) return;
+  store.set(KEY.R, []); serverResultsCache = []; await hapusSemuaHasilServer(); render();
 }
-
 function exportCSV(){
   const rs = currentResultsList.length ? currentResultsList : store.get(KEY.R, []);
   if(!rs.length){ alert('Belum ada data untuk diekspor.'); return; }
   const head = ['Nama','Username','Kategori','Tanggal','Jumlah Soal','Benar','Salah','Kosong','Nilai','Durasi (detik)'];
-  const rows = rs.map(function(r){
-    return [r.nama, r.username, r.kategori, fmtDate(r.tanggal), r.total, r.benar, r.salah, r.kosong, r.nilai, r.durasi||0];
-  });
-  const csv = '\uFEFF' + [head].concat(rows).map(function(row){
-    return row.map(function(v){ return '"' + String(v).replace(/"/g,'""') + '"'; }).join(';');
-  }).join('\r\n');
+  const rows = rs.map(r => [r.nama, r.username, r.kategori, fmtDate(r.tanggal), r.total, r.benar, r.salah, r.kosong, r.nilai, r.durasi||0]);
+  const csv = '\uFEFF' + [head].concat(rows).map(row => row.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(';')).join('\r\n');
   const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
   a.download = 'hasil-ujian-' + new Date().toISOString().slice(0,10) + '.csv';
   document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1500);
+  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
 }
-
 function importHasil(input){
-  const f = input.files[0];
-  if(!f) return;
+  const f = input.files[0]; if(!f) return;
   const rd = new FileReader();
-  rd.onload = function(){
+  rd.onload = () => {
     try{
-      let data = JSON.parse(rd.result);
-      if(!Array.isArray(data)) data = [data];
-      const cur = store.get(KEY.R, []);
-      const ids = new Set(cur.map(function(r){ return r.id; }));
-      let added = 0;
-      data.forEach(function(r){
-        if(r && r.id && r.detail && !ids.has(r.id)){ cur.push(r); ids.add(r.id); added++; }
-      });
-      store.set(KEY.R, cur);
-      render();
-      alert(added + ' hasil berhasil diimpor ke data lokal.');
+      let data = JSON.parse(rd.result); if(!Array.isArray(data)) data = [data];
+      const cur = store.get(KEY.R, []); const ids = new Set(cur.map(r => r.id)); let added = 0;
+      data.forEach(r => { if(r && r.id && r.detail && !ids.has(r.id)){ cur.push(r); ids.add(r.id); added++; } });
+      store.set(KEY.R, cur); render(); alert(added + ' hasil berhasil diimpor.');
     }catch(e){ alert('File tidak valid: ' + e.message); }
   };
-  rd.readAsText(f);
-  input.value = '';
+  rd.readAsText(f); input.value = '';
 }
 
-/* =========================================================
-   11. PENGATURAN
-   ========================================================= */
-const APPS_SCRIPT_CODE = "const SHEET = 'Hasil';\n" +
-"const HEADERS = ['id','username','nama','kategori','tanggal','total','benar','salah','kosong','nilai','durasi','detail'];\n" +
-"\n" +
-"function doPost(e){\n" +
-"  try{\n" +
-"    const body = JSON.parse(e.postData.contents);\n" +
-"    const sh = getSheet();\n" +
-"    if(body.action === 'simpan'){\n" +
-"      const d = body.data;\n" +
-"      sh.appendRow([d.id, d.username, d.nama, d.kategori, d.tanggal, d.total,\n" +
-"                    d.benar, d.salah, d.kosong, d.nilai, d.durasi||0,\n" +
-"                    JSON.stringify(d.detail||[])]);\n" +
-"      return out({ok:true, id:d.id});\n" +
-"    }\n" +
-"    if(body.action === 'hapus'){\n" +
-"      const v = sh.getDataRange().getValues();\n" +
-"      for(let i=v.length-1; i>=1; i--){\n" +
-"        if(String(v[i][0]) === String(body.id)) sh.deleteRow(i+1);\n" +
-"      }\n" +
-"      return out({ok:true});\n" +
-"    }\n" +
-"    if(body.action === 'hapusSemua'){\n" +
-"      if(sh.getLastRow() > 1) sh.deleteRows(2, sh.getLastRow()-1);\n" +
-"      return out({ok:true});\n" +
-"    }\n" +
-"    return out({ok:false, error:'aksi tidak dikenal'});\n" +
-"  }catch(err){\n" +
-"    return out({ok:false, error:String(err)});\n" +
-"  }\n" +
-"}\n" +
-"\n" +
-"function doGet(e){\n" +
-"  const action = (e && e.parameter && e.parameter.action) || '';\n" +
-"  const cb = e && e.parameter && e.parameter.callback;\n" +
-"  if(action === 'ping'){\n" +
-"    return out({ok:true, status:'ok', versi:1, waktu:new Date().toISOString()}, cb);\n" +
-"  }\n" +
-"  if(action === 'daftar'){\n" +
-"    const sh = getSheet();\n" +
-"    if(sh.getLastRow() < 2) return out([], cb);\n" +
-"    const v = sh.getDataRange().getValues();\n" +
-"    const head = v.shift();\n" +
-"    const rows = v.map(function(r){\n" +
-"      const o = {};\n" +
-"      head.forEach(function(h,i){ o[h] = r[i]; });\n" +
-"      try{ o.detail = JSON.parse(o.detail || '[]'); }catch(_){ o.detail = []; }\n" +
-"      return o;\n" +
-"    });\n" +
-"    return out(rows.reverse(), cb);\n" +
-"  }\n" +
-"  return out({ok:true, pesan:'Gunakan ?action=ping atau ?action=daftar'}, cb);\n" +
-"}\n" +
-"\n" +
-"function getSheet(){\n" +
-"  const ss = SpreadsheetApp.getActiveSpreadsheet();\n" +
-"  let sh = ss.getSheetByName(SHEET);\n" +
-"  if(!sh){ sh = ss.insertSheet(SHEET); sh.appendRow(HEADERS); }\n" +
-"  return sh;\n" +
-"}\n" +
-"\n" +
-"function out(o, cb){\n" +
-"  const json = JSON.stringify(o);\n" +
-"  if(cb && /^[a-zA-Z0-9_$.]+$/.test(cb)){\n" +
-"    return ContentService.createTextOutput(cb + '(' + json + ')')\n" +
-"      .setMimeType(ContentService.MimeType.JAVASCRIPT);\n" +
-"  }\n" +
-"  return ContentService.createTextOutput(json)\n" +
-"    .setMimeType(ContentService.MimeType.JSON);\n" +
-"}\n";
+/* ---------- PENGATURAN ---------- */
+const APPS_SCRIPT_CODE = `const SHEET='Hasil';
+const SHEET_SOAL='Soal';
+const HEADERS=['id','username','nama','kategori','tanggal','total','benar','salah','kosong','nilai','durasi','detail'];
+const HEADERS_SOAL=['id','kategori','nomor','pertanyaan','opsi_a','opsi_b','opsi_c','opsi_d','opsi_e','jawaban','pembahasan'];
+const L=['A','B','C','D','E'];
+
+function doPost(e){
+  try{
+    const b=JSON.parse(e.postData.contents);
+    const a=b.action;
+    if(a==='simpan'){
+      const sh=getSheet(SHEET,HEADERS),d=b.data;
+      sh.appendRow([d.id,d.username,d.nama,d.kategori,d.tanggal,d.total,d.benar,d.salah,d.kosong,d.nilai,d.durasi||0,JSON.stringify(d.detail||[])]);
+      return out({ok:true});
+    }
+    if(a==='hapus'){
+      const sh=getSheet(SHEET,HEADERS),v=sh.getDataRange().getValues();
+      for(let i=v.length-1;i>=1;i--){if(String(v[i][0])===String(b.id))sh.deleteRow(i+1);}
+      return out({ok:true});
+    }
+    if(a==='hapusSemua'){
+      const sh=getSheet(SHEET,HEADERS);
+      if(sh.getLastRow()>1)sh.deleteRows(2,sh.getLastRow()-1);
+      return out({ok:true});
+    }
+    if(a==='syncSoal'){
+      const sh=getSheet(SHEET_SOAL,HEADERS_SOAL);
+      if(sh.getLastRow()>1)sh.deleteRows(2,sh.getLastRow()-1);
+      const arr=b.data||[];
+      if(arr.length){
+        const rows=arr.map(q=>[q.id,q.kategori,q.nomor,q.pertanyaan,q.opsi[0]||'',q.opsi[1]||'',q.opsi[2]||'',q.opsi[3]||'',q.opsi[4]||'',L[q.jawaban]||'A',q.pembahasan||'']);
+        sh.getRange(2,1,rows.length,HEADERS_SOAL.length).setValues(rows);
+      }
+      return out({ok:true,count:arr.length});
+    }
+    return out({ok:false,error:'aksi tidak dikenal: '+a});
+  }catch(err){return out({ok:false,error:String(err)});}
+}
+
+function doGet(e){
+  const a=(e&&e.parameter&&e.parameter.action)||'';
+  const cb=e&&e.parameter&&e.parameter.callback;
+  if(a==='ping')return out({ok:true,status:'ok',versi:2,waktu:new Date().toISOString()},cb);
+  if(a==='daftar'){
+    const sh=getSheet(SHEET,HEADERS);
+    if(sh.getLastRow()<2)return out([],cb);
+    const v=sh.getDataRange().getValues(),h=v.shift();
+    const rows=v.map(r=>{const o={};h.forEach((x,i)=>o[x]=r[i]);try{o.detail=JSON.parse(o.detail||'[]');}catch(_){o.detail=[];}return o;});
+    return out(rows.reverse(),cb);
+  }
+  if(a==='soal'){
+    const sh=getSheet(SHEET_SOAL,HEADERS_SOAL);
+    if(sh.getLastRow()<2)return out([],cb);
+    const v=sh.getDataRange().getValues(),h=v.shift();
+    const rows=v.map(r=>{const o={};h.forEach((x,i)=>o[x]=r[i]);return{id:String(o.id||''),kategori:String(o.kategori||'Teknis'),nomor:Number(o.nomor)||1,pertanyaan:String(o.pertanyaan||''),opsi:[o.opsi_a||'',o.opsi_b||'',o.opsi_c||'',o.opsi_d||'',o.opsi_e||''],jawaban:Math.max(0,L.indexOf(String(o.jawaban||'A').toUpperCase())),pembahasan:String(o.pembahasan||'')};});
+    return out(rows,cb);
+  }
+  return out({ok:true,pesan:'Actions: ping, daftar, soal'},cb);
+}
+
+function getSheet(name,headers){
+  const ss=SpreadsheetApp.getActiveSpreadsheet();
+  let sh=ss.getSheetByName(name);
+  if(!sh){sh=ss.insertSheet(name);sh.appendRow(headers);}
+  return sh;
+}
+function out(o,cb){
+  const j=JSON.stringify(o);
+  if(cb&&/^[a-zA-Z0-9_$.]+$/.test(cb)){return ContentService.createTextOutput(cb+'('+j+')').setMimeType(ContentService.MimeType.JAVASCRIPT);}
+  return ContentService.createTextOutput(j).setMimeType(ContentService.MimeType.JSON);
+}
+`;
 
 function adminSettingHTML(){
   const qs = getQuestions();
   const rs = store.get(KEY.R, []);
   const us = store.get(KEY.U, []);
   const curUrl = getSyncUrl();
-  const statusPill = isSyncReady()
-    ? '<span class="pill" style="background:#ecfdf5;color:#166534">Terhubung</span>'
-    : '<span class="pill">Belum terhubung</span>';
-
-  return '<div class="card">' +
-    '<div class="row between wrap">' +
-      '<h3 style="margin:0">Sinkronisasi Google Sheets (Backend)</h3>' +
-      statusPill +
-    '</div>' +
-    '<p class="small">Hasil setiap peserta akan otomatis dikirim ke Google Sheet dan ditampilkan di tab Hasil Ujian.</p>' +
-
-    '<details style="margin:10px 0 14px">' +
-      '<summary style="cursor:pointer;font-weight:600;color:var(--pri);font-size:13.5px">Langkah-langkah membuat backend (klik untuk membuka)</summary>' +
-      '<ol style="margin:10px 0 0 18px;font-size:13.5px;line-height:1.75;color:#334155">' +
-        '<li>Buka <a href="https://sheets.new" target="_blank" rel="noopener">sheets.new</a> - buat Google Sheet baru, beri nama mis. Hasil Ujian KB.</li>' +
-        '<li>Klik menu Extensions - Apps Script.</li>' +
-        '<li>Hapus semua isi editor, lalu tempel kode di bawah ini.</li>' +
-        '<li>Klik Deploy - New deployment - pilih Web app.</li>' +
-        '<li>Isi: Execute as = Me, Who has access = Anyone.</li>' +
-        '<li>Klik Deploy - izinkan akses - salin Web app URL yang berakhiran /exec.</li>' +
-        '<li>Tempel URL tersebut di kolom di bawah - klik Simpan & Uji Koneksi.</li>' +
-      '</ol>' +
-    '</details>' +
-
+  const statusPill = isSyncReady() ? '<span class="pill ok">Terhubung</span>' : '<span class="pill">Belum terhubung</span>';
+  return '<div class="card"><div class="row between wrap"><h3 style="margin:0">Sinkronisasi Google Sheets</h3>' + statusPill + '</div>' +
+    '<p class="small">Soal dan hasil peserta otomatis tersinkron ke Google Sheet sehingga konsisten di semua perangkat.</p>' +
+    '<details style="margin:10px 0 14px"><summary style="cursor:pointer;font-weight:600;color:var(--pri);font-size:13.5px">Langkah membuat backend</summary>' +
+    '<ol style="margin:10px 0 0 18px;font-size:13.5px;line-height:1.75;color:#334155">' +
+      '<li>Buka <a href="https://sheets.new" target="_blank" rel="noopener">sheets.new</a> - buat Google Sheet baru.</li>' +
+      '<li>Menu Extensions - Apps Script.</li>' +
+      '<li>Hapus isi editor, tempel kode di bawah.</li>' +
+      '<li>Deploy - New deployment - Web app. Execute as: Me, Who has access: Anyone.</li>' +
+      '<li>Salin URL /exec, tempel di kolom di bawah, klik Simpan & Uji.</li></ol></details>' +
     '<label>URL Google Apps Script (Web App)</label>' +
-    '<div class="row gap wrap">' +
-      '<input id="sync-url" class="input" style="flex:1;min-width:240px" placeholder="https://script.google.com/macros/s/XXXXXXXX/exec" value="' + esc(curUrl) + '">' +
-      '<button class="btn primary" onclick="simpanSyncUrl()">Simpan & Uji Koneksi</button>' +
-      '<button class="btn ghost" onclick="testSync()">Uji Saja</button>' +
-    '</div>' +
+    '<div class="row gap wrap"><input id="sync-url" class="input" style="flex:1;min-width:240px" placeholder="https://script.google.com/macros/s/XXXX/exec" value="' + esc(curUrl) + '">' +
+    '<button class="btn primary" onclick="simpanSyncUrl()">Simpan & Uji Koneksi</button>' +
+    '<button class="btn ghost" onclick="testSync()">Uji Saja</button></div>' +
     '<div id="sync-test" style="margin-top:10px"></div>' +
-
-    '<hr class="sep">' +
-    '<h3>Kode Apps Script (salin ke editor)</h3>' +
-    '<p class="small">Klik tombol salin, lalu tempel di editor Apps Script pada langkah 3 di atas.</p>' +
-    '<div class="row gap" style="margin-bottom:8px">' +
-      '<button class="btn tiny primary" onclick="copyAppsScript(this)">Salin Kode</button>' +
-      '<span class="muted tiny">' + APPS_SCRIPT_CODE.split('\n').length + ' baris</span>' +
-    '</div>' +
+    '<hr class="sep"><h3>Kode Apps Script</h3>' +
+    '<div class="row gap" style="margin-bottom:8px"><button class="btn tiny primary" onclick="copyAppsScript(this)">Salin Kode</button>' +
+    '<span class="muted tiny">' + APPS_SCRIPT_CODE.split('\n').length + ' baris</span></div>' +
     '<pre class="code">' + esc(APPS_SCRIPT_CODE) + '</pre>' +
-
-    '<hr class="sep">' +
-    '<h3>Ganti Password Admin</h3>' +
-    '<div class="row gap wrap">' +
-      '<input id="new-pass" class="input" style="max-width:280px" placeholder="Password baru (min. 5 karakter)">' +
-      '<button class="btn primary" onclick="gantiPass()">Simpan</button>' +
-    '</div>' +
-
-    '<hr class="sep">' +
-    '<h3>Backup & Restore Data Lokal</h3>' +
-    '<p class="small">Unduh seluruh data (soal, hasil, peserta, pengaturan) untuk dipindahkan ke perangkat/browser lain.</p>' +
-    '<div class="row gap wrap">' +
-      '<button class="btn" onclick="exportAll()">Unduh Semua Data</button>' +
-      '<label class="btn" style="margin:0">Impor Data' +
-        '<input type="file" accept=".json" hidden onchange="importAll(this)">' +
-      '</label>' +
-      '<button class="btn ghost" onclick="resetSoal()">Reset Soal ke Default</button>' +
-    '</div>' +
-
-    '<hr class="sep">' +
-    '<h3>Statistik</h3>' +
-    '<div class="stats">' +
-      '<div><strong>' + qs.length + '</strong><span>Soal</span></div>' +
-      '<div><strong>' + rs.length + '</strong><span>Hasil Lokal</span></div>' +
-      '<div><strong>' + us.length + '</strong><span>Peserta</span></div>' +
-    '</div>' +
-
-    '<hr class="sep">' +
-    '<div class="bahas">' +
-      '<b>Catatan:</b> URL Apps Script bersifat publik (agar peserta bisa mengirim hasil). Siapa pun yang tahu URL-nya ' +
-      'bisa mengirim data, jadi jangan bagikan URL ke pihak yang tidak berkepentingan. Untuk penggunaan ujikom internal, ini sudah memadai.' +
-    '</div>' +
-  '</div>';
+    '<hr class="sep"><h3>Ganti Password Admin</h3>' +
+    '<div class="row gap wrap"><input id="new-pass" class="input" style="max-width:280px" placeholder="Password baru (min. 5 karakter)">' +
+    '<button class="btn primary" onclick="gantiPass()">Simpan</button></div>' +
+    '<hr class="sep"><h3>Backup & Restore</h3>' +
+    '<div class="row gap wrap"><button class="btn" onclick="exportAll()">Unduh Semua Data</button>' +
+    '<label class="btn" style="margin:0">Impor Data<input type="file" accept=".json" hidden onchange="importAll(this)"></label>' +
+    '<button class="btn ghost" onclick="resetSoal()">Reset Soal ke Default</button></div>' +
+    '<hr class="sep"><h3>Statistik</h3><div class="stats">' +
+    '<div><strong>' + qs.length + '</strong><span>Soal</span></div>' +
+    '<div><strong>' + rs.length + '</strong><span>Hasil Lokal</span></div>' +
+    '<div><strong>' + us.length + '</strong><span>Peserta</span></div></div></div>';
 }
-
 function simpanSyncUrl(){
   const v = document.getElementById('sync-url').value.trim();
-  if(v && !/^https?:\/\/.+\/exec$/.test(v)){
-    if(!confirm('URL tidak berakhiran /exec. Tetap disimpan?')) return;
-  }
-  const st = store.get(KEY.S, {});
-  st.syncUrl = v;
-  store.set(KEY.S, st);
-  testSync();
+  if(v && !/^https?:\/\/.+\/exec$/.test(v)){ if(!confirm('URL tidak berakhiran /exec. Tetap disimpan?')) return; }
+  const st = store.get(KEY.S, {}); st.syncUrl = v; store.set(KEY.S, st); testSync();
 }
-
 async function testSync(){
-  const box = document.getElementById('sync-test');
-  if(!box) return;
-  box.innerHTML = '<span class="pill">Menguji koneksi...</span>';
+  const box = document.getElementById('sync-test'); if(!box) return;
+  box.innerHTML = '<span class="pill">Menguji...</span>';
   const url = getSyncUrl();
-  if(!url){
-    box.innerHTML = '<span class="pill" style="background:#fef2f2;color:#991b1b">URL belum diisi.</span>';
-    return;
-  }
-  try{
-    const r = await fetch(url + '?action=ping', { cache:'no-store' });
-    const j = await r.json();
-    if(j && j.ok){
-      box.innerHTML = '<span class="pill" style="background:#ecfdf5;color:#166534">Backend terhubung! (versi ' + (j.versi||'?') + ')</span>';
-      return;
-    }
-  }catch(e){ /* coba jsonp */ }
-  try{
-    const j = await jsonpGet(url, { action:'ping' });
-    if(j && j.ok){
-      box.innerHTML = '<span class="pill" style="background:#ecfdf5;color:#166534">Backend terhubung! (via JSONP, versi ' + (j.versi||'?') + ')</span>';
-      return;
-    }
-  }catch(e){ /* gagal */ }
-  box.innerHTML = '<span class="pill" style="background:#fef2f2;color:#991b1b">Gagal terhubung. Cek: (1) URL berakhiran /exec, (2) deployment set Anyone, (3) sudah Deploy versi baru.</span>';
+  if(!url){ box.innerHTML = '<span class="pill bad">URL belum diisi.</span>'; return; }
+  try{ const r = await fetch(url + '?action=ping', {cache:'no-store'}); const j = await r.json();
+    if(j && j.ok){ box.innerHTML = '<span class="pill ok">Backend terhubung (versi ' + (j.versi||'?') + ').</span>'; return; }
+  }catch(e){}
+  try{ const j = await jsonpGet(url, {action:'ping'});
+    if(j && j.ok){ box.innerHTML = '<span class="pill ok">Backend terhubung (JSONP, versi ' + (j.versi||'?') + ').</span>'; return; }
+  }catch(e){}
+  box.innerHTML = '<span class="pill bad">Gagal terhubung. Cek: (1) URL /exec, (2) deployment Anyone, (3) sudah Deploy versi baru.</span>';
 }
-
 function copyAppsScript(btn){
   const text = APPS_SCRIPT_CODE;
-  const done = function(){
-    const old = btn.textContent;
-    btn.textContent = 'Tersalin!';
-    setTimeout(function(){ btn.textContent = old; }, 1500);
-  };
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).then(done).catch(function(){
-      fallbackCopy(text); done();
-    });
-  } else {
-    fallbackCopy(text); done();
-  }
+  const done = () => { const old = btn.textContent; btn.textContent = 'Tersalin!'; setTimeout(() => btn.textContent = old, 1500); };
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done).catch(() => { fallbackCopy(text); done(); }); }
+  else { fallbackCopy(text); done(); }
 }
 function fallbackCopy(text){
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed'; ta.style.left = '-9999px';
-  document.body.appendChild(ta);
-  ta.select();
-  try{ document.execCommand('copy'); }catch(e){}
-  document.body.removeChild(ta);
+  const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+  document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta);
 }
-
 function gantiPass(){
   const v = document.getElementById('new-pass').value.trim();
   if(v.length < 5){ alert('Password minimal 5 karakter.'); return; }
-  const st = store.get(KEY.S, { adminPassword:'admin123' });
-  st.adminPassword = v;
-  store.set(KEY.S, st);
-  alert('Password admin berhasil diubah.');
-  render();
+  const st = store.get(KEY.S, { adminPassword:'admin123' }); st.adminPassword = v; store.set(KEY.S, st);
+  alert('Password admin berhasil diubah.'); render();
 }
-
 function exportAll(){
-  const data = {
-    app: 'Latihan Soal Penyuluh KB', versi: 1, diekspor: new Date().toISOString(),
-    questions: getQuestions(),
-    results: store.get(KEY.R, []),
-    users: store.get(KEY.U, []),
-    settings: store.get(KEY.S, { adminPassword:'admin123' })
-  };
+  const data = { app:'Latihan Soal Penyuluh KB', versi:2, diekspor:new Date().toISOString(),
+    questions:getQuestions(), results:store.get(KEY.R, []), users:store.get(KEY.U, []),
+    settings:store.get(KEY.S, {adminPassword:'admin123'}) };
   downloadJSON(data, 'backup-latihan-kb-' + new Date().toISOString().slice(0,10) + '.json');
 }
-
 function importAll(input){
-  const f = input.files[0];
-  if(!f) return;
+  const f = input.files[0]; if(!f) return;
   const rd = new FileReader();
-  rd.onload = function(){
+  rd.onload = () => {
     try{
       const d = JSON.parse(rd.result);
       if(d.questions) setQuestions(d.questions);
       if(d.results) store.set(KEY.R, d.results);
       if(d.users) store.set(KEY.U, d.users);
       if(d.settings) store.set(KEY.S, d.settings);
-      render();
-      alert('Data berhasil diimpor.');
+      render(); alert('Data berhasil diimpor.');
     }catch(e){ alert('File tidak valid: ' + e.message); }
   };
-  rd.readAsText(f);
-  input.value = '';
+  rd.readAsText(f); input.value = '';
 }
-
 function resetSoal(){
-  if(!confirm('Kembalikan seluruh soal ke bank soal bawaan? Perubahan yang Anda buat akan hilang.')) return;
-  setQuestions(seedQuestions());
-  render();
-  alert('Soal berhasil direset ke bawaan.');
+  if(!confirm('Kembalikan seluruh soal ke bank bawaan? Perubahan yang Anda buat akan hilang.')) return;
+  setQuestions(seedQuestions()); render(); alert('Soal berhasil direset ke bawaan.');
 }
 
 /* =========================================================
-   12. INIT
+   INIT
    ========================================================= */
 (function init(){
   if(!store.get(KEY.Q, null)) store.set(KEY.Q, seedQuestions());
   if(!store.get(KEY.S, null)) store.set(KEY.S, { adminPassword:'admin123' });
   session = store.get(KEY.SES, null);
   render();
+
+  // Peserta yang sudah login sebelumnya: refresh soal dari server
+  if(session && session.role === 'peserta' && isSyncReady()){
+    ambilSoalServer().then(list => {
+      if(Array.isArray(list) && list.length > 0){
+        store.set(KEY.Q, list);
+        if(!quiz && !lastResult) render();
+      }
+    });
+  }
 })();
 </script>
 </body>
