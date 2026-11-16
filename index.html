@@ -6,7 +6,7 @@
 <title>Latihan Soal Penyuluh KB — Try Out Ujikom</title>
 <style>
 *,*::before,*::after{box-sizing:border-box}
-:root{--pri:#4f46e5;--pri-d:#4338ca;--teal:#0d9488;--ink:#0f172a;--muted:#64748b;--line:#e5e9f2;--ok:#16a34a;--bad:#dc2626;--shadow:0 14px 40px -18px rgba(15,23,42,.35)}
+:root{--pri:#4f46e5;--pri-d:#4338ca;--teal:#0d9488;--ink:#0f172a;--muted:#64748b;--line:#e5e9f2;--ok:#16a34a;--bad:#dc2626;--warn:#d97706;--shadow:0 14px 40px -18px rgba(15,23,42,.35)}
 html,body{height:100%}
 body{margin:0;color:var(--ink);font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;background:radial-gradient(900px 520px at 0% -10%,#dbeafe 0%,transparent 60%),radial-gradient(820px 520px at 100% 0%,#ccfbf1 0%,transparent 55%),#f6f8fc;min-height:100vh}
 h1,h2,h3,h4{margin:0 0 .4em;line-height:1.25}h2{font-size:20px}h3{font-size:17px}
@@ -55,6 +55,7 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .badge{display:inline-block;padding:4px 10px;border-radius:8px;font-size:11.5px;font-weight:700;letter-spacing:.2px}
 .pill{display:inline-block;padding:6px 12px;border-radius:999px;background:#f1f5f9;font-size:12.5px;font-weight:600;color:#475569}
 .pill.ok{background:#ecfdf5;color:#166534}.pill.bad{background:#fef2f2;color:#991b1b}.pill.warn{background:#fef3c7;color:#92400e}
+.pill.clickable{cursor:pointer}.pill.clickable:hover{background:#e2e8f0}
 .hero{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,#eef2ff 0%,#f0fdfa 100%)}
 .hero-stat{display:flex;gap:14px}
 .hero-stat>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 16px;text-align:center;min-width:92px}
@@ -81,10 +82,6 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .opt.static{cursor:default}.opt.static:hover{border-color:var(--line);background:#fff;transform:none}
 .opt.correct{border-color:#86efac;background:#f0fdf4}.opt.correct .ltr{background:var(--ok);color:#fff}
 .opt.wrong{border-color:#fecaca;background:#fef2f2}.opt.wrong .ltr{background:var(--bad);color:#fff}
-
-/* =========================================
-   PALETTE SOAL — 5 kotak per baris
-   ========================================= */
 .quiz-layout{display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
 .quiz-nav{position:sticky;top:74px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow);max-height:calc(100vh - 90px);overflow-y:auto}
 .quiz-nav h4{margin:0 0 12px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;font-weight:800}
@@ -97,14 +94,13 @@ select.input{appearance:none;background-image:url("data:image/svg+xml;charset=ut
 .legend{display:flex;flex-direction:column;gap:7px;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:11px;color:var(--muted)}
 .legend b{display:inline-flex;align-items:center;gap:6px;font-weight:500}
 .legend i{width:11px;height:11px;border-radius:3px;display:inline-block;border:1px solid}
-
+.timer-box{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:10px;background:#f1f5f9;font-weight:800;font-size:16px;color:#334155;font-family:ui-monospace,"SF Mono",Consolas,monospace;letter-spacing:.5px}
+.timer-box.warn{background:#fef3c7;color:#92400e;animation:pulse 1.5s infinite}
+.timer-box.critical{background:#fee2e2;color:#991b1b;animation:pulse .8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.65}}
+.timer-hint{font-size:11px;color:var(--muted);margin-top:4px}
 @media(max-width:900px){.quiz-layout{grid-template-columns:220px 1fr}}
-@media(max-width:720px){
-  .quiz-layout{grid-template-columns:1fr}
-  .quiz-nav{position:static;max-height:none}
-  .palette{grid-template-columns:repeat(auto-fill, minmax(40px, 1fr))}
-}
-
+@media(max-width:720px){.quiz-layout{grid-template-columns:1fr}.quiz-nav{position:static;max-height:none}.palette{grid-template-columns:repeat(auto-fill, minmax(40px, 1fr))}}
 .result-head{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
 .score-ring{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:conic-gradient(var(--pri) calc(var(--p)*1%),#e8ecf5 0)}
 .score-ring>div{width:120px;height:120px;border-radius:50%;background:#fff;display:grid;place-items:center;align-content:center}
@@ -182,6 +178,10 @@ table.tbl tbody tr:hover{background:#fafbff}
 .jenjang-check.all{border-color:#86efac;background:#f0fdf4;font-weight:700;grid-column:1/-1}
 .jenjang-check.all.checked{background:linear-gradient(135deg,#dcfce7,#bbf7d0)}
 .jenjang-tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:10px;font-weight:700;background:#eef2ff;color:#4338ca;margin-right:3px;margin-top:3px}
+.durasi-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.durasi-preset{padding:6px 14px;border-radius:8px;border:1.5px solid var(--line);background:#fff;font-size:12.5px;font-weight:600;color:#475569;cursor:pointer;font-family:inherit}
+.durasi-preset:hover{border-color:#c7d2fe;background:#f8faff}
+.durasi-preset.on{background:var(--pri);color:#fff;border-color:transparent}
 @media(max-width:640px){.grid2{grid-template-columns:1fr}.hero-stat{width:100%}.hero-stat>div{flex:1}.login-card{padding:20px}.card{padding:17px;border-radius:15px}.row.between.wrap{gap:10px}.qtext{font-size:15.5px}.score-ring{width:126px;height:126px}.score-ring>div{width:100px;height:100px}.score-ring strong{font-size:28px}.lb-score b{font-size:20px}.jenjang-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -191,11 +191,12 @@ table.tbl tbody tr:hover{background:#fafbff}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script>
 /* =========================================================
-   KONSTANTA JENJANG
+   KONSTANTA
    ========================================================= */
 const JENJANG_LIST = ['Penyuluh KB Terampil','Penyuluh KB Mahir','Penyuluh KB Penyelia','Penyuluh KB Ahli Pertama','Penyuluh KB Ahli Muda','Penyuluh KB Ahli Madya','Penyuluh KB Ahli Utama'];
 const JENJANG_NEXT = {'Penyuluh KB Terampil':'Penyuluh KB Mahir','Penyuluh KB Mahir':'Penyuluh KB Penyelia','Penyuluh KB Penyelia':'Penyuluh KB Ahli Pertama','Penyuluh KB Ahli Pertama':'Penyuluh KB Ahli Muda','Penyuluh KB Ahli Muda':'Penyuluh KB Ahli Madya','Penyuluh KB Ahli Madya':'Penyuluh KB Ahli Utama','Penyuluh KB Ahli Utama':null};
 const NILAI_LULUS_NAIK = 70;
+const DURASI_PRESET = [0, 15, 30, 45, 60, 90, 120];  // menit
 
 const BOOTSTRAP_RAW = [
 {k:'Teknis',n:1,q:'Dependent Variabel (DV) dari Demografi formal adalah ...',o:['Tingkat Kelahiran dan Komposisi Umur','Migrasi keluar dan Pertumbuhan Ekonomi','Kemiskinan dan Kebutuhan Pangan','Kebutuhan Pangan dan Tingkat Kelahiran','Komposisi Umur dan Pertumbuhan Ekonomi'],a:0},
@@ -264,6 +265,9 @@ function bootstrapJenjang(kat, nomor){
   return 'Penyuluh KB Ahli Muda, Penyuluh KB Ahli Madya, Penyuluh KB Ahli Utama';
 }
 
+/* =========================================================
+   STORAGE & STATE
+   ========================================================= */
 const KEY = { Q:'pkb_questions_v1', R:'pkb_results_v1', U:'pkb_users_v1', S:'pkb_settings_v1', SES:'pkb_session_v1' };
 const LETTERS = ['A','B','C','D','E'];
 let serverResultsCache = [];
@@ -272,6 +276,7 @@ let soalSyncing = false;
 let adminHasilView = 'semua';
 let lastSheetCount = -1;
 let pollInterval = null;
+let participantPoll = null;
 
 const store = {
   get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
@@ -285,14 +290,28 @@ let adminTab = 'soal';
 let adminFilter = { kategori:'Semua', jenjang:'Semua', q:'' };
 let pick = { kategori:'Semua', mode:'semua', selected:[], search:'', acak:false };
 let timerInt = null;
+let autoSubmitGuard = false;
 
+/* =========================================================
+   UTILITAS
+   ========================================================= */
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function jsEsc(s){ return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"'); }
 function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function fmtDate(iso){ try{ return new Date(iso).toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'}); }catch(e){ return iso; } }
 function fmtDur(s){ const m = Math.floor(s/60), r = s%60; return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0'); }
+function timeAgo(ts){
+  const s = Math.floor((Date.now() - ts)/1000);
+  if(s < 60) return s + ' detik';
+  if(s < 3600) return Math.floor(s/60) + ' menit';
+  if(s < 86400) return Math.floor(s/3600) + ' jam';
+  return Math.floor(s/86400) + ' hari';
+}
 
+/* =========================================================
+   JENJANG
+   ========================================================= */
 function jenjangMatches(qj, uj){
   const q = String(qj || '').trim();
   if(!q || /^semua$/i.test(q)) return true;
@@ -308,6 +327,9 @@ function jenjangBadge(full){
   return '<span class="jenjang-badge' + (isHigh?' utama':'') + '">' + esc(shortJenjang(full)) + '</span>';
 }
 
+/* =========================================================
+   KATEGORI
+   ========================================================= */
 const CAT_COLORS = [{bg:'#eef2ff',fg:'#4338ca'},{bg:'#ccfbf1',fg:'#0f766e'},{bg:'#fef3c7',fg:'#92400e'},{bg:'#fce7f3',fg:'#9d174d'},{bg:'#dbeafe',fg:'#1e40af'},{bg:'#dcfce7',fg:'#166534'},{bg:'#ede9fe',fg:'#6d28d9'},{bg:'#fee2e2',fg:'#991b1b'}];
 function getQuestions(){ return store.get(KEY.Q, []); }
 function getQuestionsForJenjang(jenjang){ return getQuestions().filter(q => jenjangMatches(q.jenjang, jenjang)); }
@@ -326,6 +348,26 @@ function katBadge(kat){ const c=catColor(kat); return '<span class="badge" style
 function filterByKategori(list, kat){ return kat==='Semua' ? list.slice() : list.filter(q => q.kategori===kat); }
 function filterByJenjang(list, jenjang){ return jenjang==='Semua' ? list.slice() : list.filter(q => jenjangMatches(q.jenjang, jenjang)); }
 
+/* =========================================================
+   DURASI PER KATEGORI
+   ========================================================= */
+function getDurasiMap(){ const st = store.get(KEY.S, {}); return st.durasiMap || {}; }
+function getDurasiForKategori(kat){
+  const map = getDurasiMap();
+  if(kat === 'Semua'){
+    const values = Object.values(map).filter(v => typeof v === 'number' && v > 0);
+    return values.length ? Math.max.apply(null, values) : 0;
+  }
+  return map[kat] || 0;
+}
+function setDurasiForKategori(kat, minutes){
+  const st = store.get(KEY.S, {});
+  st.durasiMap = st.durasiMap || {};
+  if(minutes > 0) st.durasiMap[kat] = minutes;
+  else delete st.durasiMap[kat];
+  store.set(KEY.S, st);
+}
+
 function bootstrapQuestions(){
   return BOOTSTRAP_RAW.map(s => ({ id: s.k.toLowerCase().slice(0,3)+'-'+s.n, kategori: s.k, jenjang: bootstrapJenjang(s.k, s.n), nomor: s.n, pertanyaan: s.q, opsi: s.o.concat(['','','','','']).slice(0,5), jawaban: s.a, pembahasan: s.b||'' }));
 }
@@ -336,6 +378,9 @@ function setQuestions(list, opts){
   if(!opts.skipSync && session && session.role==='admin' && isSyncReady()){ pushSoalKeServer(list); }
 }
 
+/* =========================================================
+   SYNC
+   ========================================================= */
 function getSyncUrl(){ const st=store.get(KEY.S, {}); return String(st.syncUrl||'').trim(); }
 function isSyncReady(){ return /^https?:\/\/.+\/exec$/.test(getSyncUrl()); }
 function getAutoPoll(){ const st=store.get(KEY.S, {}); return st.autoPoll !== false; }
@@ -365,16 +410,41 @@ async function ambilSoalServer(){
   return null;
 }
 async function pushSoalKeServer(list){
-  const url = getSyncUrl(); if(!url) return {ok:false};
-  if(soalSyncing) return {ok:false};
+  const url = getSyncUrl(); if(!url) return {ok:false, reason:'no-url'};
+  if(soalSyncing) return {ok:false, reason:'busy'};
   soalSyncing = true;
   try{
     await fetch(url, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({action:'syncSoal', data:list})});
+    await new Promise(r => setTimeout(r, 800));
+    const check = await ambilSoalServer();
     soalSyncing = false;
-    lastSheetCount = list.length;
-    updateSyncBanner();
-    return {ok:true};
-  }catch(e){ soalSyncing=false; return {ok:false}; }
+    if(!Array.isArray(check)){
+      showSoalSyncStatus(false, 'tidak bisa verifikasi');
+      return {ok:false, reason:'verify-failed'};
+    }
+    if(check.length !== list.length){
+      showSoalSyncStatus(false, 'sheet='+check.length+' lokal='+list.length+' — coba kirim ulang');
+      return {ok:false, reason:'mismatch', sheetCount: check.length};
+    }
+    lastSheetCount = check.length;
+    showSoalSyncStatus(true);
+    return {ok:true, verified:true};
+  }catch(e){
+    soalSyncing = false;
+    showSoalSyncStatus(false, String(e));
+    return {ok:false, reason:'network', error:String(e)};
+  }
+}
+function showSoalSyncStatus(ok, msg){
+  const el = document.getElementById('soal-sync-note');
+  if(!el) return;
+  if(ok){
+    el.innerHTML = '<span class="pill ok">✓ Terverifikasi · ' +
+      getQuestions().length + ' soal · sheet & lokal sama</span>';
+  } else {
+    el.innerHTML = '<span class="pill bad">✗ Gagal: ' + esc(msg||'?') +
+      ' · <a href="#" onclick="manualPushToSheet();return false" style="color:#991b1b;text-decoration:underline">coba kirim ulang</a></span>';
+  }
 }
 function updateSyncBanner(){
   const el = document.getElementById('soal-sync-note');
@@ -424,11 +494,11 @@ async function manualPushToSheet(){
   if(count === 0){ alert('Tidak ada soal untuk dikirim.'); return; }
   if(!confirm('⚠️ Kirim '+count+' soal ke Sheet akan MENGGANTI seluruh isi sheet "Soal".\n\nLanjutkan?')) return;
   const note = document.getElementById('soal-sync-note');
-  if(note) note.innerHTML = '<span class="pill">📤 Mengirim ke sheet...</span>';
+  if(note) note.innerHTML = '<span class="pill">📤 Mengirim & verifikasi...</span>';
   const out = await pushSoalKeServer(getQuestions());
-  if(out.ok){ alert('✓ Berhasil mengirim '+count+' soal ke sheet.'); }
+  if(out.ok && out.verified){ alert('✓ Terverifikasi — '+count+' soal berhasil dikirim & cocok dengan sheet.'); }
+  else if(out.reason === 'mismatch'){ alert('⚠️ Sheet berisi '+out.sheetCount+' soal, lokal '+count+'.\n\nCoba klik "Kirim ke Sheet" sekali lagi. Jika masih gagal, cek apakah Apps Script sudah di-deploy versi baru.'); }
   else { alert('✗ Gagal mengirim ke sheet.'); }
-  updateSyncBanner();
 }
 function startPollingIfNeeded(){
   stopPolling();
@@ -443,6 +513,24 @@ function startPollingIfNeeded(){
   }, 90000);
 }
 function stopPolling(){ if(pollInterval){ clearInterval(pollInterval); pollInterval = null; } }
+function startParticipantPoll(){
+  if(participantPoll) clearInterval(participantPoll);
+  if(!session || session.role !== 'peserta') return;
+  if(!isSyncReady()) return;
+  participantPoll = setInterval(async () => {
+    if(document.hidden) return;
+    if(quiz || lastResult) return;
+    const list = await ambilSoalServer();
+    if(!Array.isArray(list) || list.length === 0) return;
+    const local = getQuestions();
+    if(JSON.stringify(list) !== JSON.stringify(local)){
+      store.set(KEY.Q, list);
+      window._soalFetchedAt = Date.now();
+      render();
+    }
+  }, 180000);
+}
+function stopParticipantPoll(){ if(participantPoll){ clearInterval(participantPoll); participantPoll = null; } }
 
 async function kirimHasilKeServer(r){
   const url = getSyncUrl(); if(!url) return {ok:false, reason:'no-url'};
@@ -465,6 +553,9 @@ async function ambilHasilServer(){
   try{ const j = await jsonpGet(url, {action:'daftar'}); if(Array.isArray(j)) return j; return []; }catch(e){ return null; }
 }
 
+/* =========================================================
+   RENDER UTAMA
+   ========================================================= */
 function render(){
   const app = document.getElementById('app');
   if(!session){ app.innerHTML = viewLogin(); return; }
@@ -485,6 +576,9 @@ function topbar(sub, extra){
     '<div class="row gap">'+(extra||'')+'<button class="btn ghost tiny" onclick="logout()">Keluar</button></div></header>';
 }
 
+/* =========================================================
+   LOGIN
+   ========================================================= */
 function viewLogin(){
   return '<div class="login-wrap"><div class="login-card"><div class="brand"><div class="logo">KB</div><div>' +
     '<h1 style="font-size:19px">Latihan Soal Penyuluh KB</h1>' +
@@ -492,7 +586,7 @@ function viewLogin(){
     '<div class="tabs"><button class="tab '+(loginTab==='peserta'?'active':'')+'" onclick="setLoginTab(\'peserta\')">Peserta</button>' +
     '<button class="tab '+(loginTab==='admin'?'active':'')+'" onclick="setLoginTab(\'admin\')">Admin</button></div>' +
     (loginTab==='peserta' ? formPeserta() : formAdmin()) +
-    '<p class="hint">Password admin bawaan: <code>admin123</code><br>Pilih jenjang jabatan Anda — soal akan disesuaikan otomatis.</p></div></div>';
+    '<p class="hint">Password admin bawaan: <code>admin123</code><br>Pilih jenjang jabatan Anda — soal & durasi akan disesuaikan.</p></div></div>';
 }
 function formPeserta(){
   return '<form onsubmit="doLoginPeserta(event)">' +
@@ -523,7 +617,9 @@ function doLoginPeserta(e){
   store.set(KEY.U, users);
   session = {role:'peserta', username:user, nama, jenjang};
   store.set(KEY.SES, session);
-  quiz = null; lastResult = null; render();
+  quiz = null; lastResult = null;
+  startParticipantPoll();
+  render();
   pullSoalForPeserta();
 }
 async function pullSoalForPeserta(){
@@ -536,6 +632,7 @@ async function pullSoalForPeserta(){
       if(!quiz && !lastResult) render();
     }
   }
+  window._soalFetchedAt = Date.now();
 }
 function doLoginAdmin(e){
   e.preventDefault();
@@ -559,9 +656,13 @@ function logout(){
   localStorage.removeItem(KEY.SES);
   clearInterval(timerInt);
   stopPolling();
+  stopParticipantPoll();
   render();
 }
 
+/* =========================================================
+   DASHBOARD PESERTA
+   ========================================================= */
 function viewPeserta(){
   const allForJenjang = getQuestionsForJenjang(session.jenjang);
   if(allForJenjang.length === 0){
@@ -577,23 +678,60 @@ function viewPeserta(){
   const filtered = filterByKategori(allForJenjang, pick.kategori);
   const katCount = katList.length - 1;
   const synced = isSyncReady();
+  const durasi = getDurasiForKategori(pick.kategori);
+  const syncStatus = window._soalFetchedAt
+    ? '<span class="pill clickable" onclick="manualRefreshSoal()" title="Klik untuk cek update terbaru">🔄 Soal: '+timeAgo(window._soalFetchedAt)+' lalu</span>'
+    : '<span class="pill clickable" onclick="manualRefreshSoal()">🔄 Cek soal terbaru</span>';
+
   return topbar('Halo, '+session.nama+' · '+shortJenjang(session.jenjang))+'<div class="container">' +
     '<div class="card hero"><div style="flex:1;min-width:230px"><h2>Mulai Latihan Soal</h2>' +
-      '<p>Soal yang ditampilkan sudah disesuaikan dengan jenjang jabatan Anda.</p>' +
+      '<p>Soal & durasi disesuaikan dengan jenjang dan kategori pilihan Anda.</p>' +
       '<div class="row gap wrap">'+jenjangBadge(session.jenjang) +
-      (synced ? '<span class="pill ok">Soal dari server</span>' : '<span class="pill">Mode lokal</span>')+'</div></div>' +
+      (synced ? syncStatus : '<span class="pill">Mode lokal</span>')+'</div></div>' +
       '<div class="hero-stat"><div><strong>'+allForJenjang.length+'</strong><span>Soal Anda</span></div>' +
         '<div><strong>'+katCount+'</strong><span>Kategori</span></div>' +
         '<div><strong>'+myResults().length+'</strong><span>Riwayat</span></div></div></div>' +
     '<div class="card"><h3>1. Pilih Kategori</h3><div class="chips">' +
-      katList.map(function(k){ const safe = jsEsc(k); return '<button class="chip '+(pick.kategori===k?'on':'')+'" onclick="setKategori(\''+safe+'\')">'+esc(k)+'</button>'; }).join('') +
+      katList.map(function(k){ const safe = jsEsc(k);
+        return '<button class="chip '+(pick.kategori===k?'on':'')+'" onclick="setKategori(\''+safe+'\')">'+esc(k)+'</button>';
+      }).join('') +
       '</div><h3 style="margin-top:22px">2. Pilih Mode</h3><div class="chips">' +
       '<button class="chip '+(pick.mode==='semua'?'on':'')+'" onclick="setMode(\'semua\')">Kerjakan Semua ('+filtered.length+' soal)</button>' +
       '<button class="chip '+(pick.mode==='pilih'?'on':'')+'" onclick="setMode(\'pilih\')">Pilih Soal Sendiri</button>' +
       '</div>' + (pick.mode==='pilih' ? pickerHTML(filtered) : '') +
+      '<div style="margin-top:20px;padding:14px;background:'+(durasi>0?'#eef2ff':'#f8fafc')+';border-radius:12px;border:1px dashed '+(durasi>0?'#c7d2fe':'#e2e8f0')+'">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">' +
+          '<div><b style="font-size:13.5px;color:'+(durasi>0?'#4338ca':'#64748b')+'">⏱ Durasi Latihan</b>' +
+            '<div class="tiny muted" style="margin-top:3px">'+(durasi>0?'Ditetapkan admin untuk kategori '+esc(pick.kategori):'Admin belum menetapkan waktu — tidak ada batas')+'</div></div>' +
+          '<div style="font-size:18px;font-weight:800;color:'+(durasi>0?'#4338ca':'#94a3b8')+'">'+(durasi>0?durasi+' menit':'∞')+'</div>' +
+        '</div>' +
+      '</div>' +
       '<div class="row between wrap" style="margin-top:20px">' +
         '<label class="switch"><input type="checkbox" '+(pick.acak?'checked':'')+' onchange="pick.acak=this.checked"> Acak urutan soal</label>' +
         '<button class="btn primary" onclick="startQuiz()">Mulai Latihan</button></div></div>' + riwayatHTML() + '</div>';
+}
+async function manualRefreshSoal(){
+  if(!isSyncReady()){ alert('Admin belum mengatur server.'); return; }
+  const btn = event && event.target;
+  if(btn) btn.innerHTML = '⏳ Memuat...';
+  const list = await ambilSoalServer();
+  if(!Array.isArray(list)){
+    if(btn){ btn.innerHTML = '⚠️ Gagal — cek internet'; setTimeout(() => { btn.innerHTML = '🔄 Coba lagi'; }, 3000); }
+    return;
+  }
+  if(list.length === 0){ if(btn) btn.innerHTML = '⚠️ Sheet kosong'; return; }
+  const before = getQuestions().length;
+  store.set(KEY.Q, list);
+  window._soalFetchedAt = Date.now();
+  const after = list.length;
+  render();
+  if(before !== after){
+    const t = document.createElement('div');
+    t.textContent = '✓ Soal diperbarui: ' + before + ' → ' + after + ' soal';
+    t.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#166534;color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;font-size:14px;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,.3)';
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 3500);
+  }
 }
 async function reloadPeserta(){
   if(!isSyncReady()){ alert('Admin belum mengatur server. Hubungi admin.'); return; }
@@ -639,6 +777,9 @@ function riwayatHTML(){
 }
 function lihatHasil(id){ const r = store.get(KEY.R, []).find(x=>x.id===id); if(!r) return; lastResult = Object.assign({}, r, {_fresh:false}); render(); }
 
+/* =========================================================
+   QUIZ (dengan timer durasi)
+   ========================================================= */
 function startQuiz(){
   const pool = getQuestionsForJenjang(session.jenjang);
   let items;
@@ -647,16 +788,66 @@ function startQuiz(){
   if(!items.length){ alert('Belum ada soal.'); return; }
   items.sort((a,b) => a.kategori.localeCompare(b.kategori) || a.nomor-b.nomor);
   if(pick.acak) items = shuffle(items);
-  quiz = { ids: items.map(q=>q.id), answers:{}, ragu:{}, idx:0, start: Date.now(), kategori: pick.kategori, acak: pick.acak };
-  lastResult = null; render();
+
+  const durasiMenit = getDurasiForKategori(pick.kategori);
+  quiz = {
+    ids: items.map(q=>q.id),
+    answers:{}, ragu:{}, idx:0,
+    start: Date.now(),
+    kategori: pick.kategori,
+    acak: pick.acak,
+    durasiMenit: durasiMenit,
+    durasiDetik: durasiMenit * 60,
+    autoSubmitted: false
+  };
+  lastResult = null;
+  autoSubmitGuard = false;
+  render();
+  if(durasiMenit > 0){
+    setTimeout(() => {
+      const t = document.createElement('div');
+      t.textContent = '⏱ Waktu latihan: ' + durasiMenit + ' menit. Timer berjalan — bisa dilihat di kanan atas.';
+      t.style.cssText = 'position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#4f46e5;color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;font-size:13.5px;z-index:999;box-shadow:0 8px 24px rgba(79,70,229,.5)';
+      document.body.appendChild(t);
+      setTimeout(() => t.remove(), 4000);
+    }, 400);
+  }
 }
 function startTimer(){
   clearInterval(timerInt);
   timerInt = setInterval(() => {
     const el = document.getElementById('timer');
-    if(!el || !quiz){ clearInterval(timerInt); return; }
-    el.textContent = fmtDur(Math.floor((Date.now()-quiz.start)/1000));
-  }, 1000);
+    if(!quiz){ clearInterval(timerInt); return; }
+    if(!el) return;
+
+    const elapsed = Math.floor((Date.now() - quiz.start)/1000);
+    if(quiz.durasiDetik > 0){
+      const remaining = Math.max(0, quiz.durasiDetik - elapsed);
+      el.textContent = fmtDur(remaining);
+      const box = el.closest('.timer-box');
+      if(box){
+        box.classList.remove('warn','critical');
+        if(remaining <= 60) box.classList.add('critical');
+        else if(remaining <= 300) box.classList.add('warn');
+      }
+      if(remaining === 0 && !quiz.autoSubmitted && !autoSubmitGuard){
+        quiz.autoSubmitted = true;
+        autoSubmitGuard = true;
+        clearInterval(timerInt);
+        const unanswered = quiz.ids.filter(id => quiz.answers[id] === undefined).length;
+        const doubtful = quiz.ids.filter(id => quiz.ragu[id]).length;
+        let msg = '⏰ WAKTU HABIS!\n\n';
+        msg += '• Terjawab: ' + (quiz.ids.length - unanswered) + '/' + quiz.ids.length + '\n';
+        if(unanswered > 0) msg += '• Belum dijawab: ' + unanswered + '\n';
+        if(doubtful > 0) msg += '• Ragu-ragu: ' + doubtful + '\n';
+        msg += '\nUjian akan otomatis di-submit sekarang.';
+        alert(msg);
+        finishQuiz(true);
+      }
+    } else {
+      el.textContent = fmtDur(elapsed);
+    }
+  }, 500);
 }
 function palClass(id, idx){
   let cls = 'pal ';
@@ -676,8 +867,12 @@ function viewQuiz(){
   const doubtful = Object.keys(quiz.ragu).filter(id=>quiz.ragu[id]).length;
   const opts = q.opsi.map((t,i)=>({t,i})).filter(o=>o.t && o.t.trim());
   const isDoubt = !!quiz.ragu[q.id];
+  const timerLabel = quiz.durasiDetik > 0
+    ? '⏱ <b id="timer">'+fmtDur(quiz.durasiDetik)+'</b>'
+    : '⏱ <b id="timer">00:00</b>';
+  const timerHint = quiz.durasiDetik > 0 ? 'Sisa waktu' : 'Waktu berjalan';
   return topbar(q.kategori+' · Soal '+(quiz.idx+1)+'/'+total,
-    '<span class="pill">⏱ <b id="timer">00:00</b></span>' +
+    '<div class="timer-box" title="'+timerHint+'"><span>'+timerLabel+'</span></div>' +
     '<span class="pill">✓ '+answered+'/'+total+'</span>' +
     (doubtful>0?'<span class="pill warn">❓ '+doubtful+' ragu</span>':'')) +
     '<div class="container"><div class="quiz-layout">' +
@@ -711,11 +906,12 @@ function toggleRagu(){ const id = quiz.ids[quiz.idx]; quiz.ragu[id] = !quiz.ragu
 function gotoQ(i){ quiz.idx = i; render(); }
 function navQ(d){ const n = quiz.idx+d; if(n<0 || n>=quiz.ids.length) return; quiz.idx = n; render(); }
 
-function finishQuiz(){
+function finishQuiz(isAuto){
+  if(!quiz) return;
   const total = quiz.ids.length;
   const unanswered = quiz.ids.filter(id=>quiz.answers[id]===undefined).length;
   const doubtful = quiz.ids.filter(id=>quiz.ragu[id]).length;
-  if(unanswered>0 || doubtful>0){
+  if(!isAuto && (unanswered>0 || doubtful>0)){
     let msg = '⚠️ KONFIRMASI SUBMIT UJIAN\n\n';
     if(unanswered>0) msg += '• '+unanswered+' soal BELUM DIJAWAB\n';
     if(doubtful>0) msg += '• '+doubtful+' soal DITANDAI RAGU-RAGU\n';
@@ -735,7 +931,9 @@ function finishQuiz(){
   const nilai = Math.round(benar/total*100);
   const res = {id:uid(), username:session.username, nama:session.nama, jenjang:session.jenjang||'-',
     kategori:quiz.kategori, tanggal:new Date().toISOString(), total, benar, salah, kosong, nilai, detail,
-    durasi:Math.round((Date.now()-quiz.start)/1000)};
+    durasi:Math.round((Date.now()-quiz.start)/1000),
+    durasiMax: quiz.durasiDetik || 0,
+    autoSubmitted: !!isAuto};
   const rs = store.get(KEY.R, []); rs.unshift(res); store.set(KEY.R, rs);
   lastResult = Object.assign({}, res, {_fresh:true});
   quiz = null; clearInterval(timerInt); render(); window.scrollTo({top:0,behavior:'smooth'});
@@ -747,11 +945,18 @@ function finishQuiz(){
   });
 }
 
+/* =========================================================
+   HASIL PESERTA
+   ========================================================= */
 function viewHasil(){
   const r = lastResult;
   const grade = r.nilai>=80?'Luar biasa!':r.nilai>=70?'Bagus!':r.nilai>=60?'Cukup, tingkatkan lagi.':'Perlu belajar lebih giat.';
   const nextJenjang = JENJANG_NEXT[r.jenjang];
   const lulusNaik = r.nilai>=NILAI_LULUS_NAIK && nextJenjang;
+  const autoNote = r.autoSubmitted ? '<div class="doubt-note" style="background:#fee2e2;border-color:#fecaca;color:#991b1b;margin-top:12px"><b>⏰ Waktu habis</b> — ujian disubmit otomatis. Soal yang belum dijawab dihitung kosong.</div>' : '';
+  const durasiNote = r.durasiMax > 0
+    ? '<div class="tiny muted" style="margin-top:6px">Durasi: '+fmtDur(r.durasi||0)+' dari maksimal '+fmtDur(r.durasiMax)+'</div>'
+    : '';
   return topbar('Hasil Latihan')+'<div class="container narrow"><div class="card"><div class="result-head">' +
     '<div class="score-ring" style="--p:'+r.nilai+'"><div><strong>'+r.nilai+'</strong><span>NILAI</span></div></div>' +
     '<div style="flex:1;min-width:220px"><h2 style="margin-bottom:4px">'+esc(grade)+'</h2>' +
@@ -761,7 +966,8 @@ function viewHasil(){
     '<div class="stats"><div><strong style="color:var(--ok)">'+r.benar+'</strong><span>Benar</span></div>' +
     '<div><strong style="color:var(--bad)">'+r.salah+'</strong><span>Salah</span></div>' +
     '<div><strong>'+r.kosong+'</strong><span>Kosong</span></div>' +
-    '<div><strong>'+fmtDur(r.durasi||0)+'</strong><span>Durasi</span></div></div></div></div>' +
+    '<div><strong>'+fmtDur(r.durasi||0)+'</strong><span>Durasi</span></div></div>' + durasiNote + '</div></div>' +
+    autoNote +
     '<div class="row gap wrap" style="margin-top:22px"><button class="btn primary" onclick="ulangi()">Kerjakan Lagi</button>' +
     '<button class="btn" onclick="kembaliDashboard()">Kembali</button>' +
     '<button class="btn ghost" onclick="unduhHasilSaya()">Unduh JSON</button></div>' +
@@ -795,6 +1001,9 @@ function downloadJSON(obj, filename){
   setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
 }
 
+/* =========================================================
+   ADMIN
+   ========================================================= */
 function viewAdmin(){
   return topbar('Panel Administrator', '<span class="pill">Admin</span>')+'<div class="container">' +
     '<div class="tabs big">' +
@@ -1224,7 +1433,8 @@ function renderViewSemua(box, rs){
     '</tr></thead><tbody>' + rs.map(r=>{
       const next = JENJANG_NEXT[r.jenjang];
       const bisaNaik = r.nilai>=NILAI_LULUS_NAIK && next;
-      return '<tr><td><b>'+esc(r.nama)+'</b><div class="tiny muted">@'+esc(r.username)+'</div></td>' +
+      const auto = r.autoSubmitted ? ' <span class="tiny" title="Disubmit otomatis karena waktu habis">⏰</span>' : '';
+      return '<tr><td><b>'+esc(r.nama)+'</b>'+auto+'<div class="tiny muted">@'+esc(r.username)+'</div></td>' +
         '<td>'+jenjangBadge(r.jenjang)+(bisaNaik?' <span class="jenjang-badge naik">↑</span>':'')+'</td>' +
         '<td class="small">'+esc(r.kategori)+'</td><td class="small">'+fmtDate(r.tanggal)+'</td>' +
         '<td>'+r.benar+'/'+r.total+'</td><td><b class="score '+(r.nilai>=70?'ok':'bad')+'">'+r.nilai+'</b></td>' +
@@ -1273,11 +1483,13 @@ function adminLihatDetail(id){
   if(!r){ alert('Data tidak ditemukan.'); return; }
   const next = JENJANG_NEXT[r.jenjang];
   const bisaNaik = r.nilai>=NILAI_LULUS_NAIK && next;
+  const autoNote = r.autoSubmitted ? '<div class="doubt-note" style="background:#fee2e2;border-color:#fecaca;color:#991b1b"><b>⏰ Waktu habis</b> — disubmit otomatis.</div>' : '';
   document.getElementById('modal-root').innerHTML =
     '<div class="overlay" onclick="if(event.target===this) closeModal()"><div class="modal">' +
     '<div class="row between"><div><h3 style="margin-bottom:2px">'+esc(r.nama)+'</h3>' +
     '<p class="small" style="margin:0">@'+esc(r.username)+' · '+esc(r.kategori)+' · '+fmtDate(r.tanggal)+'</p></div>' +
     '<button class="btn tiny ghost" onclick="closeModal()">X</button></div>' +
+    autoNote +
     '<div class="row gap wrap" style="margin:12px 0">'+jenjangBadge(r.jenjang) +
       (bisaNaik?'<span class="jenjang-badge naik">✓ Siap naik ke '+esc(shortJenjang(next))+'</span>':'')+'</div>' +
     '<div class="stats" style="margin:16px 0">' +
@@ -1300,8 +1512,8 @@ async function hapusSemuaHasil(){
 function exportCSV(){
   const rs = currentResultsList.length ? currentResultsList : store.get(KEY.R, []);
   if(!rs.length){ alert('Belum ada data.'); return; }
-  const head = ['Nama','Username','Jenjang','Kategori','Tanggal','Jumlah Soal','Benar','Salah','Kosong','Nilai','Durasi'];
-  const rows = rs.map(r=>[r.nama, r.username, r.jenjang||'-', r.kategori, fmtDate(r.tanggal), r.total, r.benar, r.salah, r.kosong, r.nilai, r.durasi||0]);
+  const head = ['Nama','Username','Jenjang','Kategori','Tanggal','Jumlah Soal','Benar','Salah','Kosong','Nilai','Durasi','Auto-Submit'];
+  const rows = rs.map(r=>[r.nama, r.username, r.jenjang||'-', r.kategori, fmtDate(r.tanggal), r.total, r.benar, r.salah, r.kosong, r.nilai, r.durasi||0, r.autoSubmitted?'Ya':'Tidak']);
   const csv = '\uFEFF' + [head].concat(rows).map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');
   const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
@@ -1323,6 +1535,9 @@ function importHasil(input){
   rd.readAsText(f); input.value = '';
 }
 
+/* =========================================================
+   PENGATURAN (dengan durasi per kategori)
+   ========================================================= */
 const APPS_SCRIPT_CODE = `const SHEET='Hasil';
 const SHEET_SOAL='Soal';
 const HEADERS=['id','username','nama','kategori','tanggal','total','benar','salah','kosong','nilai','durasi','detail'];
@@ -1366,7 +1581,7 @@ function doPost(e){
 function doGet(e){
   const a=(e&&e.parameter&&e.parameter.action)||'';
   const cb=e&&e.parameter&&e.parameter.callback;
-  if(a==='ping')return out({ok:true,status:'ok',versi:3,waktu:new Date().toISOString()},cb);
+  if(a==='ping')return out({ok:true,status:'ok',versi:4,waktu:new Date().toISOString()},cb);
   if(a==='daftar'){
     const sh=getSheet(SHEET,HEADERS);
     if(sh.getLastRow()<2)return out([],cb);
@@ -1407,11 +1622,32 @@ function adminSettingHTML(){
   const statusPill = isSyncReady() ? '<span class="pill ok">Terhubung</span>' : '<span class="pill">Belum terhubung</span>';
   const katList = getKategoriList().filter(k=>k!=='Semua');
   const autoPoll = getAutoPoll();
+  const durasiMap = getDurasiMap();
 
   const jenjangCount = JENJANG_LIST.map(j => {
     const c = getQuestions().filter(q => jenjangMatches(q.jenjang, j)).length;
     return '<div style="display:flex;justify-content:space-between;padding:5px 10px;border-bottom:1px solid #f1f5f9;font-size:12.5px"><span>'+esc(shortJenjang(j))+'</span><b style="color:var(--pri)">'+c+' soal</b></div>';
   }).join('');
+
+  const durasiRows = katList.length ? katList.map(k => {
+    const minutes = durasiMap[k] || 0;
+    const presetHTML = DURASI_PRESET.map(m =>
+      '<button class="durasi-preset '+(minutes===m?'on':'')+'" onclick="updateDurasiKategori(\''+jsEsc(k)+'\','+m+')">'+(m===0?'Tanpa batas':m+' mnt')+'</button>'
+    ).join('');
+    return '<div style="border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;background:#fafbff">' +
+      '<div class="row between wrap" style="margin-bottom:6px">' +
+        '<div>'+katBadge(k)+' <span class="tiny muted" style="margin-left:6px">' +
+          getQuestions().filter(q => q.kategori === k).length + ' soal</span></div>' +
+        '<div style="font-size:16px;font-weight:800;color:'+(minutes>0?'var(--pri)':'#94a3b8')+'">' +
+          (minutes>0 ? minutes+' menit' : '∞') + '</div>' +
+      '</div>' +
+      '<div class="durasi-row">' + presetHTML + '</div>' +
+      '<div class="row gap" style="margin-top:8px">' +
+        '<input type="number" min="0" max="600" id="durasi-custom-'+esc(k).replace(/[^a-zA-Z0-9]/g,'_')+'" class="input" style="max-width:100px;padding:6px 10px;font-size:13px" value="'+minutes+'" placeholder="menit">' +
+        '<button class="btn tiny" onclick="updateDurasiKategoriCustom(\''+jsEsc(k)+'\')">Set kustom</button>' +
+      '</div>' +
+    '</div>';
+  }).join('') : '<p class="muted small">Belum ada kategori. Tambahkan soal dulu.</p>';
 
   return '<div class="card"><div class="row between wrap"><h3 style="margin:0">Sinkronisasi Google Sheets</h3>'+statusPill+'</div>' +
     '<p class="small">Soal dan hasil peserta otomatis tersinkron ke Google Sheet.</p>' +
@@ -1427,6 +1663,13 @@ function adminSettingHTML(){
     '<button class="btn primary" onclick="simpanSyncUrl()">Simpan & Uji</button>' +
     '<button class="btn ghost" onclick="testSync()">Uji Saja</button></div>' +
     '<div id="sync-test" style="margin-top:10px"></div>' +
+    '<hr class="sep"><h3>⏱ Durasi Latihan per Kategori</h3>' +
+    '<p class="small">Atur batas waktu pengerjaan. <b>0 = tanpa batas</b>. Timer otomatis jalan saat peserta mulai.</p>' +
+    durasiRows +
+    '<div class="doubt-note" style="margin-top:14px;font-size:12.5px">' +
+      '💡 <b>Catatan:</b> Jika peserta memilih kategori <b>Semua</b>, dipakai durasi <b>terpanjang</b> dari kategori yang dipilih. ' +
+      'Timer akan otomatis submit ujian saat habis.' +
+    '</div>' +
     '<hr class="sep"><h3>Auto-Sync</h3>' +
     '<label class="switch" style="margin-bottom:8px"><input type="checkbox" '+(autoPoll?'checked':'')+' onchange="toggleAutoPoll(this.checked)"> Polling otomatis tiap 90 detik saat di tab Kelola Soal</label>' +
     '<hr class="sep"><h3>Distribusi Soal per Jenjang</h3>' +
@@ -1448,6 +1691,19 @@ function adminSettingHTML(){
     '<div><strong>'+us.length+'</strong><span>Peserta</span></div></div>' +
     '<div style="margin-top:12px"><b>Kategori:</b> '+(katList.length?katList.map(katBadge).join(' '):'<span class="muted">belum ada</span>')+'</div>' +
     '</div>';
+}
+function updateDurasiKategori(kat, minutes){
+  setDurasiForKategori(kat, minutes);
+  render();
+}
+function updateDurasiKategoriCustom(kat){
+  const id = 'durasi-custom-' + kat.replace(/[^a-zA-Z0-9]/g,'_');
+  const el = document.getElementById(id);
+  if(!el) return;
+  const v = Number(el.value) || 0;
+  if(v < 0 || v > 600){ alert('Durasi harus 0-600 menit.'); return; }
+  setDurasiForKategori(kat, v);
+  render();
 }
 function toggleAutoPoll(enabled){
   const st = store.get(KEY.S, {}); st.autoPoll = enabled; store.set(KEY.S, st);
@@ -1490,7 +1746,7 @@ function gantiPass(){
   alert('Password diubah.'); render();
 }
 function exportAll(){
-  const data = {app:'Latihan Soal Penyuluh KB', versi:6, diekspor:new Date().toISOString(),
+  const data = {app:'Latihan Soal Penyuluh KB', versi:7, diekspor:new Date().toISOString(),
     questions:getQuestions(), results:store.get(KEY.R, []), users:store.get(KEY.U, []),
     settings:store.get(KEY.S, {adminPassword:'admin123'})};
   downloadJSON(data, 'backup-latihan-kb-'+new Date().toISOString().slice(0,10)+'.json');
@@ -1515,19 +1771,46 @@ function resetSoal(){
   setQuestions(bootstrapQuestions()); render(); alert('Soal direset ke bank bawaan.');
 }
 
-(function init(){
-  if(!store.get(KEY.S, null)) store.set(KEY.S, {adminPassword:'admin123', autoPoll: true});
+/* =========================================================
+   INIT
+   ========================================================= */
+(async function init(){
+  if(!store.get(KEY.S, null)) store.set(KEY.S, {adminPassword:'admin123', autoPoll: true, durasiMap:{}});
   session = store.get(KEY.SES, null);
+
+  if(session && session.role === 'peserta' && isSyncReady()){
+    document.getElementById('app').innerHTML =
+      '<div class="login-wrap"><div class="login-card" style="text-align:center">' +
+      '<div class="logo" style="margin:0 auto 16px;width:56px;height:56px;font-size:18px">KB</div>' +
+      '<h3 style="margin-bottom:6px">Memuat soal terbaru...</h3>' +
+      '<p class="muted">Mengambil dari server, mohon tunggu.</p></div></div>';
+    await pullSoalForPeserta();
+  }
+
   render();
+
   if(session){
-    if(session.role === 'peserta' && isSyncReady()){ pullSoalForPeserta(); }
+    if(session.role === 'peserta' && isSyncReady()){ startParticipantPoll(); }
     if(session.role === 'admin' && isSyncReady()){ autoPullAdminLogin(); }
   }
+
   document.addEventListener('visibilitychange', function(){
     if(document.hidden) return;
     if(!session) return;
-    if(session.role==='admin' && adminTab==='soal' && isSyncReady()){
+    if(session.role === 'admin' && adminTab === 'soal' && isSyncReady()){
       silentPullFromSheet().then(changed => { if(changed){ renderSoalList(); updateSyncBanner(); } });
+    }
+    if(session.role === 'peserta' && isSyncReady() && !quiz && !lastResult){
+      ambilSoalServer().then(list => {
+        if(Array.isArray(list) && list.length > 0){
+          const local = getQuestions();
+          if(JSON.stringify(list) !== JSON.stringify(local)){
+            store.set(KEY.Q, list);
+            window._soalFetchedAt = Date.now();
+            render();
+          }
+        }
+      });
     }
   });
 })();
